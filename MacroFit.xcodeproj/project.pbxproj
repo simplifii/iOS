@@ -15,6 +15,19 @@
 		E0A6DD5A214F719000B6C301 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD58214F719000B6C301 /* LaunchScreen.storyboard */; };
 		E0A6DD65214F719000B6C301 /* MacroFitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD64214F719000B6C301 /* MacroFitTests.swift */; };
 		E0A6DD70214F719000B6C301 /* MacroFitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD6F214F719000B6C301 /* MacroFitUITests.swift */; };
+		E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */; };
+		E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */; };
+		E0A6DD8E214F9B1D00B6C301 /* FeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD8D214F9B1C00B6C301 /* FeatureView.xib */; };
+		E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD8F214F9B6E00B6C301 /* FeatureView.swift */; };
+		E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */; };
+		E0A6DD94214FD3B500B6C301 /* BackNavbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD93214FD3B500B6C301 /* BackNavbarView.xib */; };
+		E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD95214FD50300B6C301 /* BackNavbarView.swift */; };
+		E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */; };
+		E0A6DD9A214FDF3300B6C301 /* ProgressBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD99214FDF3300B6C301 /* ProgressBarView.xib */; };
+		E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */; };
+		E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */; };
+		E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */; };
+		E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +62,19 @@
 		E0A6DD6B214F719000B6C301 /* MacroFitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroFitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A6DD6F214F719000B6C301 /* MacroFitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroFitUITests.swift; sourceTree = "<group>"; };
 		E0A6DD71214F719000B6C301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionScreenViewController.swift; sourceTree = "<group>"; };
+		E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		E0A6DD8D214F9B1C00B6C301 /* FeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeatureView.xib; sourceTree = "<group>"; };
+		E0A6DD8F214F9B6E00B6C301 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
+		E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		E0A6DD93214FD3B500B6C301 /* BackNavbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackNavbarView.xib; sourceTree = "<group>"; };
+		E0A6DD95214FD50300B6C301 /* BackNavbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavbarView.swift; sourceTree = "<group>"; };
+		E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		E0A6DD99214FDF3300B6C301 /* ProgressBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressBarView.xib; sourceTree = "<group>"; };
+		E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormTableViewController.swift; sourceTree = "<group>"; };
+		E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoFormTableViewController.swift; sourceTree = "<group>"; };
+		E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
+		E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +125,10 @@
 		E0A6DD4B214F718D00B6C301 /* MacroFit */ = {
 			isa = PBXGroup;
 			children = (
+				E0A6DD8C214F9B0000B6C301 /* Views */,
+				E0A6DD8B214F9AF300B6C301 /* XIBFiles */,
+				E0A6DD82214F77F400B6C301 /* Extensions */,
+				E0A6DD7E214F73A900B6C301 /* ViewControllers */,
 				E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */,
 				E0A6DD4E214F718D00B6C301 /* ViewController.swift */,
 				E0A6DD50214F718D00B6C301 /* Main.storyboard */,
@@ -126,6 +156,47 @@
 				E0A6DD71214F719000B6C301 /* Info.plist */,
 			);
 			path = MacroFitUITests;
+			sourceTree = "<group>";
+		};
+		E0A6DD7E214F73A900B6C301 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */,
+				E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */,
+				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
+				E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */,
+				E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */,
+				E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E0A6DD82214F77F400B6C301 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E0A6DD8B214F9AF300B6C301 /* XIBFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E0A6DD8D214F9B1C00B6C301 /* FeatureView.xib */,
+				E0A6DD93214FD3B500B6C301 /* BackNavbarView.xib */,
+				E0A6DD99214FDF3300B6C301 /* ProgressBarView.xib */,
+			);
+			path = XIBFiles;
+			sourceTree = "<group>";
+		};
+		E0A6DD8C214F9B0000B6C301 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E0A6DD8F214F9B6E00B6C301 /* FeatureView.swift */,
+				E0A6DD95214FD50300B6C301 /* BackNavbarView.swift */,
+				E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +303,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0A6DD94214FD3B500B6C301 /* BackNavbarView.xib in Resources */,
 				E0A6DD5A214F719000B6C301 /* LaunchScreen.storyboard in Resources */,
 				E0A6DD57214F719000B6C301 /* Assets.xcassets in Resources */,
 				E0A6DD52214F718D00B6C301 /* Main.storyboard in Resources */,
+				E0A6DD8E214F9B1D00B6C301 /* FeatureView.xib in Resources */,
+				E0A6DD9A214FDF3300B6C301 /* ProgressBarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +334,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A6DD4F214F718D00B6C301 /* ViewController.swift in Sources */,
+				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
+				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
+				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
+				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
+				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
+				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,
 				E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */,
+				E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */,
+				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,
+				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
+				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +520,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MacroFit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,6 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MacroFit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
