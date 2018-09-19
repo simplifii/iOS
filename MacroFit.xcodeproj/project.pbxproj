@@ -25,6 +25,9 @@
 		E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */; };
 		E0A6DD9A214FDF3300B6C301 /* ProgressBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD99214FDF3300B6C301 /* ProgressBarView.xib */; };
 		E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */; };
+		E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */; };
+		E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */; };
+		E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */; };
 		E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */; };
 		E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */; };
 		E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */; };
@@ -72,6 +75,9 @@
 		E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		E0A6DD99214FDF3300B6C301 /* ProgressBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressBarView.xib; sourceTree = "<group>"; };
 		E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormTableViewController.swift; sourceTree = "<group>"; };
+		E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpMacroMealPortionsViewController.swift; sourceTree = "<group>"; };
+		E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedDailyMacrosViewController.swift; sourceTree = "<group>"; };
+		E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerBoxView.swift; sourceTree = "<group>"; };
 		E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoFormTableViewController.swift; sourceTree = "<group>"; };
 		E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUserViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		E0A6DD4B214F718D00B6C301 /* MacroFit */ = {
 			isa = PBXGroup;
 			children = (
+				E0BEBAA92152835500B7471D /* CustomComponents */,
 				E0A6DD8C214F9B0000B6C301 /* Views */,
 				E0A6DD8B214F9AF300B6C301 /* XIBFiles */,
 				E0A6DD82214F77F400B6C301 /* Extensions */,
@@ -167,6 +174,8 @@
 				E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */,
 				E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */,
 				E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */,
+				E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */,
+				E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -197,6 +206,14 @@
 				E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E0BEBAA92152835500B7471D /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */,
+			);
+			path = CustomComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,7 +350,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */,
+				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
 				E0A6DD4F214F718D00B6C301 /* ViewController.swift in Sources */,
+				E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
