@@ -51,7 +51,19 @@ class OnboardUserViewController: UIViewController {
     }
     
     @objc func goBackToPreviousScreen(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 
+    
+    public func showAlertMessage(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+        
+        alert.addAction(action)
+        
+        self.present(alert, animated: true)
+    }
 }

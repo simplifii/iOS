@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qth-1a-769">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Dn0-J9-C6g">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="qth-1a-769" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9UG-Fg-fOL">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="pRL-Nq-ZCJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WiH-Bp-5Jl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-847" y="134"/>
+        </scene>
         <!--Introduction Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -116,6 +132,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0M3-k7-FHj"/>
                     <connections>
                         <outlet property="backgroundImage" destination="wTY-hJ-dRa" id="4Au-6Z-TTs"/>
                         <outlet property="featuresListScrollView" destination="zeO-As-lyx" id="cZp-Mg-FVT"/>
@@ -147,11 +164,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="pj0-LE-Bod">
-                                                    <rect key="frame" x="26" y="15" width="25" height="25"/>
+                                                    <rect key="frame" x="26" y="17" width="21" height="20"/>
                                                     <color key="tintColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="OTW-4u-eTn"/>
-                                                        <constraint firstAttribute="width" constant="25" id="Zib-7V-8zL"/>
+                                                        <constraint firstAttribute="height" constant="20" id="OTW-4u-eTn"/>
+                                                        <constraint firstAttribute="width" constant="21" id="Zib-7V-8zL"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TQB-iv-c6x">
@@ -163,12 +180,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pj0-LE-Bod" firstAttribute="leading" secondItem="mBH-PN-nES" secondAttribute="leading" constant="26" id="5Vl-rg-nLw"/>
-                                                <constraint firstItem="TQB-iv-c6x" firstAttribute="leading" secondItem="pj0-LE-Bod" secondAttribute="trailing" constant="14" id="7ah-Bp-uvg"/>
-                                                <constraint firstAttribute="bottom" secondItem="pj0-LE-Bod" secondAttribute="bottom" constant="14.5" id="AOB-Dw-JC9"/>
-                                                <constraint firstItem="TQB-iv-c6x" firstAttribute="bottom" secondItem="mBH-PN-nES" secondAttribute="bottomMargin" id="BVC-OX-mpR"/>
-                                                <constraint firstItem="pj0-LE-Bod" firstAttribute="top" secondItem="mBH-PN-nES" secondAttribute="top" constant="15" id="JaM-bi-jCV"/>
+                                                <constraint firstItem="TQB-iv-c6x" firstAttribute="leading" secondItem="pj0-LE-Bod" secondAttribute="trailing" constant="18" id="7ah-Bp-uvg"/>
+                                                <constraint firstItem="pj0-LE-Bod" firstAttribute="top" secondItem="mBH-PN-nES" secondAttribute="top" constant="17" id="JaM-bi-jCV"/>
                                                 <constraint firstItem="TQB-iv-c6x" firstAttribute="top" secondItem="mBH-PN-nES" secondAttribute="topMargin" id="dU0-7p-XkT"/>
                                                 <constraint firstItem="TQB-iv-c6x" firstAttribute="trailing" secondItem="mBH-PN-nES" secondAttribute="trailingMargin" id="fk0-18-jKF"/>
+                                                <constraint firstItem="TQB-iv-c6x" firstAttribute="bottom" secondItem="mBH-PN-nES" secondAttribute="bottomMargin" id="oVq-LR-Ice"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -181,10 +197,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arroba" translatesAutoresizingMaskIntoConstraints="NO" id="H4Y-7z-zQQ">
-                                                    <rect key="frame" x="26" y="15" width="25" height="25"/>
+                                                    <rect key="frame" x="26" y="17" width="21" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="NjM-Ol-SPy"/>
-                                                        <constraint firstAttribute="height" constant="25" id="q3i-3D-R04"/>
+                                                        <constraint firstAttribute="width" constant="21" id="NjM-Ol-SPy"/>
+                                                        <constraint firstAttribute="height" constant="21" id="q3i-3D-R04"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hzh-bi-BZG">
@@ -195,11 +211,10 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Hzh-bi-BZG" firstAttribute="leading" secondItem="H4Y-7z-zQQ" secondAttribute="trailing" constant="14" id="3gq-pO-Bdy"/>
-                                                <constraint firstItem="H4Y-7z-zQQ" firstAttribute="top" secondItem="eZf-bZ-Nab" secondAttribute="top" constant="15" id="Qly-F2-rq4"/>
+                                                <constraint firstItem="Hzh-bi-BZG" firstAttribute="leading" secondItem="H4Y-7z-zQQ" secondAttribute="trailing" constant="18" id="3gq-pO-Bdy"/>
+                                                <constraint firstItem="H4Y-7z-zQQ" firstAttribute="top" secondItem="eZf-bZ-Nab" secondAttribute="top" constant="17" id="Qly-F2-rq4"/>
                                                 <constraint firstItem="Hzh-bi-BZG" firstAttribute="bottom" secondItem="eZf-bZ-Nab" secondAttribute="bottomMargin" id="WRq-OL-y8J"/>
                                                 <constraint firstItem="Hzh-bi-BZG" firstAttribute="top" secondItem="eZf-bZ-Nab" secondAttribute="topMargin" id="dSy-KL-0Nf"/>
-                                                <constraint firstAttribute="bottom" secondItem="H4Y-7z-zQQ" secondAttribute="bottom" constant="14.5" id="gaP-5E-ieX"/>
                                                 <constraint firstItem="Hzh-bi-BZG" firstAttribute="trailing" secondItem="eZf-bZ-Nab" secondAttribute="trailingMargin" id="ql9-OQ-KYb"/>
                                                 <constraint firstItem="H4Y-7z-zQQ" firstAttribute="leading" secondItem="eZf-bZ-Nab" secondAttribute="leading" constant="26" id="urr-hI-X18"/>
                                             </constraints>
@@ -214,10 +229,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_call" translatesAutoresizingMaskIntoConstraints="NO" id="XAR-Et-f1h">
-                                                    <rect key="frame" x="26" y="15" width="25" height="25"/>
+                                                    <rect key="frame" x="26" y="17" width="21" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="PZw-Lx-yba"/>
-                                                        <constraint firstAttribute="width" constant="25" id="zZk-K2-M6i"/>
+                                                        <constraint firstAttribute="height" constant="21" id="PZw-Lx-yba"/>
+                                                        <constraint firstAttribute="width" constant="21" id="zZk-K2-M6i"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FF5-zN-6Kr">
@@ -229,11 +244,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FF5-zN-6Kr" firstAttribute="trailing" secondItem="s9U-HU-OJm" secondAttribute="trailingMargin" id="3Su-ko-MEh"/>
-                                                <constraint firstAttribute="bottom" secondItem="XAR-Et-f1h" secondAttribute="bottom" constant="14.5" id="5YG-BT-3A4"/>
                                                 <constraint firstItem="XAR-Et-f1h" firstAttribute="leading" secondItem="s9U-HU-OJm" secondAttribute="leading" constant="26" id="R0c-b6-AiU"/>
                                                 <constraint firstItem="FF5-zN-6Kr" firstAttribute="bottom" secondItem="s9U-HU-OJm" secondAttribute="bottomMargin" id="SlG-cJ-TzD"/>
-                                                <constraint firstItem="FF5-zN-6Kr" firstAttribute="leading" secondItem="XAR-Et-f1h" secondAttribute="trailing" constant="14" id="hRu-44-efS"/>
-                                                <constraint firstItem="XAR-Et-f1h" firstAttribute="top" secondItem="s9U-HU-OJm" secondAttribute="top" constant="15" id="lcf-Si-EMM"/>
+                                                <constraint firstItem="FF5-zN-6Kr" firstAttribute="leading" secondItem="XAR-Et-f1h" secondAttribute="trailing" constant="18" id="hRu-44-efS"/>
+                                                <constraint firstItem="XAR-Et-f1h" firstAttribute="top" secondItem="s9U-HU-OJm" secondAttribute="top" constant="17" id="lcf-Si-EMM"/>
                                                 <constraint firstItem="FF5-zN-6Kr" firstAttribute="top" secondItem="s9U-HU-OJm" secondAttribute="topMargin" id="rbF-9A-nfS"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -247,10 +261,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padlock" translatesAutoresizingMaskIntoConstraints="NO" id="ZnF-Ib-RXC">
-                                                    <rect key="frame" x="26" y="15" width="25" height="25"/>
+                                                    <rect key="frame" x="26" y="17" width="21" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="JUc-ml-w67"/>
-                                                        <constraint firstAttribute="height" constant="25" id="a1J-9z-IaU"/>
+                                                        <constraint firstAttribute="width" constant="21" id="JUc-ml-w67"/>
+                                                        <constraint firstAttribute="height" constant="21" id="a1J-9z-IaU"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CBY-fJ-wTt">
@@ -261,13 +275,12 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZnF-Ib-RXC" firstAttribute="top" secondItem="VIt-Xk-eQt" secondAttribute="top" constant="15" id="8XT-kl-1cE"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZnF-Ib-RXC" secondAttribute="bottom" constant="14.5" id="GBQ-iP-HMC"/>
+                                                <constraint firstItem="ZnF-Ib-RXC" firstAttribute="top" secondItem="VIt-Xk-eQt" secondAttribute="top" constant="17" id="8XT-kl-1cE"/>
                                                 <constraint firstItem="CBY-fJ-wTt" firstAttribute="trailing" secondItem="VIt-Xk-eQt" secondAttribute="trailingMargin" id="YHk-FO-uy8"/>
                                                 <constraint firstItem="ZnF-Ib-RXC" firstAttribute="leading" secondItem="VIt-Xk-eQt" secondAttribute="leading" constant="26" id="iuo-GG-D3G"/>
                                                 <constraint firstItem="CBY-fJ-wTt" firstAttribute="top" secondItem="VIt-Xk-eQt" secondAttribute="topMargin" id="n45-MF-4hy"/>
                                                 <constraint firstItem="CBY-fJ-wTt" firstAttribute="bottom" secondItem="VIt-Xk-eQt" secondAttribute="bottomMargin" id="qTP-Bb-S2L"/>
-                                                <constraint firstItem="CBY-fJ-wTt" firstAttribute="leading" secondItem="ZnF-Ib-RXC" secondAttribute="trailing" constant="14" id="xq8-zh-MLV"/>
+                                                <constraint firstItem="CBY-fJ-wTt" firstAttribute="leading" secondItem="ZnF-Ib-RXC" secondAttribute="trailing" constant="18" id="xq8-zh-MLV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -279,15 +292,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arroba" translatesAutoresizingMaskIntoConstraints="NO" id="ZSb-Pq-WUV">
-                                                    <rect key="frame" x="26" y="15" width="25" height="25"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="ZSb-Pq-WUV">
+                                                    <rect key="frame" x="28" y="17" width="17" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="670-Pq-qd6"/>
-                                                        <constraint firstAttribute="width" constant="25" id="9Oe-Wz-ki6"/>
+                                                        <constraint firstAttribute="height" constant="21" id="670-Pq-qd6"/>
+                                                        <constraint firstAttribute="width" constant="17" id="9Oe-Wz-ki6"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bp9-nS-ol1">
-                                                    <rect key="frame" x="65" y="11" width="294" height="33"/>
+                                                    <rect key="frame" x="67" y="11" width="292" height="33"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
@@ -295,12 +308,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bp9-nS-ol1" firstAttribute="trailing" secondItem="1E9-7C-fva" secondAttribute="trailingMargin" id="0EJ-O5-CwM"/>
-                                                <constraint firstItem="bp9-nS-ol1" firstAttribute="leading" secondItem="ZSb-Pq-WUV" secondAttribute="trailing" constant="14" id="OH9-od-SI0"/>
-                                                <constraint firstItem="ZSb-Pq-WUV" firstAttribute="leading" secondItem="1E9-7C-fva" secondAttribute="leading" constant="26" id="QbC-Ue-3au"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZSb-Pq-WUV" secondAttribute="bottom" constant="14.5" id="fC0-yt-MFT"/>
+                                                <constraint firstItem="bp9-nS-ol1" firstAttribute="leading" secondItem="ZSb-Pq-WUV" secondAttribute="trailing" constant="22" id="OH9-od-SI0"/>
+                                                <constraint firstItem="ZSb-Pq-WUV" firstAttribute="leading" secondItem="1E9-7C-fva" secondAttribute="leading" constant="28" id="QbC-Ue-3au"/>
                                                 <constraint firstItem="bp9-nS-ol1" firstAttribute="top" secondItem="1E9-7C-fva" secondAttribute="topMargin" id="i6M-2L-f6C"/>
                                                 <constraint firstItem="bp9-nS-ol1" firstAttribute="bottom" secondItem="1E9-7C-fva" secondAttribute="bottomMargin" id="mO4-3S-tfl"/>
-                                                <constraint firstItem="ZSb-Pq-WUV" firstAttribute="top" secondItem="1E9-7C-fva" secondAttribute="top" constant="15" id="xQB-s0-sxc"/>
+                                                <constraint firstItem="ZSb-Pq-WUV" firstAttribute="top" secondItem="1E9-7C-fva" secondAttribute="top" constant="17" id="xQB-s0-sxc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -313,10 +325,17 @@
                             <outlet property="delegate" destination="NcA-bw-hIp" id="dxJ-GA-nt7"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="emailTextField" destination="Hzh-bi-BZG" id="ywC-qL-aNN"/>
+                        <outlet property="nameTextField" destination="TQB-iv-c6x" id="ccc-74-ftA"/>
+                        <outlet property="passwordTextField" destination="CBY-fJ-wTt" id="ZAH-E8-2E4"/>
+                        <outlet property="phoneTextField" destination="FF5-zN-6Kr" id="yTl-DE-xfJ"/>
+                        <outlet property="zipCodeTextField" destination="bp9-nS-ol1" id="XLA-nT-eFg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOK-6D-hAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1420" y="-263"/>
+            <point key="canvasLocation" x="1420" y="-263.11844077961024"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="bmv-Rd-5rS">
@@ -364,13 +383,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="KEF-Jd-zZf" kind="show" id="fxq-Ln-Y7X"/>
+                                    <action selector="signUpUser:" destination="540-ZT-3Sl" eventType="touchUpInside" id="eIJ-2E-l6a"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bn-c4-6ep">
                                 <rect key="frame" x="0.0" y="198" width="375" height="383"/>
                                 <connections>
-                                    <segue destination="NcA-bw-hIp" kind="embed" id="095-Bj-jda"/>
+                                    <segue destination="NcA-bw-hIp" kind="embed" identifier="SignUpFormTableViewController" id="095-Bj-jda"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -402,12 +421,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOx-HY-aBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636" y="135.38230884557723"/>
+            <point key="canvasLocation" x="570" y="134"/>
         </scene>
         <!--Basic Info View Controller-->
         <scene sceneID="gCG-nv-Imr">
             <objects>
-                <viewController id="KEF-Jd-zZf" customClass="BasicInfoViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BasicInfoViewController" id="KEF-Jd-zZf" customClass="BasicInfoViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ex1-fS-RLn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1440,6 +1459,7 @@
     <resources>
         <image name="arroba" width="512" height="512"/>
         <image name="intro_screen_background1" width="375" height="667"/>
+        <image name="location" width="424" height="512"/>
         <image name="macro_meal_portions" width="375" height="667"/>
         <image name="macrofit_logo" width="270" height="37"/>
         <image name="padlock" width="512" height="512"/>
