@@ -80,13 +80,18 @@ class SignUpViewController: OnboardUserViewController {
             .validate(statusCode: 200..<501)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
-                print(response.result)
                 switch response.result {
                     case .success(let value):
                         let json = JSON(value)
                         if let status_code = response.response?.statusCode {
                             if status_code == 200 {
-                                self.signUpCompleted()
+                                APIService.loginUser(username: self.email, password: self.password, completion: {success,msg in
+                                    if success == false {
+                                        self.showAlertMessage(title: msg, message: nil)
+                                    } else {
+                                        self.signUpCompleted()
+                                    }
+                                })
                             } else {
                                 if let msg = json["msg"].string {
                                     self.showAlertMessage(title: msg, message: nil)

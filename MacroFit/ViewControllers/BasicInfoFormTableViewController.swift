@@ -7,26 +7,46 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class BasicInfoFormTableViewController: UITableViewController {
+class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegate {
 
     @IBOutlet weak var fitnessGoalsView: UIView!
-    var goals = ["Low fat", "Build muscle", "Improve Performance"]
-    var selectedGoal = String()
+    
+    @IBOutlet weak var ageTextFIeld: UITextField!
+    @IBOutlet weak var weightTextFIeld: UITextField!
+    @IBOutlet weak var feetTextFIeld: UITextField!
+    @IBOutlet weak var inchesTextFIeld: UITextField!
+    @IBOutlet weak var genderTextField: UITextField!
+    
     
     @IBOutlet weak var activityLevelSlider: UISlider!
+    @IBOutlet weak var selectedActivityTitleTextField: UILabel!
+    @IBOutlet weak var selectedActivityDescriptionTextField: UILabel!
+    @IBOutlet weak var selectedActivityCaloriesInfoTextField: UILabel!
+    var activityLevels: JSON = []
+    
+    
+    var goals:[String] = []
+    var selectedGoal = String()
     @IBOutlet weak var fitnessGoalNoteTextView: UITextView!
+    
+    
+    // Fields
+    var age  = String()
+    var weight  = String()
+    var height  = String()
+    var goalNote  = String()
+    var activityLevel  = String()
+    var gender = String()
+    var per_day_cal_burn = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         prepareView()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        fitnessGoalNoteTextView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,8 +55,6 @@ class BasicInfoFormTableViewController: UITableViewController {
     }
     
     func prepareView() {
-        addFitnessGoalOptionsInView()
-        
         for state: UIControlState in [.normal, .selected, .application, .reserved, .focused] {
             activityLevelSlider.setThumbImage(UIImage(named: "slider_thumb"), for: state)
         }
@@ -44,6 +62,9 @@ class BasicInfoFormTableViewController: UITableViewController {
         fitnessGoalNoteTextView.layer.borderColor = UIColor.lightGray.cgColor;
         fitnessGoalNoteTextView.layer.borderWidth = 1.0;
         fitnessGoalNoteTextView.layer.cornerRadius = 15.0;
+        
+        setActivityLevels()
+        setFitnessGoals()
     }
     
     private func addFitnessGoalOptionsInView() {
@@ -82,71 +103,132 @@ class BasicInfoFormTableViewController: UITableViewController {
         selectedGoal = sender.currentTitle!
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    func setActivityLevels() {
+        APIService.activityLevels(completion: {success, msg, data in
+            self.activityLevels = data
+            self.setActivitySliderValues()
+            self.tableView.reloadData()
+        })
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func setActivitySliderValues() {
+        if activityLevels.count > 0 {
+            setActivityInfoInView(index: 0)
+            
+            activityLevelSlider.maximumValue = Float(activityLevels.count)
+            activityLevelSlider.minimumValue = 1
+            activityLevelSlider.value = 1
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func setFitnessGoals() {
+        APIService.fitnessGoals(completion: {success, msg, data in
+            for (_, goal_obj) in data {
+                self.goals.append(goal_obj["label"].stringValue)
+            }
+            self.addFitnessGoalOptionsInView()
+            self.tableView.reloadData()
+        })
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    
+    @IBAction func setActivity(_ sender: UISlider) {
+        let activityLevelIndex = Int(round(Float(sender.value))) - 1
+        
+        if  selectedActivityTitleTextField.tag != activityLevelIndex {
+            setActivityInfoInView(index: activityLevelIndex)
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func setActivityInfoInView(index: Int) {
+        if activityLevels.count > 0 {
+            selectedActivityTitleTextField.tag = index
+            
+            selectedActivityTitleTextField.text = activityLevels[index]["title"].stringValue
+            selectedActivityDescriptionTextField.text = activityLevels[index]["description"].stringValue
+            
+            let caloriesBurned = "\(activityLevels[index]["low_range"].stringValue)-\(activityLevels[index]["high_range"].stringValue) Calories Burned Daily"
+            selectedActivityCaloriesInfoTextField.text = caloriesBurned
+            
+            per_day_cal_burn = activityLevels[index]["high_range"].stringValue
+        }
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func updateCustomerDetails(_ sender: UIButton) {
+        setFieldsData()
+        let (success, msg) = validateFields()
+        if success == true {
+            APIService.updateCustomerBasicDetails(age: age, weight: weight, height: height, activity_level: activityLevel, goal: selectedGoal, gender: gender, per_day_cal_burn: per_day_cal_burn, goal_note: goalNote, completion: {success, msg in
+                if success == true {
+                    self.gotoNextScreen()
+                } else {
+                    self.showAlertMessage(title: msg, message: nil)
+                }
+            })
+        } else {
+            showAlertMessage(title: msg, message: nil)
+        }
     }
-    */
-
+    
+    func gotoNextScreen() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SetUpMacroMealPortionsViewController") as? SetUpMacroMealPortionsViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
+    func setFieldsData() {
+        age = ageTextFIeld.text!
+        weight = weightTextFIeld.text!
+        if feetTextFIeld.text != "" {
+            if inchesTextFIeld.text != "" {
+                height = "\((12 * Int(feetTextFIeld.text!)!))"
+            } else {
+                height = "\((12 * Int(feetTextFIeld.text!)!) + Int(inchesTextFIeld.text!)!)"
+            }
+        }
+        gender = genderTextField.text!
+        activityLevel = selectedActivityTitleTextField.text ?? ""
+    }
+    
+    func validateFields() -> (Bool, String) {
+        if age.isEmpty {
+            return (false, "Age is required")
+        }
+        if weight.isEmpty {
+            return (false, "Weight is required")
+        }
+        if height.isEmpty {
+            return (false, "Height is required in feet and inches")
+        }
+        if gender.isEmpty {
+            return (false, "Gender is required in feet and inches")
+        }
+        
+        return (true, "Success")
+    }
+    
+    func showAlertMessage(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+        
+        alert.addAction(action)
+        
+        self.present(alert, animated: true)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = nil
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Anything else to tell us about your fitness goals or how we can help?"
+        } else {
+            goalNote = textView.text
+        }
+    }
 }

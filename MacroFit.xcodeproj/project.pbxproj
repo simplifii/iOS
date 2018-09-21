@@ -10,6 +10,7 @@
 		92F0A7B2ACA699441C9A41D0 /* Pods_MacroFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */; };
 		9F03F06BDFFBE65C874D00E6 /* Pods_MacroFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */; };
 		BC13F774BA31F265EF0928A6 /* Pods_MacroFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90694144E01E7704DD92288F /* Pods_MacroFit.framework */; };
+		E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */; };
 		E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */; };
 		E0A6DD52214F718D00B6C301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD50214F718D00B6C301 /* Main.storyboard */; };
 		E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD53214F718D00B6C301 /* MacroFit.xcdatamodeld */; };
@@ -67,6 +68,7 @@
 		90694144E01E7704DD92288F /* Pods_MacroFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF02753B59CD0F9BF07668C6 /* Pods-MacroFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C04217907A90F4BF66617F99 /* Pods-MacroFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit.release.xcconfig"; sourceTree = "<group>"; };
+		E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E0A6DD49214F718D00B6C301 /* MacroFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A6DD51214F718D00B6C301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */,
+				E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
 				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
+				E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
 				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,
 				E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */,

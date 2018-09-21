@@ -11,14 +11,7 @@ struct NetworkingConstants{
     static let baseUrl = "http://mf.platform.simplifii.xyz/api/v1/"
     static let users = "cards"
     static let login = "admin/authenticate"
-    static let questions = "questions"
-    static let answers = "answers"
-    static let likes = "likes"
-    static let comments = "commments"
-    static let data = "data"
-    
-    static let per_page = "per_page"
-    static let total_pages = "total_pages"
-    static let page = "page"
+    static let activityLevels = "static/activitylevels"
+    static let fitnessGoals = "cards"
     
 }

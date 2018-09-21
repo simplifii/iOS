@@ -13,16 +13,24 @@ enum APIRouter: URLRequestConvertible {
     
     case createUser(name: String, email: String, password: String, phone: String, zip_code: String)
     case loginUser(username: String, password: String)
+    case activityLevels()
+    case fitnessGoals()
+    case updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?)
     
     var path: String {
         
         switch self {
+            case .activityLevels:
+                return NetworkingConstants.activityLevels
             
-        case .loginUser:
-            return NetworkingConstants.login
+            case .loginUser:
+                return NetworkingConstants.login
             
-        case .createUser:
-            return NetworkingConstants.users
+            case .createUser, .updateCustomerBasicDetails:
+                return NetworkingConstants.users
+            
+            case .fitnessGoals:
+                return NetworkingConstants.fitnessGoals
         }
     }
     
@@ -43,6 +51,23 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["referral_code"] = ""
                 bodyDict["zipcode"] = zip_code
                 break
+            case let .loginUser(username: username, password: password):
+                bodyDict["username"] = username
+                bodyDict["password"] = password
+                break
+        case let .updateCustomerBasicDetails(age: age, weight: weight, height: height, activity_level: activity_level, goal: goal, gender: gender, per_day_cal_burn: per_day_cal_burn, goal_note: goal_note):
+                bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+                bodyDict["action"] = "Update"
+                bodyDict["age"] = age
+                bodyDict["weight"] = weight
+                bodyDict["height"] = height
+                bodyDict["activity_level"] = activity_level
+                bodyDict["goal"] = goal
+                bodyDict["gender"] = gender
+                bodyDict["per_day_cal_burn"] = per_day_cal_burn
+                bodyDict["goal_note"] = goal_note
+//                bodyDict["zipcode"] = zipcode
+                break
             default:
                 print("no action")
         }
@@ -56,10 +81,17 @@ enum APIRouter: URLRequestConvertible {
         var paramDict : [String: Any] = [:]
         
         switch self {
+        
+//        case let .fitnessGoals(abc: abc):
+//            paramDict["type"] = "Label"
+//            paramDict["equalto___type"] = "Goal"
+//            paramDict["show_columns"] = "string1"
+//            break
             
-        case let .loginUser(username, password):
-            paramDict["username"] = username
-            paramDict["password"] = password
+        case .fitnessGoals:
+            paramDict["type"] = "Label"
+            paramDict["equalto___type"] = "Goal"
+            paramDict["show_columns"] = "string1"
             break
             
         default:
@@ -72,8 +104,12 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
+        case .activityLevels, .fitnessGoals:
+            return .get
         case .createUser, .loginUser:
             return .post
+        case .updateCustomerBasicDetails:
+            return .patch
         }
     }
     
@@ -85,6 +121,11 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
+            case .updateCustomerBasicDetails:
+                  headers[UserConstants.content_type] = "application/json"
+                  headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
+            case .fitnessGoals:
+                  headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             default:
                 break
         }
@@ -104,7 +145,6 @@ enum APIRouter: URLRequestConvertible {
     
     
     func asURLRequest() throws -> URLRequest {
-        
         let url = try NetworkingConstants.baseUrl.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         

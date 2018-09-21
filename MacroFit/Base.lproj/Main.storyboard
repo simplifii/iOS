@@ -14,7 +14,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Dn0-J9-C6g">
             <objects>
-                <navigationController navigationBarHidden="YES" id="qth-1a-769" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationViewController" navigationBarHidden="YES" id="qth-1a-769" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9UG-Fg-fOL">
                         <autoresizingMask key="autoresizingMask"/>
@@ -447,7 +447,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ur-hy-R7i">
                                 <rect key="frame" x="0.0" y="138" width="375" height="529"/>
                                 <connections>
-                                    <segue destination="fiT-gi-8RE" kind="embed" id="9Dc-03-CX6"/>
+                                    <segue destination="fiT-gi-8RE" kind="embed" identifier="BasicInfoFormTableViewControllerSegue" id="9Dc-03-CX6"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -679,15 +679,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-pd-gT6">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-pd-gT6">
                                                     <rect key="frame" x="26" y="114" width="323" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="qPD-HA-zhS"/>
                                                     </constraints>
                                                     <color key="minimumTrackTintColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="thumbTintColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="setActivity:" destination="fiT-gi-8RE" eventType="valueChanged" id="oPj-4L-M6V"/>
+                                                    </connections>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk9-yf-KfW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk9-yf-KfW">
                                                     <rect key="frame" x="28" y="166" width="319" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="J7L-VQ-AB7"/>
@@ -696,7 +699,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I work a desk job, don't get out much, or I'm just not that motivated" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHT-1d-rdj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHT-1d-rdj">
                                                     <rect key="frame" x="28" y="201" width="319" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="hW4-Df-BhU"/>
@@ -705,7 +708,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0-250 Calories Burned Daily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBP-LD-2Bi">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBP-LD-2Bi">
                                                     <rect key="frame" x="28" y="252" width="319" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="coc-kD-GRT"/>
@@ -834,7 +837,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="Oul-mp-n1P" kind="show" id="Zy7-mk-nXn"/>
+                                                        <action selector="updateCustomerDetails:" destination="fiT-gi-8RE" eventType="touchUpInside" id="GLE-Hl-oTP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -858,8 +861,16 @@
                     <size key="freeformSize" width="375" height="1064"/>
                     <connections>
                         <outlet property="activityLevelSlider" destination="WnP-pd-gT6" id="7HT-TR-Pyz"/>
+                        <outlet property="ageTextFIeld" destination="6Qc-Rz-b6H" id="Tbg-y5-rvC"/>
+                        <outlet property="feetTextFIeld" destination="2W5-cw-Rj9" id="XxM-Qd-jNM"/>
                         <outlet property="fitnessGoalNoteTextView" destination="ltp-g6-NEi" id="D11-e5-ThO"/>
                         <outlet property="fitnessGoalsView" destination="xi1-1P-ASx" id="OkD-PI-aWG"/>
+                        <outlet property="genderTextField" destination="xwI-Rp-7Q1" id="P5l-5U-6Jq"/>
+                        <outlet property="inchesTextFIeld" destination="hOu-VR-oQj" id="xVW-BP-SBQ"/>
+                        <outlet property="selectedActivityCaloriesInfoTextField" destination="uBP-LD-2Bi" id="3dV-Bi-8TS"/>
+                        <outlet property="selectedActivityDescriptionTextField" destination="WHT-1d-rdj" id="j3J-zm-uyd"/>
+                        <outlet property="selectedActivityTitleTextField" destination="Vk9-yf-KfW" id="bqe-Cg-eUq"/>
+                        <outlet property="weightTextFIeld" destination="cn7-eA-qD6" id="tzC-lb-BjA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxU-Jk-vdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -869,7 +880,7 @@
         <!--Set Up Macro Meal Portions View Controller-->
         <scene sceneID="NNm-CF-X3D">
             <objects>
-                <viewController id="Oul-mp-n1P" customClass="SetUpMacroMealPortionsViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetUpMacroMealPortionsViewController" id="Oul-mp-n1P" customClass="SetUpMacroMealPortionsViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bt3-PU-tUz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

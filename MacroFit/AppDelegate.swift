@@ -14,10 +14,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var navigationController: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        checkUserToken()
+        
         return true
+    }
+    
+    func setRootViewController() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "BasicInfoViewController") as UIViewController
+        
+        let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationViewController") as! UINavigationController
+        navigationController.viewControllers.removeAll()
+        navigationController.pushViewController(mainVC, animated: false)
+        navigationController.popToRootViewController(animated: false)
+        
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func checkUserToken() {
+        if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
+            if !token.isEmpty {
+                setRootViewController()
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
