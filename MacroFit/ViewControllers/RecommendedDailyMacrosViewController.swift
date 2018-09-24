@@ -21,22 +21,19 @@ class RecommendedDailyMacrosViewController: OnboardUserViewController {
     @IBOutlet weak var proteinContentLabel: UILabel!
     @IBOutlet weak var fatContentLabel: UILabel!
     
-    var mealsCount = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getRecommendedDailyMacros()
         setupView()
-        addDataInView()
-    }
-    
-    func addDataInView() {
-        mealCountTitleLabel.text = "Eat \(mealsCount) meals a day to"
     }
     
     // Setup and customize View
     func setupView() {
-        self.addBackNavbarInView(navbarView: navbarView)
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
         self.addProgressBarInView(progressBarView: progressBarView, percent: 60, description: "Customizing your Macros")
+        
+        setMealsCountTitle(mealCount: 3)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,8 +41,24 @@ class RecommendedDailyMacrosViewController: OnboardUserViewController {
         // Dispose of any resources that can be recreated.
     }
   
+    func getRecommendedDailyMacros() {
+        APIService.getRecommendedDailyMacros(completion: {success,msg,data in
+            if success == false {
+                self.showAlertMessage(title: msg, message: nil)
+            } else {
+                self.setMealsCountTitle(mealCount: data[0]["meals_per_day"].intValue)
+                self.caloriesCountLabel.text = data[0]["calories"].stringValue
+                self.carbsContentLabel.text = data[0]["carbs"].stringValue
+                self.proteinContentLabel.text = data[0]["protein"].stringValue
+                self.fatContentLabel.text = data[0]["fat"].stringValue
+            }
+        })
+    }
 
     @IBAction func saveToPhotos(_ sender: UIButton) {
     }
     
+    func setMealsCountTitle(mealCount: Int) {
+         mealCountTitleLabel.text = "Eat \(mealCount) meals a day to"
+    }
 }

@@ -15,6 +15,7 @@ class SignUpFormTableViewController: UITableViewController {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var zipCodeTextField: UITextField!
+    @IBOutlet weak var promocodeTextField: UITextField!
     
     
     override func viewDidLoad() {

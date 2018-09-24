@@ -11,11 +11,13 @@ import SwiftyJSON
 
 enum APIRouter: URLRequestConvertible {
     
-    case createUser(name: String, email: String, password: String, phone: String, zip_code: String)
+    case createUser(name: String, email: String, password: String, phone: String, zip_code: String, promocode: String?)
     case loginUser(username: String, password: String)
     case activityLevels()
     case fitnessGoals()
     case updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?)
+    case updateCustomerRecommendedMacros(meals_per_day: String, snacks: String)
+    case getRecommendedDailyMacros()
     
     var path: String {
         
@@ -26,7 +28,7 @@ enum APIRouter: URLRequestConvertible {
             case .loginUser:
                 return NetworkingConstants.login
             
-            case .createUser, .updateCustomerBasicDetails:
+            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getRecommendedDailyMacros:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -40,7 +42,7 @@ enum APIRouter: URLRequestConvertible {
         
         switch self {
 
-            case let .createUser(name: name, email: email, password: password, phone: phone, zip_code: zip_code):
+        case let .createUser(name: name, email: email, password: password, phone: phone, zip_code: zip_code, promocode: promocode):
                 bodyDict["entity"] = "Customer"
                 bodyDict["action"] = "Create"
                 bodyDict["master_key"] = "addcustomer"
@@ -48,7 +50,7 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["email"] = email
                 bodyDict["mobile"] =  phone
                 bodyDict["password"] = password
-                bodyDict["referral_code"] = ""
+                bodyDict["referral_code"] = promocode
                 bodyDict["zipcode"] = zip_code
                 break
             case let .loginUser(username: username, password: password):
@@ -68,6 +70,11 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["goal_note"] = goal_note
 //                bodyDict["zipcode"] = zipcode
                 break
+        case let .updateCustomerRecommendedMacros(meals_per_day: meals_per_day, snacks: snacks):
+                bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+                bodyDict["action"] = "UpdateMacros"
+                bodyDict["meals_per_day"] = meals_per_day
+                bodyDict["snacks"] = snacks
             default:
                 print("no action")
         }
@@ -94,6 +101,11 @@ enum APIRouter: URLRequestConvertible {
             paramDict["show_columns"] = "string1"
             break
             
+        case .getRecommendedDailyMacros:
+            paramDict["type"] = "Customer"
+            paramDict["sort_by"] = "-updated_at"
+            paramDict["unique_codes"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            break
         default:
             break
         }
@@ -104,11 +116,11 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals:
+        case .activityLevels, .fitnessGoals, .getRecommendedDailyMacros:
             return .get
         case .createUser, .loginUser:
             return .post
-        case .updateCustomerBasicDetails:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros:
             return .patch
         }
     }
@@ -121,10 +133,10 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals:
+            case .fitnessGoals, .getRecommendedDailyMacros:
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             default:
                 break

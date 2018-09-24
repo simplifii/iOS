@@ -20,12 +20,13 @@ class SignUpViewController: OnboardUserViewController {
     var mobile = String()
     var password = String()
     var zipcode = String()
+    var promocode = String()
     
     var signUpFormTableViewControoler: SignUpFormTableViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addBackNavbarInView(navbarView: navbarView)
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
         self.addProgressBarInView(progressBarView: progressBarView, percent: 20, description: nil)
     }
 
@@ -73,10 +74,11 @@ class SignUpViewController: OnboardUserViewController {
         mobile = signUpFormTableViewControoler.phoneTextField.text!
         password = signUpFormTableViewControoler.passwordTextField.text!
         zipcode = signUpFormTableViewControoler.zipCodeTextField.text!
+        promocode = signUpFormTableViewControoler.promocodeTextField.text!
     }
     
     func createUser() {
-        Alamofire.request(APIRouter.createUser(name: name, email: email, password: password, phone: mobile, zip_code: zipcode))
+        Alamofire.request(APIRouter.createUser(name: name, email: email, password: password, phone: mobile, zip_code: zipcode, promocode: promocode))
             .validate(statusCode: 200..<501)
             .validate(contentType: ["application/json"])
             .responseJSON { response in

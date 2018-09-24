@@ -25,6 +25,7 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     @IBOutlet weak var fivePercentMacrosForSnacksButton: UIButton!
     @IBOutlet weak var tenPercentMacrosForSnacksButton: UIButton!
     @IBOutlet weak var customPercentMacrosForSnacksTextField: UITextField!
+    var macrosPercentageInSnacks = String()
     
     
     
@@ -39,12 +40,20 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     }
     
     func setupView() {
-        self.addBackNavbarInView(navbarView: navbarView)
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
         self.addProgressBarInView(progressBarView: progressBarView, percent: 60, description: "Customizing your Macros")
         
         
 //        roundLeftCorners(button: twoMealsPerDayButton, cornerRadius: 10.0)
 //        roundRightCorners(button: fiveMealsPerDayButton, cornerRadius: 10.0)
+        
+        selectedButtonUI(button: threeMealsPerDayButton)
+        selectedNoOfMeals = threeMealsPerDayButton.currentTitle!
+        
+        selectedButtonUI(button: zeroPercentMacrosForSnacksButton)
+        setMacrosPercentageInSnacks(percentage: zeroPercentMacrosForSnacksButton.currentTitle!)
+        customPercentMacrosForSnacksTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+
         
         
         customPercentMacrosForSnacksTextField.layer.borderWidth = 1.0
@@ -109,6 +118,7 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
         }
         
         selectedButtonUI(button: sender)
+        setMacrosPercentageInSnacks(percentage: sender.currentTitle!)
     }
     // END: Select Macros Percentage In Snacks
     
@@ -124,5 +134,34 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
         button.setTitleColor(UIColor(red: 255/255, green: 59/255, blue: 0.0, alpha: 1.0), for: .normal)
     }
     
-
+    @IBAction func setUpMacroMealPortions(_ sender: UIButton) {
+        APIService.updateCustomerRecommendedMacros(meals_per_day: selectedNoOfMeals, snacks: macrosPercentageInSnacks, completion: {success,msg in
+            if success == false {
+                self.showAlertMessage(title: msg, message: nil)
+            } else {
+                self.showNextScreen()
+            }
+        })
+    }
+    
+    func showNextScreen() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecommendedDailyMacrosViewController") as? RecommendedDailyMacrosViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func setMacrosPercentageInSnacks(percentage: String) {
+        macrosPercentageInSnacks = percentage.replacingOccurrences(of: "%", with: "")
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField.text != "" {
+            setMacrosPercentageInSnacks(percentage: textField.text!)
+            
+            for button in [twoMealsPerDayButton, threeMealsPerDayButton, fourMealsPerDayButton, fiveMealsPerDayButton] {
+                defaultButtonUI(button: button!)
+            }
+        }
+    }
+    
 }

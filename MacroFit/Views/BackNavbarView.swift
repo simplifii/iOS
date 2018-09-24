@@ -11,4 +11,5 @@ import UIKit
 class BackNavbarView: UIView {
 
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
 }

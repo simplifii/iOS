@@ -16,8 +16,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SC-kh-p0H">
+                    <rect key="frame" x="334" y="35" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="CF1-N0-XlR"/>
+                        <constraint firstAttribute="height" constant="25" id="meH-w8-pOD"/>
+                    </constraints>
+                    <state key="normal" image="settings"/>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QJ-16-CiZ">
-                    <rect key="frame" x="25" y="35" width="33" height="25"/>
+                    <rect key="frame" x="16" y="35" width="33" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="33" id="C57-WC-boe"/>
                         <constraint firstAttribute="height" constant="25" id="gQY-Ai-ZZi"/>
@@ -26,18 +34,22 @@
                 </button>
             </subviews>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1SC-kh-p0H" secondAttribute="bottom" constant="15" id="K3Z-D3-sdK"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7QJ-16-CiZ" secondAttribute="bottom" constant="15" id="PLT-8Z-fed"/>
-                <constraint firstItem="7QJ-16-CiZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="gyc-FZ-7F9"/>
+                <constraint firstItem="7QJ-16-CiZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="VL6-to-Xxj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1SC-kh-p0H" secondAttribute="trailing" constant="16" id="kGV-Hy-ZTR"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backButton" destination="7QJ-16-CiZ" id="ZqO-FP-OXp"/>
+                <outlet property="settingsButton" destination="1SC-kh-p0H" id="mxK-no-BbT"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="-69.5"/>
         </view>
     </objects>
     <resources>
         <image name="back" width="20" height="12"/>
+        <image name="settings" width="20" height="20"/>
     </resources>
 </document>
