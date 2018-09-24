@@ -76,6 +76,14 @@ struct APIService {
         })
     }
     
+    static func updateDietaryPreferences(dietary_preference: String, diet_note: String?, completion: @escaping (Bool, String) -> Void) {
+        let request = APIRouter.updateDietaryPreferences(dietary_preference: dietary_preference, diet_note: diet_note)
+        
+        sendRequest(request: request, completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     
     static func sendRequest(request: URLRequestConvertible, completion: @escaping (Bool, String) -> Void) {
         Alamofire.request(request)

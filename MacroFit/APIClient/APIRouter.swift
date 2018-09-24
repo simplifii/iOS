@@ -18,6 +18,7 @@ enum APIRouter: URLRequestConvertible {
     case updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?)
     case updateCustomerRecommendedMacros(meals_per_day: String, snacks: String)
     case getRecommendedDailyMacros()
+    case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     
     var path: String {
         
@@ -28,7 +29,7 @@ enum APIRouter: URLRequestConvertible {
             case .loginUser:
                 return NetworkingConstants.login
             
-            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getRecommendedDailyMacros:
+            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getRecommendedDailyMacros, .updateDietaryPreferences:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -75,6 +76,11 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["action"] = "UpdateMacros"
                 bodyDict["meals_per_day"] = meals_per_day
                 bodyDict["snacks"] = snacks
+        case let .updateDietaryPreferences(dietary_preference: dietary_preference, diet_note: diet_note):
+                bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+                bodyDict["action"] = "UpdateDiet"
+                bodyDict["dietary_preference"] = dietary_preference
+                bodyDict["diet_note"] = diet_note
             default:
                 print("no action")
         }
@@ -120,7 +126,7 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .createUser, .loginUser:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
             return .patch
         }
     }
@@ -133,7 +139,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getRecommendedDailyMacros:
@@ -168,7 +174,7 @@ enum APIRouter: URLRequestConvertible {
             let data = (jsonString?.data(using: .utf8))! as Data
             urlRequest.httpBody = data
         }
-        
+                
         switch method {
             case .get:
                 return try URLEncoding.methodDependent.encode(urlRequest, with: parameters)
