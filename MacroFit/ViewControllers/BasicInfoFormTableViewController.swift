@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import DropDown
 
 class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegate {
 
@@ -17,7 +18,9 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     @IBOutlet weak var weightTextFIeld: UITextField!
     @IBOutlet weak var feetTextFIeld: UITextField!
     @IBOutlet weak var inchesTextFIeld: UITextField!
-    @IBOutlet weak var genderTextField: UITextField!
+    @IBOutlet weak var genderSelectionButton: UIButton!
+    var genderDropDown = DropDown()
+    var genderOptions = ["Male", "Female"]
     
     
     @IBOutlet weak var activityLevelSlider: UISlider!
@@ -57,6 +60,12 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     func prepareView() {
         for state: UIControlState in [.normal, .selected, .application, .reserved, .focused] {
             activityLevelSlider.setThumbImage(UIImage(named: "slider_thumb"), for: state)
+        }
+        
+        genderDropDown.anchorView = genderSelectionButton
+        genderDropDown.dataSource = genderOptions
+        genderDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.genderSelectionButton.setTitle(item, for: .normal)
         }
         
         fitnessGoalNoteTextView.layer.borderColor = UIColor.lightGray.cgColor;
@@ -113,6 +122,8 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     
     func setActivitySliderValues() {
         if activityLevels.count > 0 {
+            selectedActivityTitleTextField.tag = -1
+            
             setActivityInfoInView(sliderValue: 100)
             
             activityLevelSlider.maximumValue = 3000
@@ -193,7 +204,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
                 height = "\((12 * Int(feetTextFIeld.text!)!) + Int(inchesTextFIeld.text!)!)"
             }
         }
-        gender = genderTextField.text!
+        gender = genderSelectionButton.currentTitle!
         activityLevel = selectedActivityTitleTextField.text ?? ""
     }
     
@@ -207,7 +218,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
         if height.isEmpty {
             return (false, "Height is required in feet and inches")
         }
-        if gender.isEmpty {
+        if gender.isEmpty || (gender == "Gender") {
             return (false, "Gender is required in feet and inches")
         }
         
@@ -236,4 +247,9 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
             goalNote = textView.text
         }
     }
+    
+    @IBAction func showGenderDropDown(_ sender: UIButton) {
+        genderDropDown.show()
+    }
+    
 }

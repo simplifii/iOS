@@ -11,6 +11,7 @@
 		9F03F06BDFFBE65C874D00E6 /* Pods_MacroFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */; };
 		BC13F774BA31F265EF0928A6 /* Pods_MacroFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90694144E01E7704DD92288F /* Pods_MacroFit.framework */; };
 		E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */; };
+		E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */; };
 		E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06762892159020600D19202 /* DietaryPreferencesViewController.swift */; };
 		E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */; };
 		E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 		AF02753B59CD0F9BF07668C6 /* Pods-MacroFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C04217907A90F4BF66617F99 /* Pods-MacroFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit.release.xcconfig"; sourceTree = "<group>"; };
 		E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedCreditViewController.swift; sourceTree = "<group>"; };
+		E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E06762892159020600D19202 /* DietaryPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryPreferencesViewController.swift; sourceTree = "<group>"; };
 		E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E0A6DD49214F718D00B6C301 /* MacroFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 				E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */,
 				E06762892159020600D19202 /* DietaryPreferencesViewController.swift */,
 				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
+				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
 				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,
+				E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,

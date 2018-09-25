@@ -109,7 +109,9 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     }
     
     func gotoNextScreen() {
-        // TODO
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
 }
