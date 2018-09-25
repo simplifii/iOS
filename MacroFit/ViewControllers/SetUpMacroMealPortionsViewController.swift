@@ -158,7 +158,7 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
         if textField.text != "" {
             setMacrosPercentageInSnacks(percentage: textField.text!)
             
-            for button in [twoMealsPerDayButton, threeMealsPerDayButton, fourMealsPerDayButton, fiveMealsPerDayButton] {
+            for button in [zeroPercentMacrosForSnacksButton, fivePercentMacrosForSnacksButton, tenPercentMacrosForSnacksButton] {
                 defaultButtonUI(button: button!)
             }
         }

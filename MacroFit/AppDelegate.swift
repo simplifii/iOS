@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "SetUpMacroMealPortionsViewController") as UIViewController
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "BasicInfoViewController") as UIViewController
         
         let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationViewController") as! UINavigationController
         navigationController.viewControllers.removeAll()

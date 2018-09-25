@@ -113,11 +113,11 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     
     func setActivitySliderValues() {
         if activityLevels.count > 0 {
-            setActivityInfoInView(index: 0)
+            setActivityInfoInView(sliderValue: 100)
             
-            activityLevelSlider.maximumValue = Float(activityLevels.count)
-            activityLevelSlider.minimumValue = 1
-            activityLevelSlider.value = 1
+            activityLevelSlider.maximumValue = 3000
+            activityLevelSlider.minimumValue = 50
+            activityLevelSlider.value = 100
         }
     }
     
@@ -133,24 +133,29 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     
     
     @IBAction func setActivity(_ sender: UISlider) {
-        let activityLevelIndex = Int(round(Float(sender.value))) - 1
-        
-        if  selectedActivityTitleTextField.tag != activityLevelIndex {
-            setActivityInfoInView(index: activityLevelIndex)
+        if Int(sender.value) < 50 {
+            sender.setValue(50, animated: true)
         }
+        
+        setActivityInfoInView(sliderValue: Int(sender.value))
     }
     
-    func setActivityInfoInView(index: Int) {
-        if activityLevels.count > 0 {
-            selectedActivityTitleTextField.tag = index
-            
-            selectedActivityTitleTextField.text = activityLevels[index]["title"].stringValue
-            selectedActivityDescriptionTextField.text = activityLevels[index]["description"].stringValue
-            
-            let caloriesBurned = "\(activityLevels[index]["low_range"].stringValue)-\(activityLevels[index]["high_range"].stringValue) Calories Burned Daily"
-            selectedActivityCaloriesInfoTextField.text = caloriesBurned
-            
-            per_day_cal_burn = activityLevels[index]["high_range"].stringValue
+    func setActivityInfoInView(sliderValue: Int) {
+        for (index,activity) in activityLevels {
+            if (sliderValue >= activity["low_range"].intValue) && (sliderValue <= activity["high_range"].intValue) {
+                if selectedActivityTitleTextField.tag != Int(index)! {
+                    
+                    selectedActivityTitleTextField.tag = Int(index)!
+                    
+                    selectedActivityTitleTextField.text = activity["title"].stringValue
+                    selectedActivityDescriptionTextField.text = activity["description"].stringValue
+                    
+                    let caloriesBurned = "\(activity["low_range"].stringValue)-\(activity["high_range"].stringValue) Calories Burned Daily"
+                    selectedActivityCaloriesInfoTextField.text = caloriesBurned
+                    
+                    per_day_cal_burn = "\(sliderValue)"
+                }
+            }
         }
     }
     
