@@ -21,9 +21,10 @@ class WelcomeViewController: UIViewController {
     }
     
     func setupView() {
-        ordrePlacementDayLabel.text = "Mon - Thur"
-        ordrePlacementTimeLabel.text = "until 8:00 pm PST."
-        remainingTimeLabel.text = "1 Day 16 Hrs 32 Min"
+        getOrderPlacementDetails()
+//        ordrePlacementDayLabel.text = "Mon - Thur"
+//        ordrePlacementTimeLabel.text = "until 8:00 pm PST."
+//        remainingTimeLabel.text = "1 Day 16 Hrs 32 Min"
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,4 +32,25 @@ class WelcomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cancelAction(_ sender: UIButton) {
+        viewNextScreen()
+    }
+    
+    @IBAction func showNextScreen(_ sender: UIButton) {
+        viewNextScreen()
+    }
+    
+    func viewNextScreen() {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func getOrderPlacementDetails() {
+        APIService.getOrderPlacementDetails(completion: {success, msg, data in
+            self.ordrePlacementDayLabel.text = "\(data["from_day"].stringValue) - \(data["to_day"].stringValue)"
+            self.ordrePlacementTimeLabel.text = "until \(data["closing_time"].stringValue)."
+            self.remainingTimeLabel.text = data["time_left"].stringValue
+        })
+    }
 }

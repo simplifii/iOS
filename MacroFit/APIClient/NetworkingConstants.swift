@@ -13,5 +13,6 @@ struct NetworkingConstants{
     static let login = "admin/authenticate"
     static let activityLevels = "static/activitylevels"
     static let fitnessGoals = "cards"
+    static let orderPlacementDetails = "custom/order_placement_details"
     
 }

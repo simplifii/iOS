@@ -19,6 +19,7 @@ enum APIRouter: URLRequestConvertible {
     case updateCustomerRecommendedMacros(meals_per_day: String, snacks: String)
     case getRecommendedDailyMacros()
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
+    case orderPlacementDetails()
     
     var path: String {
         
@@ -34,6 +35,8 @@ enum APIRouter: URLRequestConvertible {
             
             case .fitnessGoals:
                 return NetworkingConstants.fitnessGoals
+            case .orderPlacementDetails:
+                return NetworkingConstants.orderPlacementDetails
         }
     }
     
@@ -122,7 +125,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getRecommendedDailyMacros:
+        case .activityLevels, .fitnessGoals, .getRecommendedDailyMacros, .orderPlacementDetails:
             return .get
         case .createUser, .loginUser:
             return .post
@@ -174,7 +177,7 @@ enum APIRouter: URLRequestConvertible {
             let data = (jsonString?.data(using: .utf8))! as Data
             urlRequest.httpBody = data
         }
-                
+                        
         switch method {
             case .get:
                 return try URLEncoding.methodDependent.encode(urlRequest, with: parameters)

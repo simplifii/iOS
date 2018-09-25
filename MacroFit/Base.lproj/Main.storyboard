@@ -1762,6 +1762,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="showNextScreen:" destination="zDO-Ib-y6b" eventType="touchUpInside" id="7Ju-Z6-z2X"/>
                                             <action selector="updateDietaryPreferences:" destination="gi7-6x-cW9" eventType="touchUpInside" id="C9U-ic-N9h"/>
                                         </connections>
                                     </button>
@@ -1810,7 +1811,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="until 8:00 pm PST." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8G-7U-VX9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="until 0:00 am PST." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8G-7U-VX9">
                                         <rect key="frame" x="26" y="355" width="323" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="fgQ-VS-QbD"/>
@@ -1819,7 +1820,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Day 16 Hrs 32 Min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-Jh-S72">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Day 0 Hrs 0 Min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-Jh-S72">
                                         <rect key="frame" x="26" y="392" width="323" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="R1u-2g-ywW"/>
@@ -1844,6 +1845,9 @@
                                             <constraint firstAttribute="width" constant="18" id="XEW-7b-tPu"/>
                                         </constraints>
                                         <state key="normal" image="cancel_gray"/>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="zDO-Ib-y6b" eventType="touchUpInside" id="INW-uF-IaH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98814910649999999" green="0.98829048870000002" blue="0.9881181121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
