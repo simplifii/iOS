@@ -7,6 +7,7 @@ target 'MacroFit' do
   use_frameworks!
     pod 'Alamofire', '~> 4.7'
     pod 'SwiftyJSON', '~> 4.0'
+    pod 'DropDown'
 # Pods for MacroFit
 
   target 'MacroFitTests' do
