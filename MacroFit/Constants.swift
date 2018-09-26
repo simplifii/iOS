@@ -10,5 +10,6 @@ import UIKit
 
 struct Constants {
     static let schemeColor = UIColor(red: 255/255, green: 59/255, blue: 0.0, alpha: 1.0)
+    static let backgroundColor = UIColor(red: 253/255, green: 253/255, blue: 253/255, alpha: 1.0)
 }
 

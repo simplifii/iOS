@@ -45,6 +45,12 @@
 		E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */; };
 		E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */; };
 		E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */; };
+		E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73F7215B84010085551E /* MenuViewController.swift */; };
+		E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FB215B93300085551E /* MealsViewController.swift */; };
+		E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */; };
+		E0DC7401215BAD060085551E /* AddItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DC7400215BAD060085551E /* AddItemView.xib */; };
+		E0DC7403215BAD230085551E /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC7402215BAD230085551E /* AddItemView.swift */; };
+		E0DC7405215BBE630085551E /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC7404215BBE630085551E /* UILabelExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +119,12 @@
 		E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoFormTableViewController.swift; sourceTree = "<group>"; };
 		E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUserViewController.swift; sourceTree = "<group>"; };
+		E0DC73F7215B84010085551E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E0DC73FB215B93300085551E /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
+		E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		E0DC7400215BAD060085551E /* AddItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemView.xib; sourceTree = "<group>"; };
+		E0DC7402215BAD230085551E /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		E0DC7404215BBE630085551E /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		EFDCD96D0F9015101C4841D3 /* Pods-MacroFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit.debug.xcconfig"; sourceTree = "<group>"; };
 		F5C1001B1FE99DC4E72A2125 /* Pods-MacroFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +205,7 @@
 		E0A6DD4B214F718D00B6C301 /* MacroFit */ = {
 			isa = PBXGroup;
 			children = (
+				E0DC73FD215BA6910085551E /* TableViewCells */,
 				E0A7921D2153BDD100CBBFDB /* Constants.swift */,
 				E0A7921A2153861C00CBBFDB /* Models */,
 				E0A7920F2153804200CBBFDB /* APIClient */,
@@ -244,6 +257,8 @@
 				E06762892159020600D19202 /* DietaryPreferencesViewController.swift */,
 				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
 				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
+				E0DC73F7215B84010085551E /* MenuViewController.swift */,
+				E0DC73FB215B93300085551E /* MealsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,6 +268,7 @@
 			children = (
 				E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */,
 				E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */,
+				E0DC7404215BBE630085551E /* UILabelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -263,6 +279,7 @@
 				E0A6DD8D214F9B1C00B6C301 /* FeatureView.xib */,
 				E0A6DD93214FD3B500B6C301 /* BackNavbarView.xib */,
 				E0A6DD99214FDF3300B6C301 /* ProgressBarView.xib */,
+				E0DC7400215BAD060085551E /* AddItemView.xib */,
 			);
 			path = XIBFiles;
 			sourceTree = "<group>";
@@ -273,6 +290,7 @@
 				E0A6DD8F214F9B6E00B6C301 /* FeatureView.swift */,
 				E0A6DD95214FD50300B6C301 /* BackNavbarView.swift */,
 				E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */,
+				E0DC7402215BAD230085551E /* AddItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +321,14 @@
 				E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */,
 			);
 			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		E0DC73FD215BA6910085551E /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +442,7 @@
 				E0A6DD94214FD3B500B6C301 /* BackNavbarView.xib in Resources */,
 				E0A6DD5A214F719000B6C301 /* LaunchScreen.storyboard in Resources */,
 				E0361216215A57E700C560F5 /* MacroFit.storyboard in Resources */,
+				E0DC7401215BAD060085551E /* AddItemView.xib in Resources */,
 				E0A6DD57214F719000B6C301 /* Assets.xcassets in Resources */,
 				E0A6DD52214F718D00B6C301 /* Main.storyboard in Resources */,
 				E0A6DD8E214F9B1D00B6C301 /* FeatureView.xib in Resources */,
@@ -534,6 +561,7 @@
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
 				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
+				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
@@ -545,10 +573,14 @@
 				E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
+				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
 				E0A792132153812800CBBFDB /* NetworkingConstants.swift in Sources */,
+				E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */,
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
+				E0DC7405215BBE630085551E /* UILabelExtension.swift in Sources */,
 				E0A792202153DDC200CBBFDB /* User.swift in Sources */,
+				E0DC7403215BAD230085551E /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
