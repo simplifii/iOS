@@ -33,6 +33,16 @@ class MealsViewController: UIViewController {
         segmentedControl.layer.borderWidth = 1.0
         segmentedControl.layer.cornerRadius = 3.0
         
+        
+        // Shadow
+        segmentedControl.layer.shadowOpacity = 0.2
+        segmentedControl.layer.shadowColor = UIColor.lightGray.cgColor
+        segmentedControl.layer.shadowRadius = 8.0
+        segmentedControl.layer.shadowOffset = CGSize.zero
+        segmentedControl.layer.shadowPath =
+            UIBezierPath(roundedRect: segmentedControl.bounds,
+                         cornerRadius: segmentedControl.layer.cornerRadius).cgPath
+        
     }
     
     @IBAction func showContainerView(_ sender: UISegmentedControl) {

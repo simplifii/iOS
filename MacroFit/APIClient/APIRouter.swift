@@ -20,6 +20,7 @@ enum APIRouter: URLRequestConvertible {
     case getRecommendedDailyMacros()
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     case orderPlacementDetails()
+    case getMealsMenu()
     
     var path: String {
         
@@ -37,6 +38,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.fitnessGoals
             case .orderPlacementDetails:
                 return NetworkingConstants.orderPlacementDetails
+            case .getMealsMenu:
+                return NetworkingConstants.meals
         }
     }
     
@@ -115,6 +118,10 @@ enum APIRouter: URLRequestConvertible {
             paramDict["sort_by"] = "-updated_at"
             paramDict["unique_codes"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
             break
+        case .getMealsMenu:
+            paramDict["type"] = "Meal"
+            paramDict["state"] = "Available"
+            break
         default:
             break
         }
@@ -125,7 +132,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getRecommendedDailyMacros, .orderPlacementDetails:
+        case .activityLevels, .fitnessGoals, .getRecommendedDailyMacros, .orderPlacementDetails, .getMealsMenu:
             return .get
         case .createUser, .loginUser:
             return .post
@@ -145,7 +152,7 @@ enum APIRouter: URLRequestConvertible {
             case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getRecommendedDailyMacros:
+            case .fitnessGoals, .getRecommendedDailyMacros, .getMealsMenu:
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             default:
                 break

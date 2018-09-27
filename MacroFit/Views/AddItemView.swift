@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol AddItemViewDelegate {
+    func itemQuantity(count: Int)
+}
+
 class AddItemView: UIView {
     
     @IBOutlet weak var decreaseQuantityButton: UIButton!
@@ -15,35 +19,36 @@ class AddItemView: UIView {
     @IBOutlet weak var itemCountLabel: UILabel!
     @IBOutlet weak var addItemButton: UIButton!
     
+    var addItemViewDelegate: AddItemViewDelegate?
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        viewSetup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+    }
+    
+    override func awakeFromNib() {
         viewSetup()
     }
 
     func viewSetup() {
         if decreaseQuantityButton != nil {
             decreaseQuantityButton.borderWidth = 1.0
-            decreaseQuantityButton.borderColor = Constants.backgroundColor
+            decreaseQuantityButton.borderColor = Constants.buttonBorderColor
         }
         
         if increaseQuantityButton != nil {
             increaseQuantityButton.borderWidth = 1.0
-            increaseQuantityButton.borderColor = Constants.backgroundColor
+            increaseQuantityButton.borderColor = Constants.buttonBorderColor
         }
         
         if itemCountLabel != nil {
             itemCountLabel.layer.borderWidth = 1.0
-            itemCountLabel.layer.borderColor = Constants.backgroundColor.cgColor
+            itemCountLabel.layer.borderColor = Constants.buttonBorderColor.cgColor
         }
-        
     }
     
     @IBAction func decreaseQuantity(_ sender: UIButton) {
@@ -52,16 +57,22 @@ class AddItemView: UIView {
             addItemButton.isHidden = false
         }
         itemCountLabel.text = "\(quantity)"
+        
+        addItemViewDelegate?.itemQuantity(count: Int(itemCountLabel.text!)!)
     }
     
     @IBAction func increaseQuantity(_ sender: UIButton) {
         let quantity = Int(itemCountLabel.text!)! + 1
         itemCountLabel.text = "\(quantity)"
+        
+        addItemViewDelegate?.itemQuantity(count: Int(itemCountLabel.text!)!)
     }
     
     @IBAction func addItem(_ sender: UIButton) {
         itemCountLabel.text = "1"
         sender.isHidden = true
+        
+        addItemViewDelegate?.itemQuantity(count: Int(itemCountLabel.text!)!)
     }
     
 }

@@ -50,7 +50,6 @@
 		E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */; };
 		E0DC7401215BAD060085551E /* AddItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DC7400215BAD060085551E /* AddItemView.xib */; };
 		E0DC7403215BAD230085551E /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC7402215BAD230085551E /* AddItemView.swift */; };
-		E0DC7405215BBE630085551E /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC7404215BBE630085551E /* UILabelExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +123,6 @@
 		E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		E0DC7400215BAD060085551E /* AddItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemView.xib; sourceTree = "<group>"; };
 		E0DC7402215BAD230085551E /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
-		E0DC7404215BBE630085551E /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		EFDCD96D0F9015101C4841D3 /* Pods-MacroFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit.debug.xcconfig"; sourceTree = "<group>"; };
 		F5C1001B1FE99DC4E72A2125 /* Pods-MacroFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,7 +266,6 @@
 			children = (
 				E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */,
 				E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */,
-				E0DC7404215BBE630085551E /* UILabelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -493,12 +490,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -578,7 +577,6 @@
 				E0A792132153812800CBBFDB /* NetworkingConstants.swift in Sources */,
 				E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */,
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
-				E0DC7405215BBE630085551E /* UILabelExtension.swift in Sources */,
 				E0A792202153DDC200CBBFDB /* User.swift in Sources */,
 				E0DC7403215BAD230085551E /* AddItemView.swift in Sources */,
 			);
