@@ -19,6 +19,8 @@ class MenuItemTableViewCell: UITableViewCell, AddItemViewDelegate {
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var addItemContainerView: UIView!
     
+    var itemIdentifier = String()
+    
     weak var menuItemTableViewCellDelegate: MenuItemTableViewCellDelegate?
     var quantity = Int()
     func itemQuantity(count: Int) {
@@ -35,6 +37,9 @@ class MenuItemTableViewCell: UITableViewCell, AddItemViewDelegate {
     }
     
     func setupCellView() {
+        itemNameLabel.numberOfLines = 2
+        itemNameLabel.sizeToFit()
+        
         containerView.layer.cornerRadius = 6.0
         
         // Rounder Corners

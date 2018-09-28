@@ -16,6 +16,15 @@
             <rect key="frame" x="0.0" y="0.0" width="112" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mc-KV-d7m">
+                    <rect key="frame" x="32" y="0.0" width="48" height="44"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZo-m6-TgO">
+                    <rect key="frame" x="0.0" y="0.0" width="112" height="44"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkg-Rq-hNG">
                     <rect key="frame" x="0.0" y="0.0" width="32" height="44"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
@@ -36,12 +45,6 @@
                         <action selector="increaseQuantity:" destination="iN0-l3-epB" eventType="touchUpInside" id="cYu-3F-8Wd"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mc-KV-d7m">
-                    <rect key="frame" x="32" y="0.0" width="48" height="44"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDL-Rr-t2w">
                     <rect key="frame" x="0.0" y="0.0" width="112" height="44"/>
                     <color key="backgroundColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,7 +67,10 @@
                 <constraint firstItem="FDL-Rr-t2w" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="8ai-J4-f3s"/>
                 <constraint firstItem="5Mc-KV-d7m" firstAttribute="width" secondItem="nkg-Rq-hNG" secondAttribute="width" multiplier="1.5" id="9oA-pL-3c4"/>
                 <constraint firstItem="Fka-9U-S9s" firstAttribute="width" secondItem="nkg-Rq-hNG" secondAttribute="width" id="Beo-Vd-JwK"/>
+                <constraint firstItem="zZo-m6-TgO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Fvo-cj-Ulk"/>
+                <constraint firstItem="zZo-m6-TgO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="NN8-LS-sFa"/>
                 <constraint firstItem="FDL-Rr-t2w" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Rjr-SE-CuS"/>
+                <constraint firstItem="zZo-m6-TgO" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SPI-gA-wGG"/>
                 <constraint firstItem="Fka-9U-S9s" firstAttribute="leading" secondItem="5Mc-KV-d7m" secondAttribute="trailing" id="THr-bM-VFr"/>
                 <constraint firstItem="nkg-Rq-hNG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ttf-II-UsQ"/>
                 <constraint firstItem="5Mc-KV-d7m" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="UlW-BB-uWl"/>
@@ -76,12 +82,14 @@
                 <constraint firstItem="5Mc-KV-d7m" firstAttribute="leading" secondItem="nkg-Rq-hNG" secondAttribute="trailing" id="rez-eD-DyV"/>
                 <constraint firstItem="FDL-Rr-t2w" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ruW-Po-jYk"/>
                 <constraint firstItem="nkg-Rq-hNG" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="vYX-Jv-X1q"/>
+                <constraint firstItem="zZo-m6-TgO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wFr-rV-uyz"/>
                 <constraint firstItem="FDL-Rr-t2w" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xry-ed-6pF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="addItemButton" destination="FDL-Rr-t2w" id="n4S-9Q-kwC"/>
+                <outlet property="borderView" destination="zZo-m6-TgO" id="pXo-QN-bxT"/>
                 <outlet property="decreaseQuantityButton" destination="nkg-Rq-hNG" id="b0r-xL-fF4"/>
                 <outlet property="increaseQuantityButton" destination="Fka-9U-S9s" id="dr7-Rh-Keh"/>
                 <outlet property="itemCountLabel" destination="5Mc-KV-d7m" id="PHi-Aw-24T"/>

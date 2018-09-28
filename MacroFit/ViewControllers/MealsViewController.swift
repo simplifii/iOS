@@ -32,6 +32,7 @@ class MealsViewController: UIViewController {
         segmentedControl.layer.borderColor = UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1.0).cgColor
         segmentedControl.layer.borderWidth = 1.0
         segmentedControl.layer.cornerRadius = 3.0
+        segmentedControl.backgroundColor = Constants.backgroundColor
         
         
         // Shadow

@@ -22,6 +22,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableViewBottomDistanceConstaint: NSLayoutConstraint!
     
     var mealsJSON:JSON = []
+    var cartItemsQty:Dictionary = [String: Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +33,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableViewBottomDistanceConstaint.constant = -cartContainerView.bounds.height
-        
+        cartContainerView.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,6 +52,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.menuItemTableViewCellDelegate = self
         
         cell.itemNameLabel.text = mealsJSON[indexPath.row]["title"].stringValue
+        cell.itemIdentifier = mealsJSON[indexPath.row]["unique_code"].stringValue
         
         if mealsJSON[indexPath.row]["photo"] != JSON.null {
             let url = URL(string: mealsJSON[indexPath.row]["photo"].stringValue)!
@@ -75,13 +76,30 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func didTapAddButtonInside(cell: MenuItemTableViewCell) {
-        print(cell.quantity)
+        cartItemsQty[cell.itemIdentifier] = cell.quantity
+        if showCartBar() {
+            cartContainerView.isHidden = false
+            tableViewBottomDistanceConstaint.constant = -cartContainerView.bounds.height
+        } else {
+            cartContainerView.isHidden = true
+            tableViewBottomDistanceConstaint.constant = 0
+        }
+    }
+    
+    
+    func showCartBar()->Bool {
+        for (_, qty) in cartItemsQty {
+            if qty > 0 {
+                return true
+            }
+        }
+        
+        return false
     }
     
     
     func getMeals() {
         APIService.getMealsMenu(completion: {success, msg, data in
-            print(data)
             if success {
                 self.mealsJSON = data
                 self.tableView.reloadData()

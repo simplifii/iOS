@@ -18,6 +18,7 @@ class AddItemView: UIView {
     @IBOutlet weak var increaseQuantityButton: UIButton!
     @IBOutlet weak var itemCountLabel: UILabel!
     @IBOutlet weak var addItemButton: UIButton!
+    @IBOutlet weak var borderView: UIView!
     
     var addItemViewDelegate: AddItemViewDelegate?
 
@@ -35,14 +36,10 @@ class AddItemView: UIView {
     }
 
     func viewSetup() {
-        if decreaseQuantityButton != nil {
-            decreaseQuantityButton.borderWidth = 1.0
-            decreaseQuantityButton.borderColor = Constants.buttonBorderColor
-        }
-        
-        if increaseQuantityButton != nil {
-            increaseQuantityButton.borderWidth = 1.0
-            increaseQuantityButton.borderColor = Constants.buttonBorderColor
+        if borderView != nil {
+            borderView.layer.cornerRadius = 8.0
+            borderView.layer.borderWidth = 1.0
+            borderView.layer.borderColor = Constants.buttonBorderColor.cgColor
         }
         
         if itemCountLabel != nil {
