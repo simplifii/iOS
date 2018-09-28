@@ -23,6 +23,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var mealsJSON:JSON = []
     var cartItemsQty:Dictionary = [String: Int]()
+    var cartItems = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.menuItemTableViewCellDelegate = self
         
         cell.itemNameLabel.text = mealsJSON[indexPath.row]["title"].stringValue
-        cell.itemIdentifier = mealsJSON[indexPath.row]["unique_code"].stringValue
+        cell.itemIdentifier = "\(indexPath.row)"
         
         if mealsJSON[indexPath.row]["photo"] != JSON.null {
             let url = URL(string: mealsJSON[indexPath.row]["photo"].stringValue)!
@@ -105,5 +106,39 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    func addItemsInCart() {
+        cartItems = []
+        for (identifier, qty) in cartItemsQty {
+            if qty > 0 {
+                let index = Int(identifier)!
+                if mealsJSON[index] != JSON.null {
+                    cartItems.append([
+                        "title": mealsJSON[index]["title"].stringValue,
+                        "qty": "\(qty)"
+                        ])
+                }
+            }
+        }
+    }
+    
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "OrderConfirmationViewControllerSegue" {
+            addItemsInCart()
+            if cartItems.count == 0 {
+                return false
+            }
+        }
+        return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is OrderConfirmationViewController
+        {
+            let vc = segue.destination as? OrderConfirmationViewController
+            vc?.cartItems = self.cartItems
+        }
     }
 }

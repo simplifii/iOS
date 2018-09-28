@@ -21,6 +21,8 @@ class MealsViewController: UIViewController {
     }
     
     func setupView() {
+        self.view.backgroundColor = Constants.backgroundColor
+        
         // update segment control appearance
        UISegmentedControl.appearance().setTitleTextAttributes([
         NSAttributedStringKey.foregroundColor: UIColor.lightGray,

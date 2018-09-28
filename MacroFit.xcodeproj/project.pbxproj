@@ -14,6 +14,11 @@
 		E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */; };
 		E0361216215A57E700C560F5 /* MacroFit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0361215215A57E700C560F5 /* MacroFit.storyboard */; };
 		E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06762892159020600D19202 /* DietaryPreferencesViewController.swift */; };
+		E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A971215E29F500D264CA /* MealsContainerViewController.swift */; };
+		E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */; };
+		E075A976215E377200D264CA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A975215E377100D264CA /* BaseViewController.swift */; };
+		E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */; };
+		E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */; };
 		E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */; };
 		E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */; };
 		E0A6DD52214F718D00B6C301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD50214F718D00B6C301 /* Main.storyboard */; };
@@ -81,6 +86,11 @@
 		E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E0361215215A57E700C560F5 /* MacroFit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacroFit.storyboard; sourceTree = "<group>"; };
 		E06762892159020600D19202 /* DietaryPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryPreferencesViewController.swift; sourceTree = "<group>"; };
+		E075A971215E29F500D264CA /* MealsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsContainerViewController.swift; sourceTree = "<group>"; };
+		E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
+		E075A975215E377100D264CA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemTableViewCell.swift; sourceTree = "<group>"; };
+		E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparatorTableViewCell.swift; sourceTree = "<group>"; };
 		E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E0A6DD49214F718D00B6C301 /* MacroFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -257,6 +267,9 @@
 				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
 				E0DC73F7215B84010085551E /* MenuViewController.swift */,
 				E0DC73FB215B93300085551E /* MealsViewController.swift */,
+				E075A971215E29F500D264CA /* MealsContainerViewController.swift */,
+				E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */,
+				E075A975215E377100D264CA /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -324,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */,
+				E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */,
+				E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -551,8 +566,11 @@
 			files = (
 				E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */,
 				E0A792152153823C00CBBFDB /* APIService.swift in Sources */,
+				E075A976215E377200D264CA /* BaseViewController.swift in Sources */,
+				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,
 				E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */,
 				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
+				E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */,
 				E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */,
 				E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */,
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
@@ -569,6 +587,7 @@
 				E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
 				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,
+				E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */,
 				E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
@@ -576,6 +595,7 @@
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
 				E0A792132153812800CBBFDB /* NetworkingConstants.swift in Sources */,
 				E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */,
+				E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */,
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
 				E0A792202153DDC200CBBFDB /* User.swift in Sources */,
 				E0DC7403215BAD230085551E /* AddItemView.swift in Sources */,
