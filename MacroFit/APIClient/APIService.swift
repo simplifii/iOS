@@ -54,7 +54,19 @@ struct APIService {
     }
     
     static func getRecommendedDailyMacros(completion: @escaping (Bool, String, JSON) -> Void){
-        sendRequestAndGetData(request: APIRouter.getRecommendedDailyMacros(), completion: {success,msg,json_data in
+        sendRequestAndGetData(request: APIRouter.getUserProfile(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getUserProfile(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getUserProfile(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getUserAddress(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getUserProfile(), completion: {success,msg,json_data in
             completion(success, msg, json_data)
         })
     }

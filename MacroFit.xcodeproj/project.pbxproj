@@ -19,6 +19,9 @@
 		E075A976215E377200D264CA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A975215E377100D264CA /* BaseViewController.swift */; };
 		E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */; };
 		E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */; };
+		E09A6AEA216202260096708A /* SubtotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */; };
+		E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AEB216238840096708A /* AddressFormTableViewController.swift */; };
+		E09A6AEE2162389C0096708A /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AED2162389C0096708A /* AddressViewController.swift */; };
 		E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */; };
 		E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */; };
 		E0A6DD52214F718D00B6C301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0A6DD50214F718D00B6C301 /* Main.storyboard */; };
@@ -91,6 +94,9 @@
 		E075A975215E377100D264CA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemTableViewCell.swift; sourceTree = "<group>"; };
 		E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparatorTableViewCell.swift; sourceTree = "<group>"; };
+		E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtotalTableViewCell.swift; sourceTree = "<group>"; };
+		E09A6AEB216238840096708A /* AddressFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFormTableViewController.swift; sourceTree = "<group>"; };
+		E09A6AED2162389C0096708A /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E0A6DD49214F718D00B6C301 /* MacroFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A6DD4C214F718D00B6C301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +276,8 @@
 				E075A971215E29F500D264CA /* MealsContainerViewController.swift */,
 				E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */,
 				E075A975215E377100D264CA /* BaseViewController.swift */,
+				E09A6AEB216238840096708A /* AddressFormTableViewController.swift */,
+				E09A6AED2162389C0096708A /* AddressViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -339,6 +347,7 @@
 				E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */,
 				E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */,
 				E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */,
+				E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -575,6 +584,7 @@
 				E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */,
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
+				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
 				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
@@ -592,9 +602,11 @@
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
+				E09A6AEE2162389C0096708A /* AddressViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
 				E0A792132153812800CBBFDB /* NetworkingConstants.swift in Sources */,
 				E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */,
+				E09A6AEA216202260096708A /* SubtotalTableViewCell.swift in Sources */,
 				E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */,
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
 				E0A792202153DDC200CBBFDB /* User.swift in Sources */,

@@ -17,7 +17,7 @@ enum APIRouter: URLRequestConvertible {
     case fitnessGoals()
     case updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?)
     case updateCustomerRecommendedMacros(meals_per_day: String, snacks: String)
-    case getRecommendedDailyMacros()
+    case getUserProfile()
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     case orderPlacementDetails()
     case getMealsMenu()
@@ -31,7 +31,7 @@ enum APIRouter: URLRequestConvertible {
             case .loginUser:
                 return NetworkingConstants.login
             
-            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getRecommendedDailyMacros, .updateDietaryPreferences:
+            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -113,7 +113,7 @@ enum APIRouter: URLRequestConvertible {
             paramDict["show_columns"] = "string1"
             break
             
-        case .getRecommendedDailyMacros:
+        case .getUserProfile:
             paramDict["type"] = "Customer"
             paramDict["sort_by"] = "-updated_at"
             paramDict["unique_codes"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
@@ -132,7 +132,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getRecommendedDailyMacros, .orderPlacementDetails, .getMealsMenu:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu:
             return .get
         case .createUser, .loginUser:
             return .post
@@ -152,7 +152,7 @@ enum APIRouter: URLRequestConvertible {
             case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getRecommendedDailyMacros, .getMealsMenu:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu:
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             default:
                 break
