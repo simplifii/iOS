@@ -13,7 +13,8 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
     @IBOutlet weak var navbarView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var roundedCornerBoxHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonBottomDistanceConstraint: NSLayoutConstraint!
+    
     
     
     var cartItems = [[String: String]]()
@@ -34,6 +35,7 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
         tableView.delegate = self
         tableView.layer.cornerRadius = 9.0
         
+        buttonBottomDistanceConstraint.constant = 234
     }
     
     func setCartInfo() {
@@ -58,15 +60,29 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
             if indexPath.row <= (cartItemsCount - 1) {
                 cell.itemNameLabel.text = cartItems[indexPath.row]["title"]
                 cell.itemQtyLabel.text = cartItems[indexPath.row]["qty"]
+                
+                
+                if buttonBottomDistanceConstraint.constant - 34 > 20 {
+                    buttonBottomDistanceConstraint.constant = buttonBottomDistanceConstraint.constant - 34
+                }
             } else if indexPath.row == (cartItemsCount + 1) {
                 cell.itemNameLabel.text = "Meals"
+                cell.itemNameLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+                
                 cell.itemQtyLabel.text = "\(totalItemsCount)"
+                cell.itemQtyLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
             } else if indexPath.row == (cartItemsCount + 2) {
                 cell.itemNameLabel.text = "Cost per meal"
+                cell.itemNameLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+                
                 cell.itemQtyLabel.text = "$\(costPerMeal)"
+                cell.itemQtyLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
             }  else if indexPath.row == (cartItemsCount + 3) {
                 cell.itemNameLabel.text = "Subtotal"
+                cell.itemNameLabel.font = UIFont.boldSystemFont(ofSize: 19.0)
+                
                 cell.itemQtyLabel.text = "$\(totalItemsCount * costPerMeal)"
+                cell.itemQtyLabel.font = UIFont.boldSystemFont(ofSize: 19.0)
             }
             
             return cell
@@ -74,7 +90,7 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 34
     }
     
     

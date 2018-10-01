@@ -24,6 +24,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var mealsJSON:JSON = []
     var cartItemsQty:Dictionary = [String: Int]()
     var cartItems = [[String: String]]()
+    var totalItemsCount = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func didTapAddButtonInside(cell: MenuItemTableViewCell) {
         cartItemsQty[cell.itemIdentifier] = cell.quantity
         if showCartBar() {
+            setCartBarInfo()
             cartContainerView.isHidden = false
             tableViewBottomDistanceConstaint.constant = -cartContainerView.bounds.height
         } else {
@@ -87,6 +89,16 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func setCartBarInfo() {
+        var totalQuantity = 0
+        for (_, qty) in cartItemsQty {
+            totalQuantity = totalQuantity + qty
+        }
+        totalItemsCount = totalQuantity
+
+        mealsInCartLabel.text = "Meals: \(totalItemsCount)"
+        cartBarDescriptionLabel.text = "Add \(10-totalItemsCount) more for minimum order of 10. Add \(15-totalItemsCount) more to save 25% on cost/meal."
+    }
     
     func showCartBar()->Bool {
         for (_, qty) in cartItemsQty {
