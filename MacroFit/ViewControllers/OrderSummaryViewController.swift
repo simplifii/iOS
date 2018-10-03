@@ -1,19 +1,19 @@
 //
-//  OrderConfirmationViewController.swift
+//  OrderSummaryViewController.swift
 //  MacroFit
 //
-//  Created by Chandresh Singh on 28/09/18.
+//  Created by Chandresh Singh on 03/10/18.
 //  Copyright © 2018 Chandresh Singh. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
 
-class OrderConfirmationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet weak var navbarView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var buttonBottomDistanceConstraint: NSLayoutConstraint!
     
     
     
@@ -21,16 +21,11 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
     var cartItemsCount = 0
     var totalItemsCount = 0
     var costPerMeal = 12
-    var credits = 0
-    let buttonBottomDistanceConstraintValue:CGFloat = 234
     
-    var orderModelController:OrderModelController!
-    
+    var orderModelController: OrderModelController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUserCreditsAndAddress()
-        
         setCartInfo()
         
         self.view.backgroundColor = Constants.backgroundColor
@@ -39,9 +34,7 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.layer.cornerRadius = 9.0
-        
-        buttonBottomDistanceConstraint.constant = buttonBottomDistanceConstraintValue
+        tableView.layer.cornerRadius = 9.0        
     }
     
     func setCartInfo() {
@@ -53,20 +46,35 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cartItems.count + 4
+        return cartItems.count + 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == cartItemsCount {
+        if (indexPath.row == cartItemsCount) || (indexPath.row == (cartItemsCount + 6)) || (indexPath.row == (cartItemsCount + 4)) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "LineSeparatorTableViewCell") as! LineSeparatorTableViewCell
             return cell
         } else if indexPath.row == (cartItemsCount + 3) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubtotalTableViewCell") as! SubtotalTableViewCell
             
             let originalTotal = totalItemsCount * costPerMeal
-            let finalTotal = totalItemsCount * costPerMeal - credits
+            let finalTotal = totalItemsCount * costPerMeal - orderModelController.credits
             
-            cell.setSubtotal(originalSubtotal: originalTotal, finalSubtotal: finalTotal, credits: credits)
+            cell.setSubtotal(originalSubtotal: originalTotal, finalSubtotal: finalTotal, credits: orderModelController.credits)
+            return cell
+        } else if indexPath.row == (cartItemsCount + 5) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddressTableViewCell") as! AddressTableViewCell
+            
+            let address = "\(orderModelController.address.addressLineOne) \(orderModelController.address.addressLineTwo) \(orderModelController.address.zipcode)"
+            cell.addressLabel.text = address
+            cell.editButton.addTarget(self, action: #selector(self.showAddressScreen(_:)), for: UIControlEvents.touchUpInside)
+
+            
+            return cell
+        } else if indexPath.row == (cartItemsCount + 7) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryDateTableViewCell") as! DeliveryDateTableViewCell
+            
+            cell.deliveryDateLabel.text = "Sun 8/15 (8-10 AM)"
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderItemTableViewCell") as! OrderItemTableViewCell
@@ -75,10 +83,6 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
                 cell.itemNameLabel.text = cartItems[indexPath.row].name
                 cell.itemQtyLabel.text = "\(cartItems[indexPath.row].quantity)"
                 
-                
-                if buttonBottomDistanceConstraint.constant - 34 > 20 {
-                    buttonBottomDistanceConstraint.constant = buttonBottomDistanceConstraint.constant - 34
-                }
             } else if indexPath.row == (cartItemsCount + 1) {
                 cell.itemNameLabel.text = "Meals"
                 cell.itemNameLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
@@ -100,40 +104,45 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == (cartItemsCount + 3) {
             return 50
+        } else if indexPath.row == (cartItemsCount + 5) {
+            return 80
+        } else if (indexPath.row == cartItemsCount) || (indexPath.row == (cartItemsCount + 6)) || (indexPath.row == (cartItemsCount + 4)) {
+            return 24
         }
         return 34
     }
+
     
     
-    func setUserCreditsAndAddress() {
-        APIService.getUserProfile(completion: {success,msg,data in
+    @objc func showAddressScreen(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func proceedToPayment(_ sender: UIButton) {
+        var meals:[[String:Any]] = []
+        for cartItem in orderModelController.cartItems {
+            meals.append(cartItem.mealInfo)
+        }
+        
+        APIService.placeNewOrder(
+            addressLineOne: orderModelController.address.addressLineOne,
+            addressLineTwo: orderModelController.address.addressLineTwo,
+            note: orderModelController.entryNote,
+            deliverySlot: "Sun 10-12",
+            zipcode: orderModelController.address.zipcode,
+            meals: meals,
+            completion: {success,msg in
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
             } else {
-                if data[0]["credits"] != JSON.null {
-                    self.credits = data[0]["credits"].intValue
-                    self.orderModelController.credits = self.credits
-                    
-                    self.buttonBottomDistanceConstraint.constant = self.buttonBottomDistanceConstraintValue
-                    self.tableView.reloadData()
-                }
-                
-                let address = Address(
-                    addressLineOne: data[0]["cdata"]["address_line_1"].stringValue,
-                    addressLineTwo: data[0]["cdata"]["address_line_1"].stringValue,
-                    zipcode: data[0]["zipcode"].stringValue
-                )
-                self.orderModelController.address = address
+                self.showNextScreen()
             }
         })
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is AddressViewController
-        {
-            let vc = segue.destination as? AddressViewController
-            vc?.orderModelController = self.orderModelController
-        }
+    func showNextScreen() {
+        
     }
+
 }

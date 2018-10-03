@@ -21,6 +21,7 @@ enum APIRouter: URLRequestConvertible {
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     case orderPlacementDetails()
     case getMealsMenu()
+    case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, meals:[[String:Any]])
     
     var path: String {
         
@@ -40,6 +41,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.orderPlacementDetails
             case .getMealsMenu:
                 return NetworkingConstants.meals
+            case .placeNewOrder:
+                return NetworkingConstants.orders
         }
     }
     
@@ -82,11 +85,22 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["action"] = "UpdateMacros"
                 bodyDict["meals_per_day"] = meals_per_day
                 bodyDict["snacks"] = snacks
+                break
         case let .updateDietaryPreferences(dietary_preference: dietary_preference, diet_note: diet_note):
                 bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
                 bodyDict["action"] = "UpdateDiet"
                 bodyDict["dietary_preference"] = dietary_preference
                 bodyDict["diet_note"] = diet_note
+                break
+        case let .placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, meals:meals):
+                bodyDict["entity"] = "Order"
+                bodyDict["action"] = "Create"
+                bodyDict["address_line_1"] = addressLineOne
+                bodyDict["address_line_2"] = addressLineTwo
+                bodyDict["note"] = note
+                bodyDict["delivery_slot"] = deliverySlot
+                bodyDict["zipcode"] = zipcode
+                bodyDict["meals"] = meals
             default:
                 print("no action")
         }
@@ -134,7 +148,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu:
             return .get
-        case .createUser, .loginUser:
+        case .createUser, .loginUser, .placeNewOrder:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
             return .patch
@@ -149,7 +163,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu:

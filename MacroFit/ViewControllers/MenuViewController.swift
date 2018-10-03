@@ -21,9 +21,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableViewBottomDistanceConstaint: NSLayoutConstraint!
     
+    var orderModelController = OrderModelController()
+    
     var mealsJSON:JSON = []
     var cartItemsQty:Dictionary = [String: Int]()
-    var cartItems = [[String: String]]()
+    var cartItems:[CartItem] = []
     var totalItemsCount = Int()
     
     override func viewDidLoad() {
@@ -126,13 +128,31 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if qty > 0 {
                 let index = Int(identifier)!
                 if mealsJSON[index] != JSON.null {
-                    cartItems.append([
+                    let mealInfo:[String:Any] = [
                         "title": mealsJSON[index]["title"].stringValue,
-                        "qty": "\(qty)"
-                        ])
+                        "description": mealsJSON[index]["description"].stringValue,
+                        "photo": mealsJSON[index]["photo"].stringValue,
+                        "vegan_title": mealsJSON[index]["vegan_title"].stringValue,
+                        "vegan_description": mealsJSON[index]["vegan_description"].stringValue,
+                        "tags": mealsJSON[index]["tags"].stringValue,
+                        "items": mealsJSON[index]["items"].stringValue,
+                        "carbs": mealsJSON[index]["carbs"].intValue,
+                        "protein": mealsJSON[index]["protein"].intValue,
+                        "fat": mealsJSON[index]["fat"].intValue,
+                        "calorie": mealsJSON[index]["calorie"].intValue,
+                        "vegan_option_available": mealsJSON[index]["vegan_option_available"].intValue,
+                        "scaling_factor": mealsJSON[index]["scaling_factor"].floatValue,
+                        "quantity": qty
+                    ]
+                    cartItems.append(CartItem(
+                        name: mealsJSON[index]["title"].stringValue,
+                        quantity: qty,
+                        mealInfo: mealInfo
+                    ))
                 }
             }
         }
+        orderModelController.cartItems = cartItems
     }
     
     
@@ -150,7 +170,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.destination is OrderConfirmationViewController
         {
             let vc = segue.destination as? OrderConfirmationViewController
-            vc?.cartItems = self.cartItems
+            vc?.orderModelController = orderModelController
         }
     }
 }

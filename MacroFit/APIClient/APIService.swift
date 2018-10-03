@@ -108,6 +108,15 @@ struct APIService {
         })
     }
     
+    static func placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, meals:[[String:Any]], completion: @escaping (Bool, String)->Void) {
+        let request = APIRouter.placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, meals:meals)
+        
+        sendRequest(request: request, completion: {success,msg in
+            completion(success, msg)
+        })
+        
+    }
+    
     
     static func sendRequest(request: URLRequestConvertible, completion: @escaping (Bool, String) -> Void) {
         Alamofire.request(request)

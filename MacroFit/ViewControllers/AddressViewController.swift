@@ -12,7 +12,7 @@ class AddressViewController: BaseViewController {
     
     @IBOutlet weak var navbarView: UIView!
 
-    var address:Dictionary = [String: String]()
+    var orderModelController: OrderModelController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +26,18 @@ class AddressViewController: BaseViewController {
 
     }
     
+    
+    // TODO::validate fields
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is AddressFormTableViewController
         {
             let vc = segue.destination as? AddressFormTableViewController
-            vc?.address = address
+            vc?.orderModelController = orderModelController
+        } else if segue.destination is OrderSummaryViewController
+        {
+            let vc = segue.destination as? OrderSummaryViewController
+            vc?.orderModelController = orderModelController
         }
     }
 }

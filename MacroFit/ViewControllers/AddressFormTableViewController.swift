@@ -17,7 +17,7 @@ class AddressFormTableViewController: UITableViewController, UITextViewDelegate 
     @IBOutlet weak var entryNotesTextView: UITextView!
     
     
-    var address:Dictionary = [String: String]()
+    var orderModelController: OrderModelController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +37,10 @@ class AddressFormTableViewController: UITableViewController, UITextViewDelegate 
     }
     
     func prefillAddress() {
-        if address["address_line_1"] != nil {
-            addressTextField.text = address["address_line_1"]
-        }
-        if address["address_line_2"] != nil {
-            addressLineTwoTextField.text = address["address_line_2"]
-        }
-        if address["zipcode"] != nil {
-            zipcodeTextField.text = address["zipcode"]
-        }
+        let address = orderModelController.address
+        addressTextField.text = address.addressLineOne
+        addressLineTwoTextField.text = address.addressLineTwo
+        zipcodeTextField.text = address.zipcode
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
