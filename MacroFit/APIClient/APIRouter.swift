@@ -22,6 +22,8 @@ enum APIRouter: URLRequestConvertible {
     case orderPlacementDetails()
     case getMealsMenu()
     case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, meals:[[String:Any]])
+    case getZipcodeServiceabilityInfo(zipcode: String)
+    case orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int)
     
     var path: String {
         
@@ -43,6 +45,10 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.meals
             case .placeNewOrder:
                 return NetworkingConstants.orders
+            case .getZipcodeServiceabilityInfo:
+                return NetworkingConstants.cards
+            case .orderPayment:
+                return NetworkingConstants.payment
         }
     }
     
@@ -101,6 +107,14 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["delivery_slot"] = deliverySlot
                 bodyDict["zipcode"] = zipcode
                 bodyDict["meals"] = meals
+                break
+        case let .orderPayment(stripeToken: stripeToken, amount: amount, orderId: orderId, orderCardUniqueCode: orderCardUniqueCode, credits: credits):
+                bodyDict["stripeToken"] = stripeToken
+                bodyDict["amount"] = amount
+                bodyDict["order_id"] = orderId
+                bodyDict["order_card_uniquecode"] = orderCardUniqueCode
+                bodyDict["credits_tobe_used"] = credits
+                break
             default:
                 print("no action")
         }
@@ -115,12 +129,6 @@ enum APIRouter: URLRequestConvertible {
         
         switch self {
         
-//        case let .fitnessGoals(abc: abc):
-//            paramDict["type"] = "Label"
-//            paramDict["equalto___type"] = "Goal"
-//            paramDict["show_columns"] = "string1"
-//            break
-            
         case .fitnessGoals:
             paramDict["type"] = "Label"
             paramDict["equalto___type"] = "Goal"
@@ -136,6 +144,11 @@ enum APIRouter: URLRequestConvertible {
             paramDict["type"] = "Meal"
             paramDict["state"] = "Available"
             break
+        case let .getZipcodeServiceabilityInfo(zipcode: zipcode):
+            paramDict["type"] = "Zipcode"
+            paramDict["state"] = "Created"
+            paramDict["equalto___zipcode"] = zipcode
+            break
         default:
             break
         }
@@ -146,9 +159,9 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo:
             return .get
-        case .createUser, .loginUser, .placeNewOrder:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
             return .patch
@@ -163,7 +176,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu:

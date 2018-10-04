@@ -20,6 +20,10 @@ class OrderModelController {
     var cartItems:[CartItem] = []
     
     var totalItemsQuantity:Int = 0
+    var totalAmount:Int = 0
     
     var entryNote:String = ""
+    
+    var orderCardId:String = ""
+    var orderCardUniqueCode:String = ""
 }

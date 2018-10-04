@@ -83,6 +83,13 @@ struct APIService {
         })
     }
     
+    static func getZipcodeServiceabilityInfo(zipcode: String, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getZipcodeServiceabilityInfo(zipcode: zipcode), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    
     static func updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?, completion: @escaping (Bool, String) -> Void) {
         
         let request = APIRouter.updateCustomerBasicDetails(age: age, weight: weight, height: height, activity_level: activity_level, goal: goal, gender: gender, per_day_cal_burn: per_day_cal_burn, goal_note: goal_note)
@@ -108,13 +115,21 @@ struct APIService {
         })
     }
     
-    static func placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, meals:[[String:Any]], completion: @escaping (Bool, String)->Void) {
+    static func placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, meals:[[String:Any]], completion: @escaping (Bool, String, JSON)->Void) {
         let request = APIRouter.placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, meals:meals)
+        
+        sendRequestAndGetData(request: request, completion: {success,msg,data in
+            completion(success, msg, data)
+        })
+        
+    }
+    
+    static func orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int, completion: @escaping (Bool, String) -> Void) {
+        let request = APIRouter.orderPayment(stripeToken: stripeToken, amount: amount, orderId: orderId, orderCardUniqueCode: orderCardUniqueCode, credits: credits)
         
         sendRequest(request: request, completion: {success,msg in
             completion(success, msg)
         })
-        
     }
     
     

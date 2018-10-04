@@ -34,7 +34,7 @@ class BaseViewController: UIViewController {
     
     @objc func goBackToPreviousScreen(_ sender: UIButton) {
         //        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.showPreviousScreen()
     }
     
     @objc func goToSettingsScreen(_ sender: UIButton) {
@@ -55,4 +55,7 @@ class BaseViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
+    func showPreviousScreen() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

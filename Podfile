@@ -9,6 +9,7 @@ target 'MacroFit' do
     pod 'SwiftyJSON', '~> 4.0'
     pod 'DropDown'
     pod 'AlamofireImage', '~> 3.4'
+    pod 'Stripe'
 # Pods for MacroFit
 
   target 'MacroFitTests' do

@@ -9,6 +9,7 @@
 struct NetworkingConstants{
     
     static let baseUrl = "http://mf.platform.simplifii.xyz/api/v1/"
+    static let cards = "cards"
     static let users = "cards"
     static let orders = "cards"
     static let meals = "cards"
@@ -16,5 +17,6 @@ struct NetworkingConstants{
     static let activityLevels = "static/activitylevels"
     static let fitnessGoals = "cards"
     static let orderPlacementDetails = "custom/order_placement_details"
+    static let payment = "payment"
     
 }

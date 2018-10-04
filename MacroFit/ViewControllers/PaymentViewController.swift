@@ -8,23 +8,25 @@
 
 import UIKit
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: BaseViewController {
+    
+    @IBOutlet weak var navbarView: UIView!
 
+    var orderModelController: OrderModelController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = Constants.backgroundColor
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.destination is PaymentFormTableViewController
+        {
+            let vc = segue.destination as? PaymentFormTableViewController
+            vc?.orderModelController = self.orderModelController
+        }
     }
-    */
-
 }

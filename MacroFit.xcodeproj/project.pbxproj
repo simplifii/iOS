@@ -20,6 +20,8 @@
 		E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */; };
 		E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */; };
 		E0361216215A57E700C560F5 /* MacroFit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0361215215A57E700C560F5 /* MacroFit.storyboard */; };
+		E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */; };
+		E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */; };
 		E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06762892159020600D19202 /* DietaryPreferencesViewController.swift */; };
 		E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A971215E29F500D264CA /* MealsContainerViewController.swift */; };
 		E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */; };
@@ -102,6 +104,8 @@
 		E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedCreditViewController.swift; sourceTree = "<group>"; };
 		E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E0361215215A57E700C560F5 /* MacroFit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacroFit.storyboard; sourceTree = "<group>"; };
+		E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormTableViewController.swift; sourceTree = "<group>"; };
+		E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageViewController.swift; sourceTree = "<group>"; };
 		E06762892159020600D19202 /* DietaryPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryPreferencesViewController.swift; sourceTree = "<group>"; };
 		E075A971215E29F500D264CA /* MealsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsContainerViewController.swift; sourceTree = "<group>"; };
 		E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 				E09A6AED2162389C0096708A /* AddressViewController.swift */,
 				E02E854421647F9C00DDE4A7 /* OrderSummaryViewController.swift */,
 				E02E854621647FE900DDE4A7 /* PaymentViewController.swift */,
+				E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */,
+				E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -552,6 +559,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,9 +628,11 @@
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
 				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
+				E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */,
 				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */,
+				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
 				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,
 				E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */,

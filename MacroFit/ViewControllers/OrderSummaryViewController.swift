@@ -57,6 +57,7 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubtotalTableViewCell") as! SubtotalTableViewCell
             
             let originalTotal = totalItemsCount * costPerMeal
+            orderModelController.totalAmount = originalTotal
             let finalTotal = totalItemsCount * costPerMeal - orderModelController.credits
             
             cell.setSubtotal(originalSubtotal: originalTotal, finalSubtotal: finalTotal, credits: orderModelController.credits)
@@ -124,7 +125,7 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
         for cartItem in orderModelController.cartItems {
             meals.append(cartItem.mealInfo)
         }
-        
+
         APIService.placeNewOrder(
             addressLineOne: orderModelController.address.addressLineOne,
             addressLineTwo: orderModelController.address.addressLineTwo,
@@ -132,17 +133,27 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
             deliverySlot: "Sun 10-12",
             zipcode: orderModelController.address.zipcode,
             meals: meals,
-            completion: {success,msg in
+            completion: {success,msg,data in
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
             } else {
+                self.setCardData(data: data)
                 self.showNextScreen()
             }
         })
     }
     
+    func setCardData(data: JSON) {
+        print(data)
+        orderModelController.orderCardId = data[0]["id"].stringValue
+        orderModelController.orderCardUniqueCode = data[0]["unique_code"].stringValue
+    }
+    
     func showNextScreen() {
-        
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController
+        vc?.orderModelController = orderModelController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 
 }

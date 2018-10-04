@@ -12,8 +12,10 @@ class AddressViewController: BaseViewController {
     
     @IBOutlet weak var navbarView: UIView!
 
-    var orderModelController: OrderModelController!
+    var addressFormTableViewController: AddressFormTableViewController!
 
+    var orderModelController: OrderModelController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -32,12 +34,49 @@ class AddressViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is AddressFormTableViewController
         {
-            let vc = segue.destination as? AddressFormTableViewController
-            vc?.orderModelController = orderModelController
-        } else if segue.destination is OrderSummaryViewController
-        {
-            let vc = segue.destination as? OrderSummaryViewController
-            vc?.orderModelController = orderModelController
+            addressFormTableViewController = segue.destination as? AddressFormTableViewController
+            addressFormTableViewController?.orderModelController = orderModelController
         }
     }
+    
+    @IBAction func viewOrderSummary(_ sender: UIButton) {
+        let zipcode = addressFormTableViewController.zipcodeTextField.text!
+        if zipcode.isEmpty {
+            self.showAlertMessage(title: "Zipcode is mandatory", message: nil)
+            return
+        }
+        
+        let addressLineOne = addressFormTableViewController.addressTextField.text!
+        let addressLineTwo = addressFormTableViewController.addressLineTwoTextField.text!
+        let address = Address(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, zipcode: zipcode)
+        orderModelController.address = address
+        orderModelController.entryNote = addressFormTableViewController.entryNotesTextView.text!
+        
+        APIService.getZipcodeServiceabilityInfo(zipcode: zipcode, completion: {success,msg,data in
+            if success == false {
+                self.showAlertMessage(title: msg, message: nil)
+            } else {
+                if data.count > 0 {
+                    self.showOrderSummaryScreen()
+                } else {
+                    self.showErrorMessageScreen()
+                }
+            }
+        })
+    }
+    
+    
+    func showErrorMessageScreen() {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "ErrorMessageViewController") as? ErrorMessageViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func showOrderSummaryScreen() {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "OrderSummaryViewController") as? OrderSummaryViewController
+        vc?.orderModelController = orderModelController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
 }
