@@ -57,8 +57,9 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubtotalTableViewCell") as! SubtotalTableViewCell
             
             let originalTotal = totalItemsCount * costPerMeal
-            orderModelController.totalAmount = originalTotal
             let finalTotal = totalItemsCount * costPerMeal - orderModelController.credits
+            
+            orderModelController.totalAmount = finalTotal
             
             cell.setSubtotal(originalSubtotal: originalTotal, finalSubtotal: finalTotal, credits: orderModelController.credits)
             return cell

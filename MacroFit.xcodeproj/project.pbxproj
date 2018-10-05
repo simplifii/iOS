@@ -67,6 +67,10 @@
 		E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */; };
 		E0DC7401215BAD060085551E /* AddItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DC7400215BAD060085551E /* AddItemView.xib */; };
 		E0DC7403215BAD230085551E /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC7402215BAD230085551E /* AddItemView.swift */; };
+		E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */; };
+		E0DEDBA0216733BC0040BC52 /* LoginFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */; };
+		E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */; };
+		E0DEDBA42167620D0040BC52 /* PaymentErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +161,10 @@
 		E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		E0DC7400215BAD060085551E /* AddItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemView.xib; sourceTree = "<group>"; };
 		E0DC7402215BAD230085551E /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormTableViewController.swift; sourceTree = "<group>"; };
+		E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationSuccessViewController.swift; sourceTree = "<group>"; };
+		E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentErrorViewController.swift; sourceTree = "<group>"; };
 		EFDCD96D0F9015101C4841D3 /* Pods-MacroFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit.debug.xcconfig"; sourceTree = "<group>"; };
 		F5C1001B1FE99DC4E72A2125 /* Pods-MacroFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +317,10 @@
 				E02E854621647FE900DDE4A7 /* PaymentViewController.swift */,
 				E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */,
 				E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */,
+				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
+				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
+				E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */,
+				E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -622,6 +634,7 @@
 				E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */,
 				E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */,
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
+				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
 				E02E85542164B6E100DDE4A7 /* CartItem.swift in Sources */,
 				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
@@ -635,6 +648,7 @@
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
 				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,
+				E0DEDBA0216733BC0040BC52 /* LoginFormTableViewController.swift in Sources */,
 				E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */,
 				E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
@@ -646,6 +660,7 @@
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
 				E09A6AEE2162389C0096708A /* AddressViewController.swift in Sources */,
+				E0DEDBA42167620D0040BC52 /* PaymentErrorViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
 				E0A792132153812800CBBFDB /* NetworkingConstants.swift in Sources */,
 				E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */,
@@ -654,6 +669,7 @@
 				E09A6AEA216202260096708A /* SubtotalTableViewCell.swift in Sources */,
 				E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */,
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
+				E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */,
 				E0A792202153DDC200CBBFDB /* User.swift in Sources */,
 				E02E85582164C55800DDE4A7 /* DeliveryDateTableViewCell.swift in Sources */,
 				E0DC7403215BAD230085551E /* AddItemView.swift in Sources */,

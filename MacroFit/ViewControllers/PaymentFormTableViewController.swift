@@ -52,7 +52,8 @@ class PaymentFormTableViewController: UITableViewController {
 
         STPAPIClient.shared().createToken(withCard: cardParams) { (token: STPToken?, error: Error?) in
             guard let token = token, error == nil else {
-                self.showAlertMessage(title: "Unable to complete transaction", message: error?.localizedDescription)
+//                self.showAlertMessage(title: "Unable to complete transaction", message: error?.localizedDescription)
+                self.showErrorScreen()
                 return
             }
 
@@ -64,7 +65,7 @@ class PaymentFormTableViewController: UITableViewController {
         let amount = orderModelController.totalAmount * 100 // Amount in cents
         let orderId = orderModelController.orderCardId
         let orderCardUniqueCode = orderModelController.orderCardUniqueCode
-        let credits = orderModelController.credits
+        let credits = orderModelController.credits * 100 // Amount in cents
         
         APIService.orderPayment(
             stripeToken: stripeToken,
@@ -76,7 +77,7 @@ class PaymentFormTableViewController: UITableViewController {
                 if success == false {
                     self.showAlertMessage(title: msg, message: nil)
                 } else {
-                    self.showNextScreen()
+                    self.showSuccessScreen()
                 }
         })
         print(stripeToken)
@@ -158,7 +159,15 @@ class PaymentFormTableViewController: UITableViewController {
         }
     }
     
-    func showNextScreen() {
-        print("Done. Show next screen")
+    func showSuccessScreen() {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "OrderConfirmationSuccessViewController") as? OrderConfirmationSuccessViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func showErrorScreen() {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "PaymentErrorViewController") as? PaymentErrorViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 }
