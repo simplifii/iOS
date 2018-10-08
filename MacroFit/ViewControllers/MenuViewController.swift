@@ -15,9 +15,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var cartContainerView: UIView!
-    @IBOutlet var cartBarView: UIView!
-    @IBOutlet weak var mealsInCartLabel: UILabel!
-    @IBOutlet weak var cartBarDescriptionLabel: UILabel!
+    
+    var cartBarView: CartBarView!
     
     @IBOutlet weak var tableViewBottomDistanceConstaint: NSLayoutConstraint!
     
@@ -32,6 +31,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         getMeals()
         
+        cartBarView = Bundle.main.loadNibNamed("CartBarView", owner: self, options: nil)?.first as? CartBarView
+        cartBarView.frame.size = cartContainerView.bounds.size
+        cartContainerView.addSubview(cartBarView!)
+            cartBarView.cartCheckoutButton.addTarget(self, action: #selector(self.proceedToCheckout(_:)), for: UIControlEvents.touchUpInside)
+        
+        
         self.view.backgroundColor = Constants.backgroundColor
         
         tableView.dataSource = self
@@ -42,10 +47,25 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
         
-        cartBarView.frame.size = cartContainerView.bounds.size
-        cartContainerView.addSubview(cartBarView)
     }
+    
+    @objc func proceedToCheckout(_ sender: UIButton) {
+        addItemsInCart()
+        if cartItems.count == 0 {
+            return
+        }
+        
+        cartContainerView.isHidden = true
+        tableViewBottomDistanceConstaint.constant = 0
+        
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "OrderConfirmationViewController") as? OrderConfirmationViewController
+        vc?.orderModelController = orderModelController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mealsJSON.count
@@ -73,12 +93,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     
-    @IBAction func proceedToCheckout(_ sender: UIButton) {
-        cartContainerView.isHidden = true
-        tableViewBottomDistanceConstaint.constant = 0
-    }
-    
-    
     func didTapAddButtonInside(cell: MenuItemTableViewCell) {
         cartItemsQty[cell.itemIdentifier] = cell.quantity
         if showCartBar() {
@@ -98,8 +112,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         totalItemsCount = totalQuantity
 
-        mealsInCartLabel.text = "Meals: \(totalItemsCount)"
-        cartBarDescriptionLabel.text = "Add \(10-totalItemsCount) more for minimum order of 10. Add \(15-totalItemsCount) more to save 25% on cost/meal."
+        cartBarView.mealsInCartLabel.text = "Meals: \(totalItemsCount)"
+        cartBarView.descriptionLabel.text = "Add \(10-totalItemsCount) more for minimum order of 10. Add \(15-totalItemsCount) more to save 25% on cost/meal."
     }
     
     func showCartBar()->Bool {
@@ -153,24 +167,5 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         orderModelController.cartItems = cartItems
-    }
-    
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "OrderConfirmationViewControllerSegue" {
-            addItemsInCart()
-            if cartItems.count == 0 {
-                return false
-            }
-        }
-        return true
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is OrderConfirmationViewController
-        {
-            let vc = segue.destination as? OrderConfirmationViewController
-            vc?.orderModelController = orderModelController
-        }
     }
 }

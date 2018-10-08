@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CartBarView" customModule="MacroFit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meals: 7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-Xa-mnv">
+                    <rect key="frame" x="26" y="16" width="164" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="r3z-Dq-BIG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add 3 more for minium order of 10. Add 8 more to save 25% on cost/meal." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEV-4K-Oca">
+                    <rect key="frame" x="26" y="42" width="164" height="47"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.77087002989999998" green="0.77070665360000001" blue="0.79523354769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaP-mq-IjG">
+                    <rect key="frame" x="217" y="23" width="132" height="47"/>
+                    <color key="backgroundColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="132" id="lu1-kE-1ie"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Checkout">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="PaP-mq-IjG" secondAttribute="bottom" constant="34" id="03S-kO-kkp"/>
+                <constraint firstItem="DcM-Xa-mnv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="Alw-Ej-oZV"/>
+                <constraint firstItem="YEV-4K-Oca" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="LPa-cD-Ra7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PaP-mq-IjG" secondAttribute="trailing" constant="26" id="bi6-Pv-sXn"/>
+                <constraint firstItem="PaP-mq-IjG" firstAttribute="leading" secondItem="DcM-Xa-mnv" secondAttribute="trailing" constant="27" id="dAi-AO-zZo"/>
+                <constraint firstItem="YEV-4K-Oca" firstAttribute="top" secondItem="DcM-Xa-mnv" secondAttribute="bottom" constant="2" id="hJj-pm-nY2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="YEV-4K-Oca" secondAttribute="bottom" constant="15" id="hUh-mo-33Z"/>
+                <constraint firstItem="PaP-mq-IjG" firstAttribute="leading" secondItem="YEV-4K-Oca" secondAttribute="trailing" constant="27" id="maK-3F-LIy"/>
+                <constraint firstItem="PaP-mq-IjG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="23" id="v3C-sK-9a9"/>
+                <constraint firstItem="DcM-Xa-mnv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="26" id="wY0-lS-hNX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="cartCheckoutButton" destination="PaP-mq-IjG" id="227-wY-nqR"/>
+                <outlet property="descriptionLabel" destination="YEV-4K-Oca" id="Vb1-E1-Kaf"/>
+                <outlet property="mealsInCartLabel" destination="DcM-Xa-mnv" id="RJT-F5-OaM"/>
+            </connections>
+            <point key="canvasLocation" x="112.8" y="-169.11544227886057"/>
+        </view>
+    </objects>
+</document>

@@ -74,6 +74,8 @@
 		E0BD2B7D216B247A00E2D297 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B60216B243900E2D297 /* Montserrat-SemiBoldItalic.ttf */; };
 		E0BD2B7E216B247A00E2D297 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B63216B243A00E2D297 /* Montserrat-Thin.ttf */; };
 		E0BD2B7F216B247A00E2D297 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B69216B243B00E2D297 /* Montserrat-ThinItalic.ttf */; };
+		E0BD2B83216B6EF100E2D297 /* CartBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B82216B6EF100E2D297 /* CartBarView.xib */; };
+		E0BD2B85216B6F0D00E2D297 /* CartBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD2B84216B6F0D00E2D297 /* CartBarView.swift */; };
 		E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */; };
 		E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */; };
 		E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */; };
@@ -186,6 +188,8 @@
 		E0BD2B6B216B243B00E2D297 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
 		E0BD2B6C216B243B00E2D297 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		E0BD2B6D216B243B00E2D297 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		E0BD2B82216B6EF100E2D297 /* CartBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartBarView.xib; sourceTree = "<group>"; };
+		E0BD2B84216B6F0D00E2D297 /* CartBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBarView.swift; sourceTree = "<group>"; };
 		E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpMacroMealPortionsViewController.swift; sourceTree = "<group>"; };
 		E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedDailyMacrosViewController.swift; sourceTree = "<group>"; };
 		E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerBoxView.swift; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 				E0A6DD93214FD3B500B6C301 /* BackNavbarView.xib */,
 				E0A6DD99214FDF3300B6C301 /* ProgressBarView.xib */,
 				E0DC7400215BAD060085551E /* AddItemView.xib */,
+				E0BD2B82216B6EF100E2D297 /* CartBarView.xib */,
 			);
 			path = XIBFiles;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 				E0A6DD95214FD50300B6C301 /* BackNavbarView.swift */,
 				E0A6DD97214FDF1F00B6C301 /* ProgressBarView.swift */,
 				E0DC7402215BAD230085551E /* AddItemView.swift */,
+				E0BD2B84216B6F0D00E2D297 /* CartBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BD2B6E216B247A00E2D297 /* Montserrat-Black.ttf in Resources */,
+				E0BD2B83216B6EF100E2D297 /* CartBarView.xib in Resources */,
 				E0BD2B6F216B247A00E2D297 /* Montserrat-BlackItalic.ttf in Resources */,
 				E0BD2B70216B247A00E2D297 /* Montserrat-Bold.ttf in Resources */,
 				E0BD2B71216B247A00E2D297 /* Montserrat-BoldItalic.ttf in Resources */,
@@ -720,6 +727,7 @@
 				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
 				E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */,
 				E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */,
+				E0BD2B85216B6F0D00E2D297 /* CartBarView.swift in Sources */,
 				E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */,
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
 				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
