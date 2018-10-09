@@ -48,9 +48,28 @@ class WelcomeViewController: UIViewController {
     
     func getOrderPlacementDetails() {
         APIService.getOrderPlacementDetails(completion: {success, msg, data in
-            self.ordrePlacementDayLabel.text = "\(data["from_day"].stringValue) - \(data["to_day"].stringValue)"
-            self.ordrePlacementTimeLabel.text = "until \(data["closing_time"].stringValue)."
-            self.remainingTimeLabel.text = data["time_left"].stringValue
+            if data["is_open"].boolValue == true {
+                self.ordrePlacementDayLabel.text = "\(data["from_day"].stringValue) - \(data["to_day"].stringValue)"
+                self.ordrePlacementTimeLabel.text = "until \(data["closing_time"].stringValue)."
+                self.remainingTimeLabel.text = data["time_left"].stringValue
+            } else {
+                self.viewDeliveryOverScreen(
+                    date: data["next_opening_date"].stringValue,
+                    days: data["datetime"]["days"].stringValue,
+                    hours: data["datetime"]["hours"].stringValue,
+                    minutes: data["datetime"]["minutes"].stringValue
+                )
+            }
         })
+    }
+    
+    func viewDeliveryOverScreen(date:String, days:String, hours:String, minutes:String) {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "DeliveryOverViewController") as? DeliveryOverViewController
+        vc?.openingDate = date
+        vc?.days = days
+        vc?.hours = hours
+        vc?.minutes = minutes
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 }

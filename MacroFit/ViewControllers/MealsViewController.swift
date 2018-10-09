@@ -13,10 +13,21 @@ class MealsViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var menuContainerView: UIView!
     @IBOutlet weak var recipesContainerView: UIView!
+    @IBOutlet weak var deliveryOverContainerView: UIView!
+    
+    var deliveryOverEmbeddedVC:DeliveryOverEmbeddedViewController!
+    var isOpen:Bool = true
+    var openingDate:String = ""
+    var days:String = ""
+    var hours:String = ""
+    var minutes:String = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getOrderPlacementDetails()
+        
         setupView()
     }
     
@@ -46,17 +57,27 @@ class MealsViewController: UIViewController {
             UIBezierPath(roundedRect: segmentedControl.bounds,
                          cornerRadius: segmentedControl.layer.cornerRadius).cgPath
         
+        
+        deliveryOverContainerView.alpha = 0
+        
     }
     
     @IBAction func showContainerView(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             UIView.animate(withDuration: 0.5, animations: {
-                self.menuContainerView.alpha = 1
                 self.recipesContainerView.alpha = 0
+                
+                if self.isOpen == false {
+                    self.showDeliveryOverScreen()
+                } else {
+                    self.menuContainerView.alpha = 1
+                    self.deliveryOverContainerView.alpha = 0
+                }
             })
         } else {
             UIView.animate(withDuration: 0.5, animations: {
                 self.menuContainerView.alpha = 0
+                self.deliveryOverContainerView.alpha = 0
                 self.recipesContainerView.alpha = 1
             })
         }
@@ -66,5 +87,40 @@ class MealsViewController: UIViewController {
     }
     
     @IBAction func showSettingsScreen(_ sender: UIButton) {
+    }
+    
+    
+    func getOrderPlacementDetails() {
+        APIService.getOrderPlacementDetails(completion: {success, msg, data in
+            self.isOpen = data["is_open"].boolValue
+            self.openingDate = data["next_opening_date"].stringValue;
+            self.days =  data["datetime"]["days"].stringValue;
+            self.hours = data["datetime"]["hours"].stringValue;
+            self.minutes = data["datetime"]["minutes"].stringValue;
+            
+            if self.isOpen == false {
+                self.showDeliveryOverScreen()
+            }
+        })
+    }
+    
+    func showDeliveryOverScreen() {
+        self.menuContainerView.alpha = 0
+        self.recipesContainerView.alpha = 0
+        self.deliveryOverContainerView.alpha = 1
+        
+        deliveryOverEmbeddedVC.openingDate = openingDate
+        deliveryOverEmbeddedVC.days = days
+        deliveryOverEmbeddedVC.hours = hours
+        deliveryOverEmbeddedVC.minutes = minutes
+        deliveryOverEmbeddedVC.setData()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is DeliveryOverEmbeddedViewController
+        {
+            deliveryOverEmbeddedVC = segue.destination as? DeliveryOverEmbeddedViewController
+        }
     }
 }
