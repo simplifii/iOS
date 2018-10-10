@@ -21,9 +21,10 @@ enum APIRouter: URLRequestConvertible {
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     case orderPlacementDetails()
     case getMealsMenu()
-    case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, meals:[[String:Any]])
+    case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, deliveryDateFrom:String, deliveryDateTo:String, meals:[[String:Any]])
     case getZipcodeServiceabilityInfo(zipcode: String)
     case orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int)
+    case getDeliveryDate()
     
     var path: String {
         
@@ -49,6 +50,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .orderPayment:
                 return NetworkingConstants.payment
+            case .getDeliveryDate:
+                return NetworkingConstants.deliveryDate
         }
     }
     
@@ -98,7 +101,7 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["dietary_preference"] = dietary_preference
                 bodyDict["diet_note"] = diet_note
                 break
-        case let .placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, meals:meals):
+        case let .placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, deliveryDateFrom:deliveryDateFrom, deliveryDateTo:deliveryDateTo, meals:meals):
                 bodyDict["entity"] = "Order"
                 bodyDict["action"] = "Create"
                 bodyDict["address_line_1"] = addressLineOne
@@ -107,6 +110,8 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["delivery_slot"] = deliverySlot
                 bodyDict["zipcode"] = zipcode
                 bodyDict["meals"] = meals
+                bodyDict["delivery_window_starttime"] = deliveryDateFrom
+                bodyDict["delivery_window_endtime"] = deliveryDateTo
                 break
         case let .orderPayment(stripeToken: stripeToken, amount: amount, orderId: orderId, orderCardUniqueCode: orderCardUniqueCode, credits: credits):
                 bodyDict["stripeToken"] = stripeToken
@@ -159,7 +164,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate:
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment:
             return .post

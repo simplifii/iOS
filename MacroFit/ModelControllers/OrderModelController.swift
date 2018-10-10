@@ -26,4 +26,8 @@ class OrderModelController {
     
     var orderCardId:String = ""
     var orderCardUniqueCode:String = ""
+    
+    var deliveryDateFormatted:String = ""
+    var deliveryDateFrom:String = ""
+    var deliveryDateTo:String = ""
 }

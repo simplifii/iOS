@@ -89,6 +89,12 @@ struct APIService {
         })
     }
     
+    static func getDeliveryDate(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getDeliveryDate(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
     
     static func updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?, completion: @escaping (Bool, String) -> Void) {
         
@@ -115,8 +121,8 @@ struct APIService {
         })
     }
     
-    static func placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, meals:[[String:Any]], completion: @escaping (Bool, String, JSON)->Void) {
-        let request = APIRouter.placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, meals:meals)
+    static func placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, deliveryDateFrom:String, deliveryDateTo:String, meals:[[String:Any]], completion: @escaping (Bool, String, JSON)->Void) {
+        let request = APIRouter.placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, deliveryDateFrom:deliveryDateFrom, deliveryDateTo:deliveryDateTo, meals:meals)
         
         sendRequestAndGetData(request: request, completion: {success,msg,data in
             completion(success, msg, data)

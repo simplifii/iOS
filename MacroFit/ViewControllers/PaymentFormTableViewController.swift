@@ -161,6 +161,7 @@ class PaymentFormTableViewController: UITableViewController {
     
     func showSuccessScreen() {
         let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "OrderConfirmationSuccessViewController") as? OrderConfirmationSuccessViewController
+        vc?.orderModelController  = orderModelController
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }

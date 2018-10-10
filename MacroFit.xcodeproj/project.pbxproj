@@ -22,6 +22,9 @@
 		E0361216215A57E700C560F5 /* MacroFit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0361215215A57E700C560F5 /* MacroFit.storyboard */; };
 		E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */; };
 		E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */; };
+		E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */; };
+		E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */; };
+		E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */; };
 		E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06762892159020600D19202 /* DietaryPreferencesViewController.swift */; };
 		E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A971215E29F500D264CA /* MealsContainerViewController.swift */; };
 		E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */; };
@@ -134,6 +137,9 @@
 		E0361215215A57E700C560F5 /* MacroFit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacroFit.storyboard; sourceTree = "<group>"; };
 		E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormTableViewController.swift; sourceTree = "<group>"; };
 		E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageViewController.swift; sourceTree = "<group>"; };
+		E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoriesViewController.swift; sourceTree = "<group>"; };
+		E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		E06762892159020600D19202 /* DietaryPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryPreferencesViewController.swift; sourceTree = "<group>"; };
 		E075A971215E29F500D264CA /* MealsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsContainerViewController.swift; sourceTree = "<group>"; };
 		E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +378,7 @@
 				E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */,
 				E0A56057216C9B15003534D4 /* DeliveryOverViewController.swift */,
 				E0A5605D216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift */,
+				E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -483,6 +490,8 @@
 				E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */,
 				E02E85552164C54400DDE4A7 /* AddressTableViewCell.swift */,
 				E02E85572164C55800DDE4A7 /* DeliveryDateTableViewCell.swift */,
+				E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */,
+				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -748,6 +757,7 @@
 				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
 				E02E85542164B6E100DDE4A7 /* CartItem.swift in Sources */,
+				E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */,
 				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
@@ -755,6 +765,7 @@
 				E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */,
 				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
+				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,
 				E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */,
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
@@ -763,6 +774,7 @@
 				E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */,
 				E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */,
 				E0A56058216C9B15003534D4 /* DeliveryOverViewController.swift in Sources */,
+				E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
 				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,
 				E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */,

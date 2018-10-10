@@ -13,10 +13,12 @@ class OrderConfirmationSuccessViewController: UIViewController {
     @IBOutlet weak var deliveryDateLabel: UILabel!
     @IBOutlet weak var freeGiftlLabel: UILabel!
     
+    var orderModelController: OrderModelController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        deliveryDateLabel.text = orderModelController.deliveryDateFormatted
     }
     
     @IBAction func cancel(_ sender: UIButton) {

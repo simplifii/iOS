@@ -26,8 +26,8 @@ class RoundedCornerBoxView: UIView {
         gradient.frame = self.bounds
         gradient.cornerRadius = self.layer.cornerRadius
         gradient.colors = [UIColor.white.cgColor, UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0).cgColor]
-        self.layer.shadowOpacity = 0.2
         self.layer.insertSublayer(gradient, at: 0)
+        self.layer.shadowOpacity = 0.2
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowRadius = 5.0
         self.layer.shadowOffset = CGSize.zero

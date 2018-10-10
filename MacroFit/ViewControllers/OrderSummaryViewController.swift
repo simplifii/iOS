@@ -75,7 +75,8 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
         } else if indexPath.row == (cartItemsCount + 7) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryDateTableViewCell") as! DeliveryDateTableViewCell
             
-            cell.deliveryDateLabel.text = "Sun 8/15 (8-10 AM)"
+            // cell.deliveryDateLabel.text = "Sun 8/15 (8-10 AM)"
+            cell.deliveryDateLabel.text = orderModelController.deliveryDateFormatted
             
             return cell
         } else {
@@ -133,6 +134,8 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
             note: orderModelController.entryNote,
             deliverySlot: "Sun 10-12",
             zipcode: orderModelController.address.zipcode,
+            deliveryDateFrom: orderModelController.deliveryDateFrom,
+            deliveryDateTo: orderModelController.deliveryDateTo,
             meals: meals,
             completion: {success,msg,data in
             if success == false {

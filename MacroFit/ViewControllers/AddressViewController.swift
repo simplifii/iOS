@@ -79,4 +79,14 @@ class AddressViewController: BaseViewController {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
+    func getAndSetDeliveryDate() {
+        APIService.getDeliveryDate(completion: {success,msg,data in
+            if success == true {
+                self.orderModelController.deliveryDateFormatted = data["delivery_date"].stringValue
+                self.orderModelController.deliveryDateFrom = data["from_timestamp"].stringValue
+                self.orderModelController.deliveryDateTo = data["to_timestamp"].stringValue
+            }
+        })
+    }
+    
 }
