@@ -95,6 +95,24 @@ struct APIService {
         })
     }
     
+    static func getRecipeTags(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getRecipeTags(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getUserFavouriteRecipes(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getUserFavouriteRecipes(), completion: {success,msg,json_data in
+            completion(success, msg, json_data[0]["Recipe"])
+        })
+    }
+    
+    static func getRecipesList(recipeTag:String, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getRecipesList(recipeTag: recipeTag), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
     
     static func updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?, completion: @escaping (Bool, String) -> Void) {
         

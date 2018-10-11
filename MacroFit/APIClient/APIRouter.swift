@@ -25,6 +25,9 @@ enum APIRouter: URLRequestConvertible {
     case getZipcodeServiceabilityInfo(zipcode: String)
     case orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int)
     case getDeliveryDate()
+    case getRecipeTags()
+    case getUserFavouriteRecipes()
+    case getRecipesList(recipeTag: String)
     
     var path: String {
         
@@ -52,6 +55,12 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.payment
             case .getDeliveryDate:
                 return NetworkingConstants.deliveryDate
+            case .getRecipeTags:
+                return NetworkingConstants.cards
+            case .getUserFavouriteRecipes:
+                return NetworkingConstants.cards
+            case .getRecipesList:
+                return NetworkingConstants.cards
         }
     }
     
@@ -154,6 +163,21 @@ enum APIRouter: URLRequestConvertible {
             paramDict["state"] = "Created"
             paramDict["equalto___zipcode"] = zipcode
             break
+        case .getRecipeTags:
+            paramDict["type"] = "Label"
+            paramDict["state"] = "Created"
+            paramDict["equalto___type"] = "Recipe Tag"
+            break
+        case .getUserFavouriteRecipes:
+            paramDict["type"] = "Customer"
+            paramDict["unique_codes"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            paramDict["embed"] = "cards"
+            break
+        case let .getRecipesList(recipeTag: recipeTag):
+            paramDict["type"] = "Recipe"
+            paramDict["sort_by"] = "-updated_at"
+            paramDict["search"] = recipeTag
+            break
         default:
             break
         }
@@ -164,7 +188,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList:
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment:
             return .post
@@ -181,10 +205,10 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList:
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             default:
                 break
@@ -216,7 +240,7 @@ enum APIRouter: URLRequestConvertible {
             let data = (jsonString?.data(using: .utf8))! as Data
             urlRequest.httpBody = data
         }
-                        
+        
         switch method {
             case .get:
                 return try URLEncoding.methodDependent.encode(urlRequest, with: parameters)

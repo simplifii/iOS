@@ -94,6 +94,8 @@
 		E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */; };
 		E0DC7401215BAD060085551E /* AddItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DC7400215BAD060085551E /* AddItemView.xib */; };
 		E0DC7403215BAD230085551E /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC7402215BAD230085551E /* AddItemView.swift */; };
+		E0DD472B216F578000783F99 /* RecipeCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DD472A216F578000783F99 /* RecipeCardTableViewCell.swift */; };
+		E0DD472D216F60A000783F99 /* RecipeCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DD472C216F60A000783F99 /* RecipeCardsViewController.swift */; };
 		E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */; };
 		E0DEDBA0216733BC0040BC52 /* LoginFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */; };
 		E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */; };
@@ -215,6 +217,8 @@
 		E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		E0DC7400215BAD060085551E /* AddItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemView.xib; sourceTree = "<group>"; };
 		E0DC7402215BAD230085551E /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		E0DD472A216F578000783F99 /* RecipeCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardTableViewCell.swift; sourceTree = "<group>"; };
+		E0DD472C216F60A000783F99 /* RecipeCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardsViewController.swift; sourceTree = "<group>"; };
 		E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormTableViewController.swift; sourceTree = "<group>"; };
 		E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationSuccessViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 				E0A56057216C9B15003534D4 /* DeliveryOverViewController.swift */,
 				E0A5605D216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift */,
 				E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */,
+				E0DD472C216F60A000783F99 /* RecipeCardsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				E02E85572164C55800DDE4A7 /* DeliveryDateTableViewCell.swift */,
 				E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */,
 				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
+				E0DD472A216F578000783F99 /* RecipeCardTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -776,10 +782,12 @@
 				E0A56058216C9B15003534D4 /* DeliveryOverViewController.swift in Sources */,
 				E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
+				E0DD472B216F578000783F99 /* RecipeCardTableViewCell.swift in Sources */,
 				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,
 				E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */,
 				E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */,
 				E02E854721647FE900DDE4A7 /* PaymentViewController.swift in Sources */,
+				E0DD472D216F60A000783F99 /* RecipeCardsViewController.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
