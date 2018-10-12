@@ -108,7 +108,7 @@
                                     <constraint firstAttribute="width" constant="20" id="esH-I7-bzs"/>
                                     <constraint firstAttribute="height" constant="20" id="p9D-Qe-EaZ"/>
                                 </constraints>
-                                <state key="normal" image="settings"/>
+                                <state key="normal" image="cart"/>
                                 <connections>
                                     <action selector="showSettingsScreen:" destination="aMb-ad-EC2" eventType="touchUpInside" id="6bH-Q8-WnO"/>
                                     <action selector="showSettingsScreen:" destination="ETm-Ht-maN" eventType="touchUpInside" id="eeY-qN-uVB"/>
@@ -146,7 +146,7 @@
                                     <constraint firstAttribute="height" constant="20" id="qQ3-8K-J9a"/>
                                     <constraint firstAttribute="width" constant="20" id="s60-uV-dJN"/>
                                 </constraints>
-                                <state key="normal" image="back"/>
+                                <state key="normal" image="nav"/>
                                 <connections>
                                     <action selector="goBackToPreviousScreen:" destination="ETm-Ht-maN" eventType="touchUpInside" id="ZH9-Dr-F2f"/>
                                     <action selector="goBackToPreviousScreen:" destination="aMb-ad-EC2" eventType="touchUpInside" id="bgo-ly-pGx"/>
@@ -423,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQ5-zc-BGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4521" y="-166"/>
+            <point key="canvasLocation" x="4521" y="-341"/>
         </scene>
         <!--Order Confirmation View Controller-->
         <scene sceneID="kbQ-nA-ncw">
@@ -893,7 +893,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B29-lz-NRV">
-                                <rect key="frame" x="0.0" y="139" width="375" height="508"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="528"/>
                                 <color key="backgroundColor" red="0.98814910649999999" green="0.98829048870000002" blue="0.9881181121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecipeCardTableViewCell" rowHeight="128" id="fuW-AC-VeM" customClass="RecipeCardTableViewCell" customModule="MacroFit" customModuleProvider="target">
@@ -918,22 +918,27 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_orange" translatesAutoresizingMaskIntoConstraints="NO" id="1jk-Il-XeT">
-                                                            <rect key="frame" x="302" y="93" width="16" height="16"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3g-ci-hb2">
+                                                            <rect key="frame" x="295" y="86" width="22" height="22"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="16" id="2zb-aU-jvw"/>
-                                                                <constraint firstAttribute="width" constant="16" id="VzZ-kA-E0v"/>
+                                                                <constraint firstAttribute="height" constant="22" id="1gS-8J-7zy"/>
+                                                                <constraint firstAttribute="width" constant="22" id="GYt-W3-I6X"/>
                                                             </constraints>
-                                                        </imageView>
+                                                            <color key="tintColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" backgroundImage="heart_orange"/>
+                                                            <connections>
+                                                                <action selector="markFavourite:" destination="fuW-AC-VeM" eventType="touchUpInside" id="U1p-ta-5Rn"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="azc-FC-X15" firstAttribute="leading" secondItem="uvj-hz-8tl" secondAttribute="trailing" constant="18" id="0rp-lK-rDH"/>
                                                         <constraint firstItem="uvj-hz-8tl" firstAttribute="centerY" secondItem="ba4-wt-npI" secondAttribute="centerY" id="BeA-Ua-C6a"/>
-                                                        <constraint firstAttribute="bottom" secondItem="1jk-Il-XeT" secondAttribute="bottom" constant="7" id="J8o-ln-REw"/>
                                                         <constraint firstAttribute="bottom" secondItem="azc-FC-X15" secondAttribute="bottom" id="UdH-p0-gS6"/>
                                                         <constraint firstItem="uvj-hz-8tl" firstAttribute="leading" secondItem="ba4-wt-npI" secondAttribute="leading" constant="18" id="cCE-y1-Qv3"/>
-                                                        <constraint firstAttribute="trailing" secondItem="1jk-Il-XeT" secondAttribute="trailing" constant="7" id="jsO-Aa-Axe"/>
+                                                        <constraint firstAttribute="bottom" secondItem="u3g-ci-hb2" secondAttribute="bottom" constant="8" id="h5b-aG-fW3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="u3g-ci-hb2" secondAttribute="trailing" constant="8" id="qMn-pA-15m"/>
                                                         <constraint firstItem="azc-FC-X15" firstAttribute="top" secondItem="ba4-wt-npI" secondAttribute="top" id="rve-0i-Ilh"/>
                                                         <constraint firstAttribute="trailing" secondItem="azc-FC-X15" secondAttribute="trailing" id="sY9-wV-huA"/>
                                                     </constraints>
@@ -950,7 +955,7 @@
                                         <color key="backgroundColor" red="0.98814910649999999" green="0.98829048870000002" blue="0.9881181121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="containerView" destination="ba4-wt-npI" id="pkG-z2-ndh"/>
-                                            <outlet property="favouriteImageView" destination="1jk-Il-XeT" id="eom-MI-BDF"/>
+                                            <outlet property="favouriteButton" destination="u3g-ci-hb2" id="8Fi-cW-kOm"/>
                                             <outlet property="recipeImageView" destination="azc-FC-X15" id="I2t-Gn-VpX"/>
                                             <outlet property="recipeNameLabel" destination="uvj-hz-8tl" id="d56-iG-K9O"/>
                                         </connections>
@@ -960,7 +965,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.98814910649999999" green="0.98829048870000002" blue="0.9881181121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="i3O-YT-iwd" firstAttribute="bottom" secondItem="B29-lz-NRV" secondAttribute="bottom" constant="20" id="9xd-R8-R2w"/>
+                            <constraint firstItem="i3O-YT-iwd" firstAttribute="bottom" secondItem="B29-lz-NRV" secondAttribute="bottom" id="9xd-R8-R2w"/>
                             <constraint firstItem="16M-sJ-SFX" firstAttribute="trailing" secondItem="i3O-YT-iwd" secondAttribute="trailing" id="BLn-4G-SLs"/>
                             <constraint firstItem="16M-sJ-SFX" firstAttribute="top" secondItem="1BH-hb-DWu" secondAttribute="top" id="CLS-oh-0xq"/>
                             <constraint firstItem="B29-lz-NRV" firstAttribute="top" secondItem="cNj-G1-n5h" secondAttribute="bottom" constant="18" id="JOI-4z-pu5"/>
@@ -981,7 +986,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rA9-v7-tBk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5364" y="458.32083958020991"/>
+            <point key="canvasLocation" x="5262" y="514"/>
         </scene>
         <!--Fitness-->
         <scene sceneID="U5O-nh-i5J">
@@ -999,7 +1004,7 @@
             </objects>
             <point key="canvasLocation" x="1186" y="664"/>
         </scene>
-        <!--Statistic-->
+        <!--Home-->
         <scene sceneID="RAk-om-4wu">
             <objects>
                 <viewController id="hbm-uW-Syc" sceneMemberID="viewController">
@@ -1009,16 +1014,16 @@
                         <color key="backgroundColor" red="0.98814910649999999" green="0.98829048870000002" blue="0.9881181121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="x3B-B0-cJB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistic" image="statistic_gray" id="Lr6-5f-t5c"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="Lr6-5f-t5c"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxi-VP-nNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1185" y="-688"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="dUd-5K-qhy">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="32H-Sd-457" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="32H-Sd-457" customClass="TabBarViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C2J-9D-tXM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -1989,7 +1994,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKu-zN-ID0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6914" y="42"/>
+            <point key="canvasLocation" x="6913" y="-233"/>
         </scene>
         <!--Payment Error View Controller-->
         <scene sceneID="RaX-hr-fY6">
@@ -2163,24 +2168,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5n-tM-Bud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4521" y="-803"/>
+            <point key="canvasLocation" x="4521" y="-902"/>
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="20" height="12"/>
         <image name="calendar" width="512" height="512"/>
         <image name="cancel_gray" width="512" height="512"/>
+        <image name="cart" width="409.60000610351562" height="409.60000610351562"/>
         <image name="credit_card" width="512" height="512"/>
         <image name="edit_small" width="16" height="16"/>
         <image name="favourites" width="1807" height="1305"/>
         <image name="fitness_gray" width="25.600000381469727" height="25.600000381469727"/>
         <image name="heart_orange" width="409.60000610351562" height="409.60000610351562"/>
         <image name="heart_white" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="home" width="25.600000381469727" height="25.600000381469727"/>
         <image name="intro_screen_background1" width="375" height="667"/>
         <image name="meals_gray" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="nav" width="409.60000610351562" height="409.60000610351562"/>
         <image name="padlock" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="settings" width="20" height="20"/>
-        <image name="statistic_gray" width="25.600000381469727" height="25.600000381469727"/>
         <image name="underline" width="326" height="1"/>
         <image name="user" width="409.60000610351562" height="409.60000610351562"/>
     </resources>

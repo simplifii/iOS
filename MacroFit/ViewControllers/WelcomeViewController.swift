@@ -41,7 +41,7 @@ class WelcomeViewController: UIViewController {
     }
     
     func viewNextScreen() {
-        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }

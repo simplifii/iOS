@@ -9,6 +9,7 @@
 struct UserConstants {
     static let userToken = "userToken"
     static let userCardUniqueCode = "userCardUniqueCode"
+    
     static let authentication = "Authorization"
     static let content_type = "Content-Type"
 }

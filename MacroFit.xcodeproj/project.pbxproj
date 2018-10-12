@@ -26,6 +26,7 @@
 		E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */; };
 		E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */; };
 		E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06762892159020600D19202 /* DietaryPreferencesViewController.swift */; };
+		E073FEDE2170BC1A00000423 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073FEDD2170BC1A00000423 /* TabBarViewController.swift */; };
 		E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A971215E29F500D264CA /* MealsContainerViewController.swift */; };
 		E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */; };
 		E075A976215E377200D264CA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A975215E377100D264CA /* BaseViewController.swift */; };
@@ -143,6 +144,7 @@
 		E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoriesViewController.swift; sourceTree = "<group>"; };
 		E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		E06762892159020600D19202 /* DietaryPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryPreferencesViewController.swift; sourceTree = "<group>"; };
+		E073FEDD2170BC1A00000423 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E075A971215E29F500D264CA /* MealsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsContainerViewController.swift; sourceTree = "<group>"; };
 		E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		E075A975215E377100D264CA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				E0A5605D216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift */,
 				E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */,
 				E0DD472C216F60A000783F99 /* RecipeCardsViewController.swift */,
+				E073FEDD2170BC1A00000423 /* TabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
 				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,
 				E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */,
+				E073FEDE2170BC1A00000423 /* TabBarViewController.swift in Sources */,
 				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
 				E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */,
 				E0A5605A216C9B76003534D4 /* DateTimeView.swift in Sources */,
@@ -979,6 +983,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z9B6F2JSHP;
 				INFOPLIST_FILE = MacroFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -998,6 +1003,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z9B6F2JSHP;
 				INFOPLIST_FILE = MacroFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

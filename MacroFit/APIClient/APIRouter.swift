@@ -28,6 +28,7 @@ enum APIRouter: URLRequestConvertible {
     case getRecipeTags()
     case getUserFavouriteRecipes()
     case getRecipesList(recipeTag: String)
+    case markRecipeAsFavourite(cardUniqueCode:String)
     
     var path: String {
         
@@ -59,7 +60,7 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .getUserFavouriteRecipes:
                 return NetworkingConstants.cards
-            case .getRecipesList:
+            case .getRecipesList, .markRecipeAsFavourite:
                 return NetworkingConstants.cards
         }
     }
@@ -129,6 +130,10 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["order_card_uniquecode"] = orderCardUniqueCode
                 bodyDict["credits_tobe_used"] = credits
                 break
+        case let .markRecipeAsFavourite(cardUniqueCode:cardUniqueCode):
+                bodyDict["action"] = "PinRecipe"
+                bodyDict["card_unique_code"] = cardUniqueCode
+                break
             default:
                 print("no action")
         }
@@ -192,7 +197,7 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite:
             return .patch
         }
     }
@@ -205,7 +210,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList:

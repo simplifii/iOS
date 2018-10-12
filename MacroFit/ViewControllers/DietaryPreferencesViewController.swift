@@ -100,10 +100,10 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     
     @IBAction func updateDietaryPreferences(_ sender: UIButton) {
         APIService.updateDietaryPreferences(dietary_preference: selectedDietaryOpition, diet_note: diet_note, completion: {success,msg in
-            if !success {
-                self.showAlertMessage(title: msg, message: nil)
-            } else {
+            if success {                
                 self.gotoNextScreen()
+            } else {
+                self.showAlertMessage(title: msg, message: nil)
             }
         })
     }
