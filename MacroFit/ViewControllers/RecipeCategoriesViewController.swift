@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class RecipeCategoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RecipeCategoriesViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -122,6 +122,8 @@ class RecipeCategoriesViewController: UIViewController, UITableViewDataSource, U
                 }
                 self.filteredRecipeTags = self.recipeTags
                 self.tableView.reloadData()
+            } else {
+                self.showAlertMessage(title: msg, message: nil)
             }
         })
     }

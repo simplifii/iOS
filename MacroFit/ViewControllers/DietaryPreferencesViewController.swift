@@ -25,9 +25,14 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
         setupView()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.addProgressBarInView(progressBarView: progressBarView, percent: 80, description: "Customizing your Macros")
+    }
+    
     func setupView() {
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
-        self.addProgressBarInView(progressBarView: progressBarView, percent: 80, description: "Customizing your Macros")
         addDietaryOptionsInView()
         
         additionalDietaryPreferencesTextView.layer.borderColor = UIColor.lightGray.cgColor;

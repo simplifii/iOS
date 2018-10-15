@@ -322,7 +322,7 @@
                                                     <rect key="frame" x="67" y="11" width="292" height="33"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -354,7 +354,7 @@
                                                     <rect key="frame" x="67" y="11" width="292" height="33"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -2026,7 +2026,7 @@
         <!--Login View Controller-->
         <scene sceneID="S7e-Rb-eOD">
             <objects>
-                <viewController id="Tgr-8H-z50" customClass="LoginViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="Tgr-8H-z50" customClass="LoginViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7n2-iG-hPA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

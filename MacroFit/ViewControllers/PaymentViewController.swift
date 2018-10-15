@@ -19,7 +19,8 @@ class PaymentViewController: BaseViewController {
         
         self.view.backgroundColor = Constants.backgroundColor
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
-
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -22,13 +22,12 @@ class OrderConfirmationSuccessViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController
         
-        // Remove all previous screen for setting new root view controller
         self.navigationController?.viewControllers.removeAll()
         
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
     }
     
     @IBAction func learnMore(_ sender: UIButton) {

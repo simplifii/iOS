@@ -89,6 +89,8 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
                         self.recipes = data.arrayValue
                         self.tableView.reloadData()
                     }
+                } else {
+                    self.showAlertMessage(title: msg, message: nil)
                 }
             })
         } else {
@@ -99,6 +101,8 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
                         
                         self.tableView.reloadData()
                     }
+                } else {
+                    self.showAlertMessage(title: msg, message: nil)
                 }
             })
         }
@@ -172,6 +176,8 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
                     
                     self.setRecipes(recipeTag: self.recipeTag)
                 }
+            } else {
+                self.showAlertMessage(title: msg, message: nil)
             }
         })
     }

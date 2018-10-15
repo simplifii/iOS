@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: BaseViewController {
 
     @IBOutlet weak var ordrePlacementDayLabel: UILabel!
     @IBOutlet weak var ordrePlacementTimeLabel: UILabel!
@@ -48,17 +48,21 @@ class WelcomeViewController: UIViewController {
     
     func getOrderPlacementDetails() {
         APIService.getOrderPlacementDetails(completion: {success, msg, data in
-            if data["is_open"].boolValue == true {
-                self.ordrePlacementDayLabel.text = "\(data["from_day"].stringValue) - \(data["to_day"].stringValue)"
-                self.ordrePlacementTimeLabel.text = "until \(data["closing_time"].stringValue)."
-                self.remainingTimeLabel.text = data["time_left"].stringValue
+            if success == true {
+                if data["is_open"].boolValue == true {
+                    self.ordrePlacementDayLabel.text = "\(data["from_day"].stringValue) - \(data["to_day"].stringValue)"
+                    self.ordrePlacementTimeLabel.text = "until \(data["closing_time"].stringValue)."
+                    self.remainingTimeLabel.text = data["time_left"].stringValue
+                } else {
+                    self.viewDeliveryOverScreen(
+                        date: data["next_opening_date"].stringValue,
+                        days: data["datetime"]["days"].stringValue,
+                        hours: data["datetime"]["hours"].stringValue,
+                        minutes: data["datetime"]["minutes"].stringValue
+                    )
+                }
             } else {
-                self.viewDeliveryOverScreen(
-                    date: data["next_opening_date"].stringValue,
-                    days: data["datetime"]["days"].stringValue,
-                    hours: data["datetime"]["hours"].stringValue,
-                    minutes: data["datetime"]["minutes"].stringValue
-                )
+                self.showAlertMessage(title: msg, message: nil)
             }
         })
     }

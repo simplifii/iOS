@@ -18,9 +18,11 @@ class AddressViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAndSetDeliveryDate()
+        
         setupView()
 
-        // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
     }
     
     func setupView() {
@@ -57,7 +59,11 @@ class AddressViewController: BaseViewController {
                 self.showAlertMessage(title: msg, message: nil)
             } else {
                 if data.count > 0 {
-                    self.showOrderSummaryScreen()
+                    if !self.orderModelController.deliveryDateFormatted.isEmpty {
+                        self.showOrderSummaryScreen()
+                    } else {
+                        self.showAlertMessage(title: "Unable to get delivery date", message: nil)
+                    }
                 } else {
                     self.showErrorMessageScreen()
                 }
@@ -81,10 +87,13 @@ class AddressViewController: BaseViewController {
     
     func getAndSetDeliveryDate() {
         APIService.getDeliveryDate(completion: {success,msg,data in
+            print(data)
             if success == true {
                 self.orderModelController.deliveryDateFormatted = data["delivery_date"].stringValue
                 self.orderModelController.deliveryDateFrom = data["from_timestamp"].stringValue
                 self.orderModelController.deliveryDateTo = data["to_timestamp"].stringValue
+            }  else {
+                self.showAlertMessage(title: msg, message: nil)
             }
         })
     }

@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import AlamofireImage
 
-class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MenuItemTableViewCellDelegate {
+class MenuViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, MenuItemTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -132,6 +132,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if success {
                 self.mealsJSON = data
                 self.tableView.reloadData()
+            } else {
+                self.showAlertMessage(title: msg, message: nil)
             }
         })
     }

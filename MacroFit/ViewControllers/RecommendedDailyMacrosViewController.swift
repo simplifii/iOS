@@ -28,10 +28,15 @@ class RecommendedDailyMacrosViewController: OnboardUserViewController {
         setupView()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.addProgressBarInView(progressBarView: progressBarView, percent: 60, description: "Customizing your Macros")
+    }
+    
     // Setup and customize View
     func setupView() {
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
-        self.addProgressBarInView(progressBarView: progressBarView, percent: 60, description: "Customizing your Macros")
         
         setMealsCountTitle(mealCount: 3)
     }

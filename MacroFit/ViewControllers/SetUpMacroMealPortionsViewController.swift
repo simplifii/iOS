@@ -33,6 +33,13 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
         super.viewDidLoad()
         setupView()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.addProgressBarInView(progressBarView: progressBarView, percent: 60, description: "Customizing your Macros")
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,7 +48,6 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     
     func setupView() {
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
-        self.addProgressBarInView(progressBarView: progressBarView, percent: 60, description: "Customizing your Macros")
         
         
 //        roundLeftCorners(button: twoMealsPerDayButton, cornerRadius: 10.0)

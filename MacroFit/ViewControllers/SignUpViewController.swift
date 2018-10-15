@@ -27,7 +27,13 @@ class SignUpViewController: OnboardUserViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         self.addProgressBarInView(progressBarView: progressBarView, percent: 20, description: nil)
+
     }
 
     override func didReceiveMemoryWarning() {

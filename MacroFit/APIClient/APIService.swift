@@ -10,9 +10,14 @@ import Alamofire
 import SwiftyJSON
 
 struct APIService {
-//    static let APIToken = "sdfghjk" // TODO
+
+    // Login
     
     static func loginUser(username: String, password: String, completion: @escaping (Bool, String) -> Void){
+        if !Connectivity.isConnectedToInternet {
+            completion(false, "Unable to connect to internet")
+        }
+        
         Alamofire.request(APIRouter.loginUser(username: username, password: password))
             .validate(statusCode: 200..<501)
             .validate(contentType: ["application/json"])
@@ -40,6 +45,8 @@ struct APIService {
         })
 
     }
+    
+    // GET
     
     static func activityLevels(completion: @escaping (Bool, String, JSON) -> Void){
         sendRequestAndGetData(request: APIRouter.activityLevels(), completion: {success,msg,json_data in
@@ -114,6 +121,8 @@ struct APIService {
     }
     
     
+    // POST & PATCH
+    
     static func updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?, completion: @escaping (Bool, String) -> Void) {
         
         let request = APIRouter.updateCustomerBasicDetails(age: age, weight: weight, height: height, activity_level: activity_level, goal: goal, gender: gender, per_day_cal_burn: per_day_cal_burn, goal_note: goal_note)
@@ -166,6 +175,11 @@ struct APIService {
     
     
     static func sendRequest(request: URLRequestConvertible, completion: @escaping (Bool, String) -> Void) {
+        if !Connectivity.isConnectedToInternet {
+            completion(false, "Unable to connect to internet")
+            return
+        }
+        
         Alamofire.request(request)
             .validate(statusCode: 200..<501)
             .validate(contentType: ["application/json"])
@@ -192,6 +206,11 @@ struct APIService {
     }
     
     static func sendRequestAndGetData(request: URLRequestConvertible, completion: @escaping (Bool, String, JSON) -> Void) {
+        if !Connectivity.isConnectedToInternet {
+            completion(false, "Unable to connect to internet", [])
+            return
+        }
+        
         Alamofire.request(request)
             .validate(statusCode: 200..<501)
             .validate(contentType: ["application/json"])
@@ -216,4 +235,5 @@ struct APIService {
                 }
             })
     }
+    
 }

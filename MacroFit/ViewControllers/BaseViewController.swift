@@ -46,16 +46,43 @@ class BaseViewController: UIViewController {
     
     public func showAlertMessage(title: String, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+       
+        if title == "Token invalid" || title == "Token expired" {
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: {(alert: UIAlertAction!) in
+                self.gotoLoginScreen()
+            })
+            action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+
+            alert.addAction(action)
+        } else {
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+
+            alert.addAction(action)
+        }
         
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        action.setValue(Constants.schemeColor, forKey: "titleTextColor")
-        
-        alert.addAction(action)
         
         self.present(alert, animated: true)
     }
 
     func showPreviousScreen() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func gotoLoginScreen() {
+        self.removeUserToken()
+        
+        self.navigationController?.viewControllers.removeAll()
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationViewController") as? UINavigationController
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+        vc?.initRootViewController(vc: loginVC!)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
+    }
+    
+    func removeUserToken() {
+        UserDefaults.standard.removeObject(forKey: UserConstants.userToken)
+        UserDefaults.standard.removeObject(forKey: UserConstants.userCardUniqueCode)
     }
 }

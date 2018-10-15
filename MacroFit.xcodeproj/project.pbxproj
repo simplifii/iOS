@@ -90,6 +90,8 @@
 		E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */; };
 		E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */; };
 		E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */; };
+		E0D64AD121746A6100FB700C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */; };
+		E0D64AD32174ADC800FB700C /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D64AD22174ADC800FB700C /* Connectivity.swift */; };
 		E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73F7215B84010085551E /* MenuViewController.swift */; };
 		E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FB215B93300085551E /* MealsViewController.swift */; };
 		E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */; };
@@ -214,6 +216,8 @@
 		E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoFormTableViewController.swift; sourceTree = "<group>"; };
 		E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUserViewController.swift; sourceTree = "<group>"; };
+		E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		E0D64AD22174ADC800FB700C /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		E0DC73F7215B84010085551E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E0DC73FB215B93300085551E /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
 		E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 			children = (
 				E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */,
 				E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */,
+				E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 				E0A792142153823C00CBBFDB /* APIService.swift */,
 				E0A792162153834500CBBFDB /* UserConstants.swift */,
 				E0A79218215384B900CBBFDB /* APIError.swift */,
+				E0D64AD22174ADC800FB700C /* Connectivity.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -766,7 +772,9 @@
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
 				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
+				E0D64AD121746A6100FB700C /* UIViewControllerExtension.swift in Sources */,
 				E02E85542164B6E100DDE4A7 /* CartItem.swift in Sources */,
+				E0D64AD32174ADC800FB700C /* Connectivity.swift in Sources */,
 				E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */,
 				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,

@@ -69,7 +69,12 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
             let address = "\(orderModelController.address.addressLineOne) \(orderModelController.address.addressLineTwo) \(orderModelController.address.zipcode)"
             cell.addressLabel.text = address
             cell.editButton.addTarget(self, action: #selector(self.showAddressScreen(_:)), for: UIControlEvents.touchUpInside)
-
+            
+            let icon = UIImage(named: "edit")!
+            cell.editButton.setImage(icon, for: .normal)
+            cell.editButton.imageView?.contentMode = .scaleAspectFit
+            cell.editButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: -40)
+            cell.editButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -40, bottom: 0, right: 0)
             
             return cell
         } else if indexPath.row == (cartItemsCount + 7) {

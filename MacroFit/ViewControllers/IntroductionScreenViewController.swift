@@ -20,10 +20,13 @@ class IntroductionScreenViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         featuresListScrollView.isPagingEnabled = true
         featuresListScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(features.count), height: 75)
-        featuresListScrollView.contentMode = .center
         featuresListScrollView.showsHorizontalScrollIndicator = false
         self.featuresListScrollView.delegate = self
         self.featuresPageControl.currentPage = 0
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         loadFeatures()
     }
@@ -32,7 +35,6 @@ class IntroductionScreenViewController: UIViewController, UIScrollViewDelegate {
         for(index, feature) in features.enumerated() {
             if let featureView = Bundle.main.loadNibNamed("FeatureView", owner: self, options: nil)?.first as? FeatureView {
                 featureView.featureLabel.text = feature
-                featureView.contentMode = .top
                 
                 featuresListScrollView.addSubview(featureView)
                 
