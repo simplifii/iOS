@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class MealsViewController: UIViewController {
 
@@ -60,6 +61,13 @@ class MealsViewController: UIViewController {
         
         deliveryOverContainerView.alpha = 0
         
+
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        SideMenuManager.default.menuAnimationBackgroundColor = .white // or whatever color you want
+        SideMenuManager.default.menuFadeStatusBar = false
+        
+
     }
     
     @IBAction func showContainerView(_ sender: UISegmentedControl) {
@@ -83,11 +91,6 @@ class MealsViewController: UIViewController {
         }
     }
     
-    @IBAction func goBackToPreviousScreen(_ sender: UIButton) {
-    }
-    
-    @IBAction func showSettingsScreen(_ sender: UIButton) {
-    }
     
     
     func getOrderPlacementDetails() {
@@ -123,4 +126,5 @@ class MealsViewController: UIViewController {
             deliveryOverEmbeddedVC = segue.destination as? DeliveryOverEmbeddedViewController
         }
     }
+    
 }

@@ -10,6 +10,7 @@ target 'MacroFit' do
     pod 'DropDown'
     pod 'AlamofireImage', '~> 3.4'
     pod 'Stripe'
+    pod 'SideMenu' 
 # Pods for MacroFit
 
   target 'MacroFitTests' do

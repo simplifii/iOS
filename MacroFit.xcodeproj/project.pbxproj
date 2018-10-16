@@ -87,6 +87,8 @@
 		E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */; };
 		E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */; };
 		E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */; };
+		E0C009A1217600E400926904 /* SideMenuFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C009A0217600E400926904 /* SideMenuFormTableViewController.swift */; };
+		E0C009A321760F5500926904 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C009A221760F5500926904 /* SideMenuViewController.swift */; };
 		E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */; };
 		E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */; };
 		E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */; };
@@ -213,6 +215,8 @@
 		E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpMacroMealPortionsViewController.swift; sourceTree = "<group>"; };
 		E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedDailyMacrosViewController.swift; sourceTree = "<group>"; };
 		E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerBoxView.swift; sourceTree = "<group>"; };
+		E0C009A0217600E400926904 /* SideMenuFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuFormTableViewController.swift; sourceTree = "<group>"; };
+		E0C009A221760F5500926904 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoFormTableViewController.swift; sourceTree = "<group>"; };
 		E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUserViewController.swift; sourceTree = "<group>"; };
@@ -391,6 +395,8 @@
 				E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */,
 				E0DD472C216F60A000783F99 /* RecipeCardsViewController.swift */,
 				E073FEDD2170BC1A00000423 /* TabBarViewController.swift */,
+				E0C009A0217600E400926904 /* SideMenuFormTableViewController.swift */,
+				E0C009A221760F5500926904 /* SideMenuViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -703,6 +710,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -757,6 +765,7 @@
 				E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */,
 				E0A792152153823C00CBBFDB /* APIService.swift in Sources */,
 				E02E85502164A36300DDE4A7 /* OrderModelController.swift in Sources */,
+				E0C009A321760F5500926904 /* SideMenuViewController.swift in Sources */,
 				E075A976215E377200D264CA /* BaseViewController.swift in Sources */,
 				E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */,
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
@@ -807,6 +816,7 @@
 				E0DEDBA42167620D0040BC52 /* PaymentErrorViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
 				E0A792132153812800CBBFDB /* NetworkingConstants.swift in Sources */,
+				E0C009A1217600E400926904 /* SideMenuFormTableViewController.swift in Sources */,
 				E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */,
 				E02E854C2164A1FF00DDE4A7 /* Address.swift in Sources */,
 				E02E85562164C54400DDE4A7 /* AddressTableViewCell.swift in Sources */,

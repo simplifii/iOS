@@ -29,6 +29,7 @@ enum APIRouter: URLRequestConvertible {
     case getUserFavouriteRecipes()
     case getRecipesList(recipeTag: String)
     case markRecipeAsFavourite(cardUniqueCode:String)
+    case logoutUser()
     
     var path: String {
         
@@ -62,6 +63,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .getRecipesList, .markRecipeAsFavourite:
                 return NetworkingConstants.cards
+            case .logoutUser:
+                return NetworkingConstants.logout
         }
     }
     
@@ -197,7 +200,7 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser:
             return .patch
         }
     }
@@ -210,7 +213,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList:
