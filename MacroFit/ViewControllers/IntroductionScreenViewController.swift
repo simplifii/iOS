@@ -18,6 +18,8 @@ class IntroductionScreenViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadFeatures()
+        
         featuresListScrollView.isPagingEnabled = true
         featuresListScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(features.count), height: 75)
         featuresListScrollView.showsHorizontalScrollIndicator = false
@@ -25,11 +27,6 @@ class IntroductionScreenViewController: UIViewController, UIScrollViewDelegate {
         self.featuresPageControl.currentPage = 0
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        loadFeatures()
-    }
     
     func loadFeatures() {
         for(index, feature) in features.enumerated() {

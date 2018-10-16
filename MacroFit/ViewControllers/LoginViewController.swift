@@ -55,11 +55,15 @@ class LoginViewController: OnboardUserViewController {
         if validateFields() == false {
             return
         }
-        callLoginAPI()
+        callLoginAPI(sender: sender)
     }
     
-    func callLoginAPI() {
+    func callLoginAPI(sender: UIButton) {
+        sender.isEnabled = false
+        
         APIService.loginUser(username: self.email, password: self.password, completion: {success,msg in
+            sender.isEnabled = true
+            
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
             } else {

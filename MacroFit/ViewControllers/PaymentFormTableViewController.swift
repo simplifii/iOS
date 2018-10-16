@@ -50,18 +50,20 @@ class PaymentFormTableViewController: UITableViewController {
         cardParams.expYear = year
         cardParams.cvc = cvvTextField.text!
 
+        sender.isEnabled = false
         STPAPIClient.shared().createToken(withCard: cardParams) { (token: STPToken?, error: Error?) in
             guard let token = token, error == nil else {
 //                self.showAlertMessage(title: "Unable to complete transaction", message: error?.localizedDescription)
+                sender.isEnabled = true
                 self.showErrorScreen()
                 return
             }
 
-            self.completePayment(stripeToken: token.tokenId)
+            self.completePayment(stripeToken: token.tokenId, sender: sender)
         }
     }
     
-    func completePayment(stripeToken: String) {
+    func completePayment(stripeToken: String, sender: UIButton) {
         let amount = orderModelController.totalAmount * 100 // Amount in cents
         let orderId = orderModelController.orderCardId
         let orderCardUniqueCode = orderModelController.orderCardUniqueCode
@@ -74,6 +76,8 @@ class PaymentFormTableViewController: UITableViewController {
             orderCardUniqueCode: orderCardUniqueCode,
             credits: credits,
             completion: {success,msg in
+                sender.isEnabled = true
+                
                 if success == false {
                     self.showAlertMessage(title: msg, message: nil)
                 } else {

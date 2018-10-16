@@ -175,6 +175,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
         setFieldsData()
         let (success, msg) = validateFields()
         if success == true {
+            print("validated")
             APIService.updateCustomerBasicDetails(age: age, weight: weight, height: height, activity_level: activityLevel, goal: selectedGoal, gender: gender, per_day_cal_burn: per_day_cal_burn, goal_note: goalNote, completion: {success, msg in
                 if success == true {
                     self.gotoNextScreen()

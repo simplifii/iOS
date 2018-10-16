@@ -64,7 +64,10 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubtotalTableViewCell") as! SubtotalTableViewCell
             
             let originalTotal = totalItemsCount * costPerMeal
-            let finalTotal = totalItemsCount * costPerMeal - credits
+            var finalTotal = totalItemsCount * costPerMeal - credits
+            if finalTotal < 0 {
+                finalTotal = 0
+            }
             
             cell.setSubtotal(originalSubtotal: originalTotal, finalSubtotal: finalTotal, credits: credits)
             return cell

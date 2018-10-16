@@ -45,11 +45,6 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         cartContainerView.isHidden = true
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        
-    }
     
     @objc func proceedToCheckout(_ sender: UIButton) {
         addItemsInCart()
@@ -113,7 +108,10 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         totalItemsCount = totalQuantity
 
         cartBarView.mealsInCartLabel.text = "Meals: \(totalItemsCount)"
-        cartBarView.descriptionLabel.text = "Add \(10-totalItemsCount) more for minimum order of 10. Add \(15-totalItemsCount) more to save 25% on cost/meal."
+        
+        let minimumOrder = (10-totalItemsCount < 0) ? 0 : (10-totalItemsCount)
+        let discountedOrderCount = (15-totalItemsCount < 0) ? 0 : (15-totalItemsCount)
+        cartBarView.descriptionLabel.text = "Add \(minimumOrder) more for minimum order of 10. Add \(discountedOrderCount) more to save 25% on cost/meal."
     }
     
     func showCartBar()->Bool {

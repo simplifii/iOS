@@ -25,6 +25,10 @@ class AddressViewController: BaseViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
     func setupView() {
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
 

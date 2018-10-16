@@ -36,7 +36,7 @@ class OnboardUserViewController: BaseViewController {
             if description != nil {
                 progressBarXIBView.descriptionLabel.text = description
             }
-            progressBarXIBView.frame.size.width = self.view.bounds.size.width
+            progressBarXIBView.frame.size.width = progressBarView.bounds.size.width
         }
     }
 }

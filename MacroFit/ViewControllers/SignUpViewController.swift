@@ -27,14 +27,10 @@ class SignUpViewController: OnboardUserViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
         self.addProgressBarInView(progressBarView: progressBarView, percent: 20, description: nil)
 
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,12 +62,13 @@ class SignUpViewController: OnboardUserViewController {
         return true
     }
     
-    @IBAction func signUpUser(_ sender: Any) {
+    @IBAction func signUpUser(_ sender: UIButton) {
         setFieldsData()
         if validateFields() == false {
             return
         }
-        createUser()
+        
+        createUser(sender: sender)
     }
     
     func setFieldsData() {
@@ -83,7 +80,8 @@ class SignUpViewController: OnboardUserViewController {
         promocode = signUpFormTableViewControoler.promocodeTextField.text!
     }
     
-    func createUser() {
+    func createUser(sender: UIButton) {
+        sender.isEnabled = false
         Alamofire.request(APIRouter.createUser(name: name, email: email, password: password, phone: mobile, zip_code: zipcode, promocode: promocode))
             .validate(statusCode: 200..<501)
             .validate(contentType: ["application/json"])
@@ -94,6 +92,9 @@ class SignUpViewController: OnboardUserViewController {
                         if let status_code = response.response?.statusCode {
                             if status_code == 200 {
                                 APIService.loginUser(username: self.email, password: self.password, completion: {success,msg in
+                                    
+                                    sender.isEnabled = true
+                                    
                                     if success == false {
                                         self.showAlertMessage(title: msg, message: nil)
                                     } else {
@@ -101,14 +102,18 @@ class SignUpViewController: OnboardUserViewController {
                                     }
                                 })
                             } else {
+                                sender.isEnabled = true
+                                
                                 if let msg = json["msg"].string {
                                     self.showAlertMessage(title: msg, message: nil)
                                 }
                             }
+                        } else {
+                            sender.isEnabled = true
                         }
-                        print(json)
-                        print("Validation ")
                     case .failure(let error):
+                        sender.isEnabled = true
+                        
                         print(error)
                 }
         }

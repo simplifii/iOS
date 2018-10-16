@@ -19,13 +19,14 @@ class BaseViewController: UIViewController {
 
     public func addBackNavbarInView(navbarView: UIView, settings_visible: Bool) {
         if let backNavbarView = Bundle.main.loadNibNamed("BackNavbarView", owner: self, options: nil)?.first as? BackNavbarView {
+            backNavbarView.frame = navbarView.bounds
+            
             navbarView.addSubview(backNavbarView)
-            backNavbarView.frame.size.width = self.view.bounds.size.width
             
             backNavbarView.backButton.addTarget(self, action: #selector(self.goBackToPreviousScreen(_:)), for: UIControlEvents.touchUpInside)
-            
+
             backNavbarView.settingsButton.addTarget(self, action: #selector(self.goToSettingsScreen(_:)), for: UIControlEvents.touchUpInside)
-            
+
             if settings_visible == true {
                 backNavbarView.settingsButton.isHidden = false
             }
@@ -38,9 +39,16 @@ class BaseViewController: UIViewController {
     }
     
     @objc func goToSettingsScreen(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationViewController") as? UINavigationController
+        
+        let basicInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
+        
+        vc?.initRootViewController(vc: basicInfoVC!)
+        
+        self.navigationController?.viewControllers.removeAll()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
     }
     
     

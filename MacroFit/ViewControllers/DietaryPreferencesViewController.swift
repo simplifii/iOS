@@ -25,15 +25,11 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
         setupView()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        self.addProgressBarInView(progressBarView: progressBarView, percent: 80, description: "Customizing your Macros")
-    }
     
     func setupView() {
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
         addDietaryOptionsInView()
+         self.addProgressBarInView(progressBarView: progressBarView, percent: 80, description: "Customizing your Macros")
         
         additionalDietaryPreferencesTextView.layer.borderColor = UIColor.lightGray.cgColor;
         additionalDietaryPreferencesTextView.layer.borderWidth = 1.0;
@@ -49,7 +45,7 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     func addDietaryOptionsInView() {
         var y_position = 0
         for (index, option) in dietaryOptions.enumerated() {
-            let button = UIButton(frame: CGRect(x: 0, y: y_position, width: Int(dietaryOptionsView.frame.width) , height: 35))
+            let button = UIButton(frame: CGRect(x: 0, y: y_position, width: Int(dietaryOptionsView.bounds.size.width) , height: 35))
             button.backgroundColor = .white
             button.cornerRadius = 15
             button.borderWidth = 1
