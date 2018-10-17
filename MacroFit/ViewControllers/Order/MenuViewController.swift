@@ -47,10 +47,12 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
     
     
     @objc func proceedToCheckout(_ sender: UIButton) {
-        addItemsInCart()
-        if cartItems.count == 0 {
+        if cartItems.count < 10 {
+            showAlertMessage(title: "Minimum 10 items are required in cart to place the order", message: nil)
             return
         }
+        
+        addItemsInCart()
         
         cartContainerView.isHidden = true
         tableViewBottomDistanceConstaint.constant = 0
@@ -110,8 +112,7 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         cartBarView.mealsInCartLabel.text = "Meals: \(totalItemsCount)"
         
         let minimumOrder = (10-totalItemsCount < 0) ? 0 : (10-totalItemsCount)
-        let discountedOrderCount = (15-totalItemsCount < 0) ? 0 : (15-totalItemsCount)
-        cartBarView.descriptionLabel.text = "Add \(minimumOrder) more for minimum order of 10. Add \(discountedOrderCount) more to save 25% on cost/meal."
+        cartBarView.descriptionLabel.text = "Add \(minimumOrder) more for minimum order of 10."
     }
     
     func showCartBar()->Bool {

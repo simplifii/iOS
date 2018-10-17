@@ -27,7 +27,10 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     var protein:Int = 0
     var fat:Int = 0
     
+    
     var markedFavouriteRecipes:[String] = []
+    
+    var selectedRecipe = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,13 +66,7 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
             cell.recipeImageView.af_setImage(withURL: url)
         }
         
-        if showFavourites == true {
-            cell.isFavourite = true
-        }
-        
-        if markedFavouriteRecipes.contains(recipes[indexPath.row]["unique_code"].stringValue) {
-            cell.isFavourite = true
-        }
+        cell.isFavourite = isFavourite(index: indexPath.row)
         
         cell.setFavouriteButtonImage()
         
@@ -78,6 +75,22 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRecipe = indexPath.row
+    }
+    
+    func isFavourite(index: Int)->Bool {
+        if showFavourites == true {
+            return true
+        }
+        
+        if markedFavouriteRecipes.contains(recipes[index]["unique_code"].stringValue) {
+            return true
+        }
+        
+        return false
     }
 
     
@@ -109,27 +122,28 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     }
     
     func setRecipesData(recipes:JSON) {
-        if userDietType.isEmpty {
-            self.recipes = recipes.arrayValue
-        } else {
-            var data:[JSON] = []
-            for (_,recipe) in recipes {
-                let dietTypesString = recipe["diet_type"].stringValue
-                let dietTypes = dietTypesString.components(separatedBy: ",")
-                if dietTypes.contains(userDietType) {
-                    if isRecipeRecommendedForUser(
-                        recipeCalories: recipe["calorie"].intValue,
-                        recipeProtein: recipe["protein"].intValue,
-                        recipeCarbs: recipe["carbs"].intValue,
-                        recipeFat: recipe["fat"].intValue) {
-                        
-                        data.append(recipe)
-                    }
-                }
-            }
-            
-            self.recipes = data
-        }
+        self.recipes = recipes.arrayValue
+//        if userDietType.isEmpty {
+//            self.recipes = recipes.arrayValue
+//        } else {
+//            var data:[JSON] = []
+//            for (_,recipe) in recipes {
+//                let dietTypesString = recipe["diet_type"].stringValue
+//                let dietTypes = dietTypesString.components(separatedBy: ",")
+//                if dietTypes.contains(userDietType) {
+//                    if isRecipeRecommendedForUser(
+//                        recipeCalories: recipe["calorie"].intValue,
+//                        recipeProtein: recipe["protein"].intValue,
+//                        recipeCarbs: recipe["carbs"].intValue,
+//                        recipeFat: recipe["fat"].intValue) {
+//
+//                        data.append(recipe)
+//                    }
+//                }
+//            }
+//
+//            self.recipes = data
+//        }
     }
     
     func isRecipeRecommendedForUser(recipeCalories:Int, recipeProtein:Int, recipeCarbs:Int, recipeFat:Int)->Bool {
@@ -204,5 +218,21 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
                 self.showAlertMessage(title: msg, message: nil)
             }
         })
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is RecipeViewController
+        {
+            let vc = segue.destination as? RecipeViewController
+            vc?.recipeData = recipes[selectedRecipe]
+            vc?.isFavourite = isFavourite(index: selectedRecipe)
+            vc?.mealsPerDay = mealsPerDay
+            
+            vc?.userDefinedCalories = calories
+            vc?.userDefinedProtein = protein
+            vc?.userDefinedCarbs = carbs
+            vc?.userDefinedFat = fat
+        }
     }
 }

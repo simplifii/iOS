@@ -25,6 +25,9 @@
 		E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */; };
 		E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */; };
 		E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */; };
+		E05F919121770108001AF01D /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05F919021770108001AF01D /* RecipeViewController.swift */; };
+		E05F91962177413D001AF01D /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05F91952177413D001AF01D /* RecipeTableViewController.swift */; };
+		E05F919821774595001AF01D /* WhiteRoundedCornerBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05F919721774595001AF01D /* WhiteRoundedCornerBoxView.swift */; };
 		E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06762892159020600D19202 /* DietaryPreferencesViewController.swift */; };
 		E073FEDE2170BC1A00000423 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073FEDD2170BC1A00000423 /* TabBarViewController.swift */; };
 		E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A971215E29F500D264CA /* MealsContainerViewController.swift */; };
@@ -147,6 +150,9 @@
 		E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoriesViewController.swift; sourceTree = "<group>"; };
 		E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRecipeTableViewCell.swift; sourceTree = "<group>"; };
+		E05F919021770108001AF01D /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		E05F91952177413D001AF01D /* RecipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
+		E05F919721774595001AF01D /* WhiteRoundedCornerBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteRoundedCornerBoxView.swift; sourceTree = "<group>"; };
 		E06762892159020600D19202 /* DietaryPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryPreferencesViewController.swift; sourceTree = "<group>"; };
 		E073FEDD2170BC1A00000423 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E075A971215E29F500D264CA /* MealsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsContainerViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +302,50 @@
 			path = ModelControllers;
 			sourceTree = "<group>";
 		};
+		E05F9192217701CE001AF01D /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */,
+				E0DD472C216F60A000783F99 /* RecipeCardsViewController.swift */,
+				E05F919021770108001AF01D /* RecipeViewController.swift */,
+				E05F91952177413D001AF01D /* RecipeTableViewController.swift */,
+			);
+			path = Recipes;
+			sourceTree = "<group>";
+		};
+		E05F919321770227001AF01D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */,
+				E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */,
+				E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */,
+				E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */,
+				E06762892159020600D19202 /* DietaryPreferencesViewController.swift */,
+				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E05F91942177027E001AF01D /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				E0DC73F7215B84010085551E /* MenuViewController.swift */,
+				E075A971215E29F500D264CA /* MealsContainerViewController.swift */,
+				E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */,
+				E09A6AEB216238840096708A /* AddressFormTableViewController.swift */,
+				E09A6AED2162389C0096708A /* AddressViewController.swift */,
+				E02E854421647F9C00DDE4A7 /* OrderSummaryViewController.swift */,
+				E02E854621647FE900DDE4A7 /* PaymentViewController.swift */,
+				E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */,
+				E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */,
+				E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */,
+				E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */,
+				E0A56057216C9B15003534D4 /* DeliveryOverViewController.swift */,
+				E0A5605D216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
 		E0A6DD40214F718D00B6C301 = {
 			isa = PBXGroup;
 			children = (
@@ -364,36 +414,18 @@
 		E0A6DD7E214F73A900B6C301 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E05F91942177027E001AF01D /* Order */,
+				E05F919321770227001AF01D /* Settings */,
+				E05F9192217701CE001AF01D /* Recipes */,
 				E075A975215E377100D264CA /* BaseViewController.swift */,
 				E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */,
 				E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */,
 				E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */,
 				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
-				E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */,
-				E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */,
-				E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */,
-				E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */,
-				E06762892159020600D19202 /* DietaryPreferencesViewController.swift */,
-				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
 				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
-				E0DC73F7215B84010085551E /* MenuViewController.swift */,
 				E0DC73FB215B93300085551E /* MealsViewController.swift */,
-				E075A971215E29F500D264CA /* MealsContainerViewController.swift */,
-				E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */,
-				E09A6AEB216238840096708A /* AddressFormTableViewController.swift */,
-				E09A6AED2162389C0096708A /* AddressViewController.swift */,
-				E02E854421647F9C00DDE4A7 /* OrderSummaryViewController.swift */,
-				E02E854621647FE900DDE4A7 /* PaymentViewController.swift */,
-				E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */,
-				E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */,
 				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
 				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
-				E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */,
-				E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */,
-				E0A56057216C9B15003534D4 /* DeliveryOverViewController.swift */,
-				E0A5605D216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift */,
-				E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */,
-				E0DD472C216F60A000783F99 /* RecipeCardsViewController.swift */,
 				E073FEDD2170BC1A00000423 /* TabBarViewController.swift */,
 				E0C009A0217600E400926904 /* SideMenuFormTableViewController.swift */,
 				E0C009A221760F5500926904 /* SideMenuViewController.swift */,
@@ -497,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				E0BEBAAA2152838A00B7471D /* RoundedCornerBoxView.swift */,
+				E05F919721774595001AF01D /* WhiteRoundedCornerBoxView.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -771,6 +804,7 @@
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
 				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,
 				E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */,
+				E05F919821774595001AF01D /* WhiteRoundedCornerBoxView.swift in Sources */,
 				E073FEDE2170BC1A00000423 /* TabBarViewController.swift in Sources */,
 				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
 				E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */,
@@ -800,6 +834,7 @@
 				E0DEDBA0216733BC0040BC52 /* LoginFormTableViewController.swift in Sources */,
 				E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */,
 				E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */,
+				E05F919121770108001AF01D /* RecipeViewController.swift in Sources */,
 				E0A56058216C9B15003534D4 /* DeliveryOverViewController.swift in Sources */,
 				E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
@@ -813,6 +848,7 @@
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
 				E09A6AEE2162389C0096708A /* AddressViewController.swift in Sources */,
+				E05F91962177413D001AF01D /* RecipeTableViewController.swift in Sources */,
 				E0DEDBA42167620D0040BC52 /* PaymentErrorViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
 				E0A792132153812800CBBFDB /* NetworkingConstants.swift in Sources */,
