@@ -95,18 +95,27 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
 
     
     func setRecipes(recipeTag: String) {
-        if self.showFavourites == true {
-            APIService.getUserFavouriteRecipes(completion: {success,msg,data in
-                if success == true {
-                    if data != JSON.null {
+        APIService.getUserFavouriteRecipes(completion: {success,msg,data in
+            if success == true {
+                if data != JSON.null {
+                    if self.showFavourites == true {
                         self.recipes = data.arrayValue
                         self.tableView.reloadData()
+                    } else {
+                        for (_,recipe) in data {
+                            let uniqueCode = recipe["unique_code"].stringValue
+                            self.markedFavouriteRecipes.append(uniqueCode)
+                            self.tableView.reloadData()
+                        }
                     }
-                } else {
-                    self.showAlertMessage(title: msg, message: nil)
                 }
-            })
-        } else {
+            } else {
+                self.showAlertMessage(title: msg, message: nil)
+            }
+        })
+
+        
+        if self.showFavourites == false {
             APIService.getRecipesList(recipeTag: recipeTag, completion: {success,msg,data in
                 if success == true {
                     if data != JSON.null {
@@ -120,6 +129,7 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
             })
         }
     }
+    
     
     func setRecipesData(recipes:JSON) {
         self.recipes = recipes.arrayValue

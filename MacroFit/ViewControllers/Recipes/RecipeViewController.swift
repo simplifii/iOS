@@ -13,7 +13,7 @@ class RecipeViewController: BaseViewController {
 
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipePhotoImageView: UIImageView!
-    @IBOutlet weak var favouriteIconImageView: UIImageView!
+    @IBOutlet weak var favouriteIconButton: UIButton!
     
     var recipeData:JSON = [:]
     var isFavourite:Bool = false
@@ -24,8 +24,6 @@ class RecipeViewController: BaseViewController {
     var userDefinedProtein:Int = 0
     var userDefinedFat:Int = 0
     
-    var macrosAccuracyPercentage:Int = 0
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,11 +34,16 @@ class RecipeViewController: BaseViewController {
             recipePhotoImageView.af_setImage(withURL: url)
         }
         
-        if isFavourite == true {
-            favouriteIconImageView.image = UIImage(named: "heart_full_white.png")
+        print(isFavourite)
+        setFavouriteButtonIcon(isFav: isFavourite)
+    }
+    
+    func setFavouriteButtonIcon(isFav: Bool) {
+        if isFav == true {
+            favouriteIconButton.setImage(UIImage(named: "heart_full_white.png"), for: .normal)
+        } else {
+            favouriteIconButton.setImage(UIImage(named: "heart_white.png"), for: .normal)
         }
-        
-        macrosAccuracyPercentage = getMacroAccuracyPercentage()
     }
     
 
@@ -50,40 +53,56 @@ class RecipeViewController: BaseViewController {
             let vc = segue.destination as? RecipeTableViewController
             vc?.recipeData = recipeData
             vc?.mealsPerDay = mealsPerDay
-            vc?.macrosAccuracyPercentage = macrosAccuracyPercentage
+            vc?.macrosAccuracyPercentage = getMacroAccuracyPercentage()
         }
     }
     
     
     func getMacroAccuracyPercentage()->Int {
-        let calories = recipeData["calorie"].intValue
-        let protein = recipeData["protein"].intValue
-        let carbs = recipeData["carbs"].intValue
-        let fat = recipeData["fat"].intValue
+        let calories = recipeData["calorie"].doubleValue
+        let protein = recipeData["protein"].doubleValue
+        let carbs = recipeData["carbs"].doubleValue
+        let fat = recipeData["fat"].doubleValue
         
-        let caloriesChange = changeInPercentage(originalValue: userDefinedCalories, newValue: calories)
-        let proteinChange = changeInPercentage(originalValue: userDefinedProtein, newValue: protein)
-        let carbsChange = changeInPercentage(originalValue: userDefinedCarbs, newValue: carbs)
-        let fatChange = changeInPercentage(originalValue: userDefinedFat, newValue: fat)
+        let caloriesChange = changeInPercentage(originalValue: Double(userDefinedCalories), newValue: calories)
+        let proteinChange = changeInPercentage(originalValue: Double(userDefinedProtein), newValue: protein)
+        let carbsChange = changeInPercentage(originalValue: Double(userDefinedCarbs), newValue: carbs)
+        let fatChange = changeInPercentage(originalValue: Double(userDefinedFat), newValue: fat)
         
         let average = Int((caloriesChange + proteinChange + carbsChange + fatChange)/4)
         
-        return ((average > 0) ? average : 0)
+        return average
     }
     
-    func changeInPercentage(originalValue:Int, newValue:Int)->Int {
-        var diff = 0
-        if originalValue > 0 {
-            diff = ((originalValue - newValue) / originalValue) * 100
-        } else if newValue > 0 {
-            diff = ((newValue - originalValue) / newValue) * 100
+    func changeInPercentage(originalValue:Double, newValue:Double)->Int {
+        var diff = 0.0
+        if originalValue > newValue {
+            diff = newValue / originalValue
+        } else {
+            diff = originalValue / newValue
         }
         
-        return Int(diff)
+        return Int(diff*100)
     }
     
     @IBAction func goBack(_ sender: UIButton) {
         self.showPreviousScreen()
+    }
+    
+    
+    @IBAction func markFavourite(_ sender: UIButton) {
+        if isFavourite == false {
+            setFavouriteButtonIcon(isFav: true)
+            
+            let recipeId = recipeData["unique_code"].stringValue
+            
+            APIService.markRecipeAsFavourite(cardUniqueCode: recipeId, completion: {success,msg in
+                if success != true {
+                    self.setFavouriteButtonIcon(isFav: false)
+                    self.showAlertMessage(title: msg, message: nil)
+                }
+            })
+        }
     }
     
 }

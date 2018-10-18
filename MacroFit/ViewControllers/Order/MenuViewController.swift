@@ -47,7 +47,7 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
     
     
     @objc func proceedToCheckout(_ sender: UIButton) {
-        if cartItems.count < 10 {
+        if getTotalItemsInCart() < 10 {
             showAlertMessage(title: "Minimum 10 items are required in cart to place the order", message: nil)
             return
         }
@@ -61,6 +61,14 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         vc?.orderModelController = orderModelController
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func getTotalItemsInCart()->Int {
+        var totalQuantity = 0
+        for (_, qty) in cartItemsQty {
+            totalQuantity = totalQuantity + qty
+        }
+        return totalQuantity
     }
     
 

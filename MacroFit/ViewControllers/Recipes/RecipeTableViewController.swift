@@ -43,9 +43,9 @@ class RecipeTableViewController: UITableViewController {
         ingredientsTextView.text = recipeData["ingredients"].stringValue
         
         caloriesLabel.text = recipeData["calorie"].stringValue
-        carbsLabel.text = recipeData["carbs"].stringValue
-        proteinLabel.text = recipeData["protein"].stringValue
-        fatLabel.text = recipeData["fat"].stringValue
+        carbsLabel.text = recipeData["formatted_cdata"]["carbs"].stringValue
+        proteinLabel.text = recipeData["formatted_cdata"]["protein"].stringValue
+        fatLabel.text = recipeData["formatted_cdata"]["fat"].stringValue
         
         mealsPerDayTextLabel.text = "*Based off your meal size settings of \(mealsPerDay) meals / day"
         
@@ -64,7 +64,8 @@ class RecipeTableViewController: UITableViewController {
     
     func customProgressBar() {
         progressBarView.transform = progressBarView.transform.scaledBy(x: 1, y: 8)
-
+        progressBarView.progress = Float(macrosAccuracyPercentage)/100.0
+        
     }
 
 
