@@ -11,7 +11,8 @@ import UIKit
 class ReceivedCreditViewController: UIViewController {
 
     @IBOutlet weak var receivedCreditTextLabel: UILabel!
-    @IBOutlet weak var creditExpiryTextLabel: UILabel!
+    
+    var credits = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +20,7 @@ class ReceivedCreditViewController: UIViewController {
     }
     
     func setupView() {
-        receivedCreditTextLabel.text = "You've received $25 in credit."
-        creditExpiryTextLabel.text = "This expires in 7 days"
+        receivedCreditTextLabel.text = "You've received $\(credits) in credit."
     }
 
     override func didReceiveMemoryWarning() {

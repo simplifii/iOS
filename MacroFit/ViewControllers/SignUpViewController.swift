@@ -22,6 +22,8 @@ class SignUpViewController: OnboardUserViewController {
     var zipcode = String()
     var promocode = String()
     
+    var credits:Int = 0
+    
     var signUpFormTableViewControoler: SignUpFormTableViewController!
     
     override func viewDidLoad() {
@@ -91,6 +93,8 @@ class SignUpViewController: OnboardUserViewController {
                         let json = JSON(value)
                         if let status_code = response.response?.statusCode {
                             if status_code == 200 {
+                                self.credits = json["response"]["data"][0]["credits"].intValue
+                                
                                 APIService.loginUser(username: self.email, password: self.password, completion: {success,msg in
                                     
                                     sender.isEnabled = true
@@ -120,9 +124,16 @@ class SignUpViewController: OnboardUserViewController {
     }
     
     func signUpCompleted() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if credits > 0 {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReceivedCreditViewController") as? ReceivedCreditViewController
+            vc?.credits = credits
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
 

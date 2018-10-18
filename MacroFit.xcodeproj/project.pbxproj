@@ -321,7 +321,6 @@
 				E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */,
 				E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */,
 				E06762892159020600D19202 /* DietaryPreferencesViewController.swift */,
-				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -422,6 +421,7 @@
 				E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */,
 				E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */,
 				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
+				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
 				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
 				E0DC73FB215B93300085551E /* MealsViewController.swift */,
 				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,

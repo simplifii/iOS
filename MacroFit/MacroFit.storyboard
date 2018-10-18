@@ -385,7 +385,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.97651118039999996" green="0.97626847029999997" blue="0.9725616574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.98814910650253296" green="0.98829048871994019" blue="0.98811811208724976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BNM-QL-86w" firstAttribute="top" secondItem="yuz-AT-sXg" secondAttribute="bottom" constant="25" id="2bF-ea-3yz"/>
                             <constraint firstItem="yuz-AT-sXg" firstAttribute="leading" secondItem="6BX-9R-INL" secondAttribute="leading" constant="25" id="3A2-yo-EFU"/>
@@ -1256,7 +1256,6 @@
                                             <outlet property="favouriteButton" destination="u3g-ci-hb2" id="8Fi-cW-kOm"/>
                                             <outlet property="recipeImageView" destination="azc-FC-X15" id="I2t-Gn-VpX"/>
                                             <outlet property="recipeNameLabel" destination="uvj-hz-8tl" id="d56-iG-K9O"/>
-                                            <segue destination="cYB-Nx-mgq" kind="show" id="FqH-mw-5dE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1290,7 +1289,7 @@
         <!--Recipe View Controller-->
         <scene sceneID="Fx8-GX-vn7">
             <objects>
-                <viewController id="cYB-Nx-mgq" customClass="RecipeViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipeViewController" id="cYB-Nx-mgq" customClass="RecipeViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MdX-bp-BTh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1593,7 +1592,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Based off your meal size settings of 2 meals / day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxM-Hg-5pn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Based off your meal size settings of 2 meals / day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="LxM-Hg-5pn">
                                                     <rect key="frame" x="16" y="13" width="343" height="22"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.59994590282440186" green="0.60003471374511719" blue="0.5999264121055603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -40,12 +40,13 @@ class RecipeTableViewController: UITableViewController {
     }
     
     func setupView() {
+        print(recipeData)
         ingredientsTextView.text = recipeData["ingredients"].stringValue
         
         caloriesLabel.text = recipeData["calorie"].stringValue
-        carbsLabel.text = recipeData["formatted_cdata"]["carbs"].stringValue
-        proteinLabel.text = recipeData["formatted_cdata"]["protein"].stringValue
-        fatLabel.text = recipeData["formatted_cdata"]["fat"].stringValue
+        carbsLabel.text = "\(recipeData["carbs"].stringValue)g"
+        proteinLabel.text = "\(recipeData["protein"].stringValue)g"
+        fatLabel.text = "\(recipeData["fat"].stringValue)g"
         
         mealsPerDayTextLabel.text = "*Based off your meal size settings of \(mealsPerDay) meals / day"
         
@@ -54,6 +55,9 @@ class RecipeTableViewController: UITableViewController {
         
         if !recipeData["instructions_photo"].stringValue.isEmpty {
             let url = URL(string: recipeData["instructions_photo"].stringValue)!
+            instructionsPhotoImaageView.af_setImage(withURL: url)
+        } else if !recipeData["photo"].stringValue.isEmpty {
+            let url = URL(string: recipeData["photo"].stringValue)!
             instructionsPhotoImaageView.af_setImage(withURL: url)
         }
         

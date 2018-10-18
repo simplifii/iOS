@@ -79,6 +79,7 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRecipe = indexPath.row
+        gotoRecipeScreen()
     }
     
     func isFavourite(index: Int)->Bool {
@@ -230,19 +231,18 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
         })
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is RecipeViewController
-        {
-            let vc = segue.destination as? RecipeViewController
-            vc?.recipeData = recipes[selectedRecipe]
-            vc?.isFavourite = isFavourite(index: selectedRecipe)
-            vc?.mealsPerDay = mealsPerDay
-            
-            vc?.userDefinedCalories = calories
-            vc?.userDefinedProtein = protein
-            vc?.userDefinedCarbs = carbs
-            vc?.userDefinedFat = fat
-        }
+    func gotoRecipeScreen() {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "RecipeViewController") as? RecipeViewController
+        vc?.recipeData = recipes[selectedRecipe]
+        vc?.isFavourite = isFavourite(index: selectedRecipe)
+        vc?.mealsPerDay = mealsPerDay
+        
+        vc?.userDefinedCalories = calories
+        vc?.userDefinedProtein = protein
+        vc?.userDefinedCarbs = carbs
+        vc?.userDefinedFat = fat
+        
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 }

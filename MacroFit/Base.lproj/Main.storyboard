@@ -504,17 +504,8 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This expires in 7 days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frC-bg-h1m">
-                                        <rect key="frame" x="25" y="303.5" width="325" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="RqX-I2-Ho8"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhF-jy-Cl5">
-                                        <rect key="frame" x="25" y="371.5" width="325" height="50"/>
+                                        <rect key="frame" x="25" y="345.5" width="325" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="yO5-Oz-T6p"/>
@@ -536,15 +527,12 @@
                                 <color key="backgroundColor" red="0.98814910650253296" green="0.98829048871994019" blue="0.98811811208724976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="5Jg-bO-i7j" secondAttribute="trailing" constant="25" id="3xf-oj-0ug"/>
-                                    <constraint firstItem="frC-bg-h1m" firstAttribute="leading" secondItem="8uH-zE-76H" secondAttribute="leading" constant="25" id="9aj-sc-KIF"/>
                                     <constraint firstAttribute="trailing" secondItem="AhF-jy-Cl5" secondAttribute="trailing" constant="25" id="F92-5x-wnU"/>
                                     <constraint firstItem="3Pq-cX-y4R" firstAttribute="top" secondItem="5Jg-bO-i7j" secondAttribute="bottom" constant="21" id="OiT-wF-WZ7"/>
-                                    <constraint firstItem="frC-bg-h1m" firstAttribute="top" secondItem="3Pq-cX-y4R" secondAttribute="bottom" constant="8" id="R1X-pX-O4K"/>
                                     <constraint firstAttribute="trailing" secondItem="3Pq-cX-y4R" secondAttribute="trailing" constant="25" id="SDj-sQ-hGb"/>
                                     <constraint firstItem="5Jg-bO-i7j" firstAttribute="leading" secondItem="8uH-zE-76H" secondAttribute="leading" constant="25" id="Vwn-X3-XTd"/>
+                                    <constraint firstItem="AhF-jy-Cl5" firstAttribute="top" secondItem="3Pq-cX-y4R" secondAttribute="bottom" constant="50" id="chb-fv-6hB"/>
                                     <constraint firstItem="3Pq-cX-y4R" firstAttribute="leading" secondItem="8uH-zE-76H" secondAttribute="leading" constant="25" id="fi8-RG-jaA"/>
-                                    <constraint firstItem="AhF-jy-Cl5" firstAttribute="top" secondItem="frC-bg-h1m" secondAttribute="bottom" constant="47" id="ivq-25-UPb"/>
-                                    <constraint firstAttribute="trailing" secondItem="frC-bg-h1m" secondAttribute="trailing" constant="25" id="jhI-uC-YuK"/>
                                     <constraint firstItem="AhF-jy-Cl5" firstAttribute="leading" secondItem="8uH-zE-76H" secondAttribute="leading" constant="25" id="pqr-SU-zSO"/>
                                     <constraint firstItem="5Jg-bO-i7j" firstAttribute="centerY" secondItem="8uH-zE-76H" secondAttribute="centerY" constant="-97" id="rMH-Ai-Hxm"/>
                                 </constraints>
@@ -560,7 +548,6 @@
                         <viewLayoutGuide key="safeArea" id="MgJ-dF-QdI"/>
                     </view>
                     <connections>
-                        <outlet property="creditExpiryTextLabel" destination="frC-bg-h1m" id="RJp-fb-UEl"/>
                         <outlet property="receivedCreditTextLabel" destination="3Pq-cX-y4R" id="3WP-Wk-uBk"/>
                     </connections>
                 </viewController>
