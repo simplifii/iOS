@@ -35,6 +35,9 @@
 		E075A976215E377200D264CA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A975215E377100D264CA /* BaseViewController.swift */; };
 		E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */; };
 		E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */; };
+		E0982ACD21789F1900F5FCE5 /* ReferFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0982ACC21789F1900F5FCE5 /* ReferFriendViewController.swift */; };
+		E0982AD12178B0C200F5FCE5 /* MenuNavbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0982AD02178B0C200F5FCE5 /* MenuNavbarView.xib */; };
+		E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0982AD22178B0D500F5FCE5 /* MenuNavbarView.swift */; };
 		E09A6AEA216202260096708A /* SubtotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */; };
 		E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AEB216238840096708A /* AddressFormTableViewController.swift */; };
 		E09A6AEE2162389C0096708A /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AED2162389C0096708A /* AddressViewController.swift */; };
@@ -160,6 +163,9 @@
 		E075A975215E377100D264CA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemTableViewCell.swift; sourceTree = "<group>"; };
 		E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparatorTableViewCell.swift; sourceTree = "<group>"; };
+		E0982ACC21789F1900F5FCE5 /* ReferFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferFriendViewController.swift; sourceTree = "<group>"; };
+		E0982AD02178B0C200F5FCE5 /* MenuNavbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuNavbarView.xib; sourceTree = "<group>"; };
+		E0982AD22178B0D500F5FCE5 /* MenuNavbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavbarView.swift; sourceTree = "<group>"; };
 		E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtotalTableViewCell.swift; sourceTree = "<group>"; };
 		E09A6AEB216238840096708A /* AddressFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFormTableViewController.swift; sourceTree = "<group>"; };
 		E09A6AED2162389C0096708A /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +336,7 @@
 			children = (
 				E0DC73F7215B84010085551E /* MenuViewController.swift */,
 				E075A971215E29F500D264CA /* MealsContainerViewController.swift */,
+				E0DC73FB215B93300085551E /* MealsViewController.swift */,
 				E075A973215E32F500D264CA /* OrderConfirmationViewController.swift */,
 				E09A6AEB216238840096708A /* AddressFormTableViewController.swift */,
 				E09A6AED2162389C0096708A /* AddressViewController.swift */,
@@ -423,12 +430,12 @@
 				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
 				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
 				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
-				E0DC73FB215B93300085551E /* MealsViewController.swift */,
 				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
 				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
 				E073FEDD2170BC1A00000423 /* TabBarViewController.swift */,
 				E0C009A0217600E400926904 /* SideMenuFormTableViewController.swift */,
 				E0C009A221760F5500926904 /* SideMenuViewController.swift */,
+				E0982ACC21789F1900F5FCE5 /* ReferFriendViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 				E0DC7400215BAD060085551E /* AddItemView.xib */,
 				E0BD2B82216B6EF100E2D297 /* CartBarView.xib */,
 				E0A5605B216C9B85003534D4 /* DateTimeView.xib */,
+				E0982AD02178B0C200F5FCE5 /* MenuNavbarView.xib */,
 			);
 			path = XIBFiles;
 			sourceTree = "<group>";
@@ -465,6 +473,7 @@
 				E0DC7402215BAD230085551E /* AddItemView.swift */,
 				E0BD2B84216B6F0D00E2D297 /* CartBarView.swift */,
 				E0A56059216C9B76003534D4 /* DateTimeView.swift */,
+				E0982AD22178B0D500F5FCE5 /* MenuNavbarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -664,6 +673,7 @@
 				E0BD2B70216B247A00E2D297 /* Montserrat-Bold.ttf in Resources */,
 				E0BD2B71216B247A00E2D297 /* Montserrat-BoldItalic.ttf in Resources */,
 				E0BD2B72216B247A00E2D297 /* Montserrat-ExtraBold.ttf in Resources */,
+				E0982AD12178B0C200F5FCE5 /* MenuNavbarView.xib in Resources */,
 				E0BD2B73216B247A00E2D297 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				E0BD2B74216B247A00E2D297 /* Montserrat-ExtraLight.ttf in Resources */,
 				E0BD2B75216B247A00E2D297 /* Montserrat-ExtraLightItalic.ttf in Resources */,
@@ -800,6 +810,7 @@
 				E02E85502164A36300DDE4A7 /* OrderModelController.swift in Sources */,
 				E0C009A321760F5500926904 /* SideMenuViewController.swift in Sources */,
 				E075A976215E377200D264CA /* BaseViewController.swift in Sources */,
+				E0982ACD21789F1900F5FCE5 /* ReferFriendViewController.swift in Sources */,
 				E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */,
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
 				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,
@@ -827,6 +838,7 @@
 				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,
+				E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */,
 				E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */,
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,

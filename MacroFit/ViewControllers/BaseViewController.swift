@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class BaseViewController: UIViewController {
 
@@ -32,6 +33,21 @@ class BaseViewController: UIViewController {
             }
         }
     }
+    
+    public func addMenuNavbarInView(navbarView: UIView) {
+        if let menuNavbarView = Bundle.main.loadNibNamed("MenuNavbarView", owner: self, options: nil)?.first as? MenuNavbarView {
+            menuNavbarView.frame = navbarView.bounds
+            
+            navbarView.addSubview(menuNavbarView)
+            
+            menuNavbarView.menuButton.addTarget(self, action: #selector(self.showSideMenu(_:)), for: UIControlEvents.touchUpInside)
+        }
+    }
+    
+    @objc func showSideMenu(_ sender: UIButton) {
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
+    }
+    
     
     @objc func goBackToPreviousScreen(_ sender: UIButton) {
         //        self.dismiss(animated: true, completion: nil)

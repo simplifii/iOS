@@ -11,7 +11,6 @@ import SideMenu
 
 class SideMenuFormTableViewController: UITableViewController {
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,9 +37,36 @@ class SideMenuFormTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            showBasicProfileSettingsScreen()
+        }
+        if indexPath.row == 2 {
+            gotoInviteFriendsScreen()
+        }
         if indexPath.row == 6 {
             logout()
         }
+    }
+    
+    func showBasicProfileSettingsScreen() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationViewController") as? UINavigationController
+        
+        let basicInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
+        
+        vc?.initRootViewController(vc: basicInfoVC!)
+        
+        self.navigationController?.viewControllers.removeAll()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
+    }
+    
+    func gotoInviteFriendsScreen() {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "ReferFriendViewController") as? ReferFriendViewController
+        
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+
     }
     
     func logout() {

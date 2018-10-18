@@ -29,6 +29,8 @@ struct APIService {
                         if status_code == 200 {
                             UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
                             UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
+                            UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
+                            UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
                             completion(true, json["msg"].stringValue)
                         } else {
                             if let msg = json["msg"].string {

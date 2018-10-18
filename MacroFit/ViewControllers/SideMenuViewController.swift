@@ -11,11 +11,23 @@ import SideMenu
 
 class SideMenuViewController: UIViewController {
 
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userEmailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        userNameLabel.text = UserDefaults.standard.string(forKey: UserConstants.userName)
+        userEmailLabel.text = UserDefaults.standard.string(forKey: UserConstants.userEmail)
     }
     
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.destination is SideMenuFormTableViewController
+//        {
+//            let vc = segue.destination as? SideMenuFormTableViewController
+//            vc?.masterNavigationController = masterNavigationController
+//        }
+//    }
 
 }

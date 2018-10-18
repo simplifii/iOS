@@ -40,7 +40,6 @@ class RecipeTableViewController: UITableViewController {
     }
     
     func setupView() {
-        print(recipeData)
         ingredientsTextView.text = recipeData["ingredients"].stringValue
         
         caloriesLabel.text = recipeData["calorie"].stringValue
