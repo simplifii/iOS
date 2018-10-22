@@ -20,5 +20,6 @@ struct NetworkingConstants{
     static let deliveryDate = "custom/delivery_date"
     static let payment = "payment"
     static let logout = "logout"
+    static let userRecipes = "custom/user_recipes"
     
 }

@@ -66,6 +66,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
         genderDropDown.dataSource = genderOptions
         genderDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.genderSelectionButton.setTitle(item, for: .normal)
+            self.genderSelectionButton.setTitleColor(UIColor.black, for: .normal)
         }
         
         fitnessGoalNoteTextView.layer.borderColor = UIColor.lightGray.cgColor;
@@ -220,7 +221,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
             return (false, "Height is required in feet and inches")
         }
         if gender.isEmpty || (gender == "Gender") {
-            return (false, "Gender is required in feet and inches")
+            return (false, "Gender is required")
         }
         
         return (true, "Success")

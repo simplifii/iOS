@@ -10,6 +10,8 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
+    var showRecipeInMeals:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

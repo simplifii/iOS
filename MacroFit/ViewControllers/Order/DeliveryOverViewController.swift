@@ -42,4 +42,10 @@ class DeliveryOverViewController: UIViewController {
         dateTimeView.minLabel.text = minutes
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TabBarViewControllerSegue" {
+            let vc = segue.destination as! TabBarViewController
+            vc.showRecipeInMeals = true
+        }
+    }
 }

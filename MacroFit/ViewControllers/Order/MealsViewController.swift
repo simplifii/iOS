@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class MealsViewController: UIViewController {
+class MealsViewController: UIViewController, DeliveryOverEmbeddedVCDelegate {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var menuContainerView: UIView!
@@ -22,6 +22,8 @@ class MealsViewController: UIViewController {
     var days:String = ""
     var hours:String = ""
     var minutes:String = ""
+    
+    var showRecipe = false
     
     
     override func viewDidLoad() {
@@ -59,6 +61,13 @@ class MealsViewController: UIViewController {
                          cornerRadius: segmentedControl.layer.cornerRadius).cgPath
         
         
+        showRecipe = (tabBarController as! TabBarViewController).showRecipeInMeals
+        
+        // Show recipe view
+        if showRecipe {
+            showRecipeContainerView()
+        }
+        
         deliveryOverContainerView.alpha = 0
         
 
@@ -76,7 +85,11 @@ class MealsViewController: UIViewController {
     }
     
     @IBAction func showContainerView(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
+        showSelectedSegmentView(index: sender.selectedSegmentIndex)
+    }
+    
+    func showSelectedSegmentView(index:Int) {
+        if index == 0 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.recipesContainerView.alpha = 0
                 
@@ -129,7 +142,17 @@ class MealsViewController: UIViewController {
         if segue.destination is DeliveryOverEmbeddedViewController
         {
             deliveryOverEmbeddedVC = segue.destination as? DeliveryOverEmbeddedViewController
+            deliveryOverEmbeddedVC.deliveryOverEmbeddedVCDelegate = self
         }
+    }
+    
+    func showRecipeContainerView() {
+        segmentedControl.selectedSegmentIndex = 1
+        showSelectedSegmentView(index: 1)
+    }
+    
+    func showRecipeView() {
+        showRecipeContainerView()
     }
     
 }

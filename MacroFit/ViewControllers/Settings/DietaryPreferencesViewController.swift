@@ -14,8 +14,8 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     @IBOutlet weak var progressBarView: UIView!
 
     @IBOutlet weak var dietaryOptionsView: UIView!
-    var dietaryOptions = ["Paleo", "Vegetarian", "Vegan", "Keto"]
-    var selectedDietaryOpition = "Paleo"
+    var dietaryOptions = ["Standard", "Paleo", "Vegetarian", "Vegan", "Keto"]
+    var selectedDietaryOpition = "Standard"
     
     @IBOutlet weak var additionalDietaryPreferencesTextView: UITextView!
     var diet_note = String()

@@ -31,6 +31,10 @@ class OrderConfirmationSuccessViewController: UIViewController {
     }
     
     @IBAction func learnMore(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "ReferFriendViewController") as? ReferFriendViewController
+        
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
 }

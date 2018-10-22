@@ -14,12 +14,16 @@ class LoginViewController: OnboardUserViewController {
 
     var email = String()
     var password = String()
+    var showNavbar = false
     
     var loginFormTableViewController:LoginFormTableViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
+        print(showNavbar)
+        if showNavbar {
+            self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
+        }
 
     }
     

@@ -122,6 +122,12 @@ struct APIService {
         })
     }
     
+    static func getUserRecipes(recipeTag:String?, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getUserRecipes(recipeTag: recipeTag), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
     
     // POST & PATCH
     

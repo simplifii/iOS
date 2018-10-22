@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DeliveryOverEmbeddedVCDelegate {
+    func showRecipeView()
+}
+
 class DeliveryOverEmbeddedViewController: UIViewController {
 
     @IBOutlet weak var dateTimeContainerView: RoundedCornerBoxView!
@@ -17,6 +21,8 @@ class DeliveryOverEmbeddedViewController: UIViewController {
     var days:String = ""
     var hours:String = ""
     var minutes:String = ""
+    
+    var deliveryOverEmbeddedVCDelegate: DeliveryOverEmbeddedVCDelegate!
     
     var dateTimeView:DateTimeView!
     
@@ -48,8 +54,7 @@ class DeliveryOverEmbeddedViewController: UIViewController {
     
     
     @IBAction func checkReceipes(_ sender: UIButton) {
-        
-        
+        deliveryOverEmbeddedVCDelegate.showRecipeView()
     }
     
 }

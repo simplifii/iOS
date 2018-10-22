@@ -15,7 +15,9 @@ class BasicInfoViewController: OnboardUserViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
+       
+//        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
+    
         self.addProgressBarInView(progressBarView: progressBarView, percent: 40, description: nil)
 
     }

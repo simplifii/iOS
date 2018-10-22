@@ -51,4 +51,11 @@ class IntroductionScreenViewController: UIViewController, UIScrollViewDelegate {
         featuresPageControl.currentPage = Int(page)
         backgroundImage.image = UIImage(named: "intro_screen_background\(Int(page) + 1)")
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginViewControllerSegue"{
+            let vc = segue.destination as! LoginViewController
+            vc.showNavbar = true
+        }
+    }
 }

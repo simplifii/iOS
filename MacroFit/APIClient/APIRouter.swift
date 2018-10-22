@@ -30,10 +30,13 @@ enum APIRouter: URLRequestConvertible {
     case getRecipesList(recipeTag: String)
     case markRecipeAsFavourite(cardUniqueCode:String)
     case logoutUser()
+    case getUserRecipes(recipeTag: String?)
     
     var path: String {
         
         switch self {
+            case .getUserRecipes:
+                return NetworkingConstants.userRecipes
             case .activityLevels:
                 return NetworkingConstants.activityLevels
             
@@ -186,6 +189,9 @@ enum APIRouter: URLRequestConvertible {
             paramDict["sort_by"] = "-updated_at"
             paramDict["search"] = recipeTag
             break
+        case let .getUserRecipes(recipeTag: recipeTag):
+            paramDict["recipe_tag"] = recipeTag
+            break
         default:
             break
         }
@@ -196,7 +202,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes:
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment:
             return .post
@@ -216,7 +222,7 @@ enum APIRouter: URLRequestConvertible {
             case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes:
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             default:
                 break

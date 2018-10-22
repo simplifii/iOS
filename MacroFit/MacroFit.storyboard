@@ -570,7 +570,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="32H-Sd-457" kind="show" id="uFU-h0-6Dh"/>
+                                    <segue destination="32H-Sd-457" kind="show" identifier="TabBarViewControllerSegue" id="uFU-h0-6Dh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1131,7 +1131,7 @@
                                     <constraint firstAttribute="height" constant="25" id="zFD-KY-DhB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
-                                <state key="normal" title="7 days remianing on your free trial. Upgrade">
+                                <state key="normal" title="Macro Recipes are FREE for a limited time!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2516,7 +2516,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgD-VJ-I1C" customClass="RoundedCornerBoxView" customModule="MacroFit" customModuleProvider="target">
-                                <rect key="frame" x="25" y="343" width="325" height="171"/>
+                                <rect key="frame" x="25" y="343" width="325" height="136"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get $25 in FREE meals for each friend you refer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1o1-3a-6ud">
                                         <rect key="frame" x="46" y="63" width="233" height="59"/>
@@ -2534,18 +2534,11 @@
                                             <constraint firstAttribute="height" constant="30" id="unS-hM-rR5"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81P-3a-Ofa">
-                                        <rect key="frame" x="0.0" y="123" width="325" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Cp1-Fm-QDS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                        <state key="normal" title="Click to learn more">
-                                            <color key="titleColor" red="0.78032308819999996" green="0.78043633700000004" blue="0.78029829260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY5-ma-unr">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="136"/>
+                                        <color key="tintColor" red="0.98814910649999999" green="0.98829048870000002" blue="0.9881181121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <action selector="learnMore:" destination="jG4-VI-btn" eventType="touchUpInside" id="niH-AO-CuY"/>
-                                            <segue destination="hdt-e0-yos" kind="show" id="Xm7-Lc-C3G"/>
+                                            <action selector="learnMore:" destination="jG4-VI-btn" eventType="touchUpInside" id="FsS-zd-EYM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2553,13 +2546,14 @@
                                 <constraints>
                                     <constraint firstItem="CHI-Z9-FE2" firstAttribute="top" secondItem="HgD-VJ-I1C" secondAttribute="top" constant="23" id="0D7-cV-CRC"/>
                                     <constraint firstAttribute="trailing" secondItem="1o1-3a-6ud" secondAttribute="trailing" constant="46" id="0ii-ME-Yhi"/>
-                                    <constraint firstItem="81P-3a-Ofa" firstAttribute="leading" secondItem="HgD-VJ-I1C" secondAttribute="leading" id="2tD-wi-bRL"/>
+                                    <constraint firstAttribute="bottom" secondItem="1o1-3a-6ud" secondAttribute="bottom" constant="14" id="8mx-ma-WB2"/>
                                     <constraint firstItem="1o1-3a-6ud" firstAttribute="top" secondItem="CHI-Z9-FE2" secondAttribute="bottom" constant="10" id="IAd-PE-vKV"/>
-                                    <constraint firstItem="81P-3a-Ofa" firstAttribute="top" secondItem="1o1-3a-6ud" secondAttribute="bottom" constant="1" id="LWY-DI-QaA"/>
+                                    <constraint firstAttribute="bottom" secondItem="fY5-ma-unr" secondAttribute="bottom" id="JOV-TD-g6h"/>
+                                    <constraint firstAttribute="trailing" secondItem="fY5-ma-unr" secondAttribute="trailing" id="MlV-CH-Nlz"/>
                                     <constraint firstItem="1o1-3a-6ud" firstAttribute="leading" secondItem="HgD-VJ-I1C" secondAttribute="leading" constant="46" id="NhD-uT-0Pa"/>
-                                    <constraint firstAttribute="height" constant="171" id="Stu-8C-4cf"/>
                                     <constraint firstItem="CHI-Z9-FE2" firstAttribute="centerX" secondItem="HgD-VJ-I1C" secondAttribute="centerX" id="XKB-U4-xcM"/>
-                                    <constraint firstAttribute="trailing" secondItem="81P-3a-Ofa" secondAttribute="trailing" id="jRv-ac-UdJ"/>
+                                    <constraint firstItem="fY5-ma-unr" firstAttribute="top" secondItem="HgD-VJ-I1C" secondAttribute="top" id="k1H-QZ-VgO"/>
+                                    <constraint firstItem="fY5-ma-unr" firstAttribute="leading" secondItem="HgD-VJ-I1C" secondAttribute="leading" id="qqp-5s-DJG"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1p-TG-l6E">

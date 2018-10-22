@@ -47,12 +47,17 @@ class AddressViewController: BaseViewController {
     
     @IBAction func viewOrderSummary(_ sender: UIButton) {
         let zipcode = addressFormTableViewController.zipcodeTextField.text!
+        let addressLineOne = addressFormTableViewController.addressTextField.text!
+        
         if zipcode.isEmpty {
-            self.showAlertMessage(title: "Zipcode is mandatory", message: nil)
+            self.showAlertMessage(title: "Zipcode is required", message: nil)
+            return
+        }
+        if addressLineOne.isEmpty {
+            self.showAlertMessage(title: "Address is required", message: nil)
             return
         }
         
-        let addressLineOne = addressFormTableViewController.addressTextField.text!
         let addressLineTwo = addressFormTableViewController.addressLineTwoTextField.text!
         let address = Address(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, zipcode: zipcode)
         orderModelController.address = address

@@ -35,7 +35,6 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUserDietDetails()
         if showFavourites == true {
             recipeTagLabel.text = "My favourites"
         } else {
@@ -46,6 +45,10 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
 
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUserDietDetails()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,39 +99,32 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
 
     
     func setRecipes(recipeTag: String) {
-        APIService.getUserFavouriteRecipes(completion: {success,msg,data in
+        APIService.getUserRecipes(recipeTag: recipeTag, completion: {success,msg,data in
             if success == true {
                 if data != JSON.null {
-                    if self.showFavourites == true {
-                        self.recipes = data.arrayValue
-                        self.tableView.reloadData()
-                    } else {
-                        for (_,recipe) in data {
+                    for (_,recipe) in data {
+                        if recipe["is_favourite"].boolValue {
                             let uniqueCode = recipe["unique_code"].stringValue
                             self.markedFavouriteRecipes.append(uniqueCode)
-                            self.tableView.reloadData()
+                        }
+                        
+                        if self.showFavourites == true {
+                            if recipe["is_favourite"].boolValue {
+                                self.recipes.append(recipe)
+                            }
                         }
                     }
+                    
+                    if self.showFavourites == false {
+                        self.setRecipesData(recipes: data)
+                    }
+                    
+                    self.tableView.reloadData()
                 }
             } else {
                 self.showAlertMessage(title: msg, message: nil)
             }
         })
-
-        
-        if self.showFavourites == false {
-            APIService.getRecipesList(recipeTag: recipeTag, completion: {success,msg,data in
-                if success == true {
-                    if data != JSON.null {
-                        self.setRecipesData(recipes: data)
-                        
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    self.showAlertMessage(title: msg, message: nil)
-                }
-            })
-        }
     }
     
     
