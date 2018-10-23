@@ -45,6 +45,9 @@ class BaseViewController: UIViewController {
     }
     
     @objc func showSideMenu(_ sender: UIButton) {
+        SideMenuManager.default.menuAnimationBackgroundColor = .white
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuLeftNavigationController?.navigationBar.isHidden = true
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
     

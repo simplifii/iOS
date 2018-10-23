@@ -189,6 +189,14 @@ struct APIService {
         })
     }
     
+    static func userInterestInFitness(action:String, completion: @escaping (Bool, String) -> Void) {
+        let request = APIRouter.userInterestInFitness(action: action)
+        
+        sendRequest(request: request, completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     
     static func sendRequest(request: URLRequestConvertible, completion: @escaping (Bool, String) -> Void) {
         if !Connectivity.isConnectedToInternet {

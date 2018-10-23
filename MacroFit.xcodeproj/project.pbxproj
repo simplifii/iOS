@@ -10,6 +10,11 @@
 		92F0A7B2ACA699441C9A41D0 /* Pods_MacroFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */; };
 		9F03F06BDFFBE65C874D00E6 /* Pods_MacroFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */; };
 		BC13F774BA31F265EF0928A6 /* Pods_MacroFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90694144E01E7704DD92288F /* Pods_MacroFit.framework */; };
+		E0034923217EE20400AED979 /* FitnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0034922217EE20400AED979 /* FitnessViewController.swift */; };
+		E0034925217EE23F00AED979 /* FitnessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0034924217EE23F00AED979 /* FitnessTableViewController.swift */; };
+		E0034927217EF03C00AED979 /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0034926217EF03C00AED979 /* ThankYouViewController.swift */; };
+		E003492A217F3F9300AED979 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0034929217F3F9300AED979 /* HomeViewController.swift */; };
+		E003492E217F4E4800AED979 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */; };
 		E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E854421647F9C00DDE4A7 /* OrderSummaryViewController.swift */; };
 		E02E854721647FE900DDE4A7 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E854621647FE900DDE4A7 /* PaymentViewController.swift */; };
 		E02E854C2164A1FF00DDE4A7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E854B2164A1FF00DDE4A7 /* Address.swift */; };
@@ -41,7 +46,6 @@
 		E09A6AEA216202260096708A /* SubtotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */; };
 		E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AEB216238840096708A /* AddressFormTableViewController.swift */; };
 		E09A6AEE2162389C0096708A /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A6AED2162389C0096708A /* AddressViewController.swift */; };
-		E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */; };
 		E0A56058216C9B15003534D4 /* DeliveryOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A56057216C9B15003534D4 /* DeliveryOverViewController.swift */; };
 		E0A5605A216C9B76003534D4 /* DateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A56059216C9B76003534D4 /* DateTimeView.swift */; };
 		E0A5605C216C9B85003534D4 /* DateTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A5605B216C9B85003534D4 /* DateTimeView.xib */; };
@@ -138,6 +142,11 @@
 		90694144E01E7704DD92288F /* Pods_MacroFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF02753B59CD0F9BF07668C6 /* Pods-MacroFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C04217907A90F4BF66617F99 /* Pods-MacroFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit.release.xcconfig"; sourceTree = "<group>"; };
+		E0034922217EE20400AED979 /* FitnessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessViewController.swift; sourceTree = "<group>"; };
+		E0034924217EE23F00AED979 /* FitnessTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessTableViewController.swift; sourceTree = "<group>"; };
+		E0034926217EF03C00AED979 /* ThankYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
+		E0034929217F3F9300AED979 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E02E854421647F9C00DDE4A7 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
 		E02E854621647FE900DDE4A7 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E02E854B2164A1FF00DDE4A7 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -169,7 +178,6 @@
 		E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtotalTableViewCell.swift; sourceTree = "<group>"; };
 		E09A6AEB216238840096708A /* AddressFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFormTableViewController.swift; sourceTree = "<group>"; };
 		E09A6AED2162389C0096708A /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
-		E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E0A56057216C9B15003534D4 /* DeliveryOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryOverViewController.swift; sourceTree = "<group>"; };
 		E0A56059216C9B76003534D4 /* DateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeView.swift; sourceTree = "<group>"; };
 		E0A5605B216C9B85003534D4 /* DateTimeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTimeView.xib; sourceTree = "<group>"; };
@@ -300,6 +308,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E0034921217EDDB200AED979 /* Fitness */ = {
+			isa = PBXGroup;
+			children = (
+				E0034922217EE20400AED979 /* FitnessViewController.swift */,
+				E0034924217EE23F00AED979 /* FitnessTableViewController.swift */,
+				E0034926217EF03C00AED979 /* ThankYouViewController.swift */,
+			);
+			path = Fitness;
+			sourceTree = "<group>";
+		};
+		E0034928217F3E7100AED979 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E0034929217F3F9300AED979 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		E02E854A2164A1E900DDE4A7 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +446,8 @@
 		E0A6DD7E214F73A900B6C301 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E0034928217F3E7100AED979 /* Home */,
+				E0034921217EDDB200AED979 /* Fitness */,
 				E05F91942177027E001AF01D /* Order */,
 				E05F919321770227001AF01D /* Settings */,
 				E05F9192217701CE001AF01D /* Recipes */,
@@ -444,7 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */,
-				E0A1F4E72154CF03005E1B4B /* UINavigationControllerExtension.swift */,
+				E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */,
 				E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
@@ -807,6 +835,8 @@
 			files = (
 				E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */,
 				E0A792152153823C00CBBFDB /* APIService.swift in Sources */,
+				E0034927217EF03C00AED979 /* ThankYouViewController.swift in Sources */,
+				E003492A217F3F9300AED979 /* HomeViewController.swift in Sources */,
 				E02E85502164A36300DDE4A7 /* OrderModelController.swift in Sources */,
 				E0C009A321760F5500926904 /* SideMenuViewController.swift in Sources */,
 				E075A976215E377200D264CA /* BaseViewController.swift in Sources */,
@@ -827,6 +857,7 @@
 				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
 				E0D64AD121746A6100FB700C /* UIViewControllerExtension.swift in Sources */,
+				E0034923217EE20400AED979 /* FitnessViewController.swift in Sources */,
 				E02E85542164B6E100DDE4A7 /* CartItem.swift in Sources */,
 				E0D64AD32174ADC800FB700C /* Connectivity.swift in Sources */,
 				E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */,
@@ -839,7 +870,6 @@
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,
 				E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */,
-				E0A1F4E82154CF03005E1B4B /* UINavigationControllerExtension.swift in Sources */,
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
 				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,
@@ -856,6 +886,7 @@
 				E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */,
 				E02E854721647FE900DDE4A7 /* PaymentViewController.swift in Sources */,
 				E0DD472D216F60A000783F99 /* RecipeCardsViewController.swift in Sources */,
+				E0034925217EE23F00AED979 /* FitnessTableViewController.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
@@ -869,6 +900,7 @@
 				E02E854C2164A1FF00DDE4A7 /* Address.swift in Sources */,
 				E02E85562164C54400DDE4A7 /* AddressTableViewCell.swift in Sources */,
 				E09A6AEA216202260096708A /* SubtotalTableViewCell.swift in Sources */,
+				E003492E217F4E4800AED979 /* UINavigationControllerExtension.swift in Sources */,
 				E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */,
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
 				E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */,

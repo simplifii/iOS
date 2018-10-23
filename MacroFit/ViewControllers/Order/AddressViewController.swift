@@ -96,7 +96,6 @@ class AddressViewController: BaseViewController {
     
     func getAndSetDeliveryDate() {
         APIService.getDeliveryDate(completion: {success,msg,data in
-            print(data)
             if success == true {
                 self.orderModelController.deliveryDateFormatted = data["delivery_date"].stringValue
                 self.orderModelController.deliveryDateFrom = data["from_timestamp"].stringValue

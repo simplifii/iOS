@@ -80,7 +80,6 @@ class MealsViewController: UIViewController, DeliveryOverEmbeddedVCDelegate {
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAnimationBackgroundColor = .white // or whatever color you want
         SideMenuManager.default.menuFadeStatusBar = false
-        
 
     }
     

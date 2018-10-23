@@ -31,6 +31,7 @@ enum APIRouter: URLRequestConvertible {
     case markRecipeAsFavourite(cardUniqueCode:String)
     case logoutUser()
     case getUserRecipes(recipeTag: String?)
+    case userInterestInFitness(action: String?)
     
     var path: String {
         
@@ -68,6 +69,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .logoutUser:
                 return NetworkingConstants.logout
+            case .userInterestInFitness:
+                return NetworkingConstants.cards
         }
     }
     
@@ -140,6 +143,10 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["action"] = "PinRecipe"
                 bodyDict["card_unique_code"] = cardUniqueCode
                 break
+        case let .userInterestInFitness(action: action):
+            bodyDict["action"] = action
+            bodyDict["card_unique_code"] = "EDBA7BAA57"
+            bodyDict["count"] = 1
             default:
                 print("no action")
         }
@@ -206,7 +213,7 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness:
             return .patch
         }
     }
@@ -219,7 +226,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes:
