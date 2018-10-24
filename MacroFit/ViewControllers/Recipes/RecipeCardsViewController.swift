@@ -99,6 +99,8 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
 
     
     func setRecipes(recipeTag: String) {
+        self.recipes = []
+        
         APIService.getUserRecipes(recipeTag: recipeTag, completion: {success,msg,data in
             if success == true {
                 if data != JSON.null {

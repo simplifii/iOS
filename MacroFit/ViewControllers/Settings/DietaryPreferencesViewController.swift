@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDelegate {
     
@@ -20,11 +21,21 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     @IBOutlet weak var additionalDietaryPreferencesTextView: UITextView!
     var diet_note = String()
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var userProfile:JSON = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        prefillData()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: 450);
+    }
     
     func setupView() {
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
@@ -35,6 +46,25 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
         additionalDietaryPreferencesTextView.layer.borderWidth = 1.0;
         additionalDietaryPreferencesTextView.layer.cornerRadius = 15.0;
         additionalDietaryPreferencesTextView.delegate = self
+    }
+    
+    func prefillData() {
+        if userProfile["cdata"]["dietary_preference"] != JSON.null {
+            selectedDietaryOpition = userProfile["cdata"]["dietary_preference"].stringValue
+        }
+        for (index, optionValue) in dietaryOptions.enumerated() {
+            if selectedDietaryOpition == optionValue {
+                if let button = dietaryOptionsView.viewWithTag(index + 1) as? UIButton {
+                    selectedButtonView(button: button)
+                    selectedDietaryOpition = button.currentTitle!
+                }
+            }
+        }
+        
+        diet_note = userProfile["diet_note"].stringValue
+        if !diet_note.isEmpty {
+            additionalDietaryPreferencesTextView.text = diet_note
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,10 +88,6 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
             button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
             button.addTarget(self, action: #selector(self.selectDietaryPreference(_:)), for: UIControlEvents.touchUpInside)
             button.tag = index + 1
-            
-            if option == selectedDietaryOpition {
-                selectedButtonView(button: button)
-            }
             
             dietaryOptionsView.addSubview(button)
             

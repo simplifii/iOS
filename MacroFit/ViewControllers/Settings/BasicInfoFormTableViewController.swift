@@ -34,6 +34,8 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     var selectedGoal = String()
     @IBOutlet weak var fitnessGoalNoteTextView: UITextView!
     
+    var userProfile:JSON = [:]
+    
     
     // Fields
     var age  = String()
@@ -140,6 +142,8 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
             }
             self.addFitnessGoalOptionsInView()
             self.tableView.reloadData()
+            
+            self.getUserProfile()
         })
     }
     
@@ -191,6 +195,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     
     func gotoNextScreen() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SetUpMacroMealPortionsViewController") as? SetUpMacroMealPortionsViewController
+        vc?.userProfile = userProfile
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
@@ -252,6 +257,66 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     
     @IBAction func showGenderDropDown(_ sender: UIButton) {
         genderDropDown.show()
+    }
+    
+    func getUserProfile() {
+        APIService.getUserProfile(completion: {success,msg,data in
+            if success == false {
+                self.showAlertMessage(title: msg, message: nil)
+            } else {
+                self.userProfile = data[0]
+                self.setUserProfileData()
+            }
+        })
+    }
+    
+    func setUserProfileData() {
+        ageTextFIeld.text = self.userProfile["age"].stringValue
+        weightTextFIeld.text = self.userProfile["weight"].stringValue
+        let height = self.userProfile["height"].intValue
+        if height > 0 {
+            feetTextFIeld.text = "\(Int(height / 12))"
+            inchesTextFIeld.text = "\(Int(height % 12))"
+        }
+        
+        if self.userProfile["gender_bool"] != JSON.null {
+            let isMale = self.userProfile["gender_bool"].boolValue
+            if isMale {
+                self.genderSelectionButton.setTitle("Male", for: .normal)
+                self.genderSelectionButton.setTitleColor(UIColor.black, for: .normal)
+            } else {
+                self.genderSelectionButton.setTitle("Female", for: .normal)
+                self.genderSelectionButton.setTitleColor(UIColor.black, for: .normal)
+            }
+        }
+        
+        if self.userProfile["activity_level"] != JSON.null {
+            let activityLevel = self.userProfile["activity_level"].stringValue
+            for (_,activity) in activityLevels {
+                if activityLevel == activity["title"].stringValue {
+                    let value = Int((activity["low_range"].intValue + activity["high_range"].intValue)/2)
+                    setActivityInfoInView(sliderValue: value)
+                    activityLevelSlider.setValue(Float(value), animated: true)
+                }
+            }
+        }
+        
+        if self.userProfile["goal"] != JSON.null {
+            let goal = self.userProfile["goal"].stringValue
+            for (index, goalValue) in goals.enumerated() {
+                if goal == goalValue {
+                    if let button = fitnessGoalsView.viewWithTag(index + 1) as? UIButton {
+                        button.backgroundColor = UIColor(red: 255/255, green: 200/255, blue: 187/255, alpha: 1.0)
+                        button.setTitleColor(Constants.schemeColor, for: .normal)
+                        selectedGoal = button.currentTitle!
+                    }
+                }
+            }
+        }
+        
+        if !self.userProfile["goal_note"].stringValue.isEmpty {
+            fitnessGoalNoteTextView.text = self.userProfile["goal_note"].stringValue
+        }
     }
     
 }

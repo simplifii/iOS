@@ -104,6 +104,8 @@
 		E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */; };
 		E0D64AD121746A6100FB700C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */; };
 		E0D64AD32174ADC800FB700C /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D64AD22174ADC800FB700C /* Connectivity.swift */; };
+		E0D99992218090BC004FDBCF /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D99991218090BC004FDBCF /* RatingView.xib */; };
+		E0D99994218090D8004FDBCF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D99993218090D8004FDBCF /* RatingView.swift */; };
 		E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73F7215B84010085551E /* MenuViewController.swift */; };
 		E0DC73FC215B93300085551E /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FB215B93300085551E /* MealsViewController.swift */; };
 		E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */; };
@@ -242,6 +244,8 @@
 		E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUserViewController.swift; sourceTree = "<group>"; };
 		E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		E0D64AD22174ADC800FB700C /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		E0D99991218090BC004FDBCF /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		E0D99993218090D8004FDBCF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		E0DC73F7215B84010085551E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E0DC73FB215B93300085551E /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
 		E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -488,6 +492,7 @@
 				E0BD2B82216B6EF100E2D297 /* CartBarView.xib */,
 				E0A5605B216C9B85003534D4 /* DateTimeView.xib */,
 				E0982AD02178B0C200F5FCE5 /* MenuNavbarView.xib */,
+				E0D99991218090BC004FDBCF /* RatingView.xib */,
 			);
 			path = XIBFiles;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 				E0BD2B84216B6F0D00E2D297 /* CartBarView.swift */,
 				E0A56059216C9B76003534D4 /* DateTimeView.swift */,
 				E0982AD22178B0D500F5FCE5 /* MenuNavbarView.swift */,
+				E0D99993218090D8004FDBCF /* RatingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 				E0BD2B74216B247A00E2D297 /* Montserrat-ExtraLight.ttf in Resources */,
 				E0BD2B75216B247A00E2D297 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				E0BD2B76216B247A00E2D297 /* Montserrat-Italic.ttf in Resources */,
+				E0D99992218090BC004FDBCF /* RatingView.xib in Resources */,
 				E0BD2B77216B247A00E2D297 /* Montserrat-Light.ttf in Resources */,
 				E0BD2B78216B247A00E2D297 /* Montserrat-LightItalic.ttf in Resources */,
 				E0BD2B79216B247A00E2D297 /* Montserrat-Medium.ttf in Resources */,
@@ -866,6 +873,7 @@
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
 				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
 				E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */,
+				E0D99994218090D8004FDBCF /* RatingView.swift in Sources */,
 				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,

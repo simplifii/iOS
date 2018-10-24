@@ -26,6 +26,11 @@ class HomeViewController: BaseViewController {
     
     @IBOutlet weak var bodyFatNotEnteredLabel: UILabel!
     
+    
+    @IBOutlet weak var backgroundScrollView: UIScrollView!
+    @IBOutlet weak var ratingContainerView: UIView!
+    
+    
     var userProfile:JSON = [:]
     
     override func viewDidLoad() {
@@ -34,7 +39,19 @@ class HomeViewController: BaseViewController {
 
         addMenuNavbarInView(navbarView: navbarView)
         
+        
+        let ratingView = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as? RatingView
+        ratingView!.frame.size = ratingContainerView.bounds.size
+        ratingContainerView.addSubview(ratingView!)
+        
+        ratingView!.setRating(rating: 2)
         // setupSegmentedControlView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        backgroundScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: 380);
     }
     
     func setupSegmentedControlView() {

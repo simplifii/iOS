@@ -91,14 +91,25 @@ class RecipeViewController: BaseViewController {
     
     
     @IBAction func markFavourite(_ sender: UIButton) {
+        let recipeUniqueCode = recipeData["unique_code"].stringValue
+        
         if isFavourite == false {
             setFavouriteButtonIcon(isFav: true)
             
-            let recipeId = recipeData["unique_code"].stringValue
-            
-            APIService.markRecipeAsFavourite(cardUniqueCode: recipeId, completion: {success,msg in
+            APIService.markRecipeAsFavourite(cardUniqueCode: recipeUniqueCode, completion: {success,msg in
                 if success != true {
                     self.setFavouriteButtonIcon(isFav: false)
+                    self.showAlertMessage(title: msg, message: nil)
+                }
+            })
+        } else {
+            setFavouriteButtonIcon(isFav: false)
+            
+            let recipeId = recipeData["id"].intValue
+            
+            APIService.unfavouriteRecipe(cardUniqueCode: recipeUniqueCode, recipeId: recipeId, completion: {success,msg in
+                if success == false {
+                    self.setFavouriteButtonIcon(isFav: true)
                     self.showAlertMessage(title: msg, message: nil)
                 }
             })

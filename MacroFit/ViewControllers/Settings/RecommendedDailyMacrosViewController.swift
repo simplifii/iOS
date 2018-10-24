@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class RecommendedDailyMacrosViewController: OnboardUserViewController {
 
@@ -21,11 +22,20 @@ class RecommendedDailyMacrosViewController: OnboardUserViewController {
     @IBOutlet weak var proteinContentLabel: UILabel!
     @IBOutlet weak var fatContentLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var userProfile:JSON = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getRecommendedDailyMacros()
         setupView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: 450);
     }
     
     
@@ -61,5 +71,12 @@ class RecommendedDailyMacrosViewController: OnboardUserViewController {
     
     func setMealsCountTitle(mealCount: Int) {
          mealCountTitleLabel.text = "Eat \(mealCount) meals a day to"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is DietaryPreferencesViewController {
+            let vc = segue.destination as! DietaryPreferencesViewController
+            vc.userProfile = userProfile
+        }
     }
 }

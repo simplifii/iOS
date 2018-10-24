@@ -571,6 +571,63 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G5-1I-Ptr">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="407"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meals for you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4q-7B-aL0">
+                                                <rect key="frame" x="24" y="28" width="327" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="JBm-2h-MgW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="19"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VM6-Gw-cNH">
+                                                <rect key="frame" x="24" y="64" width="351" height="155"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="155" id="Npd-rK-5zc"/>
+                                                </constraints>
+                                            </scrollView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGh-Cs-UqW" customClass="WhiteRoundedCornerBoxView" customModule="MacroFit" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="243" width="327" height="98"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate and give feedback on the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ham-QA-kum">
+                                                        <rect key="frame" x="20" y="21" width="287" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="xfr-Ew-tdT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHc-LC-fHd">
+                                                        <rect key="frame" x="20" y="51" width="287" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="pvB-gf-wa3"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="ham-QA-kum" firstAttribute="leading" secondItem="KGh-Cs-UqW" secondAttribute="leading" constant="20" id="9pU-fC-14T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WHc-LC-fHd" secondAttribute="trailing" constant="20" id="IDn-xC-TIc"/>
+                                                    <constraint firstAttribute="height" constant="98" id="Kns-Lf-D97"/>
+                                                    <constraint firstItem="WHc-LC-fHd" firstAttribute="top" secondItem="ham-QA-kum" secondAttribute="bottom" constant="11" id="Nbm-U3-REC"/>
+                                                    <constraint firstItem="WHc-LC-fHd" firstAttribute="leading" secondItem="KGh-Cs-UqW" secondAttribute="leading" constant="20" id="iZp-vh-O5G"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ham-QA-kum" secondAttribute="trailing" constant="20" id="pXd-we-ieQ"/>
+                                                    <constraint firstItem="ham-QA-kum" firstAttribute="top" secondItem="KGh-Cs-UqW" secondAttribute="top" constant="21" id="sCs-Tn-i5u"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="KGh-Cs-UqW" firstAttribute="top" secondItem="VM6-Gw-cNH" secondAttribute="bottom" constant="24" id="CBL-mo-aEg"/>
+                                            <constraint firstAttribute="trailing" secondItem="w4q-7B-aL0" secondAttribute="trailing" constant="24" id="ToO-VL-67u"/>
+                                            <constraint firstAttribute="trailing" secondItem="VM6-Gw-cNH" secondAttribute="trailing" id="Yni-N5-0iD"/>
+                                            <constraint firstAttribute="trailing" secondItem="KGh-Cs-UqW" secondAttribute="trailing" constant="24" id="cdb-C1-YgI"/>
+                                            <constraint firstItem="VM6-Gw-cNH" firstAttribute="top" secondItem="w4q-7B-aL0" secondAttribute="bottom" constant="8" id="gO1-9F-pC2"/>
+                                            <constraint firstItem="VM6-Gw-cNH" firstAttribute="leading" secondItem="2G5-1I-Ptr" secondAttribute="leading" constant="24" id="jMN-5n-Csc"/>
+                                            <constraint firstItem="KGh-Cs-UqW" firstAttribute="leading" secondItem="2G5-1I-Ptr" secondAttribute="leading" constant="24" id="qBb-jQ-5UV"/>
+                                            <constraint firstItem="w4q-7B-aL0" firstAttribute="leading" secondItem="2G5-1I-Ptr" secondAttribute="leading" constant="24" id="rXq-ef-Ltw"/>
+                                            <constraint firstItem="w4q-7B-aL0" firstAttribute="top" secondItem="2G5-1I-Ptr" secondAttribute="top" constant="28" id="xhn-xq-DIH"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -611,6 +668,7 @@
                     <navigationItem key="navigationItem" id="TFm-D6-zEZ"/>
                     <size key="freeformSize" width="375" height="713"/>
                     <connections>
+                        <outlet property="backgroundScrollView" destination="H6g-6L-VFF" id="ktQ-cb-hE3"/>
                         <outlet property="bodyFatNotEnteredLabel" destination="XBx-kn-ErM" id="o7g-Lp-ESQ"/>
                         <outlet property="caloriesLabel" destination="D4O-cD-jze" id="AV4-eb-xB5"/>
                         <outlet property="carbsLabel" destination="Vq8-bN-POq" id="fuM-X8-UqD"/>
@@ -619,6 +677,7 @@
                         <outlet property="fatWeightUnitLabel" destination="yv6-Kw-inh" id="VNq-Hv-3H1"/>
                         <outlet property="navbarView" destination="tbR-ki-AHe" id="UQf-oP-ftK"/>
                         <outlet property="proteinLabel" destination="Snv-xO-qxV" id="xoe-db-A9W"/>
+                        <outlet property="ratingContainerView" destination="WHc-LC-fHd" id="9d9-rS-fnz"/>
                         <outlet property="segmentedControl" destination="fhc-Zi-fXp" id="opX-d0-I1T"/>
                         <outlet property="weightLabel" destination="KCN-cP-HKu" id="d0e-Ny-DN9"/>
                     </connections>

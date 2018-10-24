@@ -60,6 +60,9 @@ class RecipeCategoriesViewController: BaseViewController, UITableViewDataSource,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCategoryTableViewCell") as! RecipeCategoryTableViewCell
+            cell.categoryNameLabel.text = "My Favourites"
+            cell.iconImageView.image = UIImage(named: "heart_white.png")
+            cell.backgroundImageView.image = UIImage(named: "favourites.png")
             
             return cell
         } else if indexPath.row == filteredRecipeTags.count + 1 {
@@ -73,11 +76,15 @@ class RecipeCategoriesViewController: BaseViewController, UITableViewDataSource,
         if !filteredRecipeTags[indexPath.row - 1]["icon"]!.isEmpty {
             let url = URL(string: filteredRecipeTags[indexPath.row - 1]["icon"]!)!
             cell.iconImageView.af_setImage(withURL: url)
+        } else {
+            cell.backgroundImageView.image = UIImage(named: "favourites.png")
         }
         
         if !filteredRecipeTags[indexPath.row - 1]["image"]!.isEmpty {
             let url = URL(string: filteredRecipeTags[indexPath.row - 1]["image"]!)!
             cell.backgroundImageView.af_setImage(withURL: url)
+        } else {
+            cell.backgroundImageView.image = UIImage(named: "favourites.png")
         }
         
         return cell

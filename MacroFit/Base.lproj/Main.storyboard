@@ -1522,9 +1522,9 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="Af0-i1-P7o" secondAttribute="trailing" constant="18" id="Qi4-qS-rI1"/>
                                             <constraint firstItem="Af0-i1-P7o" firstAttribute="top" secondItem="Hv8-FY-Bnb" secondAttribute="bottom" constant="36" id="bAe-Rm-ULi"/>
                                             <constraint firstItem="Af0-i1-P7o" firstAttribute="leading" secondItem="mx2-m1-GVE" secondAttribute="leadingMargin" constant="18" id="bG7-Kz-qn2"/>
-                                            <constraint firstAttribute="bottom" secondItem="Af0-i1-P7o" secondAttribute="bottom" constant="1" id="gho-rD-KGg"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="zml-v1-aJ3" secondAttribute="trailing" constant="18" id="nhv-bq-IsP"/>
                                             <constraint firstItem="Hv8-FY-Bnb" firstAttribute="leading" secondItem="mx2-m1-GVE" secondAttribute="leading" constant="26" id="tce-fz-j9U"/>
+                                            <constraint firstAttribute="bottom" secondItem="Af0-i1-P7o" secondAttribute="bottom" constant="1" id="uSE-Ye-cA1"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1589,6 +1589,7 @@
                         <outlet property="navbarView" destination="ZQp-2R-Y5S" id="etm-Gr-lLD"/>
                         <outlet property="progressBarView" destination="xWa-uc-SOH" id="j0C-61-Ofv"/>
                         <outlet property="proteinContentLabel" destination="kAe-Iy-S7s" id="YLT-GI-CQV"/>
+                        <outlet property="scrollView" destination="K00-CP-hYp" id="qHD-Mz-nnr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Svo-ip-kd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1722,6 +1723,7 @@
                         <outlet property="dietaryOptionsView" destination="eiu-up-H3Q" id="6ZQ-GS-0ZZ"/>
                         <outlet property="navbarView" destination="IqN-r4-AqM" id="Xso-tC-Lhr"/>
                         <outlet property="progressBarView" destination="Wuz-nP-GT6" id="lJq-81-bnR"/>
+                        <outlet property="scrollView" destination="y53-Qc-Av5" id="UGH-LL-CD0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cN0-7q-RSm" userLabel="First Responder" sceneMemberID="firstResponder"/>

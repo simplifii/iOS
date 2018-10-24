@@ -164,6 +164,14 @@ struct APIService {
         })
     }
     
+    static func unfavouriteRecipe(cardUniqueCode:String, recipeId: Int, completion: @escaping (Bool, String) -> Void) {
+        let request = APIRouter.unfavouriteRecipe(cardUniqueCode: cardUniqueCode, recipeId: recipeId)
+        
+        sendRequest(request: request, completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     static func placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, deliveryDateFrom:String, deliveryDateTo:String, meals:[[String:Any]], completion: @escaping (Bool, String, JSON)->Void) {
         let request = APIRouter.placeNewOrder(addressLineOne: addressLineOne, addressLineTwo: addressLineTwo, note: note, deliverySlot: deliverySlot, zipcode:zipcode, deliveryDateFrom:deliveryDateFrom, deliveryDateTo:deliveryDateTo, meals:meals)
         

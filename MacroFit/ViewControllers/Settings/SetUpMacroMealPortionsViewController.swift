@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SetUpMacroMealPortionsViewController: OnboardUserViewController {
 
@@ -27,11 +28,13 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     @IBOutlet weak var customPercentMacrosForSnacksTextField: UITextField!
     var macrosPercentageInSnacks = String()
     
+    var userProfile:JSON = [:]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        prefillValues()
     }
     
 
@@ -59,6 +62,49 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
         
         customPercentMacrosForSnacksTextField.layer.borderWidth = 1.0
         customPercentMacrosForSnacksTextField.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func prefillValues() {
+        switch userProfile["meals_per_day"].intValue {
+            case 2:
+                selectMealsPerDay(sender: twoMealsPerDayButton)
+                break
+            case 3:
+                selectMealsPerDay(sender: twoMealsPerDayButton)
+                break
+            case 4:
+                selectMealsPerDay(sender: twoMealsPerDayButton)
+                break
+            case 5:
+                selectMealsPerDay(sender: twoMealsPerDayButton)
+                break
+            default:
+                break
+        }
+        
+        if userProfile["cdata"]["snacks"] != JSON.null {
+            let snacksPercentage = userProfile["cdata"]["snacks"].intValue
+            switch snacksPercentage {
+                case 0:
+                    selectMacrosPercentageInSnacks(sender: zeroPercentMacrosForSnacksButton)
+                    break
+                case 5:
+                    selectMacrosPercentageInSnacks(sender: fivePercentMacrosForSnacksButton)
+                    break
+                case 10:
+                    selectMacrosPercentageInSnacks(sender: tenPercentMacrosForSnacksButton)
+                    break
+                default:
+                    customPercentMacrosForSnacksTextField.text = "\(snacksPercentage)"
+                    
+                    setMacrosPercentageInSnacks(percentage: "\(snacksPercentage)")
+                    
+                    for button in [zeroPercentMacrosForSnacksButton, fivePercentMacrosForSnacksButton, tenPercentMacrosForSnacksButton] {
+                        defaultButtonUI(button: button!)
+                    }
+                    break
+            }
+        }
     }
     
     func roundLeftCorners(button: UIButton, cornerRadius: Double) {
@@ -147,6 +193,7 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     
     func showNextScreen() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RecommendedDailyMacrosViewController") as? RecommendedDailyMacrosViewController
+        vc?.userProfile = userProfile
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
