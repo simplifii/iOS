@@ -25,7 +25,8 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     @IBOutlet weak var zeroPercentMacrosForSnacksButton: UIButton!
     @IBOutlet weak var fivePercentMacrosForSnacksButton: UIButton!
     @IBOutlet weak var tenPercentMacrosForSnacksButton: UIButton!
-    @IBOutlet weak var customPercentMacrosForSnacksTextField: UITextField!
+    @IBOutlet weak var twentyPercentMacrosForSnacksButton: UIButton!
+    
     var macrosPercentageInSnacks = String()
     
     var userProfile:JSON = [:]
@@ -56,30 +57,26 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
         
         selectedButtonUI(button: zeroPercentMacrosForSnacksButton)
         setMacrosPercentageInSnacks(percentage: zeroPercentMacrosForSnacksButton.currentTitle!)
-        customPercentMacrosForSnacksTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-
-        
-        
-        customPercentMacrosForSnacksTextField.layer.borderWidth = 1.0
-        customPercentMacrosForSnacksTextField.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     func prefillValues() {
-        switch userProfile["meals_per_day"].intValue {
+        if userProfile["meals_per_day"] != JSON.null {
+            switch userProfile["meals_per_day"].intValue {
             case 2:
                 selectMealsPerDay(sender: twoMealsPerDayButton)
                 break
             case 3:
-                selectMealsPerDay(sender: twoMealsPerDayButton)
+                selectMealsPerDay(sender: threeMealsPerDayButton)
                 break
             case 4:
-                selectMealsPerDay(sender: twoMealsPerDayButton)
+                selectMealsPerDay(sender: fourMealsPerDayButton)
                 break
             case 5:
-                selectMealsPerDay(sender: twoMealsPerDayButton)
+                selectMealsPerDay(sender: fiveMealsPerDayButton)
                 break
             default:
                 break
+            }
         }
         
         if userProfile["cdata"]["snacks"] != JSON.null {
@@ -94,14 +91,10 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
                 case 10:
                     selectMacrosPercentageInSnacks(sender: tenPercentMacrosForSnacksButton)
                     break
+                case 20:
+                    selectMacrosPercentageInSnacks(sender: twentyPercentMacrosForSnacksButton)
+                    break
                 default:
-                    customPercentMacrosForSnacksTextField.text = "\(snacksPercentage)"
-                    
-                    setMacrosPercentageInSnacks(percentage: "\(snacksPercentage)")
-                    
-                    for button in [zeroPercentMacrosForSnacksButton, fivePercentMacrosForSnacksButton, tenPercentMacrosForSnacksButton] {
-                        defaultButtonUI(button: button!)
-                    }
                     break
             }
         }
@@ -158,9 +151,12 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     @IBAction func selectTenPercentMacrosInSnacks(_ sender: UIButton) {
         selectMacrosPercentageInSnacks(sender: sender)
     }
+    @IBAction func selectTwentyPercentMacrosInSnacks(_ sender: UIButton) {
+        selectMacrosPercentageInSnacks(sender: sender)
+    }
     
     func selectMacrosPercentageInSnacks(sender: UIButton) {
-        for button in [zeroPercentMacrosForSnacksButton, fivePercentMacrosForSnacksButton, tenPercentMacrosForSnacksButton] {
+        for button in [zeroPercentMacrosForSnacksButton, fivePercentMacrosForSnacksButton, tenPercentMacrosForSnacksButton, twentyPercentMacrosForSnacksButton] {
             defaultButtonUI(button: button!)
         }
         
@@ -200,16 +196,6 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     
     func setMacrosPercentageInSnacks(percentage: String) {
         macrosPercentageInSnacks = percentage.replacingOccurrences(of: "%", with: "")
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField.text != "" {
-            setMacrosPercentageInSnacks(percentage: textField.text!)
-            
-            for button in [zeroPercentMacrosForSnacksButton, fivePercentMacrosForSnacksButton, tenPercentMacrosForSnacksButton] {
-                defaultButtonUI(button: button!)
-            }
-        }
     }
     
 }

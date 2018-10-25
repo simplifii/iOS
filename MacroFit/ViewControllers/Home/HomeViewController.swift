@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, ThankYouPopupDelegate {
 
     @IBOutlet weak var navbarView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -32,6 +32,9 @@ class HomeViewController: BaseViewController {
     
     
     var userProfile:JSON = [:]
+    var feedbackCardUniqueCode:String = ""
+    
+    var ratingView:RatingView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +42,60 @@ class HomeViewController: BaseViewController {
 
         addMenuNavbarInView(navbarView: navbarView)
         
+        addRatingView()
         
-        let ratingView = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as? RatingView
-        ratingView!.frame.size = ratingContainerView.bounds.size
-        ratingContainerView.addSubview(ratingView!)
-        
-        ratingView!.setRating(rating: 2)
-        // setupSegmentedControlView()
+        setAppFeedback()
     }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         backgroundScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: 380);
     }
+    
+    func addRatingView() {
+        ratingView = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as? RatingView
+        ratingView!.frame.size = ratingContainerView.bounds.size
+        ratingContainerView.addSubview(ratingView!)
+        
+        ratingView!.starOneButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
+        ratingView!.startTwoButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
+        ratingView!.starThreeButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
+        ratingView!.starFourButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
+        ratingView!.starFiveButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
+        
+    }
+    
+    @objc func showRatingInRatingView(_ sender: UIButton) {
+        if feedbackCardUniqueCode.isEmpty {
+            let rating = Int(sender.accessibilityHint!)!
+            ratingView!.setRating(rating: rating)
+            createAppFeedback(rating: rating)
+        }
+    }
+    
+    func showRatingAndTextModal() {
+        let popOverVC = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "RatingAndTextFeedbackViewController") as? RatingAndTextFeedbackViewController
+        popOverVC?.uniqueCode = feedbackCardUniqueCode
+        popOverVC!.thankYouPopupDelegate = self
+        
+        self.addChildViewController(popOverVC!)
+        popOverVC!.view.frame = self.view.frame
+        self.view.addSubview(popOverVC!.view)
+        popOverVC!.didMove(toParentViewController: self)
+    }
+    
+    func showRatingModal() {
+        let popOverVC = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "RatingViewController") as? RatingViewController
+        popOverVC!.thankYouPopupDelegate = self
+        self.addChildViewController(popOverVC!)
+        popOverVC!.view.frame = self.view.frame
+        self.view.addSubview(popOverVC!.view)
+        popOverVC!.didMove(toParentViewController: self)
+    }
+    
+    
     
     func setupSegmentedControlView() {
         UISegmentedControl.appearance().setTitleTextAttributes([
@@ -117,5 +160,43 @@ class HomeViewController: BaseViewController {
         carbsLabel.text = "\(userProfile["carbs"].intValue)g"
         proteinLabel.text = "\(userProfile["protein"].intValue)g"
         fatLabel.text = "\(userProfile["fat"].intValue)g"
+    }
+    
+    
+    func createAppFeedback(rating: Int) {
+        APIService.createFeedback(rating: rating, completion: {success,msg,data in
+            if success == false {
+                self.showAlertMessage(title: msg, message: nil)
+            } else {
+                self.feedbackCardUniqueCode = data[0]["unique_code"].stringValue
+                
+                if rating < 5 {
+                    self.showRatingAndTextModal()
+                } else {
+                    self.showRatingModal()
+                }
+            }
+        })
+    }
+    
+    func setAppFeedback() {
+        APIService.getFeedback(completion: {success,msg,data in
+            if success == false {
+                self.showAlertMessage(title: msg, message: nil)
+            } else {
+                let rating = data[0]["rating"].intValue
+                self.ratingView!.setRating(rating: rating)
+                self.feedbackCardUniqueCode = data[0]["unique_code"].stringValue
+            }
+        })
+    }
+    
+    func showThankPopup() {
+        let popOverVC = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "ThankYouPopupViewController") as? ThankYouPopupViewController
+        
+        self.addChildViewController(popOverVC!)
+        popOverVC!.view.frame = self.view.frame
+        self.view.addSubview(popOverVC!.view)
+        popOverVC!.didMove(toParentViewController: self)
     }
 }

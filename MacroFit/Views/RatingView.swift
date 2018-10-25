@@ -11,23 +11,45 @@ import UIKit
 
 class RatingView: UIView {
 
-    @IBOutlet weak var starOneImageView: UIImageView!
-    @IBOutlet weak var startTwoImageView: UIImageView!
-    @IBOutlet weak var starThreeImageView: UIImageView!
-    @IBOutlet weak var starFourImageView: UIImageView!
-    @IBOutlet weak var starFiveImageView: UIImageView!
+    @IBOutlet weak var starOneButton: UIButton!
+    @IBOutlet weak var startTwoButton: UIButton!
+    @IBOutlet weak var starThreeButton: UIButton!
+    @IBOutlet weak var starFourButton: UIButton!
+    @IBOutlet weak var starFiveButton: UIButton!
     
-
+    
+    override func awakeFromNib() {
+        viewSetup()
+    }
+    
+    func viewSetup() {
+        starOneButton.accessibilityHint = "1"
+        startTwoButton.accessibilityHint = "2"
+        starThreeButton.accessibilityHint = "3"
+        starFourButton.accessibilityHint = "4"
+        starFiveButton.accessibilityHint = "5"
+    }
+    
+    
     public func setRating(rating: Int){
+        setDefaultImage()
+        
         let image = UIImage(named: "star_orange_full.png")
         
         var numberOfStars = rating
-        for imageView in [starOneImageView, startTwoImageView, starThreeImageView, starFourImageView, starFiveImageView] {
+        for button in [starOneButton, startTwoButton, starThreeButton, starFourButton, starFiveButton] {
             if numberOfStars <= 0 {
                 break
             }
-            imageView!.image = image
+            button?.setImage(image, for: .normal)
             numberOfStars -= 1
+        }
+    }
+    
+    func setDefaultImage() {
+        let image = UIImage(named: "star_gray.png")
+        for button in [starOneButton, startTwoButton, starThreeButton, starFourButton, starFiveButton] {
+            button?.setImage(image, for: .normal)
         }
     }
 

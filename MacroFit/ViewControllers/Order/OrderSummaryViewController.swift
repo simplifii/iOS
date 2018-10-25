@@ -156,7 +156,6 @@ class OrderSummaryViewController: BaseViewController, UITableViewDataSource, UIT
     }
     
     func setCardData(data: JSON) {
-        print(data)
         orderModelController.orderCardId = data[0]["id"].stringValue
         orderModelController.orderCardUniqueCode = data[0]["unique_code"].stringValue
     }

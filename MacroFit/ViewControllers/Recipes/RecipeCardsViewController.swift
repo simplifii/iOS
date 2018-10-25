@@ -131,28 +131,27 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     
     
     func setRecipesData(recipes:JSON) {
-        self.recipes = recipes.arrayValue
-//        if userDietType.isEmpty {
-//            self.recipes = recipes.arrayValue
-//        } else {
-//            var data:[JSON] = []
-//            for (_,recipe) in recipes {
-//                let dietTypesString = recipe["diet_type"].stringValue
-//                let dietTypes = dietTypesString.components(separatedBy: ",")
-//                if dietTypes.contains(userDietType) {
-//                    if isRecipeRecommendedForUser(
-//                        recipeCalories: recipe["calorie"].intValue,
-//                        recipeProtein: recipe["protein"].intValue,
-//                        recipeCarbs: recipe["carbs"].intValue,
-//                        recipeFat: recipe["fat"].intValue) {
-//
-//                        data.append(recipe)
-//                    }
-//                }
-//            }
-//
-//            self.recipes = data
-//        }
+        if userDietType.isEmpty {
+            self.recipes = recipes.arrayValue
+        } else {
+            var data:[JSON] = []
+            for (_,recipe) in recipes {
+                let dietTypesString = recipe["diet_type"].stringValue
+                let dietTypes = dietTypesString.components(separatedBy: ",")
+                if dietTypes.contains(userDietType) {
+                    if isRecipeRecommendedForUser(
+                        recipeCalories: recipe["calorie"].intValue,
+                        recipeProtein: recipe["protein"].intValue,
+                        recipeCarbs: recipe["carbs"].intValue,
+                        recipeFat: recipe["fat"].intValue) {
+
+                        data.append(recipe)
+                    }
+                }
+            }
+
+            self.recipes = data
+        }
     }
     
     func isRecipeRecommendedForUser(recipeCalories:Int, recipeProtein:Int, recipeCarbs:Int, recipeFat:Int)->Bool {

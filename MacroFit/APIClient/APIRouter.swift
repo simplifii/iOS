@@ -33,6 +33,9 @@ enum APIRouter: URLRequestConvertible {
     case getUserRecipes(recipeTag: String?)
     case userInterestInFitness(action: String?)
     case unfavouriteRecipe(cardUniqueCode:String, recipeId: Int)
+    case createFeedback(rating: Int)
+    case editFeedback(uniqueCode: String, feedback: String)
+    case getFeedback()
     
     var path: String {
         
@@ -71,6 +74,8 @@ enum APIRouter: URLRequestConvertible {
             case .logoutUser:
                 return NetworkingConstants.logout
             case .userInterestInFitness:
+                return NetworkingConstants.cards
+            case .createFeedback, .editFeedback, .getFeedback:
                 return NetworkingConstants.cards
         }
     }
@@ -153,6 +158,15 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["action"] = action
             bodyDict["card_unique_code"] = "EDBA7BAA57"
             bodyDict["count"] = 1
+        case let .createFeedback(rating: rating):
+            bodyDict["entity"] = "Feedback"
+            bodyDict["action"] = "Create"
+            bodyDict["rating"] = rating
+            bodyDict["type"] = "AppRating"
+        case let .editFeedback(uniqueCode: uniqueCode,feedback: feedback):
+            bodyDict["action"] = "Update"
+            bodyDict["card_unique_code"] = uniqueCode
+            bodyDict["feedback"] = feedback
             default:
                 print("no action")
         }
@@ -205,6 +219,10 @@ enum APIRouter: URLRequestConvertible {
         case let .getUserRecipes(recipeTag: recipeTag):
             paramDict["recipe_tag"] = recipeTag
             break
+        case let .getFeedback:
+            paramDict["type"] = "Feedback"
+            paramDict["equalto___type"] = "AppRating"
+            break
         default:
             break
         }
@@ -215,11 +233,11 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback:
             return .patch
         }
     }
@@ -232,10 +250,10 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             default:
                 break

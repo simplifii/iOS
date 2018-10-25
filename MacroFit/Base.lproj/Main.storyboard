@@ -1202,34 +1202,47 @@
                                                             <action selector="selectTenPercentMacrosInSnacks:" destination="Oul-mp-n1P" eventType="touchUpInside" id="fie-XC-xF5"/>
                                                         </connections>
                                                     </button>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Custom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-j2-IFb">
-                                                        <rect key="frame" x="232" y="176" width="70" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="32" id="mme-3P-jrW"/>
-                                                        </constraints>
-                                                        <color key="textColor" red="0.7725490196" green="0.76862745099999996" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set a % of your Daily Macros for snacks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGI-6x-V4Z">
                                                         <rect key="frame" x="18" y="143" width="287" height="15"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" red="0.59607843137254901" green="0.59215686274509804" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etj-ph-Wgj">
+                                                        <rect key="frame" x="232" y="176" width="70" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="KtT-24-UQa"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                                        <state key="normal" title="20%">
+                                                            <color key="titleColor" red="0.7725490196" green="0.76862745099999996" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.7725490196" green="0.76862745099999996" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="selectTwentyPercentMacrosInSnacks:" destination="Oul-mp-n1P" eventType="touchUpInside" id="zmm-Fy-9al"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="p4u-bu-gzs" firstAttribute="top" secondItem="YGI-6x-V4Z" secondAttribute="bottom" constant="18" id="4Pi-Eh-3Gq"/>
                                                     <constraint firstItem="YGI-6x-V4Z" firstAttribute="leading" secondItem="SIc-Ed-vYh" secondAttribute="leading" constant="18" id="4on-JH-7Cs"/>
                                                     <constraint firstItem="xKG-kF-xwT" firstAttribute="width" secondItem="XE3-A5-5kU" secondAttribute="width" id="85X-MM-Gvi"/>
+                                                    <constraint firstItem="p4u-bu-gzs" firstAttribute="width" secondItem="9xK-9m-fbm" secondAttribute="width" id="8df-h1-eaA"/>
                                                     <constraint firstItem="YGI-6x-V4Z" firstAttribute="top" secondItem="Mtf-ay-aCR" secondAttribute="bottom" constant="5" id="9a8-fd-2Qi"/>
                                                     <constraint firstAttribute="trailing" secondItem="YGI-6x-V4Z" secondAttribute="trailing" constant="18" id="Bo1-nO-yEw"/>
                                                     <constraint firstItem="p4u-bu-gzs" firstAttribute="leading" secondItem="9xK-9m-fbm" secondAttribute="trailing" id="DnF-bO-t6m"/>
-                                                    <constraint firstItem="BR5-j2-IFb" firstAttribute="width" secondItem="9xK-9m-fbm" secondAttribute="width" id="HDf-Ge-vRV"/>
+                                                    <constraint firstItem="72d-p3-dkh" firstAttribute="width" secondItem="9xK-9m-fbm" secondAttribute="width" id="FIx-0K-50B"/>
+                                                    <constraint firstItem="Etj-ph-Wgj" firstAttribute="leading" secondItem="72d-p3-dkh" secondAttribute="trailing" id="GAO-Rn-nxs"/>
                                                     <constraint firstAttribute="height" constant="240" id="I6Y-DN-3uP"/>
                                                     <constraint firstAttribute="trailing" secondItem="8c8-ua-C79" secondAttribute="trailing" constant="21.5" id="IBO-iX-c81"/>
-                                                    <constraint firstItem="72d-p3-dkh" firstAttribute="width" secondItem="9xK-9m-fbm" secondAttribute="width" id="IFC-6j-PPM"/>
                                                     <constraint firstItem="xKG-kF-xwT" firstAttribute="leading" secondItem="0bN-sm-bqZ" secondAttribute="trailing" id="IVE-p1-BEl"/>
                                                     <constraint firstItem="639-LS-dlM" firstAttribute="leading" secondItem="SIc-Ed-vYh" secondAttribute="leading" constant="18" id="Imf-1w-dmF"/>
                                                     <constraint firstAttribute="trailing" secondItem="Mtf-ay-aCR" secondAttribute="trailing" constant="18" id="KBS-wB-zOY"/>
@@ -1237,8 +1250,7 @@
                                                     <constraint firstItem="9xK-9m-fbm" firstAttribute="leading" secondItem="SIc-Ed-vYh" secondAttribute="leading" constant="22" id="Pvq-Gj-lzv"/>
                                                     <constraint firstItem="8c8-ua-C79" firstAttribute="leading" secondItem="xKG-kF-xwT" secondAttribute="trailing" id="RL1-Ei-ZfN"/>
                                                     <constraint firstItem="8c8-ua-C79" firstAttribute="top" secondItem="639-LS-dlM" secondAttribute="bottom" constant="11" id="SNJ-vo-IgR"/>
-                                                    <constraint firstItem="BR5-j2-IFb" firstAttribute="leading" secondItem="72d-p3-dkh" secondAttribute="trailing" id="SeT-wo-dmm"/>
-                                                    <constraint firstAttribute="trailing" secondItem="BR5-j2-IFb" secondAttribute="trailing" constant="21" id="Wgu-rZ-Op8"/>
+                                                    <constraint firstItem="Etj-ph-Wgj" firstAttribute="width" secondItem="9xK-9m-fbm" secondAttribute="width" id="U8r-fJ-6jK"/>
                                                     <constraint firstItem="Mtf-ay-aCR" firstAttribute="top" secondItem="XE3-A5-5kU" secondAttribute="bottom" constant="29" id="c0F-7j-Jkh"/>
                                                     <constraint firstItem="XE3-A5-5kU" firstAttribute="leading" secondItem="SIc-Ed-vYh" secondAttribute="leading" constant="21.5" id="eam-W8-pde"/>
                                                     <constraint firstItem="0bN-sm-bqZ" firstAttribute="top" secondItem="639-LS-dlM" secondAttribute="bottom" constant="11" id="fOc-Ty-d40"/>
@@ -1248,12 +1260,12 @@
                                                     <constraint firstItem="639-LS-dlM" firstAttribute="top" secondItem="SIc-Ed-vYh" secondAttribute="top" constant="18" id="juE-xY-mNj"/>
                                                     <constraint firstItem="Mtf-ay-aCR" firstAttribute="leading" secondItem="SIc-Ed-vYh" secondAttribute="leading" constant="18" id="lWu-oX-qXP"/>
                                                     <constraint firstAttribute="trailing" secondItem="639-LS-dlM" secondAttribute="trailing" constant="18" id="m3S-qL-qPe"/>
-                                                    <constraint firstItem="p4u-bu-gzs" firstAttribute="width" secondItem="9xK-9m-fbm" secondAttribute="width" id="n3g-Cw-w7H"/>
                                                     <constraint firstItem="XE3-A5-5kU" firstAttribute="top" secondItem="639-LS-dlM" secondAttribute="bottom" constant="11" id="nXD-uk-Q9L"/>
                                                     <constraint firstItem="8c8-ua-C79" firstAttribute="width" secondItem="XE3-A5-5kU" secondAttribute="width" id="p7m-Ux-tFk"/>
                                                     <constraint firstItem="0bN-sm-bqZ" firstAttribute="width" secondItem="XE3-A5-5kU" secondAttribute="width" id="pT9-8I-O2P"/>
                                                     <constraint firstItem="xKG-kF-xwT" firstAttribute="top" secondItem="639-LS-dlM" secondAttribute="bottom" constant="11" id="q7X-Ew-QNQ"/>
-                                                    <constraint firstItem="BR5-j2-IFb" firstAttribute="top" secondItem="YGI-6x-V4Z" secondAttribute="bottom" constant="18" id="wLw-QZ-m4R"/>
+                                                    <constraint firstItem="Etj-ph-Wgj" firstAttribute="top" secondItem="YGI-6x-V4Z" secondAttribute="bottom" constant="18" id="tvU-XR-h49"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Etj-ph-Wgj" secondAttribute="trailing" constant="21" id="zB5-XQ-MqH"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1320,7 +1332,6 @@
                     </view>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="customPercentMacrosForSnacksTextField" destination="BR5-j2-IFb" id="WQy-kS-spI"/>
                         <outlet property="fiveMealsPerDayButton" destination="8c8-ua-C79" id="hSR-zD-V0r"/>
                         <outlet property="fivePercentMacrosForSnacksButton" destination="p4u-bu-gzs" id="fbq-GY-qEQ"/>
                         <outlet property="fourMealsPerDayButton" destination="xKG-kF-xwT" id="cLs-n7-jee"/>
@@ -1329,6 +1340,7 @@
                         <outlet property="progressBarView" destination="aN4-Zk-Xbh" id="JHY-E8-N70"/>
                         <outlet property="tenPercentMacrosForSnacksButton" destination="72d-p3-dkh" id="OFl-us-uDb"/>
                         <outlet property="threeMealsPerDayButton" destination="0bN-sm-bqZ" id="Q1c-Pz-miT"/>
+                        <outlet property="twentyPercentMacrosForSnacksButton" destination="Etj-ph-Wgj" id="AC0-FQ-xSt"/>
                         <outlet property="twoMealsPerDayButton" destination="XE3-A5-5kU" id="cJI-2Q-1iU"/>
                         <outlet property="zeroPercentMacrosForSnacksButton" destination="9xK-9m-fbm" id="ZET-aT-zqf"/>
                     </connections>

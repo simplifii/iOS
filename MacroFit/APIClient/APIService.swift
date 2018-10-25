@@ -128,6 +128,12 @@ struct APIService {
         })
     }
     
+    static func getFeedback(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getFeedback(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
     
     // POST & PATCH
     
@@ -201,6 +207,18 @@ struct APIService {
         let request = APIRouter.userInterestInFitness(action: action)
         
         sendRequest(request: request, completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
+    // Feedback
+    static func createFeedback(rating:Int, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.createFeedback(rating: rating), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    static func editFeedback(uniqueCode: String, feedback:String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.editFeedback(uniqueCode: uniqueCode, feedback: feedback), completion: {success,msg in
             completion(success, msg)
         })
     }
