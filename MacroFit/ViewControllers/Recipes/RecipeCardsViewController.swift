@@ -34,6 +34,7 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUserDietDetails()
         
         if showFavourites == true {
             recipeTagLabel.text = "My favourites"
@@ -48,7 +49,9 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setUserDietDetails()
+        if mealsPerDay > 0 {
+            self.setRecipes(recipeTag: self.recipeTag)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,6 +103,7 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
     
     func setRecipes(recipeTag: String) {
         self.recipes = []
+        self.markedFavouriteRecipes = []
         
         APIService.getUserRecipes(recipeTag: recipeTag, completion: {success,msg,data in
             if success == true {
@@ -137,15 +141,20 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
             var data:[JSON] = []
             for (_,recipe) in recipes {
                 let dietTypesString = recipe["diet_type"].stringValue
-                let dietTypes = dietTypesString.components(separatedBy: ",")
-                if dietTypes.contains(userDietType) {
-                    if isRecipeRecommendedForUser(
-                        recipeCalories: recipe["calorie"].intValue,
-                        recipeProtein: recipe["protein"].intValue,
-                        recipeCarbs: recipe["carbs"].intValue,
-                        recipeFat: recipe["fat"].intValue) {
-
-                        data.append(recipe)
+                
+                if dietTypesString.isEmpty {
+                    data.append(recipe)
+                } else {
+                    let dietTypes = dietTypesString.components(separatedBy: ",")
+                    if dietTypes.contains(userDietType) {
+                        if isRecipeRecommendedForUser(
+                            recipeCalories: recipe["calorie"].intValue,
+                            recipeProtein: recipe["protein"].intValue,
+                            recipeCarbs: recipe["carbs"].intValue,
+                            recipeFat: recipe["fat"].intValue) {
+                            
+                            data.append(recipe)
+                        }
                     }
                 }
             }

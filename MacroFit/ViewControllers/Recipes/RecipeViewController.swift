@@ -40,8 +40,10 @@ class RecipeViewController: BaseViewController {
     
     func setFavouriteButtonIcon(isFav: Bool) {
         if isFav == true {
+            isFavourite = true
             favouriteIconButton.setImage(UIImage(named: "heart_full_white.png"), for: .normal)
         } else {
+            isFavourite = false
             favouriteIconButton.setImage(UIImage(named: "heart_white.png"), for: .normal)
         }
     }
@@ -99,6 +101,7 @@ class RecipeViewController: BaseViewController {
             APIService.markRecipeAsFavourite(cardUniqueCode: recipeUniqueCode, completion: {success,msg in
                 if success != true {
                     self.setFavouriteButtonIcon(isFav: false)
+                    
                     self.showAlertMessage(title: msg, message: nil)
                 }
             })
@@ -110,6 +113,7 @@ class RecipeViewController: BaseViewController {
             APIService.unfavouriteRecipe(cardUniqueCode: recipeUniqueCode, recipeId: recipeId, completion: {success,msg in
                 if success == false {
                     self.setFavouriteButtonIcon(isFav: true)
+                    
                     self.showAlertMessage(title: msg, message: nil)
                 }
             })

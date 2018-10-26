@@ -24,8 +24,7 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
     @IBOutlet weak var fatWeightLabel: UILabel!
     @IBOutlet weak var fatWeightUnitLabel: UILabel!
     
-    @IBOutlet weak var bodyFatNotEnteredLabel: UILabel!
-    
+    @IBOutlet weak var bodyFatNotEnteredButton: UIButton!
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     @IBOutlet weak var ratingContainerView: UIView!
@@ -38,13 +37,16 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUserMacrosData()
-
-        addMenuNavbarInView(navbarView: navbarView)
+//        addMenuNavbarInView(navbarView: navbarView)
         
         addRatingView()
         
         setAppFeedback()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setUserMacrosData()
     }
     
     
@@ -127,12 +129,12 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
         
         let bodyFat = userProfile["cdata"]["body_fat"].stringValue
         if bodyFat.isEmpty {
-            bodyFatNotEnteredLabel.isHidden = false
+            bodyFatNotEnteredButton.isHidden = false
             
             fatWeightLabel.isHidden = true
             fatWeightUnitLabel.isHidden = true
         } else {
-            bodyFatNotEnteredLabel.isHidden = true
+            bodyFatNotEnteredButton.isHidden = true
             
             fatWeightLabel.isHidden = false
             fatWeightUnitLabel.isHidden = false
@@ -199,4 +201,13 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
         self.view.addSubview(popOverVC!.view)
         popOverVC!.didMove(toParentViewController: self)
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is WeightAndBodyFatViewController {
+            let vc = segue.destination as? WeightAndBodyFatViewController
+            vc?.weight = weightLabel.text
+        }
+    }
+    
 }

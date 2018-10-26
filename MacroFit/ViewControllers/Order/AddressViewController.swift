@@ -63,18 +63,19 @@ class AddressViewController: BaseViewController {
         orderModelController.address = address
         orderModelController.entryNote = addressFormTableViewController.entryNotesTextView.text!
         
-        APIService.getZipcodeServiceabilityInfo(zipcode: zipcode, completion: {success,msg,data in
+        
+        APIService.updateAddress(addressLineOne: addressLineOne, addressLineTwo:addressLineTwo, zipcode:zipcode, completion: {success,msg in
             if success == false {
-                self.showAlertMessage(title: msg, message: nil)
-            } else {
-                if data.count > 0 {
-                    if !self.orderModelController.deliveryDateFormatted.isEmpty {
-                        self.showOrderSummaryScreen()
-                    } else {
-                        self.showAlertMessage(title: "Unable to get delivery date", message: nil)
-                    }
-                } else {
+                if msg == "This zipcode is not servicable" {
                     self.showErrorMessageScreen()
+                } else {
+                    self.showAlertMessage(title: msg, message: nil)
+                }
+            } else {
+                if !self.orderModelController.deliveryDateFormatted.isEmpty {
+                    self.showOrderSummaryScreen()
+                } else {
+                    self.showAlertMessage(title: "Unable to get delivery date", message: nil)
                 }
             }
         })

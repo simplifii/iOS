@@ -36,6 +36,8 @@ enum APIRouter: URLRequestConvertible {
     case createFeedback(rating: Int)
     case editFeedback(uniqueCode: String, feedback: String)
     case getFeedback()
+    case updateBodyFat(bodyFat:Int)
+    case updateAddress(addressLineOne: String, addressLineTwo:String?, zipcode:String)
     
     var path: String {
         
@@ -48,7 +50,7 @@ enum APIRouter: URLRequestConvertible {
             case .loginUser:
                 return NetworkingConstants.login
             
-            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences:
+            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -167,6 +169,18 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["action"] = "Update"
             bodyDict["card_unique_code"] = uniqueCode
             bodyDict["feedback"] = feedback
+        case let .updateBodyFat(bodyFat: bodyFat):
+            bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            bodyDict["action"] = "UpdateBodyFat"
+            bodyDict["body_fat"] = bodyFat
+            break
+        case let .updateAddress(addressLineOne: addressLineOne, addressLineTwo:addressLineTwo, zipcode:zipcode):
+            bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            bodyDict["action"] = "UpdateAddress"
+            bodyDict["address_line_1"] = addressLineOne
+            bodyDict["address_line_2"] = addressLineTwo
+            bodyDict["zipcode"] = zipcode
+            break
             default:
                 print("no action")
         }
@@ -219,7 +233,7 @@ enum APIRouter: URLRequestConvertible {
         case let .getUserRecipes(recipeTag: recipeTag):
             paramDict["recipe_tag"] = recipeTag
             break
-        case let .getFeedback:
+        case .getFeedback:
             paramDict["type"] = "Feedback"
             paramDict["equalto___type"] = "AppRating"
             break
@@ -237,7 +251,7 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress:
             return .patch
         }
     }
@@ -250,7 +264,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:

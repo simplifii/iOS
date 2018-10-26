@@ -64,11 +64,11 @@ class MealsViewController: UIViewController, DeliveryOverEmbeddedVCDelegate {
         showRecipe = (tabBarController as! TabBarViewController).showRecipeInMeals
         
         // Show recipe view
-        if showRecipe {
-            showRecipeContainerView()
-        }
-        
         deliveryOverContainerView.alpha = 0
+        if showRecipe {
+            segmentedControl.selectedSegmentIndex = 1
+            showSelectedSegmentView(index: 1)
+        }
         
 
         // Side Menu
@@ -119,7 +119,11 @@ class MealsViewController: UIViewController, DeliveryOverEmbeddedVCDelegate {
             self.minutes = data["datetime"]["minutes"].stringValue;
             
             if self.isOpen == false {
-                self.showDeliveryOverScreen()
+                if self.showRecipe == false {
+                    self.showDeliveryOverScreen()
+                } else {
+                    self.showRecipe = false
+                }
             }
         })
     }

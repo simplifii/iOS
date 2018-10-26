@@ -223,6 +223,18 @@ struct APIService {
         })
     }
     
+    static func updateBodyFat(bodyFat:Int, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.updateBodyFat(bodyFat: bodyFat), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
+    static func updateAddress(addressLineOne: String, addressLineTwo:String?, zipcode:String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.updateAddress(addressLineOne: addressLineOne, addressLineTwo:addressLineTwo, zipcode:zipcode), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     
     static func sendRequest(request: URLRequestConvertible, completion: @escaping (Bool, String) -> Void) {
         if !Connectivity.isConnectedToInternet {

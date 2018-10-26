@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RatingAndTextFeedbackViewController: FeedbackPopupBaseViewController {
+class RatingAndTextFeedbackViewController: FeedbackPopupBaseViewController, UITextViewDelegate {
     
     @IBOutlet weak var feedbackTextView: UITextView!
     @IBOutlet weak var containerView: UIView!
@@ -20,6 +20,7 @@ class RatingAndTextFeedbackViewController: FeedbackPopupBaseViewController {
         super.viewDidLoad()
         containerView.layer.cornerRadius = 8.0
         showAnimate()
+        feedbackTextView.delegate = self
         
         self.hideKeyboardWhenTappedAround()
     }
@@ -44,6 +45,20 @@ class RatingAndTextFeedbackViewController: FeedbackPopupBaseViewController {
                     self.thankYouPopupDelegate.showThankPopup()
                 }
             })
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if feedbackTextView.text == "Type your feedback here" {
+            feedbackTextView.text = ""
+            feedbackTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if feedbackTextView.text.isEmpty {
+            feedbackTextView.text = "Type your feedback here"
+            feedbackTextView.textColor = UIColor.gray
         }
     }
     

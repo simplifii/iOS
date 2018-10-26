@@ -14,7 +14,7 @@ class FitnessViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addMenuNavbarInView(navbarView: navbarView)
+//        addMenuNavbarInView(navbarView: navbarView)
     }
 
 }

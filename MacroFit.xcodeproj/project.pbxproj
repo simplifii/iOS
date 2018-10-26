@@ -40,6 +40,8 @@
 		E075A976215E377200D264CA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A975215E377100D264CA /* BaseViewController.swift */; };
 		E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */; };
 		E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */; };
+		E0978EAD218309A40049301E /* WeightAndBodyFatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0978EAC218309A40049301E /* WeightAndBodyFatViewController.swift */; };
+		E0978EAF21830A2B0049301E /* WeightAndBodyFatFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0978EAE21830A2B0049301E /* WeightAndBodyFatFormTableViewController.swift */; };
 		E0982ACD21789F1900F5FCE5 /* ReferFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0982ACC21789F1900F5FCE5 /* ReferFriendViewController.swift */; };
 		E0982AD12178B0C200F5FCE5 /* MenuNavbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0982AD02178B0C200F5FCE5 /* MenuNavbarView.xib */; };
 		E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0982AD22178B0D500F5FCE5 /* MenuNavbarView.swift */; };
@@ -178,6 +180,8 @@
 		E075A975215E377100D264CA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemTableViewCell.swift; sourceTree = "<group>"; };
 		E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSeparatorTableViewCell.swift; sourceTree = "<group>"; };
+		E0978EAC218309A40049301E /* WeightAndBodyFatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightAndBodyFatViewController.swift; sourceTree = "<group>"; };
+		E0978EAE21830A2B0049301E /* WeightAndBodyFatFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightAndBodyFatFormTableViewController.swift; sourceTree = "<group>"; };
 		E0982ACC21789F1900F5FCE5 /* ReferFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferFriendViewController.swift; sourceTree = "<group>"; };
 		E0982AD02178B0C200F5FCE5 /* MenuNavbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuNavbarView.xib; sourceTree = "<group>"; };
 		E0982AD22178B0D500F5FCE5 /* MenuNavbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavbarView.swift; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 				E09AA5CB2181AFBC00338477 /* RatingViewController.swift */,
 				E09AA5CD2181EEA600338477 /* ThankYouPopupViewController.swift */,
 				E09AA5CF2181F11C00338477 /* FeedbackPopupBaseViewController.swift */,
+				E0978EAC218309A40049301E /* WeightAndBodyFatViewController.swift */,
+				E0978EAE21830A2B0049301E /* WeightAndBodyFatFormTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -870,6 +876,7 @@
 				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
 				E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */,
 				E09AA5CE2181EEA600338477 /* ThankYouPopupViewController.swift in Sources */,
+				E0978EAD218309A40049301E /* WeightAndBodyFatViewController.swift in Sources */,
 				E0A5605A216C9B76003534D4 /* DateTimeView.swift in Sources */,
 				E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */,
 				E0BD2B85216B6F0D00E2D297 /* CartBarView.swift in Sources */,
@@ -915,6 +922,7 @@
 				E09AA5CA2181AF8600338477 /* RatingAndTextFeedbackViewController.swift in Sources */,
 				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
 				E09A6AEE2162389C0096708A /* AddressViewController.swift in Sources */,
+				E0978EAF21830A2B0049301E /* WeightAndBodyFatFormTableViewController.swift in Sources */,
 				E05F91962177413D001AF01D /* RecipeTableViewController.swift in Sources */,
 				E0DEDBA42167620D0040BC52 /* PaymentErrorViewController.swift in Sources */,
 				E0A6DD55214F718D00B6C301 /* MacroFit.xcdatamodeld in Sources */,
