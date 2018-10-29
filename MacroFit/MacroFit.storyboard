@@ -693,6 +693,7 @@
                         <outlet property="fatLabel" destination="rv0-9y-IFQ" id="WsX-z5-RlX"/>
                         <outlet property="fatWeightLabel" destination="N04-8Z-agp" id="Nng-4Q-SuU"/>
                         <outlet property="fatWeightUnitLabel" destination="yv6-Kw-inh" id="VNq-Hv-3H1"/>
+                        <outlet property="mealsScrollView" destination="VM6-Gw-cNH" id="JWA-QM-05j"/>
                         <outlet property="navbarView" destination="tbR-ki-AHe" id="UQf-oP-ftK"/>
                         <outlet property="proteinLabel" destination="Snv-xO-qxV" id="xoe-db-A9W"/>
                         <outlet property="ratingContainerView" destination="WHc-LC-fHd" id="9d9-rS-fnz"/>
@@ -3740,13 +3741,13 @@ Credits can be exchanged for free meals afterwards.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your interest!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYc-oU-jAP">
-                                        <rect key="frame" x="26" y="198" width="323" height="71"/>
+                                        <rect key="frame" x="26" y="199.5" width="323" height="68"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="29"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This feature is coming sson!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxy-mR-9oK">
-                                        <rect key="frame" x="26" y="284" width="323" height="18.5"/>
+                                        <rect key="frame" x="26" y="282.5" width="323" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.60386711360000001" green="0.603956461" blue="0.6038475633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3763,7 +3764,7 @@ Credits can be exchanged for free meals afterwards.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bl-Ta-TeG">
-                                        <rect key="frame" x="60" y="342.5" width="255" height="50"/>
+                                        <rect key="frame" x="60" y="340" width="255" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="UX0-Ra-yn8"/>
@@ -4208,6 +4209,6 @@ Credits can be exchanged for free meals afterwards.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uFU-h0-6Dh"/>
-        <segue reference="XID-Mr-YKU"/>
+        <segue reference="17L-hG-3gq"/>
     </inferredMetricsTieBreakers>
 </document>

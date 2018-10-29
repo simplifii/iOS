@@ -29,6 +29,8 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     @IBOutlet weak var ratingContainerView: UIView!
     
+    @IBOutlet weak var mealsScrollView: UIScrollView!
+    var meals:JSON = []
     
     var userProfile:JSON = [:]
     var feedbackCardUniqueCode:String = ""
@@ -37,6 +39,7 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setMealsInView()
 //        addMenuNavbarInView(navbarView: navbarView)
         
         addRatingView()
@@ -53,7 +56,7 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        backgroundScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: 380);
+        backgroundScrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: 380)        
     }
     
     func addRatingView() {
@@ -67,6 +70,40 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
         ratingView!.starFourButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
         ratingView!.starFiveButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
         
+    }
+    
+    func addMealsInMealsScrollView() {
+        let mealsCount = CGFloat(meals.count)
+        let height = mealsScrollView.bounds.size.height
+        
+        mealsScrollView.contentSize = CGSize(width:(mealsCount * height) + (mealsCount * 10.0), height: height);
+        
+        for(key, meal) in meals {
+            if let mealInfoView = Bundle.main.loadNibNamed("MealInfoBoxView", owner: self, options: nil)?.first as? MealInfoBoxView {
+                let index = CGFloat(Int(key)!)
+                
+                mealsScrollView.addSubview(mealInfoView)
+                                
+                mealInfoView.frame.size.height = mealsScrollView.bounds.size.height
+                mealInfoView.frame.size.width = mealsScrollView.bounds.size.height
+                
+                mealInfoView.frame.origin.x = (index * mealsScrollView.bounds.size.height) + (index * 10)
+                
+                let url = URL(string: meal["photo"].stringValue)!
+                mealInfoView.backgroundImageView.af_setImage(withURL: url)
+                
+                mealInfoView.mealTitleLabel.text =  meal["title"].stringValue
+                mealInfoView.caloriesLabel.text =  meal["calorie"].stringValue
+                mealInfoView.carbsLabel.text =  meal["carbs"].stringValue
+                mealInfoView.proteinLabel.text =  meal["protein"].stringValue
+                mealInfoView.fatLabel.text =  meal["fat"].stringValue
+                mealInfoView.showMealButton.addTarget(self, action: #selector(self.showMealScreen(_:)), for: UIControlEvents.touchUpInside)
+            }
+        }
+    }
+    
+    @objc func showMealScreen(_ sender: UIButton) {
+        self.tabBarController?.selectedIndex = 1
     }
     
     @objc func showRatingInRatingView(_ sender: UIButton) {
@@ -200,6 +237,18 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
         popOverVC!.view.frame = self.view.frame
         self.view.addSubview(popOverVC!.view)
         popOverVC!.didMove(toParentViewController: self)
+    }
+    
+    
+    func setMealsInView() {
+        APIService.getMealsMenu(completion: {success,msg,data in
+            if success == true {
+                self.meals = data
+                self.addMealsInMealsScrollView()
+            } else {
+                self.showAlertMessage(title: msg, message: nil)
+            }
+        })
     }
     
     
