@@ -17,6 +17,7 @@
 		E003492E217F4E4800AED979 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */; };
 		E009ABB12186FD4B0000C16C /* MealInfoBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E009ABB02186FD4B0000C16C /* MealInfoBoxView.xib */; };
 		E009ABB5218715AC0000C16C /* MealInfoBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009ABB4218715AC0000C16C /* MealInfoBoxView.swift */; };
+		E027C0E22188644A00F27E8B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E027C0E12188644A00F27E8B /* CoreDataManager.swift */; };
 		E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E854421647F9C00DDE4A7 /* OrderSummaryViewController.swift */; };
 		E02E854721647FE900DDE4A7 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E854621647FE900DDE4A7 /* PaymentViewController.swift */; };
 		E02E854C2164A1FF00DDE4A7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E854B2164A1FF00DDE4A7 /* Address.swift */; };
@@ -81,7 +82,6 @@
 		E0A792172153834500CBBFDB /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A792162153834500CBBFDB /* UserConstants.swift */; };
 		E0A79219215384B900CBBFDB /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A79218215384B900CBBFDB /* APIError.swift */; };
 		E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7921D2153BDD100CBBFDB /* Constants.swift */; };
-		E0A792202153DDC200CBBFDB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7921F2153DDC200CBBFDB /* User.swift */; };
 		E0BD2B6E216B247A00E2D297 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B68216B243B00E2D297 /* Montserrat-Black.ttf */; };
 		E0BD2B6F216B247A00E2D297 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B6A216B243B00E2D297 /* Montserrat-BlackItalic.ttf */; };
 		E0BD2B70216B247A00E2D297 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B64216B243A00E2D297 /* Montserrat-Bold.ttf */; };
@@ -159,6 +159,7 @@
 		E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		E009ABB02186FD4B0000C16C /* MealInfoBoxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealInfoBoxView.xib; sourceTree = "<group>"; };
 		E009ABB4218715AC0000C16C /* MealInfoBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealInfoBoxView.swift; sourceTree = "<group>"; };
+		E027C0E12188644A00F27E8B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E02E854421647F9C00DDE4A7 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
 		E02E854621647FE900DDE4A7 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E02E854B2164A1FF00DDE4A7 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -229,7 +230,6 @@
 		E0A792162153834500CBBFDB /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
 		E0A79218215384B900CBBFDB /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E0A7921D2153BDD100CBBFDB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		E0A7921F2153DDC200CBBFDB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E0BD2B5C216B243900E2D297 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		E0BD2B5D216B243900E2D297 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E0BD2B5E216B243900E2D297 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
@@ -352,6 +352,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		E027C0DE21885E0700F27E8B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E027C0E12188644A00F27E8B /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		E02E854A2164A1E900DDE4A7 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +437,7 @@
 		E0A6DD4B214F718D00B6C301 /* MacroFit */ = {
 			isa = PBXGroup;
 			children = (
+				E027C0DE21885E0700F27E8B /* CoreData */,
 				E0BD2B5A216B23EE00E2D297 /* Resources */,
 				E02E854A2164A1E900DDE4A7 /* ModelControllers */,
 				E0DC73FD215BA6910085551E /* TableViewCells */,
@@ -552,7 +561,6 @@
 		E0A7921A2153861C00CBBFDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E0A7921F2153DDC200CBBFDB /* User.swift */,
 				E02E854B2164A1FF00DDE4A7 /* Address.swift */,
 				E02E85532164B6E100DDE4A7 /* CartItem.swift */,
 			);
@@ -897,6 +905,7 @@
 				E02E85542164B6E100DDE4A7 /* CartItem.swift in Sources */,
 				E0D64AD32174ADC800FB700C /* Connectivity.swift in Sources */,
 				E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */,
+				E027C0E22188644A00F27E8B /* CoreDataManager.swift in Sources */,
 				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
@@ -944,7 +953,6 @@
 				E075A972215E29F500D264CA /* MealsContainerViewController.swift in Sources */,
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
 				E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */,
-				E0A792202153DDC200CBBFDB /* User.swift in Sources */,
 				E02E85582164C55800DDE4A7 /* DeliveryDateTableViewCell.swift in Sources */,
 				E0DC7403215BAD230085551E /* AddItemView.swift in Sources */,
 			);

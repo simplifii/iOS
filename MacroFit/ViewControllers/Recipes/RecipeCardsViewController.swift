@@ -122,7 +122,8 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
                     }
                     
                     if self.showFavourites == false {
-                        self.setRecipesData(recipes: data)
+                        self.recipes = data.arrayValue
+                        //self.setRecipesData(recipes: data)
                     }
                     
                     self.tableView.reloadData()
