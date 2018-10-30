@@ -204,11 +204,12 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
     func setFieldsData() {
         age = ageTextFIeld.text!
         weight = weightTextFIeld.text!
+        
         if feetTextFIeld.text != "" {
             if inchesTextFIeld.text != "" {
-                height = "\((12 * Int(feetTextFIeld.text!)!))"
-            } else {
                 height = "\((12 * Int(feetTextFIeld.text!)!) + Int(inchesTextFIeld.text!)!)"
+            } else {
+                height = "\((12 * Int(feetTextFIeld.text!)!))"
             }
         }
         gender = genderSelectionButton.currentTitle!
@@ -275,8 +276,9 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
         weightTextFIeld.text = self.userProfile["weight"].stringValue
         let height = self.userProfile["height"].intValue
         if height > 0 {
-            feetTextFIeld.text = "\(Int(height / 12))"
-            inchesTextFIeld.text = "\(Int(height % 12))"
+            let heightInFeet = Int(height / 12)
+            feetTextFIeld.text = "\(heightInFeet)"
+            inchesTextFIeld.text = "\(Int(height) - (heightInFeet*12))"
         }
         
         if self.userProfile["gender_bool"] != JSON.null {

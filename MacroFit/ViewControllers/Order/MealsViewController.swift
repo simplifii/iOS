@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SideMenu
 
 class MealsViewController: UIViewController, DeliveryOverEmbeddedVCDelegate {
 
@@ -70,16 +69,6 @@ class MealsViewController: UIViewController, DeliveryOverEmbeddedVCDelegate {
             showSelectedSegmentView(index: 1)
         }
         
-
-        // Side Menu
-        let sideMenuVC = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "SideMenuViewController") as? SideMenuViewController
-        
-        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: sideMenuVC!)
-        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
-        
-        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.default.menuAnimationBackgroundColor = .white // or whatever color you want
-        SideMenuManager.default.menuFadeStatusBar = false
 
     }
     

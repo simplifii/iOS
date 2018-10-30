@@ -16,6 +16,9 @@ class SideMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SideMenuManager.default.menuAnimationBackgroundColor = .white
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuLeftNavigationController?.navigationBar.isHidden = true
 
         userNameLabel.text = UserDefaults.standard.string(forKey: UserConstants.userName)
         userEmailLabel.text = UserDefaults.standard.string(forKey: UserConstants.userEmail)

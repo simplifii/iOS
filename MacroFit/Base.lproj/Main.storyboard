@@ -1846,11 +1846,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eC3-qy-dY6">
-                                        <rect key="frame" x="339" y="36" width="18" height="18"/>
+                                        <rect key="frame" x="327" y="36" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="VPb-nZ-Y2X"/>
-                                            <constraint firstAttribute="width" constant="18" id="XEW-7b-tPu"/>
+                                            <constraint firstAttribute="height" constant="30" id="VPb-nZ-Y2X"/>
+                                            <constraint firstAttribute="width" constant="30" id="XEW-7b-tPu"/>
                                         </constraints>
+                                        <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <state key="normal" image="cancel_gray"/>
                                         <connections>
                                             <action selector="cancelAction:" destination="zDO-Ib-y6b" eventType="touchUpInside" id="INW-uF-IaH"/>

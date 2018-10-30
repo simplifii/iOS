@@ -49,16 +49,10 @@ class SideMenuFormTableViewController: UITableViewController {
     }
     
     func showBasicProfileSettingsScreen() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationViewController") as? UINavigationController
-        
         let basicInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
         
-        vc?.initRootViewController(vc: basicInfoVC!)
-        
-        self.navigationController?.viewControllers.removeAll()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = vc
+        self.navigationController?.pushViewController(basicInfoVC!, animated: true)
+
     }
     
     func gotoInviteFriendsScreen() {

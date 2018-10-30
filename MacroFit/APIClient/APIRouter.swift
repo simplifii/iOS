@@ -268,7 +268,10 @@ enum APIRouter: URLRequestConvertible {
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
-                  headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
+                if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
+                    headers[UserConstants.authentication] = "Bearer \(token)"
+                }
+            
             default:
                 break
         }
