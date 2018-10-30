@@ -30,7 +30,7 @@ class AddressViewController: BaseViewController {
     }
     
     func setupView() {
-        self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
 
     }
     

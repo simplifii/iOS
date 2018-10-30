@@ -18,7 +18,7 @@ class PaymentViewController: BaseViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = Constants.backgroundColor
-        self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
         
         self.hideKeyboardWhenTappedAround()
     }

@@ -27,10 +27,17 @@ struct APIService {
                     let json = JSON(value)
                     if let status_code = response.response?.statusCode {
                         if status_code == 200 {
+                            let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
+                            print(user)
+                            if user == nil {
+                                completion(false, "Unable to save profile. Please try again")
+                            }
+                            
                             UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
                             UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
                             UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
                             UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
+                            
                             completion(true, json["msg"].stringValue)
                         } else {
                             if let msg = json["msg"].string {
@@ -199,6 +206,10 @@ struct APIService {
         let request = APIRouter.logoutUser()
         
         sendRequest(request: request, completion: {success,msg in
+            if success == true {
+                CoreDataManager.sharedManager.deleteAll()
+            }
+            
             completion(success, msg)
         })
     }

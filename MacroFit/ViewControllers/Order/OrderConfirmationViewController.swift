@@ -35,7 +35,7 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
         
         self.view.backgroundColor = Constants.backgroundColor
         
-        self.addBackNavbarInView(navbarView: navbarView, settings_visible: true)
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
         
         tableView.dataSource = self
         tableView.delegate = self
