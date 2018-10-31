@@ -11,6 +11,7 @@ target 'MacroFit' do
     pod 'AlamofireImage', '~> 3.4'
     pod 'Stripe'
     pod 'SideMenu' 
+    pod 'FBSDKLoginKit'
 # Pods for MacroFit
 
   target 'MacroFitTests' do

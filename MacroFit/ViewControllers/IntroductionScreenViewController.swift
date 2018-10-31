@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-class IntroductionScreenViewController: UIViewController, UIScrollViewDelegate {
+class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var featuresListScrollView: UIScrollView!
     @IBOutlet weak var featuresPageControl: UIPageControl!
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var facebookButton: UIButton!
+    
     
     var features = ["Custom meal plans & workouts for your specific goals", "Macros that make sense. Nutrition for your lifestyle.", "Fitness challenges and easy health eating."]
     
@@ -58,4 +62,57 @@ class IntroductionScreenViewController: UIViewController, UIScrollViewDelegate {
             vc.showNavbar = true
         }
     }
+    
+    @IBAction func loginUsingFacebook(_ sender: UIButton) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.loginBehavior = FBSDKLoginBehavior.browser
+        if FBSDKAccessToken.current() == nil {
+            loginManager.logIn(withReadPermissions: ["public_profile","email"], from: self, handler: { (result, error) -> Void in
+                if error != nil {
+                    self.showAlertMessage(title: error!.localizedDescription, message: nil)
+                } else if result!.isCancelled {
+                    self.showAlertMessage(title: "Unable to login. Please try again", message: nil)
+                } else {
+                    if result!.grantedPermissions.contains("email") {
+                        print("Successfully loggedIn")
+                        self.loginUser(result: result!)
+                    } else {
+                        self.showAlertMessage(title: "Unable to get email. Please try again", message: nil)
+                    }
+                }
+                })
+        } else {
+            print("logout")
+            loginManager.logOut()
+        }
+    }
+    
+    func loginUser(result:FBSDKLoginManagerLoginResult) {
+        let userId = result.token.userID
+        let token = result.token.tokenString
+        if userId == nil || token == nil {
+            self.showAlertMessage(title: "Unable to get user id or token. Please try again", message: nil)
+            return
+        }
+        setUserDetails(userId: userId!, token: token!)
+    }
+    
+    func setUserDetails(userId: String, token: String) {
+//        print(userId)
+//        print(token)
+        APIService.facebookLogin(fbUserId: userId, fbUserToken: token, completion: {success,msg,json in
+            if success == false {
+                self.showAlertMessage(title: msg, message: nil)
+            } else {
+                self.signUpCompleted()
+            }
+        })
+    }
+    
+    func signUpCompleted() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
 }

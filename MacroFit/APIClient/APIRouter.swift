@@ -13,6 +13,7 @@ enum APIRouter: URLRequestConvertible {
     
     case createUser(name: String, email: String, password: String, phone: String, zip_code: String, promocode: String?)
     case loginUser(username: String, password: String)
+    case facebookLogin(fbUserId: String, fbUserToken: String)
     case activityLevels()
     case fitnessGoals()
     case updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?)
@@ -50,7 +51,9 @@ enum APIRouter: URLRequestConvertible {
             case .loginUser:
                 return NetworkingConstants.login
             
-            case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress:
+            case .facebookLogin:
+                return NetworkingConstants.facebookLogin
+        case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -99,9 +102,13 @@ enum APIRouter: URLRequestConvertible {
                 bodyDict["referral_code"] = promocode
                 bodyDict["zipcode"] = zip_code
                 break
-            case let .loginUser(username: username, password: password):
+        case let .loginUser(username: username, password: password):
                 bodyDict["username"] = username
                 bodyDict["password"] = password
+                break
+        case let .facebookLogin(fbUserId: fbUserId, fbUserToken: fbUserToken):
+                bodyDict["fb_user_id"] = fbUserId
+                bodyDict["fb_token"] = fbUserToken
                 break
         case let .updateCustomerBasicDetails(age: age, weight: weight, height: height, activity_level: activity_level, goal: goal, gender: gender, per_day_cal_burn: per_day_cal_burn, goal_note: goal_note):
                 bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
@@ -249,7 +256,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress:
             return .patch
@@ -262,7 +269,7 @@ enum APIRouter: URLRequestConvertible {
         var headers : [String:String] = [:]
         
         switch self {
-            case .createUser, .loginUser:
+            case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
             case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress:
                   headers[UserConstants.content_type] = "application/json"

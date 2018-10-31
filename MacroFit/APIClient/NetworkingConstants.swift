@@ -21,5 +21,6 @@ struct NetworkingConstants{
     static let payment = "payment"
     static let logout = "logout"
     static let userRecipes = "custom/user_recipes"
+    static let facebookLogin = "custom/facebook_login"
     
 }

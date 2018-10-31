@@ -55,6 +55,26 @@ struct APIService {
 
     }
     
+    static func facebookLogin(fbUserId: String, fbUserToken: String, completion: @escaping (Bool, String, JSON) -> Void){
+        let request = APIRouter.facebookLogin(fbUserId: fbUserId, fbUserToken: fbUserToken)
+        
+        sendRequestAndGetFullResponse(request: request, completion: {success,msg,json in
+            let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
+            if user == nil {
+                completion(false, "Unable to save profile. Please try again", [:])
+            }
+            
+            UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
+            UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
+            UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
+            UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
+        
+            completion(success, msg, json)
+        })
+        
+    }
+    
+    
     // GET
     
     static func activityLevels(completion: @escaping (Bool, String, JSON) -> Void){
@@ -305,6 +325,37 @@ struct APIService {
                 case .failure(let error):
                     print(error)
                     completion(false, "Internal Server Error", [])
+                }
+            })
+    }
+    
+    static func sendRequestAndGetFullResponse(request: URLRequestConvertible, completion: @escaping (Bool, String, JSON) -> Void) {
+        if !Connectivity.isConnectedToInternet {
+            completion(false, "Unable to connect to internet", [])
+            return
+        }
+        
+        Alamofire.request(request)
+            .validate(statusCode: 200..<501)
+            .validate(contentType: ["application/json"])
+            .responseJSON(completionHandler: { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    if let status_code = response.response?.statusCode {
+                        if status_code == 200 {
+                            completion(true, json["msg"].stringValue, json)
+                        } else {
+                            if let msg = json["msg"].string {
+                                completion(false, msg, [:])
+                            } else {
+                                completion(false, "Internal Server Error", [:])
+                            }
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                    completion(false, "Internal Server Error", [:])
                 }
             })
     }

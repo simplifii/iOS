@@ -88,6 +88,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginUsingFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W36-9o-ws0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3y-Ki-WfF">
                                 <rect key="frame" x="16" y="612" width="343" height="31"/>
@@ -154,6 +157,7 @@
                     <navigationItem key="navigationItem" id="0M3-k7-FHj"/>
                     <connections>
                         <outlet property="backgroundImage" destination="wTY-hJ-dRa" id="4Au-6Z-TTs"/>
+                        <outlet property="facebookButton" destination="hJq-eS-QMB" id="YmX-hE-y4R"/>
                         <outlet property="featuresListScrollView" destination="zeO-As-lyx" id="cZp-Mg-FVT"/>
                         <outlet property="featuresPageControl" destination="Ia2-9C-F20" id="LJQ-qa-iG6"/>
                     </connections>
