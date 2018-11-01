@@ -75,15 +75,20 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
                 } else {
                     if result!.grantedPermissions.contains("email") {
                         print("Successfully loggedIn")
-                        self.loginUser(result: result!)
+                        let userId = result!.token.userID
+                        let token = result!.token.tokenString
+                        
+                        self.setUserDetails(userId: userId!, token: token!)
                     } else {
                         self.showAlertMessage(title: "Unable to get email. Please try again", message: nil)
                     }
                 }
                 })
         } else {
-            print("logout")
-            loginManager.logOut()
+            let userId = FBSDKAccessToken.current()!.userID
+            let token = FBSDKAccessToken.current()!.tokenString
+            print("already logged in user")
+            self.setUserDetails(userId: userId!, token: token!)
         }
     }
     

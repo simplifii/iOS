@@ -167,6 +167,7 @@
 		E02E85532164B6E100DDE4A7 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		E02E85552164C54400DDE4A7 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		E02E85572164C55800DDE4A7 /* DeliveryDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDateTableViewCell.swift; sourceTree = "<group>"; };
+		E0349A3B218ACA62002C7C93 /* MacroFit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroFit.entitlements; sourceTree = "<group>"; };
 		E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedCreditViewController.swift; sourceTree = "<group>"; };
 		E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E0361215215A57E700C560F5 /* MacroFit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacroFit.storyboard; sourceTree = "<group>"; };
@@ -437,6 +438,7 @@
 		E0A6DD4B214F718D00B6C301 /* MacroFit */ = {
 			isa = PBXGroup;
 			children = (
+				E0349A3B218ACA62002C7C93 /* MacroFit.entitlements */,
 				E027C0DE21885E0700F27E8B /* CoreData */,
 				E0BD2B5A216B23EE00E2D297 /* Resources */,
 				E02E854A2164A1E900DDE4A7 /* ModelControllers */,
@@ -697,6 +699,11 @@
 				TargetAttributes = {
 					E0A6DD48214F718D00B6C301 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					E0A6DD5F214F719000B6C301 = {
 						CreatedOnToolsVersion = 9.4;
@@ -1134,6 +1141,7 @@
 			baseConfigurationReference = EFDCD96D0F9015101C4841D3 /* Pods-MacroFit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MacroFit/MacroFit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z9B6F2JSHP;
 				INFOPLIST_FILE = MacroFit/Info.plist;
@@ -1154,6 +1162,7 @@
 			baseConfigurationReference = C04217907A90F4BF66617F99 /* Pods-MacroFit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MacroFit/MacroFit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z9B6F2JSHP;
 				INFOPLIST_FILE = MacroFit/Info.plist;
