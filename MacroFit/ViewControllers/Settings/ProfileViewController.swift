@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
+    
+    @IBOutlet weak var navbarView: UIView!
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
@@ -17,11 +19,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
+        
         userNameLabel.text = UserDefaults.standard.string(forKey: UserConstants.userName)
         userEmailLabel.text = UserDefaults.standard.string(forKey: UserConstants.userEmail)
         // Do any additional setup after loading the view.
-        
-        
     }
     
     
