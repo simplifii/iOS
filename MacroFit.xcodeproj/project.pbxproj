@@ -125,6 +125,11 @@
 		E0DEDBA0216733BC0040BC52 /* LoginFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */; };
 		E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */; };
 		E0DEDBA42167620D0040BC52 /* PaymentErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */; };
+		EE7E2784218C257800CB947D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE7E2783218C257800CB947D /* Settings.storyboard */; };
+		EE7E2786218C26A700CB947D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7E2785218C26A700CB947D /* Setting.swift */; };
+		EE7E2788218C26E600CB947D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7E2787218C26E600CB947D /* ProfileViewController.swift */; };
+		EE7E278A218C270E00CB947D /* PasswordchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7E2789218C270E00CB947D /* PasswordchangeViewController.swift */; };
+		EE7E278C218C299C00CB947D /* SettingProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7E278B218C299C00CB947D /* SettingProfileTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +279,11 @@
 		E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormTableViewController.swift; sourceTree = "<group>"; };
 		E0DEDBA1216761F60040BC52 /* OrderConfirmationSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationSuccessViewController.swift; sourceTree = "<group>"; };
 		E0DEDBA32167620D0040BC52 /* PaymentErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentErrorViewController.swift; sourceTree = "<group>"; };
+		EE7E2783218C257800CB947D /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		EE7E2785218C26A700CB947D /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		EE7E2787218C26E600CB947D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EE7E2789218C270E00CB947D /* PasswordchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordchangeViewController.swift; sourceTree = "<group>"; };
+		EE7E278B218C299C00CB947D /* SettingProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileTableViewCell.swift; sourceTree = "<group>"; };
 		EFDCD96D0F9015101C4841D3 /* Pods-MacroFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFit/Pods-MacroFit.debug.xcconfig"; sourceTree = "<group>"; };
 		F5C1001B1FE99DC4E72A2125 /* Pods-MacroFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -388,6 +398,9 @@
 				E0BEBAA521523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift */,
 				E0BEBAA721527B5800B7471D /* RecommendedDailyMacrosViewController.swift */,
 				E06762892159020600D19202 /* DietaryPreferencesViewController.swift */,
+				EE7E2785218C26A700CB947D /* Setting.swift */,
+				EE7E2787218C26E600CB947D /* ProfileViewController.swift */,
+				EE7E2789218C270E00CB947D /* PasswordchangeViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -455,6 +468,7 @@
 				E0A6DD58214F719000B6C301 /* LaunchScreen.storyboard */,
 				E0A6DD50214F718D00B6C301 /* Main.storyboard */,
 				E0361215215A57E700C560F5 /* MacroFit.storyboard */,
+				EE7E2783218C257800CB947D /* Settings.storyboard */,
 				E0A6DD56214F719000B6C301 /* Assets.xcassets */,
 				E0A6DD5B214F719000B6C301 /* Info.plist */,
 				E0A6DD53214F718D00B6C301 /* MacroFit.xcdatamodeld */,
@@ -623,6 +637,7 @@
 				E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */,
 				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
 				E0DD472A216F578000783F99 /* RecipeCardTableViewCell.swift */,
+				EE7E278B218C299C00CB947D /* SettingProfileTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -767,6 +782,7 @@
 				E0A5605C216C9B85003534D4 /* DateTimeView.xib in Resources */,
 				E0361216215A57E700C560F5 /* MacroFit.storyboard in Resources */,
 				E0DC7401215BAD060085551E /* AddItemView.xib in Resources */,
+				EE7E2784218C257800CB947D /* Settings.storyboard in Resources */,
 				E0A6DD57214F719000B6C301 /* Assets.xcassets in Resources */,
 				E0A6DD52214F718D00B6C301 /* Main.storyboard in Resources */,
 				E0A6DD8E214F9B1D00B6C301 /* FeatureView.xib in Resources */,
@@ -892,6 +908,7 @@
 				E003492A217F3F9300AED979 /* HomeViewController.swift in Sources */,
 				E09AA5D02181F11C00338477 /* FeedbackPopupBaseViewController.swift in Sources */,
 				E02E85502164A36300DDE4A7 /* OrderModelController.swift in Sources */,
+				EE7E278C218C299C00CB947D /* SettingProfileTableViewCell.swift in Sources */,
 				E0C009A321760F5500926904 /* SideMenuViewController.swift in Sources */,
 				E009ABB5218715AC0000C16C /* MealInfoBoxView.swift in Sources */,
 				E075A976215E377200D264CA /* BaseViewController.swift in Sources */,
@@ -904,6 +921,7 @@
 				E073FEDE2170BC1A00000423 /* TabBarViewController.swift in Sources */,
 				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
 				E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */,
+				EE7E2788218C26E600CB947D /* ProfileViewController.swift in Sources */,
 				E09AA5CE2181EEA600338477 /* ThankYouPopupViewController.swift in Sources */,
 				E0978EAD218309A40049301E /* WeightAndBodyFatViewController.swift in Sources */,
 				E0A5605A216C9B76003534D4 /* DateTimeView.swift in Sources */,
@@ -931,6 +949,7 @@
 				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,
 				E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */,
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
+				EE7E278A218C270E00CB947D /* PasswordchangeViewController.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
 				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,
 				E0DEDBA0216733BC0040BC52 /* LoginFormTableViewController.swift in Sources */,
@@ -939,6 +958,7 @@
 				E05F919121770108001AF01D /* RecipeViewController.swift in Sources */,
 				E0A56058216C9B15003534D4 /* DeliveryOverViewController.swift in Sources */,
 				E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */,
+				EE7E2786218C26A700CB947D /* Setting.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
 				E0DD472B216F578000783F99 /* RecipeCardTableViewCell.swift in Sources */,
 				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,

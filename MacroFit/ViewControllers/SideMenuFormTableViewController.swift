@@ -38,7 +38,10 @@ class SideMenuFormTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            showBasicProfileSettingsScreen()
+            //Devendra Rai Code
+            
+            showSettingsScreen()
+//            showBasicProfileSettingsScreen()
         }
         if indexPath.row == 2 {
             gotoInviteFriendsScreen()
@@ -48,6 +51,12 @@ class SideMenuFormTableViewController: UITableViewController {
         }
     }
     
+    func showSettingsScreen() {
+        print("press")
+        let basicInfoVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "Setting") as? Setting
+        self.navigationController?.pushViewController(basicInfoVC!, animated: true)
+        
+    }
     func showBasicProfileSettingsScreen() {
         let basicInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
         
