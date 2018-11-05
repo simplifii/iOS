@@ -40,6 +40,13 @@ enum APIRouter: URLRequestConvertible {
     case updateBodyFat(bodyFat:Int)
     case updateAddress(addressLineOne: String, addressLineTwo:String?, zipcode:String)
     
+    case getChallenges()
+    case getChallengeTags()
+    case getChallengeSearch(searchString: String?)
+    case getChallengeScore(equalto___challenge:String?,creator:String?)
+    case getEachUserBestScore(equalto___challenge:String?)
+    case SubmitScore(score:String?,challenge:String)
+    
     var path: String {
         
         switch self {
@@ -82,6 +89,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .createFeedback, .editFeedback, .getFeedback:
                 return NetworkingConstants.cards
+        case.getChallenges, .getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .SubmitScore:
+            return NetworkingConstants.challenges
         }
     }
     
@@ -188,7 +197,14 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["address_line_2"] = addressLineTwo
             bodyDict["zipcode"] = zipcode
             break
-            default:
+        case let .SubmitScore(score:score,challenge:challenge):
+            bodyDict["entity"] = "Score"
+            bodyDict["score_type"] = "Challenge"
+            bodyDict["action"] = "Create"
+            bodyDict["score"] = score
+            bodyDict["challenge"] = challenge
+            break
+        default:
                 print("no action")
         }
         
@@ -244,6 +260,30 @@ enum APIRouter: URLRequestConvertible {
             paramDict["type"] = "Feedback"
             paramDict["equalto___type"] = "AppRating"
             break
+        case .getChallenges:
+            paramDict["type"] = "Challenge"
+            break
+        case.getChallengeTags:
+            paramDict["type"] = "Label"
+            paramDict["equalto___type"] = "Challenge"
+            paramDict["show_columns"] = "string1"
+            break
+        case let .getChallengeSearch(searchString: search):
+            paramDict["type"] = "Challenge"
+            paramDict["search"] = search
+            break
+        case let .getChallengeScore(equalto___challenge:equalto_challenge,creator:creator):
+            paramDict["type"] = "Score"
+            paramDict["equalto___challenge"] = equalto_challenge
+            paramDict["creator"] = creator
+            break
+        case let .getEachUserBestScore(equalto___challenge:equalto_challenge):
+            paramDict["type"] = "Score"
+            paramDict["equalto___challenge"] = equalto_challenge
+            paramDict["equalto___users_best"] = "1"
+            paramDict["sort_by"] = "-int2" //it could be +int2 or -int2 depending upon the value of challenge.the_more_the_better
+            paramDict["embed"] = "creator"
+            break
         default:
             break
         }
@@ -254,9 +294,9 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress:
             return .patch
@@ -271,10 +311,10 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch,.getChallengeScore ,.getEachUserBestScore:
                 if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
                     headers[UserConstants.authentication] = "Bearer \(token)"
                 }

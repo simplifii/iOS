@@ -42,11 +42,17 @@ class FitnessTableViewController: UITableViewController {
             break
         }
         
-        let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "ThankYouViewController") as? ThankYouViewController
-        vc?.action = action
-        
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if (action == "One") {
+            let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "ChallengeViewController") as? ChallengeViewController
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else {
+            print("action",action)
+            let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "ThankYouViewController") as? ThankYouViewController
+            vc?.action = action
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
 
 }

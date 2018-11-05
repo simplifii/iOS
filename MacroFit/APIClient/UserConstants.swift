@@ -11,7 +11,7 @@ struct UserConstants {
     static let userCardUniqueCode = "userCardUniqueCode"
     static let userName = "userName"
     static let userEmail = "userEmail"
-    
+    static let userId = "userId"
     static let authentication = "Authorization"
     static let content_type = "Content-Type"
 }

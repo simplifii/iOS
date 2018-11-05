@@ -28,6 +28,21 @@
 		E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */; };
 		E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */; };
 		E0361216215A57E700C560F5 /* MacroFit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0361215215A57E700C560F5 /* MacroFit.storyboard */; };
+		E03E116D219011F8006B3F0C /* Challenges.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03E116C219011F8006B3F0C /* Challenges.storyboard */; };
+		E03E1176219012B1006B3F0C /* BestRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E1171219012B0006B3F0C /* BestRecordViewController.swift */; };
+		E03E1177219012B1006B3F0C /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E1172219012B0006B3F0C /* ChallengeViewController.swift */; };
+		E03E1178219012B1006B3F0C /* SubmitWhenScoreIsInValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E1173219012B0006B3F0C /* SubmitWhenScoreIsInValueViewController.swift */; };
+		E03E1179219012B1006B3F0C /* SubmitResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E1174219012B0006B3F0C /* SubmitResultViewController.swift */; };
+		E03E117A219012B1006B3F0C /* PushUpChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E1175219012B1006B3F0C /* PushUpChallengeViewController.swift */; };
+		E03E117E21902007006B3F0C /* selectValuePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E117D21902007006B3F0C /* selectValuePopup.swift */; };
+		E03E118021902012006B3F0C /* ChallengeTagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E117F21902011006B3F0C /* ChallengeTagsCollectionViewCell.swift */; };
+		E03E118421902037006B3F0C /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E118121902036006B3F0C /* ChallengeTableViewCell.swift */; };
+		E03E118521902037006B3F0C /* LeaderBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E118221902036006B3F0C /* LeaderBoardTableViewCell.swift */; };
+		E03E118621902037006B3F0C /* StatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E118321902036006B3F0C /* StatisticsTableViewCell.swift */; };
+		E03E118B2190208F006B3F0C /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E11872190208F006B3F0C /* Challenge.swift */; };
+		E03E118C2190208F006B3F0C /* GetEachUserBestScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E11882190208F006B3F0C /* GetEachUserBestScore.swift */; };
+		E03E118D2190208F006B3F0C /* GetScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E11892190208F006B3F0C /* GetScore.swift */; };
+		E03E118E2190208F006B3F0C /* ChallengeTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E118A2190208F006B3F0C /* ChallengeTags.swift */; };
 		E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */; };
 		E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */; };
 		E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */; };
@@ -176,6 +191,21 @@
 		E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedCreditViewController.swift; sourceTree = "<group>"; };
 		E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E0361215215A57E700C560F5 /* MacroFit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacroFit.storyboard; sourceTree = "<group>"; };
+		E03E116C219011F8006B3F0C /* Challenges.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Challenges.storyboard; sourceTree = "<group>"; };
+		E03E1171219012B0006B3F0C /* BestRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BestRecordViewController.swift; sourceTree = "<group>"; };
+		E03E1172219012B0006B3F0C /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		E03E1173219012B0006B3F0C /* SubmitWhenScoreIsInValueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitWhenScoreIsInValueViewController.swift; sourceTree = "<group>"; };
+		E03E1174219012B0006B3F0C /* SubmitResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitResultViewController.swift; sourceTree = "<group>"; };
+		E03E1175219012B1006B3F0C /* PushUpChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushUpChallengeViewController.swift; sourceTree = "<group>"; };
+		E03E117D21902007006B3F0C /* selectValuePopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectValuePopup.swift; sourceTree = "<group>"; };
+		E03E117F21902011006B3F0C /* ChallengeTagsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTagsCollectionViewCell.swift; sourceTree = "<group>"; };
+		E03E118121902036006B3F0C /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		E03E118221902036006B3F0C /* LeaderBoardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardTableViewCell.swift; sourceTree = "<group>"; };
+		E03E118321902036006B3F0C /* StatisticsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsTableViewCell.swift; sourceTree = "<group>"; };
+		E03E11872190208F006B3F0C /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		E03E11882190208F006B3F0C /* GetEachUserBestScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetEachUserBestScore.swift; sourceTree = "<group>"; };
+		E03E11892190208F006B3F0C /* GetScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetScore.swift; sourceTree = "<group>"; };
+		E03E118A2190208F006B3F0C /* ChallengeTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTags.swift; sourceTree = "<group>"; };
 		E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormTableViewController.swift; sourceTree = "<group>"; };
 		E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageViewController.swift; sourceTree = "<group>"; };
 		E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -379,6 +409,34 @@
 			path = ModelControllers;
 			sourceTree = "<group>";
 		};
+		E03E117021901296006B3F0C /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				E03E1171219012B0006B3F0C /* BestRecordViewController.swift */,
+				E03E1172219012B0006B3F0C /* ChallengeViewController.swift */,
+				E03E1175219012B1006B3F0C /* PushUpChallengeViewController.swift */,
+				E03E1174219012B0006B3F0C /* SubmitResultViewController.swift */,
+				E03E1173219012B0006B3F0C /* SubmitWhenScoreIsInValueViewController.swift */,
+			);
+			path = Challenges;
+			sourceTree = "<group>";
+		};
+		E03E117B21901FC7006B3F0C /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E03E117D21902007006B3F0C /* selectValuePopup.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		E03E117C21901FDC006B3F0C /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E03E117F21902011006B3F0C /* ChallengeTagsCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		E05F9192217701CE001AF01D /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +509,8 @@
 		E0A6DD4B214F718D00B6C301 /* MacroFit */ = {
 			isa = PBXGroup;
 			children = (
+				E03E117C21901FDC006B3F0C /* CollectionViewCell */,
+				E03E117B21901FC7006B3F0C /* Popup */,
 				E0349A3B218ACA62002C7C93 /* MacroFit.entitlements */,
 				E027C0DE21885E0700F27E8B /* CoreData */,
 				E0BD2B5A216B23EE00E2D297 /* Resources */,
@@ -469,6 +529,7 @@
 				E0A6DD50214F718D00B6C301 /* Main.storyboard */,
 				E0361215215A57E700C560F5 /* MacroFit.storyboard */,
 				EE7E2783218C257800CB947D /* Settings.storyboard */,
+				E03E116C219011F8006B3F0C /* Challenges.storyboard */,
 				E0A6DD56214F719000B6C301 /* Assets.xcassets */,
 				E0A6DD5B214F719000B6C301 /* Info.plist */,
 				E0A6DD53214F718D00B6C301 /* MacroFit.xcdatamodeld */,
@@ -497,6 +558,7 @@
 		E0A6DD7E214F73A900B6C301 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E03E117021901296006B3F0C /* Challenges */,
 				E0034928217F3E7100AED979 /* Home */,
 				E0034921217EDDB200AED979 /* Fitness */,
 				E05F91942177027E001AF01D /* Order */,
@@ -579,6 +641,10 @@
 			children = (
 				E02E854B2164A1FF00DDE4A7 /* Address.swift */,
 				E02E85532164B6E100DDE4A7 /* CartItem.swift */,
+				E03E11872190208F006B3F0C /* Challenge.swift */,
+				E03E118A2190208F006B3F0C /* ChallengeTags.swift */,
+				E03E11882190208F006B3F0C /* GetEachUserBestScore.swift */,
+				E03E11892190208F006B3F0C /* GetScore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -638,6 +704,9 @@
 				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
 				E0DD472A216F578000783F99 /* RecipeCardTableViewCell.swift */,
 				EE7E278B218C299C00CB947D /* SettingProfileTableViewCell.swift */,
+				E03E118121902036006B3F0C /* ChallengeTableViewCell.swift */,
+				E03E118221902036006B3F0C /* LeaderBoardTableViewCell.swift */,
+				E03E118321902036006B3F0C /* StatisticsTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -757,6 +826,7 @@
 			files = (
 				E0BD2B6E216B247A00E2D297 /* Montserrat-Black.ttf in Resources */,
 				E0BD2B83216B6EF100E2D297 /* CartBarView.xib in Resources */,
+				E03E116D219011F8006B3F0C /* Challenges.storyboard in Resources */,
 				E0BD2B6F216B247A00E2D297 /* Montserrat-BlackItalic.ttf in Resources */,
 				E0BD2B70216B247A00E2D297 /* Montserrat-Bold.ttf in Resources */,
 				E0BD2B71216B247A00E2D297 /* Montserrat-BoldItalic.ttf in Resources */,
@@ -905,8 +975,10 @@
 				E0BEBAA821527B5800B7471D /* RecommendedDailyMacrosViewController.swift in Sources */,
 				E0A792152153823C00CBBFDB /* APIService.swift in Sources */,
 				E0034927217EF03C00AED979 /* ThankYouViewController.swift in Sources */,
+				E03E117A219012B1006B3F0C /* PushUpChallengeViewController.swift in Sources */,
 				E003492A217F3F9300AED979 /* HomeViewController.swift in Sources */,
 				E09AA5D02181F11C00338477 /* FeedbackPopupBaseViewController.swift in Sources */,
+				E03E118621902037006B3F0C /* StatisticsTableViewCell.swift in Sources */,
 				E02E85502164A36300DDE4A7 /* OrderModelController.swift in Sources */,
 				EE7E278C218C299C00CB947D /* SettingProfileTableViewCell.swift in Sources */,
 				E0C009A321760F5500926904 /* SideMenuViewController.swift in Sources */,
@@ -918,15 +990,19 @@
 				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,
 				E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */,
 				E05F919821774595001AF01D /* WhiteRoundedCornerBoxView.swift in Sources */,
+				E03E1176219012B1006B3F0C /* BestRecordViewController.swift in Sources */,
 				E073FEDE2170BC1A00000423 /* TabBarViewController.swift in Sources */,
 				E0BEBAA621523B3A00B7471D /* SetUpMacroMealPortionsViewController.swift in Sources */,
 				E075A974215E32F500D264CA /* OrderConfirmationViewController.swift in Sources */,
 				EE7E2788218C26E600CB947D /* ProfileViewController.swift in Sources */,
+				E03E118021902012006B3F0C /* ChallengeTagsCollectionViewCell.swift in Sources */,
 				E09AA5CE2181EEA600338477 /* ThankYouPopupViewController.swift in Sources */,
 				E0978EAD218309A40049301E /* WeightAndBodyFatViewController.swift in Sources */,
 				E0A5605A216C9B76003534D4 /* DateTimeView.swift in Sources */,
 				E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */,
 				E0BD2B85216B6F0D00E2D297 /* CartBarView.swift in Sources */,
+				E03E118521902037006B3F0C /* LeaderBoardTableViewCell.swift in Sources */,
+				E03E1179219012B1006B3F0C /* SubmitResultViewController.swift in Sources */,
 				E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */,
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
 				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
@@ -937,15 +1013,20 @@
 				E0D64AD32174ADC800FB700C /* Connectivity.swift in Sources */,
 				E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */,
 				E027C0E22188644A00F27E8B /* CoreDataManager.swift in Sources */,
+				E03E118421902037006B3F0C /* ChallengeTableViewCell.swift in Sources */,
 				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
+				E03E118C2190208F006B3F0C /* GetEachUserBestScore.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
 				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
+				E03E118B2190208F006B3F0C /* Challenge.swift in Sources */,
+				E03E118E2190208F006B3F0C /* ChallengeTags.swift in Sources */,
 				E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */,
 				E0D99994218090D8004FDBCF /* RatingView.swift in Sources */,
 				E09AA5CC2181AFBC00338477 /* RatingViewController.swift in Sources */,
 				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
+				E03E118D2190208F006B3F0C /* GetScore.swift in Sources */,
 				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,
 				E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */,
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
@@ -967,7 +1048,9 @@
 				E02E854721647FE900DDE4A7 /* PaymentViewController.swift in Sources */,
 				E0DD472D216F60A000783F99 /* RecipeCardsViewController.swift in Sources */,
 				E0034925217EE23F00AED979 /* FitnessTableViewController.swift in Sources */,
+				E03E1177219012B1006B3F0C /* ChallengeViewController.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
+				E03E117E21902007006B3F0C /* selectValuePopup.swift in Sources */,
 				E0A6DD80214F740400B6C301 /* IntroductionScreenViewController.swift in Sources */,
 				E09AA5CA2181AF8600338477 /* RatingAndTextFeedbackViewController.swift in Sources */,
 				E0DC73F9215B84010085551E /* MenuViewController.swift in Sources */,
@@ -987,6 +1070,7 @@
 				E0A79219215384B900CBBFDB /* APIError.swift in Sources */,
 				E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */,
 				E02E85582164C55800DDE4A7 /* DeliveryDateTableViewCell.swift in Sources */,
+				E03E1178219012B1006B3F0C /* SubmitWhenScoreIsInValueViewController.swift in Sources */,
 				E0DC7403215BAD230085551E /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,6 +34,7 @@ struct APIService {
                             }
                             
                             UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
+                            UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
                             UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
                             UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
                             UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
@@ -161,6 +162,36 @@ struct APIService {
         })
     }
     
+    static func getListOfChallenges(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallenges(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getChallengeTags(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallengeTags(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getChallengeSearch(searchString:String?, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallengeSearch(searchString: searchString), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getChallengeScore(equalto___challenge:String?,creator:String?, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallengeScore(equalto___challenge: equalto___challenge, creator: creator), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getEachUserBestScore(equalto___challenge:String?, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getEachUserBestScore(equalto___challenge: equalto___challenge), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
     
     // POST & PATCH
     
@@ -239,6 +270,13 @@ struct APIService {
         
         sendRequest(request: request, completion: {success,msg in
             completion(success, msg)
+        })
+    }
+    
+    static func SubmitScore(score:String,challenge:String, completion: @escaping (Bool, String,JSON) -> Void) {
+        let request = APIRouter.SubmitScore(score:score,challenge:challenge)
+        sendRequestAndGetData(request: request, completion: {success,msg,data in
+            completion(success, msg, data)
         })
     }
     
