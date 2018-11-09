@@ -67,8 +67,7 @@ class SubmitResultViewController: UIViewController{
             {
                 
                 for (_,item) in data {
-                    if (item["users_best"].boolValue == true)
-                    {
+                    if (item["users_best"].boolValue == true) {
                         let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "BestRecordViewController") as? BestRecordViewController
                         vc?.bestScore = item["score_formatted"].stringValue
                         vc?.userLastBestScore = item["prev_best"].stringValue
@@ -76,12 +75,9 @@ class SubmitResultViewController: UIViewController{
                         self.navigationController?.isNavigationBarHidden = true
                         self.navigationController?.pushViewController(vc!, animated: true)
                         
-                    }else
-                    {
+                    } else {
                         self.navigationController?.popViewController(animated: false)
                     }
-                    
-                    
                 }
                
             }

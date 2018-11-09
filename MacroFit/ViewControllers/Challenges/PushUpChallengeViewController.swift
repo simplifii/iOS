@@ -51,17 +51,22 @@ class PushUpChallengeViewController: UIViewController {
         imageBackground.image = UIImage(data:challengePhoto!)
         viewStatistics.backgroundColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
         viewLeaderboard.backgroundColor = UIColor(displayP3Red: 252/255, green: 250/255, blue: 252/255, alpha: 1)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
         getUserChallengeScore()
         getEachUserBestScore()
     }
+    
+    
     //MARK: get the all list getUserChallengeScore
-    func getUserChallengeScore()
-    {
+    func getUserChallengeScore() {
         APIService.getChallengeScore(equalto___challenge:challengeId, creator: userId,completion: {success,msg,data in
             if success == true {
-                if data.count > 0
-                {
-                    
+                if data.count > 0 {
                     self.getScore.removeAll()
                     for (_,item) in data {
                         let getScore = GetScore()
@@ -81,18 +86,21 @@ class PushUpChallengeViewController: UIViewController {
 //                    self.tableViewHeight.constant = 168
                     self.loadViewIfNeeded()
                     self.tableView.reloadData()
+                } else {
+                    self.tableViewTopSpacing.constant = 0
+                    self.yourLastResultViewHide.isHidden = true
                 }
             }
         })
     }
     
     //MARK: get the all list getEachUserBestScore
-    func getEachUserBestScore()
-    {
-      
+    func getEachUserBestScore() {
         
         APIService.getEachUserBestScore(equalto___challenge:challengeId,completion: {success,msg,data in
             if success == true {
+                self.getEachUserScore.removeAll()
+                
                 if data.count > 0 {
                  
                     for (_,item) in data {
@@ -102,10 +110,7 @@ class PushUpChallengeViewController: UIViewController {
                         eachUserScore.name = item["creator"]["name"].stringValue
                         self.getEachUserScore.append(eachUserScore)
                     }
-                    self.yourLastResultViewHide.isHidden = false
                     self.tableView.reloadData()
-                } else {
-                    self.yourLastResultViewHide.isHidden = true
                 }
             }
         })
@@ -127,8 +132,6 @@ class PushUpChallengeViewController: UIViewController {
     @IBAction func actionStatistics(_ sender: UIButton) {
         isStatistics = true
         isLeaderboard = false
-        yourLastResultViewHide.isHidden = false
-        tableViewTopSpacing.constant = 98
 //        self.tableViewHeight.constant = 168
         btnStatistics.setTitleColor(UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1), for: .normal)
         
@@ -145,8 +148,6 @@ class PushUpChallengeViewController: UIViewController {
     @IBAction func actionLeaderboard(_ sender: UIButton) {
         isStatistics = false
         isLeaderboard = true
-        yourLastResultViewHide.isHidden = true
-        tableViewTopSpacing.constant = 0
 //        tableViewHeight.constant = 269
         
         btnLeaderboard.setTitleColor(UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1), for: .normal)
@@ -199,29 +200,30 @@ class PushUpChallengeViewController: UIViewController {
 extension PushUpChallengeViewController:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if getScore.count > 0 || getEachUserScore.count > 0
-        {
-            if isLeaderboard
-            {
+        tableViewTopSpacing.constant = 0
+        yourLastResultViewHide.isHidden = true
+        
+        if isLeaderboard {
+            if getEachUserScore.count > 0 {
                 return getEachUserScore.count
+            } else {
+                return 0
+            }
+        } else {
+            if getScore.count > 0 {
+                tableViewTopSpacing.constant = 98
+                yourLastResultViewHide.isHidden = false
                 
-            }else
-            {
                 return getScore.count
             }
-        }else
-        {
-            return 1
         }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if getScore.count > 0 || getEachUserScore.count > 0
-        {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? LeaderBoardTableViewCell  //shouldn't this be withIdentifier: "cell"
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell") as? StatisticsTableViewCell
-            if isLeaderboard {
+        if isLeaderboard {
+            if getEachUserScore.count > 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? LeaderBoardTableViewCell  //shouldn't this be withIdentifier: "cell"
                 if (getEachUserScore[indexPath.row].fk_creator == userId) {
                     cell?.name.text = "You"
                 } else {
@@ -229,43 +231,41 @@ extension PushUpChallengeViewController:UITableViewDelegate,UITableViewDataSourc
                 }
                 cell?.count.text = "\(indexPath.row + 1)"
                 cell?.score.text = getEachUserScore[indexPath.row].score_formatted
-                return cell!                
-            } else {
-                yourLastResultViewHide.isHidden = false
+                return cell!
+            }
+        } else {
+            if getScore.count > 0 {
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell") as? StatisticsTableViewCell
+                
                 cell1?.lblDate.text = getScore[indexPath.row].created_at
                 cell1?.lblResult.text = getScore[indexPath.row].score_formatted
                 if (getScore[indexPath.row].users_best! == true) {
                     cell1?.userScoreUIView.backgroundColor = UIColor(displayP3Red: 241/255, green: 251/255, blue: 244/255, alpha: 1)
+                } else {
+                    cell1?.userScoreUIView.backgroundColor = UIColor.white
                 }
                 return cell1!
             }
-        }else
-        {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3")
-            yourLastResultViewHide.isHidden = true
-//            tableViewHeight.constant = 269
-            self.loadViewIfNeeded()
-            cell!.separatorInset = UIEdgeInsetsMake(0.0, cell!.bounds.size.width, 0.0, -cell!.bounds.size.width)
-            return cell!
         }
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell3")
+        //            tableViewHeight.constant = 269
+        self.loadViewIfNeeded()
+        cell!.separatorInset = UIEdgeInsetsMake(0.0, cell!.bounds.size.width, 0.0, -cell!.bounds.size.width)
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if getScore.count > 0 || getEachUserScore.count > 0
-        {
-            if isLeaderboard
-            {
+        if isLeaderboard {
+            if getEachUserScore.count > 0 {
                 return 66
-            }else
-            {
+            }
+        } else {
+            if getScore.count > 0 {
                 return  40
             }
-        }else
-        {
-            return 121
         }
-        
+        return 121
     }
     
     

@@ -27,7 +27,11 @@ class BestRecordViewController: UIViewController {
     }
     
     @IBAction func btnCancel(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
+        if let viewControllers = self.navigationController?.viewControllers {
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: false)
+        } else {
+            self.navigationController?.popViewController(animated: false)
+        }
     }
     
     

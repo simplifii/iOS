@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SubmitWhenScoreIsInValueViewController: UIViewController {
+class SubmitWhenScoreIsInValueViewController: UIViewController, selectedValue1 {
 
     
-    @IBOutlet weak var scoreValue: UITextField!
+    @IBOutlet weak var scoreValueButton: UIButton!
     @IBOutlet weak var lblScoreUnit: UILabel!
     var challengeTitle = ""
     var scoreUnit:String?
@@ -32,7 +32,7 @@ class SubmitWhenScoreIsInValueViewController: UIViewController {
 
     @IBAction func btnSubmit(_ sender: Any) {
         
-        APIService.SubmitScore(score:scoreValue.text!,challenge:challengeId ?? "", completion: {success,msg,data in
+        APIService.SubmitScore(score:scoreValueButton.currentTitle!,challenge:challengeId ?? "", completion: {success,msg,data in
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
             }
@@ -77,6 +77,23 @@ class SubmitWhenScoreIsInValueViewController: UIViewController {
         alert.addAction(action)
         
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func btnMinut(_ sender: UIButton) {
+        let popupvc = UIStoryboard(name: "Challenges", bundle: nil
+            ).instantiateViewController(withIdentifier: "selectValuePopup") as! selectValuePopup
+        popupvc.maxValue = 100
+        
+        popupvc.delegate = self
+        self.addChildViewController(popupvc)
+        popupvc.view.frame = self.view.frame
+        self.view.addSubview(popupvc.view)
+        popupvc.didMove(toParentViewController: self)
+    }
+    
+    
+    func selectedValue1(value1: String) {
+        scoreValueButton.setTitle(value1, for: .normal)
     }
     
 }

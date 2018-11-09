@@ -15,7 +15,8 @@ protocol selectedValue1 {
 class selectValuePopup: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
      var delegate:selectedValue1?
 
-  var value = ""
+    var value = ""
+    var maxValue = 59
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ class selectValuePopup: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
     }
 
     @IBAction func btnpopover(_ sender: UIButton) {
+        if value.isEmpty {
+            value = "1"
+        }
         delegate?.selectedValue1(value1: value)
         self.removeAnimate()
         self.view.removeFromSuperview()
@@ -35,7 +39,7 @@ class selectValuePopup: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 59
+        return maxValue
         
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
