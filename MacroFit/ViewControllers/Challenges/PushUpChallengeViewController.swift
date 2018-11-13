@@ -23,6 +23,9 @@ class PushUpChallengeViewController: UIViewController {
     @IBOutlet weak var lblParticipantsCount: UILabel!
     @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var yourLastResultViewHide: UIView!
+    @IBOutlet weak var todayResultView: WhiteRoundedCornerBoxView!
+    @IBOutlet weak var userTodayBestScore: UILabel!
+    
     
     var getScore = [GetScore]()
     var getEachUserScore = [GetEachUserBestScore]()
@@ -42,7 +45,6 @@ class PushUpChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         btnStatistics.setTitleColor(UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1), for: .normal)
         tableView.tableFooterView = UIView(frame: .zero)
         lblTitle.text = challengeTitle
@@ -51,6 +53,11 @@ class PushUpChallengeViewController: UIViewController {
         imageBackground.image = UIImage(data:challengePhoto!)
         viewStatistics.backgroundColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
         viewLeaderboard.backgroundColor = UIColor(displayP3Red: 252/255, green: 250/255, blue: 252/255, alpha: 1)
+        
+        //tap gesture recognizer on today todayResultView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        todayResultView.addGestureRecognizer(tap)
+        todayResultView.isUserInteractionEnabled = true
     }
     
     
@@ -59,8 +66,29 @@ class PushUpChallengeViewController: UIViewController {
         
         getUserChallengeScore()
         getEachUserBestScore()
+        getUserBestScore()
     }
     
+    
+    //MARK: get the Best Score of user
+    func getUserBestScore()
+    {
+        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: true,completion: {success,msg,data in
+            if success == true {
+                self.getEachUserScore.removeAll()
+                print("data",data)
+                if data.count > 0 {
+
+                    for (_,item) in data {
+                        
+                        self.userTodayBestScore.text = item["score_formatted"].stringValue
+                    }
+                    self.btnSubmitNewResult.isHidden = true
+                    self.todayResultView.isHidden = false
+                }
+            }
+        })
+    }
     
     //MARK: get the all list getUserChallengeScore
     func getUserChallengeScore() {
@@ -97,7 +125,7 @@ class PushUpChallengeViewController: UIViewController {
     //MARK: get the all list getEachUserBestScore
     func getEachUserBestScore() {
         
-        APIService.getEachUserBestScore(equalto___challenge:challengeId,completion: {success,msg,data in
+        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: false,completion: {success,msg,data in
             if success == true {
                 self.getEachUserScore.removeAll()
                 
@@ -189,7 +217,28 @@ class PushUpChallengeViewController: UIViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
-    
+    // function which is triggered when handleTap is called
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        
+        if (challengeIs_scoring_in_time == true)
+        {
+            let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "SubmitResultViewController") as? SubmitResultViewController
+            vc?.challengeId = challengeId ?? ""
+            vc?.challengeTitle = challengeTitle ?? ""
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }else
+        {
+            //write the code for new page to open
+            let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "SubmitWhenScoreIsInValueViewController") as? SubmitWhenScoreIsInValueViewController
+            vc?.challengeId = challengeId ?? ""
+            vc?.challengeTitle = challengeTitle ?? ""
+            vc?.scoreUnit = challengeScore_unit
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+            
+        }
+    }
     
     
     

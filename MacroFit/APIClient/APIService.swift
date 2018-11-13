@@ -186,8 +186,8 @@ struct APIService {
         })
     }
     
-    static func getEachUserBestScore(equalto___challenge:String?, completion: @escaping (Bool, String, JSON) -> Void){
-        sendRequestAndGetData(request: APIRouter.getEachUserBestScore(equalto___challenge: equalto___challenge), completion: {success,msg,json_data in
+    static func getEachUserBestScore(equalto___challenge:String?,userBestScore:Bool, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getEachUserBestScore(equalto___challenge: equalto___challenge, userBestScore: userBestScore), completion: {success,msg,json_data in
             completion(success, msg, json_data)
         })
     }
