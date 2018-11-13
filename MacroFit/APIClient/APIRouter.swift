@@ -283,6 +283,7 @@ enum APIRouter: URLRequestConvertible {
             paramDict["equalto___users_best"] = "1"
             paramDict["sort_by"] = "-int2" //it could be +int2 or -int2 depending upon the value of challenge.the_more_the_better
             paramDict["embed"] = "creator"
+            
             break
         default:
             break

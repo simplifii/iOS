@@ -223,15 +223,50 @@ extension PushUpChallengeViewController:UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isLeaderboard {
             if getEachUserScore.count > 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? LeaderBoardTableViewCell  //shouldn't this be withIdentifier: "cell"
-                if (getEachUserScore[indexPath.row].fk_creator == userId) {
-                    cell?.name.text = "You"
-                } else {
-                    cell?.name.text = getEachUserScore[indexPath.row].name
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? LeaderBoardTableViewCell //shouldn't this be withIdentifier: "cell"
+                 let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell2") as? LeaderBoardTableViewCell2
+                if (indexPath.row == 0)
+                {
+                    if (getEachUserScore[indexPath.row].fk_creator == userId) {
+                        cell?.name.text = "You"
+                        cell?.name.font = UIFont(name: "Montserrat-SemiBold", size: 20)
+                        cell?.name.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell?.score.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell?.imageIcon.image = UIImage(named: "crown")
+                        cell?.background.backgroundColor = UIColor(displayP3Red: 250/255, green: 238/255, blue: 234/255, alpha: 1)
+                        
+                    } else {
+                        cell?.name.text = getEachUserScore[indexPath.row].name
+                        cell?.name.font = UIFont(name: "Montserrat-SemiBold", size: 20)
+                        cell?.name.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell?.imageIcon.image = UIImage(named: "crown")
+                        cell?.background.backgroundColor = UIColor.white
+                    }
+                    cell?.count.text = "\(indexPath.row + 1)"
+                    cell?.count.font = UIFont(name: "Montserrat-SemiBold", size: 20)
+                    cell?.count.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                    return cell!
+                }else
+                {
+                    if (getEachUserScore[indexPath.row].fk_creator == userId) {
+                        cell1?.name.text = "You"
+                        cell1?.name.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell1?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell1?.score.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell1?.background.backgroundColor = UIColor(displayP3Red: 250/255, green: 238/255, blue: 234/255, alpha: 1)
+                    } else {
+                        cell1?.name.text = getEachUserScore[indexPath.row].name
+                        cell1?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell1?.background.backgroundColor = UIColor.white
+                    }
+                    cell1?.count.text = "\(indexPath.row + 1)"
+                    cell1?.count.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                    
+                    return cell1!
                 }
-                cell?.count.text = "\(indexPath.row + 1)"
-                cell?.score.text = getEachUserScore[indexPath.row].score_formatted
-                return cell!
+               
             }
         } else {
             if getScore.count > 0 {
