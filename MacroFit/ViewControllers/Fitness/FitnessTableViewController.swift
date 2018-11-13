@@ -46,7 +46,11 @@ class FitnessTableViewController: UITableViewController {
             let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "ChallengeViewController") as? ChallengeViewController
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(vc!, animated: true)
-        } else {
+        } else  if (action == "Two") {
+            let vc = UIStoryboard(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "CourseViewController") as? CourseViewController
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else{
             print("action",action)
             let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "ThankYouViewController") as? ThankYouViewController
             vc?.action = action
