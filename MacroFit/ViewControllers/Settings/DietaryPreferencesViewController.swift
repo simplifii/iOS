@@ -13,7 +13,8 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     
     @IBOutlet weak var navbarView: UIView!
     @IBOutlet weak var progressBarView: UIView!
-
+    @IBOutlet weak var continueToMealsButton: UIButton!
+    
     @IBOutlet weak var dietaryOptionsView: UIView!
     var dietaryOptions = ["Standard", "Paleo", "Vegetarian", "Vegan", "Keto"]
     var selectedDietaryOpition = "Standard"
@@ -24,11 +25,16 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     @IBOutlet weak var scrollView: UIScrollView!
     
     var userProfile:JSON = [:]
+    var previousPageIsSettings = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         prefillData()
+        
+        if previousPageIsSettings {
+            continueToMealsButton.setTitle("Continue", for: .normal)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,22 +55,7 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     }
     
     func prefillData() {
-        if userProfile["cdata"]["dietary_preference"] != JSON.null {
-            selectedDietaryOpition = userProfile["cdata"]["dietary_preference"].stringValue
-        }
-        for (index, optionValue) in dietaryOptions.enumerated() {
-            if selectedDietaryOpition == optionValue {
-                if let button = dietaryOptionsView.viewWithTag(index + 1) as? UIButton {
-                    selectedButtonView(button: button)
-                    selectedDietaryOpition = button.currentTitle!
-                }
-            }
-        }
-        
-        diet_note = userProfile["diet_note"].stringValue
-        if !diet_note.isEmpty {
-            additionalDietaryPreferencesTextView.text = diet_note
-        }
+        setSelectedOptionUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,12 +118,36 @@ class DietaryPreferencesViewController: OnboardUserViewController, UITextViewDel
     
     @IBAction func updateDietaryPreferences(_ sender: UIButton) {
         APIService.updateDietaryPreferences(dietary_preference: selectedDietaryOpition, diet_note: diet_note, completion: {success,msg in
-            if success {                
-                self.gotoNextScreen()
+            if success {
+                if self.previousPageIsSettings {
+                    self.showPreviousScreen()
+                } else {
+                    self.gotoNextScreen()
+                }
             } else {
                 self.showAlertMessage(title: msg, message: nil)
             }
         })
+    }
+    
+    func setSelectedOptionUI() {
+        if userProfile["cdata"]["dietary_preference"] != JSON.null {
+            selectedDietaryOpition = userProfile["cdata"]["dietary_preference"].stringValue
+        }
+        
+        for (index, optionValue) in dietaryOptions.enumerated() {
+            if selectedDietaryOpition == optionValue {
+                if let button = dietaryOptionsView.viewWithTag(index + 1) as? UIButton {
+                    selectedButtonView(button: button)
+                    selectedDietaryOpition = button.currentTitle!
+                }
+            }
+        }
+        
+        diet_note = userProfile["diet_note"].stringValue
+        if !diet_note.isEmpty {
+            additionalDietaryPreferencesTextView.text = diet_note
+        }
     }
     
     func gotoNextScreen() {

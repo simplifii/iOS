@@ -27,15 +27,22 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
     @IBOutlet weak var tenPercentMacrosForSnacksButton: UIButton!
     @IBOutlet weak var twentyPercentMacrosForSnacksButton: UIButton!
     
+    @IBOutlet weak var seeDailyMacrosButton: UIButton!
+    
     var macrosPercentageInSnacks = String()
     
     var userProfile:JSON = [:]
+    var previousPageIsSettings = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         prefillValues()
+        
+        if previousPageIsSettings {
+            seeDailyMacrosButton.setTitle("Continue", for: .normal)
+        }
     }
     
 
@@ -182,7 +189,11 @@ class SetUpMacroMealPortionsViewController: OnboardUserViewController {
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
             } else {
-                self.showNextScreen()
+                if self.previousPageIsSettings {
+                    self.showPreviousScreen()
+                } else {
+                    self.showNextScreen()
+                }
             }
         })
     }

@@ -24,7 +24,8 @@ class ProfileViewController: BaseViewController {
         
         userNameLabel.text = UserDefaults.standard.string(forKey: UserConstants.userName)
         userEmailLabel.text = UserDefaults.standard.string(forKey: UserConstants.userEmail)
-        // Do any additional setup after loading the view.
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     
