@@ -53,11 +53,6 @@ class PushUpChallengeViewController: UIViewController {
         imageBackground.image = UIImage(data:challengePhoto!)
         viewStatistics.backgroundColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
         viewLeaderboard.backgroundColor = UIColor(displayP3Red: 252/255, green: 250/255, blue: 252/255, alpha: 1)
-        
-        //tap gesture recognizer on today todayResultView
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        todayResultView.addGestureRecognizer(tap)
-        todayResultView.isUserInteractionEnabled = true
     }
     
     
@@ -66,6 +61,9 @@ class PushUpChallengeViewController: UIViewController {
         
         getUserChallengeScore()
         getEachUserBestScore()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
         getUserBestScore()
     }
     
@@ -216,34 +214,7 @@ class PushUpChallengeViewController: UIViewController {
     @IBAction func actionBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: false)
     }
-    
-    // function which is triggered when handleTap is called
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        
-        if (challengeIs_scoring_in_time == true)
-        {
-            let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "SubmitResultViewController") as? SubmitResultViewController
-            vc?.challengeId = challengeId ?? ""
-            vc?.challengeTitle = challengeTitle ?? ""
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.pushViewController(vc!, animated: true)
-        }else
-        {
-            //write the code for new page to open
-            let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "SubmitWhenScoreIsInValueViewController") as? SubmitWhenScoreIsInValueViewController
-            vc?.challengeId = challengeId ?? ""
-            vc?.challengeTitle = challengeTitle ?? ""
-            vc?.scoreUnit = challengeScore_unit
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.pushViewController(vc!, animated: true)
-            
-        }
-    }
-    
-    
-    
-    
-    
+ 
 }
 
 extension PushUpChallengeViewController:UITableViewDelegate,UITableViewDataSource

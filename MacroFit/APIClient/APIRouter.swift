@@ -282,9 +282,6 @@ enum APIRouter: URLRequestConvertible {
             {
                 paramDict["type"] = "Score"
                 paramDict["equalto___challenge"] = equalto_challenge
-                paramDict["equalto___users_best"] = "1"
-                paramDict["sort_by"] = "-int2" //it could be +int2 or -int2 depending upon the value of challenge.the_more_the_better
-                paramDict["embed"] = "creator"
                 paramDict["creator"] = UserDefaults.standard.string(forKey: UserConstants.userId)
                 paramDict["dategreaterthanequalto___created_at_format"] = "Y-m-d"
                 paramDict["dategreaterthanequalto___created_at"] = "now"
