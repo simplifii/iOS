@@ -23,6 +23,9 @@ class PushUpChallengeViewController: UIViewController {
     @IBOutlet weak var lblParticipantsCount: UILabel!
     @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var yourLastResultViewHide: UIView!
+    @IBOutlet weak var todayResultView: WhiteRoundedCornerBoxView!
+    @IBOutlet weak var userTodayBestScore: UILabel!
+    
     
     var getScore = [GetScore]()
     var getEachUserScore = [GetEachUserBestScore]()
@@ -42,7 +45,6 @@ class PushUpChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         btnStatistics.setTitleColor(UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1), for: .normal)
         tableView.tableFooterView = UIView(frame: .zero)
         lblTitle.text = challengeTitle
@@ -59,8 +61,32 @@ class PushUpChallengeViewController: UIViewController {
         
         getUserChallengeScore()
         getEachUserBestScore()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getUserBestScore()
     }
     
+    
+    //MARK: get the Best Score of user
+    func getUserBestScore()
+    {
+        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: true,completion: {success,msg,data in
+            if success == true {
+                self.getEachUserScore.removeAll()
+                print("data",data)
+                if data.count > 0 {
+
+                    for (_,item) in data {
+                        
+                        self.userTodayBestScore.text = item["score_formatted"].stringValue
+                    }
+                    self.btnSubmitNewResult.isHidden = true
+                    self.todayResultView.isHidden = false
+                }
+            }
+        })
+    }
     
     //MARK: get the all list getUserChallengeScore
     func getUserChallengeScore() {
@@ -97,7 +123,7 @@ class PushUpChallengeViewController: UIViewController {
     //MARK: get the all list getEachUserBestScore
     func getEachUserBestScore() {
         
-        APIService.getEachUserBestScore(equalto___challenge:challengeId,completion: {success,msg,data in
+        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: false,completion: {success,msg,data in
             if success == true {
                 self.getEachUserScore.removeAll()
                 
@@ -188,13 +214,7 @@ class PushUpChallengeViewController: UIViewController {
     @IBAction func actionBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: false)
     }
-    
-    
-    
-    
-    
-    
-    
+ 
 }
 
 extension PushUpChallengeViewController:UITableViewDelegate,UITableViewDataSource
@@ -223,15 +243,50 @@ extension PushUpChallengeViewController:UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isLeaderboard {
             if getEachUserScore.count > 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? LeaderBoardTableViewCell  //shouldn't this be withIdentifier: "cell"
-                if (getEachUserScore[indexPath.row].fk_creator == userId) {
-                    cell?.name.text = "You"
-                } else {
-                    cell?.name.text = getEachUserScore[indexPath.row].name
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? LeaderBoardTableViewCell //shouldn't this be withIdentifier: "cell"
+                 let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell2") as? LeaderBoardTableViewCell2
+                if (indexPath.row == 0)
+                {
+                    if (getEachUserScore[indexPath.row].fk_creator == userId) {
+                        cell?.name.text = "You"
+                        cell?.name.font = UIFont(name: "Montserrat-SemiBold", size: 20)
+                        cell?.name.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell?.score.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell?.imageIcon.image = UIImage(named: "crown")
+                        cell?.background.backgroundColor = UIColor(displayP3Red: 250/255, green: 238/255, blue: 234/255, alpha: 1)
+                        
+                    } else {
+                        cell?.name.text = getEachUserScore[indexPath.row].name
+                        cell?.name.font = UIFont(name: "Montserrat-SemiBold", size: 20)
+                        cell?.name.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell?.imageIcon.image = UIImage(named: "crown")
+                        cell?.background.backgroundColor = UIColor.white
+                    }
+                    cell?.count.text = "\(indexPath.row + 1)"
+                    cell?.count.font = UIFont(name: "Montserrat-SemiBold", size: 20)
+                    cell?.count.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                    return cell!
+                }else
+                {
+                    if (getEachUserScore[indexPath.row].fk_creator == userId) {
+                        cell1?.name.text = "You"
+                        cell1?.name.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell1?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell1?.score.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                        cell1?.background.backgroundColor = UIColor(displayP3Red: 250/255, green: 238/255, blue: 234/255, alpha: 1)
+                    } else {
+                        cell1?.name.text = getEachUserScore[indexPath.row].name
+                        cell1?.score.text = getEachUserScore[indexPath.row].score_formatted
+                        cell1?.background.backgroundColor = UIColor.white
+                    }
+                    cell1?.count.text = "\(indexPath.row + 1)"
+                    cell1?.count.textColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
+                    
+                    return cell1!
                 }
-                cell?.count.text = "\(indexPath.row + 1)"
-                cell?.score.text = getEachUserScore[indexPath.row].score_formatted
-                return cell!
+               
             }
         } else {
             if getScore.count > 0 {
