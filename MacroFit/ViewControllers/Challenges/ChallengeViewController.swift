@@ -8,15 +8,23 @@
 
 import UIKit
 import SwiftyJSON
+import TagListView
 
-class ChallengeViewController: UIViewController {
+class ChallengeViewController: UIViewController, TagListViewDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextBox: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var fitnessHeadViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var categoriesTagListView: TagListView!
+    @IBOutlet weak var chooseCategoriesLabel: UILabel!
+    var selectedCategories:[String] = []
+    var tagChallengesMapping:[String:[Int]] = [:]
     
     var challengeTableData = [Challenge]()
+    var challengeData:[Int:Challenge] = [:]
     var challengTagData = [ChallengeTags]()
     
     //check the commit
@@ -31,38 +39,30 @@ class ChallengeViewController: UIViewController {
         getChallenges()
         getChallengesTags()
         // Do any additional setup after loading the view.
+        categoriesTagListView.delegate = self
+   
+        categoriesTagListView.textFont = UIFont.init(name: "Montserrat", size: 12)!
+        categoriesTagListView.alignment = .left
+    }
+    
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print(title)
+        removeCategory(category: title)
+    }
+    func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print(title)
+        removeCategory(category: title)
     }
     
     //MARK: get the all list of Challenges
     func getChallenges() {
         APIService.getListOfChallenges(completion: {success,msg,data in
             if success == true {
-                if data.count > 0
-                {
+                if data.count > 0 {
                     self.challengeTableData.removeAll()
-                for (_,item) in data {
-                    let challenge = Challenge()
-                    challenge.id = item["id"].stringValue
-                    challenge.title = item["title"].stringValue
-                    challenge.description = item["description"].stringValue
-                    challenge.participants_count = item["participants_count"].stringValue
-                    challenge.id = item["id"].stringValue
-                    challenge.is_scoring_in_time = item["is_scoring_in_time"].boolValue
-                    challenge.score_unit = item["score_unit"].stringValue
-                    let img = item["photo"].stringValue
-                    do{
-                        let urL = URL(string:img )
-                        let data = try Data(contentsOf: urL!)
-                        challenge.photo = data
-                    }catch let Error {
-                        print("Error:\(Error.localizedDescription)")
-                    }
-                    
-                    self.challengeTableData.append(challenge)
-                }
-                self.tableView.reloadData()
-                }else
-                {
+                    self.setChallengesData(data: data)
+                    self.tableView.reloadData()
+                } else {
                    self.showAlertMessage(title: "No Result Found", message: nil)
                 }
             } else {
@@ -70,6 +70,46 @@ class ChallengeViewController: UIViewController {
                 
             }
         })
+    }
+    
+    
+    func setChallengesData(data: JSON) {
+        challengeData.removeAll()
+        tagChallengesMapping.removeAll()
+        
+        for (_,item) in data {
+            let challenge = Challenge()
+            challenge.id = item["id"].stringValue
+            challenge.title = item["title"].stringValue
+            challenge.description = item["description"].stringValue
+            challenge.participants_count = item["participants_count"].stringValue
+            challenge.id = item["id"].stringValue
+            challenge.is_scoring_in_time = item["is_scoring_in_time"].boolValue
+            challenge.score_unit = item["score_unit"].stringValue
+            challenge.tags = item["tags"].stringValue
+            challenge.the_more_the_better = item["the_more_the_better"].boolValue
+            let img = item["photo"].stringValue
+            do{
+                let urL = URL(string:img)
+                let data = try Data(contentsOf: urL!)
+                challenge.photo = data
+            }catch let Error {
+                print("Error:\(Error.localizedDescription)")
+            }
+            
+            let tags = challenge.tags?.components(separatedBy: ",")
+            for tag in tags ?? [] {
+                if tagChallengesMapping[tag] == nil {
+                    tagChallengesMapping[tag] = [item["id"].intValue]
+                } else {
+                    tagChallengesMapping[tag]!.append(item["id"].intValue)
+                }
+            }
+            
+            challengeData[item["id"].intValue] = challenge
+            self.challengeTableData.append(challenge)
+        }
+        
     }
     
     //MARK: get the all list of ChallengesTags
@@ -100,30 +140,14 @@ class ChallengeViewController: UIViewController {
     //MARK: get the all list of ChallengesSearch
     func getChallengeSearch(searchString:String)
     {
+        self.clearCategoriesFilter()
+        
         APIService.getChallengeSearch(searchString: searchString,completion: {success,msg,data in
             if success == true {
                 if data.count > 0
                 {
                     self.challengeTableData.removeAll()
-                    for (_,item) in data {
-                        let challenge = Challenge()
-                        challenge.id = item["id"].stringValue
-                        challenge.title = item["title"].stringValue
-                        challenge.description = item["description"].stringValue
-                        challenge.participants_count = item["participants_count"].stringValue
-                        challenge.id = item["id"].stringValue
-                        challenge.is_scoring_in_time = item["is_scoring_in_time"].boolValue
-                        challenge.score_unit = item["score_unit"].stringValue
-                        let img = item["photo"].stringValue
-                        do{
-                            let urL = URL(string:img )
-                            let data = try Data(contentsOf: urL!)
-                            challenge.photo = data
-                        }catch let Error {
-                            print("Error:\(Error.localizedDescription)")
-                        }
-                        self.challengeTableData.append(challenge)
-                    }
+                    self.setChallengesData(data: data)
                     self.tableView.reloadData()
                 }else{
                     self.showAlertMessage(title: "No Result Found", message: nil)
@@ -154,6 +178,90 @@ class ChallengeViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    
+    func addCategory(category: String) {
+        if selectedCategories.firstIndex(of: category) == nil {
+            categoriesTagListView.addTag(category)
+            selectedCategories.append(category)
+            
+            if selectedCategories.count%3 == 0 {
+                fitnessHeadViewHeight.constant = fitnessHeadViewHeight.constant + 15
+            }
+        }
+        
+        if selectedCategories.count == 1 {
+            chooseCategoriesLabel.isHidden = true
+        }
+        
+        applyCategoriesFilter()
+    }
+    func removeCategory(category: String) {
+        if let index = selectedCategories.firstIndex(of: category) {
+            if selectedCategories.count%3 == 0 {
+                fitnessHeadViewHeight.constant = fitnessHeadViewHeight.constant - 15
+            }
+            
+            categoriesTagListView.removeTag(category)
+            selectedCategories.remove(at: index)
+        }
+        
+        if selectedCategories.count == 0 {
+            chooseCategoriesLabel.isHidden = false
+        }
+        
+        applyCategoriesFilter()
+    }
+    
+    func clearCategoriesFilter() {
+        selectedCategories.removeAll()
+        categoriesTagListView.removeAllTags()
+    }
+    
+    func applyCategoriesFilter() {
+        self.challengeTableData.removeAll()
+        
+        if selectedCategories.count == 0 {
+            for (_,challenge) in challengeData {
+                self.challengeTableData.append(challenge)
+            }
+        } else {
+            let ids = selectedCategoriesChallengesIds()
+            for id in ids {
+                if challengeData[id] != nil {
+                    self.challengeTableData.append(challengeData[id]!)
+                }
+            }
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func selectedCategoriesChallengesIds()->[Int] {
+        let count = selectedCategories.count
+        if count > 0 {
+            if count == 1 {
+                if tagChallengesMapping[selectedCategories[0]] != nil {
+                    return tagChallengesMapping[selectedCategories[0]]!
+                }
+            } else {
+                var idArray:[[Int]] = []
+                for category in selectedCategories {
+                    if tagChallengesMapping[category] != nil {
+                        idArray.append(tagChallengesMapping[category]!)
+                    }
+                }
+                
+                if idArray.count > 1 {
+                    var ids:[Int] = idArray[0]
+                    for var index in 1...(idArray.count - 1) {
+                        ids = Array(Set(ids).intersection(Set(idArray[index])))
+                    }
+                    return ids
+                }
+            }
+        }
+        return []
+    }
 
 }
 
@@ -182,6 +290,7 @@ extension ChallengeViewController:UITableViewDelegate,UITableViewDataSource
         vc?.challengeId = challengeTableData[indexPath.row].id!
         vc?.challengeScore_unit = challengeTableData[indexPath.row].score_unit
         vc?.challengeIs_scoring_in_time = challengeTableData[indexPath.row].is_scoring_in_time
+        vc?.theMoreTheBetter = challengeTableData[indexPath.row].the_more_the_better!
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
@@ -230,8 +339,9 @@ extension ChallengeViewController:UICollectionViewDataSource,UICollectionViewDel
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        searchTextBox.text = challengTagData[indexPath.item].label
-        getChallengeSearch(searchString: challengTagData[indexPath.item].label ?? "")
+        //searchTextBox.text = challengTagData[indexPath.item].label
+        //getChallengeSearch(searchString: challengTagData[indexPath.item].label ?? "")
+        addCategory(category: challengTagData[indexPath.item].label ?? "")
     }
     
 }

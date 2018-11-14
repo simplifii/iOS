@@ -17,5 +17,7 @@ class Challenge
     var participants_count:String?
     var is_scoring_in_time:Bool?
     var score_unit:String?
+    var tags:String?
+    var the_more_the_better:Bool?
     
 }

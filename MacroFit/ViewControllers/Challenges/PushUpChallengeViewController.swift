@@ -42,6 +42,7 @@ class PushUpChallengeViewController: UIViewController {
     var challengeIs_scoring_in_time:Bool?
     var challengeScore_unit:String?
     let userId = UserDefaults.standard.string(forKey: "\(UserConstants.userId)")!
+    var theMoreTheBetter:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,7 @@ class PushUpChallengeViewController: UIViewController {
     //MARK: get the Best Score of user
     func getUserBestScore()
     {
-        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: true,completion: {success,msg,data in
+        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: true,theMoreTheBetter: theMoreTheBetter, completion: {success,msg,data in
             if success == true {
                 self.getEachUserScore.removeAll()
                 print("data",data)
@@ -123,7 +124,7 @@ class PushUpChallengeViewController: UIViewController {
     //MARK: get the all list getEachUserBestScore
     func getEachUserBestScore() {
         
-        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: false,completion: {success,msg,data in
+        APIService.getEachUserBestScore(equalto___challenge:challengeId, userBestScore: false, theMoreTheBetter:theMoreTheBetter,completion: {success,msg,data in
             if success == true {
                 self.getEachUserScore.removeAll()
                 

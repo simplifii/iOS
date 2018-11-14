@@ -44,7 +44,7 @@ enum APIRouter: URLRequestConvertible {
     case getChallengeTags()
     case getChallengeSearch(searchString: String?)
     case getChallengeScore(equalto___challenge:String?,creator:String?)
-    case getEachUserBestScore(equalto___challenge:String?,userBestScore:Bool)
+    case getEachUserBestScore(equalto___challenge:String?,userBestScore:Bool,theMoreTheBetter:Bool)
     case SubmitScore(score:String?,challenge:String)
     
     var path: String {
@@ -277,21 +277,32 @@ enum APIRouter: URLRequestConvertible {
             paramDict["equalto___challenge"] = equalto_challenge
             paramDict["creator"] = creator
             break
-        case let .getEachUserBestScore(equalto___challenge:equalto_challenge,userBestScore:userBestScore):
-            if userBestScore
-            {
+        case let .getEachUserBestScore(equalto___challenge:equalto_challenge,userBestScore:userBestScore, theMoreTheBetter:theMoreTheBetter):
+            if userBestScore {
                 paramDict["type"] = "Score"
                 paramDict["equalto___challenge"] = equalto_challenge
                 paramDict["creator"] = UserDefaults.standard.string(forKey: UserConstants.userId)
+                
+                let date = Date()
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: date)
+                let minutes = calendar.component(.minute, from: date)
+                let minutesTillNow = (hour*60) + minutes
+                
+                
                 paramDict["dategreaterthanequalto___created_at_format"] = "Y-m-d"
-                paramDict["dategreaterthanequalto___created_at"] = "now"
+                paramDict["dategreaterthanequalto___created_at"] = "-\(minutesTillNow) minutes"
                 paramDict["datelessthanequalto___created_at"] = "now"
             }else
             {
                 paramDict["type"] = "Score"
                 paramDict["equalto___challenge"] = equalto_challenge
                 paramDict["equalto___users_best"] = "1"
-                paramDict["sort_by"] = "-int2" //it could be +int2 or -int2 depending upon the value of challenge.the_more_the_better
+                if theMoreTheBetter {
+                    paramDict["sort_by"] = "-int2"
+                } else {
+                    paramDict["sort_by"] = "+int2"
+                }
                 paramDict["embed"] = "creator"
             }
             

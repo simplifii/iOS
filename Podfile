@@ -12,6 +12,7 @@ target 'MacroFit' do
     pod 'Stripe'
     pod 'SideMenu' 
     pod 'FBSDKLoginKit'
+    pod 'TagListView', '~> 1.0'
 # Pods for MacroFit
 
   target 'MacroFitTests' do
