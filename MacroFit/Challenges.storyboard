@@ -129,6 +129,9 @@
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your categories:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="hfi-bn-y2b">
                                         <rect key="frame" x="27" y="197" width="118.5" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="SCt-yv-po4"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -179,7 +182,6 @@
                                     <constraint firstAttribute="trailing" secondItem="fgK-2W-Oys" secondAttribute="trailing" id="YF4-am-isV"/>
                                     <constraint firstItem="mPO-Pw-ezp" firstAttribute="top" secondItem="Bqq-Lt-dSZ" secondAttribute="bottom" constant="15" id="Ynk-Oh-iDb"/>
                                     <constraint firstItem="Bqq-Lt-dSZ" firstAttribute="top" secondItem="MLn-so-lIC" secondAttribute="bottom" constant="20" id="aPL-h0-du2"/>
-                                    <constraint firstAttribute="bottom" secondItem="hfi-bn-y2b" secondAttribute="bottom" constant="8" id="bmS-Nh-NFO"/>
                                     <constraint firstItem="Bqq-Lt-dSZ" firstAttribute="leading" secondItem="MEN-nK-7gH" secondAttribute="leading" constant="27" id="eZj-S6-RxP"/>
                                     <constraint firstItem="fgK-2W-Oys" firstAttribute="leading" secondItem="hfi-bn-y2b" secondAttribute="trailing" constant="5" id="iU5-eG-5hq"/>
                                     <constraint firstAttribute="bottom" secondItem="fgK-2W-Oys" secondAttribute="bottom" constant="10" id="lAE-Z9-Aga"/>

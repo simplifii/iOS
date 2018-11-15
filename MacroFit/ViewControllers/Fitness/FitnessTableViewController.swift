@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FitnessTableViewController: UITableViewController {
+    var challengesJsonData:JSON = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getChallenges()
     }
 
     // MARK: - Table view data source
@@ -44,6 +47,7 @@ class FitnessTableViewController: UITableViewController {
         
         if (action == "One") {
             let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "ChallengeViewController") as? ChallengeViewController
+            vc?.challengesJsonData = challengesJsonData
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {
@@ -55,4 +59,14 @@ class FitnessTableViewController: UITableViewController {
         }
     }
 
+    func getChallenges() {
+        APIService.getListOfChallenges(completion: {success,msg,data in
+            if success == true {
+                if data.count > 0 {
+                    self.challengesJsonData = data
+                }
+            }
+        })
+    }
+    
 }

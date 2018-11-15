@@ -23,6 +23,7 @@ class ChallengeViewController: UIViewController, TagListViewDelegate {
     var selectedCategories:[String] = []
     var tagChallengesMapping:[String:[Int]] = [:]
     
+    var challengesJsonData:JSON = []
     var challengeTableData = [Challenge]()
     var challengeData:[Int:Challenge] = [:]
     var challengTagData = [ChallengeTags]()
@@ -36,7 +37,14 @@ class ChallengeViewController: UIViewController, TagListViewDelegate {
         searchTextBox.layer.shadowRadius = 15.0
         searchTextBox.layer.shadowOpacity = 0.15
         searchTextBox.layer.masksToBounds = false
-        getChallenges()
+        
+        if challengesJsonData.count == 0 {
+            getChallenges()
+        } else {
+            self.setChallengesData(data: challengesJsonData)
+            self.tableView.reloadData()
+        }
+        
         // Do any additional setup after loading the view.
         categoriesTagListView.delegate = self
    
