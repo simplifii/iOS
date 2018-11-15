@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		92F0A7B2ACA699441C9A41D0 /* Pods_MacroFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */; };
 		9F03F06BDFFBE65C874D00E6 /* Pods_MacroFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */; };
 		BC13F774BA31F265EF0928A6 /* Pods_MacroFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90694144E01E7704DD92288F /* Pods_MacroFit.framework */; };
@@ -153,6 +154,7 @@
 		332C02C7F7D4E37BCD43A18B /* Pods-MacroFitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitUITests/Pods-MacroFitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51C02C1F9BC351E5D8776B34 /* Pods-MacroFitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitUITests/Pods-MacroFitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90694144E01E7704DD92288F /* Pods_MacroFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF02753B59CD0F9BF07668C6 /* Pods-MacroFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -316,6 +318,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58BC4692219DF5F100592770 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				58BC4693219DF61600592770 /* Courses.storyboard */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
 		927BD38CCF49CF7337ECD0EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +507,7 @@
 		E0A6DD7E214F73A900B6C301 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				58BC4692219DF5F100592770 /* Courses */,
 				E0034928217F3E7100AED979 /* Home */,
 				E0034921217EDDB200AED979 /* Fitness */,
 				E05F91942177027E001AF01D /* Order */,
@@ -755,6 +766,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58BC4694219DF61600592770 /* Courses.storyboard in Resources */,
 				E0BD2B6E216B247A00E2D297 /* Montserrat-Black.ttf in Resources */,
 				E0BD2B83216B6EF100E2D297 /* CartBarView.xib in Resources */,
 				E0BD2B6F216B247A00E2D297 /* Montserrat-BlackItalic.ttf in Resources */,

@@ -33,7 +33,8 @@ class FitnessTableViewController: UITableViewController {
         case 0:
             action = "One"
         case 1:
-            action = "Two"
+            navigationController?.tabBarController?.selectedIndex = 3
+            return
         case 2:
             action = "Three"
         case 3:

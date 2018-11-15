@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zg9-EJ-2HJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -2436,7 +2436,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2n-Ur-Ujf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <connections>
-                                    <segue destination="oEf-er-GLb" kind="embed" id="tFh-7v-O0H"/>
+                                    <segue destination="1jh-nS-8xT" kind="embed" id="P6p-iS-eao"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -4230,23 +4230,69 @@ Credits can be exchanged for free meals afterwards.</string>
                                     <constraint firstAttribute="width" constant="30" id="Lkk-US-Jme"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="5" minY="10" maxX="5" maxY="0.0"/>
-                                <state key="normal" image="nav_white"/>
+                                <state key="normal" image="nav"/>
                                 <connections>
                                     <segue destination="cOa-fS-ZvU" kind="presentation" id="bwG-p4-Hr7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iya-7w-gAz">
+                                <rect key="frame" x="16" y="79" width="325" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="Gl0-gD-jEZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-Yi-0EB">
+                                <rect key="frame" x="0.0" y="126" width="375" height="492"/>
+                                <connections>
+                                    <segue destination="gDg-UZ-yR0" kind="embed" id="LlZ-Ky-6aZ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WfV-Yi-0EB" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leading" id="Edc-0H-xYZ"/>
+                            <constraint firstItem="WfV-Yi-0EB" firstAttribute="top" secondItem="iya-7w-gAz" secondAttribute="bottom" constant="8" id="JWj-Ar-2fR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iya-7w-gAz" secondAttribute="trailing" constant="18" id="Woz-bF-GIr"/>
+                            <constraint firstItem="iya-7w-gAz" firstAttribute="top" secondItem="dQE-D5-TCm" secondAttribute="bottom" constant="8" symbolic="YES" id="Zi4-A9-HSt"/>
                             <constraint firstItem="wGC-pX-abZ" firstAttribute="top" secondItem="aen-zF-FPG" secondAttribute="topMargin" constant="2" id="dAR-w2-Aw9"/>
+                            <constraint firstAttribute="trailing" secondItem="WfV-Yi-0EB" secondAttribute="trailing" id="f5v-Vb-2JT"/>
+                            <constraint firstItem="iya-7w-gAz" firstAttribute="leading" secondItem="wGC-pX-abZ" secondAttribute="leading" id="gX2-Rc-be4"/>
                             <constraint firstItem="wGC-pX-abZ" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leadingMargin" id="iyK-HZ-O4p"/>
                             <constraint firstItem="dQE-D5-TCm" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leading" id="lXC-36-1fg"/>
                             <constraint firstItem="dQE-D5-TCm" firstAttribute="top" secondItem="aen-zF-FPG" secondAttribute="topMargin" id="nFz-LY-URp"/>
                             <constraint firstAttribute="trailing" secondItem="dQE-D5-TCm" secondAttribute="trailing" id="qbU-KL-UNT"/>
+                            <constraint firstAttribute="bottom" secondItem="WfV-Yi-0EB" secondAttribute="bottom" id="yOf-JT-rkq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="erq-Uy-WA6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVO-gO-Mey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3070" y="-3974"/>
+        </scene>
+        <!--Courses-->
+        <scene sceneID="3LU-X9-VoY">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CoursesMain" storyboardName="Courses" id="gDg-UZ-yR0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVh-t6-rT8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3795" y="-3974"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G4W-5n-8w9">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="1jh-nS-8xT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lnP-Sh-tWy">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oEf-er-GLb" kind="relationship" relationship="rootViewController" id="CWV-aB-22k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucN-0J-Y65" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2230" y="-3432"/>
         </scene>
@@ -4284,7 +4330,7 @@ Credits can be exchanged for free meals afterwards.</string>
         <image name="user" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uFU-h0-6Dh"/>
+        <segue reference="KLl-uG-SKV"/>
         <segue reference="bwG-p4-Hr7"/>
     </inferredMetricsTieBreakers>
 </document>
