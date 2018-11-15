@@ -37,7 +37,6 @@ class ChallengeViewController: UIViewController, TagListViewDelegate {
         searchTextBox.layer.shadowOpacity = 0.15
         searchTextBox.layer.masksToBounds = false
         getChallenges()
-        getChallengesTags()
         // Do any additional setup after loading the view.
         categoriesTagListView.delegate = self
    
@@ -110,31 +109,19 @@ class ChallengeViewController: UIViewController, TagListViewDelegate {
             self.challengeTableData.append(challenge)
         }
         
+        
+        setChallengesTags()
     }
     
     //MARK: get the all list of ChallengesTags
-    func getChallengesTags()
-    {
-        APIService.getChallengeTags(completion: {success,msg,data in
-            if success == true {
-                if data.count > 0
-                {
-                    self.challengTagData.removeAll()
-                for (_,item) in data {
-                    let challengeTags = ChallengeTags()
-                    challengeTags.label = item["label"].stringValue
-                    self.challengTagData.append(challengeTags)
-                }
-                self.collectionView.reloadData()
-                }else
-                {
-                    self.showAlertMessage(title: "No Tag Found", message: nil)
-                }
-            } else {
-                self.showAlertMessage(title: msg, message: nil)
-                
-            }
-        })
+    func setChallengesTags() {
+        self.challengTagData.removeAll()
+        for (tag,_) in tagChallengesMapping {
+            let challengeTags = ChallengeTags()
+            challengeTags.label = tag
+            self.challengTagData.append(challengeTags)
+        }
+        self.collectionView.reloadData()
     }
     
     //MARK: get the all list of ChallengesSearch
