@@ -2,7 +2,7 @@
 //  YogaCoursesTableViewCell.swift
 //  MacroFit
 //
-//  Created by Sachin Arora on 13/11/18.
+//  Created by Sachin Arora on 15/11/18.
 //  Copyright © 2018 Chandresh Singh. All rights reserved.
 //
 
@@ -16,12 +16,12 @@ class YogaCoursesTableViewCell: UITableViewCell {
     @IBOutlet weak var YogatagName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-         setupCellView()
+        setupCellView()
         // Initialization code
     }
     func setupCellView() {
-//        itemNameLabel.numberOfLines = 2
-//        itemNameLabel.sizeToFit()
+        //        itemNameLabel.numberOfLines = 2
+        //        itemNameLabel.sizeToFit()
         
         containerView.layer.cornerRadius = 6.0
         
@@ -33,10 +33,10 @@ class YogaCoursesTableViewCell: UITableViewCell {
         shape.path = maskPath.cgPath
         YogaExcersiseimage.layer.mask = shape
         
-//        // Add Item Button
-//        let addItemView = Bundle.main.loadNibNamed("AddItemView", owner: self, options: nil)?.first as? AddItemView
-//        addItemView!.frame.size = addItemContainerView.bounds.size
-//        addItemContainerView.addSubview(addItemView!)
+        //        // Add Item Button
+        //        let addItemView = Bundle.main.loadNibNamed("AddItemView", owner: self, options: nil)?.first as? AddItemView
+        //        addItemView!.frame.size = addItemContainerView.bounds.size
+        //        addItemContainerView.addSubview(addItemView!)
         
         // Shadow
         containerView.layer.shadowOpacity = 0.2
@@ -47,13 +47,13 @@ class YogaCoursesTableViewCell: UITableViewCell {
             UIBezierPath(roundedRect: containerView.bounds,
                          cornerRadius: containerView.layer.cornerRadius).cgPath
         
-//        addItemView?.addItemViewDelegate = self
+        //        addItemView?.addItemViewDelegate = self
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

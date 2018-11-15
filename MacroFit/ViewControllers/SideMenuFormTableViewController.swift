@@ -48,16 +48,8 @@ class SideMenuFormTableViewController: UITableViewController {
         }
         if indexPath.row == 6 {
             logout()
-           
         }
     }
-    
-//    func yogaCourse() {
-//        print("press")
-//        let basicInfoVC = UIStoryboard(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "CourseViewController") as? CourseViewController
-//        self.navigationController?.pushViewController(basicInfoVC!, animated: true)
-//        
-//    }
     
     func showSettingsScreen() {
         print("press")

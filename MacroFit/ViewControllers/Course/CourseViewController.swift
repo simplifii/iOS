@@ -2,7 +2,7 @@
 //  CourseViewController.swift
 //  MacroFit
 //
-//  Created by Sachin Arora on 13/11/18.
+//  Created by Sachin Arora on 15/11/18.
 //  Copyright © 2018 Chandresh Singh. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ class CourseViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     var yogaPrice = ["$12.00","$29.99","$9.90","$29.99","$9.90"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -37,5 +37,13 @@ class CourseViewController: BaseViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 123;
     }
-  
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("clickdone")
+        let storyBoard:UIStoryboard = UIStoryboard(name: "Course", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "YogaCourseOneViewController") as! YogaCourseOneViewController
+        self.present(nextVC, animated: true, completion: nil)
+    }
+    
 }
