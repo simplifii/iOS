@@ -4236,7 +4236,7 @@ Credits can be exchanged for free meals afterwards.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iya-7w-gAz">
-                                <rect key="frame" x="16" y="79" width="325" height="39"/>
+                                <rect key="frame" x="25" y="74" width="316" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Gl0-gD-jEZ"/>
                                 </constraints>
@@ -4245,7 +4245,7 @@ Credits can be exchanged for free meals afterwards.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-Yi-0EB">
-                                <rect key="frame" x="0.0" y="126" width="375" height="492"/>
+                                <rect key="frame" x="0.0" y="121" width="375" height="497"/>
                                 <connections>
                                     <segue destination="gDg-UZ-yR0" kind="embed" id="LlZ-Ky-6aZ"/>
                                 </connections>
@@ -4254,13 +4254,13 @@ Credits can be exchanged for free meals afterwards.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WfV-Yi-0EB" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leading" id="Edc-0H-xYZ"/>
+                            <constraint firstItem="iya-7w-gAz" firstAttribute="top" secondItem="wGC-pX-abZ" secondAttribute="bottom" constant="22" id="HIU-36-VrM"/>
                             <constraint firstItem="WfV-Yi-0EB" firstAttribute="top" secondItem="iya-7w-gAz" secondAttribute="bottom" constant="8" id="JWj-Ar-2fR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iya-7w-gAz" secondAttribute="trailing" constant="18" id="Woz-bF-GIr"/>
-                            <constraint firstItem="iya-7w-gAz" firstAttribute="top" secondItem="dQE-D5-TCm" secondAttribute="bottom" constant="8" symbolic="YES" id="Zi4-A9-HSt"/>
                             <constraint firstItem="wGC-pX-abZ" firstAttribute="top" secondItem="aen-zF-FPG" secondAttribute="topMargin" constant="2" id="dAR-w2-Aw9"/>
                             <constraint firstAttribute="trailing" secondItem="WfV-Yi-0EB" secondAttribute="trailing" id="f5v-Vb-2JT"/>
-                            <constraint firstItem="iya-7w-gAz" firstAttribute="leading" secondItem="wGC-pX-abZ" secondAttribute="leading" id="gX2-Rc-be4"/>
-                            <constraint firstItem="wGC-pX-abZ" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leadingMargin" id="iyK-HZ-O4p"/>
+                            <constraint firstItem="iya-7w-gAz" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leading" constant="25" id="gX2-Rc-be4"/>
+                            <constraint firstItem="wGC-pX-abZ" firstAttribute="leading" secondItem="dQE-D5-TCm" secondAttribute="leading" constant="16" id="iyK-HZ-O4p"/>
                             <constraint firstItem="dQE-D5-TCm" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leading" id="lXC-36-1fg"/>
                             <constraint firstItem="dQE-D5-TCm" firstAttribute="top" secondItem="aen-zF-FPG" secondAttribute="topMargin" id="nFz-LY-URp"/>
                             <constraint firstAttribute="trailing" secondItem="dQE-D5-TCm" secondAttribute="trailing" id="qbU-KL-UNT"/>
