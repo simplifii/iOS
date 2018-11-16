@@ -304,6 +304,12 @@ struct APIService {
         })
     }
     
+    static func updateDeviceToken(token:String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.updateDeviceToken(token: token), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     
     static func sendRequest(request: URLRequestConvertible, completion: @escaping (Bool, String) -> Void) {
         if !Connectivity.isConnectedToInternet {

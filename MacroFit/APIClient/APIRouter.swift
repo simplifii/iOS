@@ -46,6 +46,7 @@ enum APIRouter: URLRequestConvertible {
     case getChallengeScore(equalto___challenge:String?,creator:String?)
     case getEachUserBestScore(equalto___challenge:String?,userBestScore:Bool,theMoreTheBetter:Bool)
     case SubmitScore(score:String?,challenge:String)
+    case updateDeviceToken(token: String)
     
     var path: String {
         
@@ -60,7 +61,7 @@ enum APIRouter: URLRequestConvertible {
             
             case .facebookLogin:
                 return NetworkingConstants.facebookLogin
-        case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress:
+        case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress, .updateDeviceToken:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -114,6 +115,7 @@ enum APIRouter: URLRequestConvertible {
         case let .loginUser(username: username, password: password):
                 bodyDict["username"] = username
                 bodyDict["password"] = password
+                bodyDict["device_token"] = UserDefaults.standard.string(forKey: UserConstants.deviceToken)
                 break
         case let .facebookLogin(fbUserId: fbUserId, fbUserToken: fbUserToken):
                 bodyDict["fb_user_id"] = fbUserId
@@ -203,6 +205,11 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["action"] = "Create"
             bodyDict["score"] = score
             bodyDict["challenge"] = challenge
+            break
+        case let .updateDeviceToken(token: token):
+            bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            bodyDict["action"] = "UpdateDeviceToken"
+            bodyDict["device_token"] = token
             break
         default:
                 print("no action")
@@ -322,7 +329,7 @@ enum APIRouter: URLRequestConvertible {
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken:
             return .patch
         }
     }
@@ -335,7 +342,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch,.getChallengeScore ,.getEachUserBestScore:

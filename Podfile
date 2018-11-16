@@ -13,6 +13,8 @@ target 'MacroFit' do
     pod 'SideMenu' 
     pod 'FBSDKLoginKit'
     pod 'TagListView', '~> 1.0'
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
 # Pods for MacroFit
 
   target 'MacroFitTests' do

@@ -14,4 +14,5 @@ struct UserConstants {
     static let userId = "userId"
     static let authentication = "Authorization"
     static let content_type = "Content-Type"
+    static let deviceToken = "deviceToken"
 }
