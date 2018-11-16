@@ -9,9 +9,9 @@ import UIKit
 
 class weaekSheduleViewController: UIViewController {
     
-    
+    var value = 80
     @IBOutlet weak var tableView: UITableView!
-    var data = [Detamodeltocolleps(headerName: "Day 1", isExpandable: false),Detamodeltocolleps(headerName: "Day 2", isExpandable: false),Detamodeltocolleps(headerName: "Day 3", isExpandable: false),Detamodeltocolleps(headerName: "Day 4", isExpandable: false)]
+    var data = [Detamodeltocolleps(headerName: "Day 1", isExpandable: false),Detamodeltocolleps(headerName: "Day 2", isExpandable: false),Detamodeltocolleps(headerName: "Day 3", isExpandable: false),Detamodeltocolleps(headerName: "Day 4", isExpandable: false),Detamodeltocolleps(headerName: "Day 5", isExpandable: false)]
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
@@ -31,8 +31,7 @@ extension weaekSheduleViewController: UITableViewDataSource,UITableViewDelegate 
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return 70
+        return CGFloat(value)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
@@ -44,8 +43,14 @@ extension weaekSheduleViewController: UITableViewDataSource,UITableViewDelegate 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if data[indexPath.section].isExpandable
         {
+//           value = 65
             return 210
         }
+//        else if data[indexPath.section].isExpandable == true{
+////            value = 80
+//             tableView.reloadData()
+//            return 0
+//        }
         else
         {
             return 0
@@ -59,25 +64,14 @@ extension weaekSheduleViewController: UITableViewDataSource,UITableViewDelegate 
         headerView.btn.setTitle(data[section].headerName, for: .normal)
     
         return headerView
-//        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-//
-//        let label = UILabel()
-//        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-//        label.text = "Notification Times"
-//        label.font = UIFont().futuraPTMediumFont(16) // my custom font
-//        label.textColor = UIColor.black // my custom colour
-//
-//        headerView.addSubview(label)
-        
-//        return headerView
     }
+    
 }
+
 
 extension weaekSheduleViewController: HeaderDelegate{
     func calHeader(idx: Int) {
         data[idx].isExpandable = !data[idx].isExpandable
         tableView.reloadSections([idx], with: .automatic)
     }
-    
-    
 }
