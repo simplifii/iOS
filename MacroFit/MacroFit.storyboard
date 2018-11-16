@@ -99,7 +99,7 @@
             <objects>
                 <tableViewController id="5Q1-Qz-BSz" customClass="SideMenuFormTableViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="static" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="7" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MMq-Oz-t06">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="511"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.98814910649999999" green="0.98829048870000002" blue="0.9881181121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -833,7 +833,7 @@
             <objects>
                 <viewController storyboardIdentifier="SideMenuViewController" id="9dd-ZO-y6O" customClass="SideMenuViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ei0-QA-jVB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="David Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Neu-1b-xyC">
@@ -855,7 +855,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNM-QL-86w">
-                                <rect key="frame" x="0.0" y="107" width="375" height="511"/>
+                                <rect key="frame" x="0.0" y="107" width="375" height="560"/>
                                 <connections>
                                     <segue destination="5Q1-Qz-BSz" kind="embed" id="kq9-FL-8e2"/>
                                 </connections>
@@ -2425,36 +2425,6 @@
             </objects>
             <point key="canvasLocation" x="1184.8" y="663.41829085457277"/>
         </scene>
-        <!--Courses-->
-        <scene sceneID="chY-os-cQc">
-            <objects>
-                <viewController title="Courses" id="kEQ-qi-2f4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TqN-Cg-dOS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2n-Ur-Ujf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <connections>
-                                    <segue destination="1jh-nS-8xT" kind="embed" id="P6p-iS-eao"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="l2n-Ur-Ujf" firstAttribute="leading" secondItem="72h-9m-9gU" secondAttribute="leading" id="9YX-Yz-OkT"/>
-                            <constraint firstItem="l2n-Ur-Ujf" firstAttribute="trailing" secondItem="72h-9m-9gU" secondAttribute="trailing" id="HUQ-TB-n47"/>
-                            <constraint firstItem="l2n-Ur-Ujf" firstAttribute="bottom" secondItem="72h-9m-9gU" secondAttribute="bottom" id="KXd-Ew-q1h"/>
-                            <constraint firstItem="l2n-Ur-Ujf" firstAttribute="top" secondItem="TqN-Cg-dOS" secondAttribute="top" id="fhw-PB-J0P"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="72h-9m-9gU"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Courses" image="statistic_gray" id="Qky-BC-bJl"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cY9-A1-15u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1184.8" y="-3431.3343328335836"/>
-        </scene>
         <!--Home-->
         <scene sceneID="RAk-om-4wu">
             <objects>
@@ -2501,7 +2471,6 @@
                         <segue destination="hbm-uW-Syc" kind="relationship" relationship="viewControllers" id="Lne-Kg-buf"/>
                         <segue destination="aMb-ad-EC2" kind="relationship" relationship="viewControllers" id="tU5-8q-OwE"/>
                         <segue destination="ltx-h5-PBE" kind="relationship" relationship="viewControllers" id="eWy-PU-kk5"/>
-                        <segue destination="kEQ-qi-2f4" kind="relationship" relationship="viewControllers" id="Dyw-f7-Mbe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v89-Oo-dpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4212,9 +4181,10 @@ Credits can be exchanged for free meals afterwards.</string>
         <!--View Controller-->
         <scene sceneID="tMg-gs-yrG">
             <objects>
-                <viewController id="oEf-er-GLb" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oVO-gO-Mey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="Courses" id="oEf-er-GLb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aen-zF-FPG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQE-D5-TCm">
@@ -4235,8 +4205,8 @@ Credits can be exchanged for free meals afterwards.</string>
                                     <segue destination="cOa-fS-ZvU" kind="presentation" id="bwG-p4-Hr7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iya-7w-gAz">
-                                <rect key="frame" x="25" y="74" width="316" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fitness courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iya-7w-gAz">
+                                <rect key="frame" x="25" y="76" width="316" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Gl0-gD-jEZ"/>
                                 </constraints>
@@ -4245,7 +4215,7 @@ Credits can be exchanged for free meals afterwards.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfV-Yi-0EB">
-                                <rect key="frame" x="0.0" y="121" width="375" height="497"/>
+                                <rect key="frame" x="0.0" y="123" width="375" height="544"/>
                                 <connections>
                                     <segue destination="gDg-UZ-yR0" kind="embed" id="LlZ-Ky-6aZ"/>
                                 </connections>
@@ -4254,7 +4224,7 @@ Credits can be exchanged for free meals afterwards.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WfV-Yi-0EB" firstAttribute="leading" secondItem="aen-zF-FPG" secondAttribute="leading" id="Edc-0H-xYZ"/>
-                            <constraint firstItem="iya-7w-gAz" firstAttribute="top" secondItem="wGC-pX-abZ" secondAttribute="bottom" constant="22" id="HIU-36-VrM"/>
+                            <constraint firstItem="iya-7w-gAz" firstAttribute="top" secondItem="wGC-pX-abZ" secondAttribute="bottom" constant="24" id="HIU-36-VrM"/>
                             <constraint firstItem="WfV-Yi-0EB" firstAttribute="top" secondItem="iya-7w-gAz" secondAttribute="bottom" constant="8" id="JWj-Ar-2fR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iya-7w-gAz" secondAttribute="trailing" constant="18" id="Woz-bF-GIr"/>
                             <constraint firstItem="wGC-pX-abZ" firstAttribute="top" secondItem="aen-zF-FPG" secondAttribute="topMargin" constant="2" id="dAR-w2-Aw9"/>
@@ -4269,32 +4239,16 @@ Credits can be exchanged for free meals afterwards.</string>
                     </view>
                     <navigationItem key="navigationItem" id="erq-Uy-WA6"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oVO-gO-Mey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3070" y="-3974"/>
         </scene>
         <!--Courses-->
         <scene sceneID="3LU-X9-VoY">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CoursesMain" storyboardName="Courses" id="gDg-UZ-yR0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVh-t6-rT8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="CoursesMain" storyboardName="Courses" id="gDg-UZ-yR0" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="3795" y="-3974"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="G4W-5n-8w9">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="1jh-nS-8xT" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lnP-Sh-tWy">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="oEf-er-GLb" kind="relationship" relationship="rootViewController" id="CWV-aB-22k"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ucN-0J-Y65" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2230" y="-3432"/>
         </scene>
     </scenes>
     <resources>
@@ -4324,7 +4278,6 @@ Credits can be exchanged for free meals afterwards.</string>
         <image name="partner" width="409.60000610351562" height="409.60000610351562"/>
         <image name="refer" width="409.60000610351562" height="409.60000610351562"/>
         <image name="settings_orange" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="statistic_gray" width="25.600000381469727" height="25.600000381469727"/>
         <image name="support" width="409.60000610351562" height="409.60000610351562"/>
         <image name="underline" width="326" height="1"/>
         <image name="user" width="409.60000610351562" height="409.60000610351562"/>

@@ -33,7 +33,9 @@ class FitnessTableViewController: UITableViewController {
         case 0:
             action = "One"
         case 1:
-            navigationController?.tabBarController?.selectedIndex = 3
+            let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "Courses")
+            navigationController?.isNavigationBarHidden = true
+            navigationController?.pushViewController(vc, animated: true)
             return
         case 2:
             action = "Three"
