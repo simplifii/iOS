@@ -30,6 +30,11 @@ class HeaderView: UIView {
     lazy var btn: UIButton = {
         let btn = UIButton(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height))
         btn.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        btn.layer.shadowRadius = 5
+//        btn.layer.shadowColor = UIColor.red.cgColor
+//        btn.layer.shadowOpacity = 14
+//        btn.layer.shadowOffset = CGSize(width:1, height:10)
+//        btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 4
         btn.clipsToBounds = true
         btn.contentHorizontalAlignment = .left

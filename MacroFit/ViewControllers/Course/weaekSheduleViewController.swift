@@ -11,7 +11,7 @@ class weaekSheduleViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
-    var data = [Detamodeltocolleps(headerName: "Day 1", isExpandable: false),Detamodeltocolleps(headerName: "Day 2", isExpandable: false),Detamodeltocolleps(headerName: "Day 3", isExpandable: false)]
+    var data = [Detamodeltocolleps(headerName: "Day 1", isExpandable: false),Detamodeltocolleps(headerName: "Day 2", isExpandable: false),Detamodeltocolleps(headerName: "Day 3", isExpandable: false),Detamodeltocolleps(headerName: "Day 4", isExpandable: false)]
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
