@@ -22,6 +22,7 @@ enum APIRouter: URLRequestConvertible {
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     case orderPlacementDetails()
     case getMealsMenu()
+    case getCourses()
     case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, deliveryDateFrom:String, deliveryDateTo:String, meals:[[String:Any]])
     case getZipcodeServiceabilityInfo(zipcode: String)
     case orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int)
@@ -82,6 +83,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .createFeedback, .editFeedback, .getFeedback:
                 return NetworkingConstants.cards
+            case .getCourses:
+                return NetworkingConstants.courses
         }
     }
     
@@ -188,8 +191,11 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["address_line_2"] = addressLineTwo
             bodyDict["zipcode"] = zipcode
             break
-            default:
-                print("no action")
+        case .getCourses:
+            bodyDict["type"] = "Course"
+            bodyDict["sort_by"] = "-updated_at"
+        default:
+            print("no action")
         }
         
         return bodyDict
