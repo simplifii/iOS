@@ -191,9 +191,6 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["address_line_2"] = addressLineTwo
             bodyDict["zipcode"] = zipcode
             break
-        case .getCourses:
-            bodyDict["type"] = "Course"
-            bodyDict["sort_by"] = "-updated_at"
         default:
             print("no action")
         }
@@ -250,6 +247,9 @@ enum APIRouter: URLRequestConvertible {
             paramDict["type"] = "Feedback"
             paramDict["equalto___type"] = "AppRating"
             break
+        case .getCourses:
+            paramDict["type"] = "Course"
+            paramDict["sort_by"] = "-updated_at"
         default:
             break
         }
@@ -260,7 +260,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getCourses:
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin:
             return .post
@@ -280,7 +280,7 @@ enum APIRouter: URLRequestConvertible {
             case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getCourses:
                 if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
                     headers[UserConstants.authentication] = "Bearer \(token)"
                 }
