@@ -304,6 +304,12 @@ struct APIService {
         })
     }
     
+    static func changePassword(newPassword: String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.changePassword(newPassword: newPassword), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     static func updateDeviceToken(token:String, completion: @escaping (Bool, String) -> Void){
         sendRequest(request: APIRouter.updateDeviceToken(token: token), completion: {success,msg in
             completion(success, msg)
