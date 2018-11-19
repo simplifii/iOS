@@ -11,6 +11,8 @@ import SwiftyJSON
 
 class ChallengeViewController: UIViewController {
     
+    //test comit after new clone
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextBox: UITextField!
