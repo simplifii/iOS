@@ -4178,11 +4178,10 @@ Credits can be exchanged for free meals afterwards.</string>
             </objects>
             <point key="canvasLocation" x="4621.6000000000004" y="-2262.8185907046477"/>
         </scene>
-        <!--View Controller-->
+        <!--Courses Container-->
         <scene sceneID="tMg-gs-yrG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oVO-gO-Mey" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="Courses" id="oEf-er-GLb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Courses" id="oEf-er-GLb" customClass="CoursesContainer" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aen-zF-FPG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4200,8 +4199,9 @@ Credits can be exchanged for free meals afterwards.</string>
                                     <constraint firstAttribute="width" constant="30" id="Lkk-US-Jme"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="5" minY="10" maxX="5" maxY="0.0"/>
-                                <state key="normal" image="nav"/>
+                                <state key="normal" image="back"/>
                                 <connections>
+                                    <action selector="backPressed:" destination="oEf-er-GLb" eventType="touchUpInside" id="3T1-4J-uJG"/>
                                     <segue destination="cOa-fS-ZvU" kind="presentation" id="bwG-p4-Hr7"/>
                                 </connections>
                             </button>
@@ -4236,17 +4236,19 @@ Credits can be exchanged for free meals afterwards.</string>
                             <constraint firstAttribute="trailing" secondItem="dQE-D5-TCm" secondAttribute="trailing" id="qbU-KL-UNT"/>
                             <constraint firstAttribute="bottom" secondItem="WfV-Yi-0EB" secondAttribute="bottom" id="yOf-JT-rkq"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="FDw-cy-VHc"/>
                     </view>
                     <navigationItem key="navigationItem" id="erq-Uy-WA6"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oVO-gO-Mey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3070" y="-3974"/>
         </scene>
         <!--Courses-->
         <scene sceneID="3LU-X9-VoY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lVh-t6-rT8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="CoursesMain" storyboardName="Courses" id="gDg-UZ-yR0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVh-t6-rT8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3795" y="-3974"/>
         </scene>
