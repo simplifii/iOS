@@ -67,6 +67,7 @@ class CoursesMainViewController: BaseViewController {
                                  "strengthening" : "strength"]
     
     override func viewDidLoad() {
+        title = "Fitness courses"
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "CourseCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
@@ -104,18 +105,6 @@ class CoursesMainViewController: BaseViewController {
             }
         })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension CoursesMainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -140,6 +129,8 @@ extension CoursesMainViewController: UITableViewDelegate, UITableViewDataSource 
             }
         }
         
+        cell.selectionStyle = .none
+        
         return cell
     }
     
@@ -148,11 +139,14 @@ extension CoursesMainViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Init a model with all of the courses in that sedction.
         let categoryTitle = courseCategories.keys.sorted()[indexPath.row]
         let coursesInCategory = courseCategories[categoryTitle]
         
-        
+        if let courseListVC = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "CourseList") as? CourseListViewController {
+            courseListVC.coursesJSON = coursesInCategory
+            courseListVC.courseType = categoryTitle
+            navigationController?.pushViewController(courseListVC, animated: true)
+        }
     }
 }
 
