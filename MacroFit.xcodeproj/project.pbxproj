@@ -12,6 +12,9 @@
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
 		58BC469A21A331B100592770 /* CourseCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BC469821A331B100592770 /* CourseCategoryTableViewCell.xib */; };
 		58BC469C21A5218600592770 /* CourseListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469B21A5218600592770 /* CourseListTableViewController.swift */; };
+		58BC469F21A52A1300592770 /* IndividualCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469D21A52A1300592770 /* IndividualCourseTableViewCell.swift */; };
+		58BC46A021A52A1300592770 /* IndividualCourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */; };
+		58BC46A221A53AD900592770 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC46A121A53AD900592770 /* CourseViewController.swift */; };
 		92F0A7B2ACA699441C9A41D0 /* Pods_MacroFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */; };
 		9F03F06BDFFBE65C874D00E6 /* Pods_MacroFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */; };
 		BC13F774BA31F265EF0928A6 /* Pods_MacroFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90694144E01E7704DD92288F /* Pods_MacroFit.framework */; };
@@ -163,6 +166,9 @@
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		58BC469821A331B100592770 /* CourseCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		58BC469B21A5218600592770 /* CourseListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListTableViewController.swift; sourceTree = "<group>"; };
+		58BC469D21A52A1300592770 /* IndividualCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualCourseTableViewCell.swift; sourceTree = "<group>"; };
+		58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndividualCourseTableViewCell.xib; sourceTree = "<group>"; };
+		58BC46A121A53AD900592770 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90694144E01E7704DD92288F /* Pods_MacroFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF02753B59CD0F9BF07668C6 /* Pods-MacroFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 				58BC4693219DF61600592770 /* Courses.storyboard */,
 				58BC469521A3216C00592770 /* CoursesMainViewController.swift */,
 				58BC469B21A5218600592770 /* CourseListTableViewController.swift */,
+				58BC46A121A53AD900592770 /* CourseViewController.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -659,6 +666,8 @@
 				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
 				58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */,
 				58BC469821A331B100592770 /* CourseCategoryTableViewCell.xib */,
+				58BC469D21A52A1300592770 /* IndividualCourseTableViewCell.swift */,
+				58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */,
 				E0DD472A216F578000783F99 /* RecipeCardTableViewCell.swift */,
 				EE7E278B218C299C00CB947D /* SettingProfileTableViewCell.swift */,
 			);
@@ -802,6 +811,7 @@
 				E0BD2B7D216B247A00E2D297 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				E0BD2B7E216B247A00E2D297 /* Montserrat-Thin.ttf in Resources */,
 				E0BD2B7F216B247A00E2D297 /* Montserrat-ThinItalic.ttf in Resources */,
+				58BC46A021A52A1300592770 /* IndividualCourseTableViewCell.xib in Resources */,
 				E0A6DD94214FD3B500B6C301 /* BackNavbarView.xib in Resources */,
 				E0A6DD5A214F719000B6C301 /* LaunchScreen.storyboard in Resources */,
 				E0A5605C216C9B85003534D4 /* DateTimeView.xib in Resources */,
@@ -940,6 +950,7 @@
 				E0982ACD21789F1900F5FCE5 /* ReferFriendViewController.swift in Sources */,
 				E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */,
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
+				58BC46A221A53AD900592770 /* CourseViewController.swift in Sources */,
 				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,
 				E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */,
 				E05F919821774595001AF01D /* WhiteRoundedCornerBoxView.swift in Sources */,
@@ -968,6 +979,7 @@
 				E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */,
 				E0A6DD92214FADFE00B6C301 /* SignUpViewController.swift in Sources */,
 				E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */,
+				58BC469F21A52A1300592770 /* IndividualCourseTableViewCell.swift in Sources */,
 				E0D99994218090D8004FDBCF /* RatingView.swift in Sources */,
 				E09AA5CC2181AFBC00338477 /* RatingViewController.swift in Sources */,
 				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,

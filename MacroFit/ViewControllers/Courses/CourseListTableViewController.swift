@@ -45,4 +45,12 @@ extension CourseListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let course = coursesJSON?[indexPath.row], let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "Course") as? CourseViewController else { return }
+        
+        vc.courseJSON = course
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
