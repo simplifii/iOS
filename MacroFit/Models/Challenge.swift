@@ -10,7 +10,7 @@ import Foundation
 class Challenge
 {
    
-    var photo:Data?
+    var photo:String?
     var id:String?
     var title:String?
     var description:String?

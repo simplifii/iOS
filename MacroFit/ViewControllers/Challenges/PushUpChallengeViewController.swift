@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import AlamofireImage
 
 class PushUpChallengeViewController: UIViewController {
     
@@ -34,7 +35,7 @@ class PushUpChallengeViewController: UIViewController {
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var tableViewTopSpacing: NSLayoutConstraint!
-    var challengePhoto:Data?
+    var challengePhoto:String?
     var challengeTitle:String?
     var challengeDescription:String?
     var challengeParticipants_count:String?
@@ -51,7 +52,9 @@ class PushUpChallengeViewController: UIViewController {
         lblTitle.text = challengeTitle
         lblDescription.text = challengeDescription
         lblParticipantsCount.text = " \(challengeParticipants_count ?? "")"
-        imageBackground.image = UIImage(data:challengePhoto!)
+        if challengePhoto != nil {
+            imageBackground.af_setImage(withURL: URL(string: challengePhoto!)!)
+        }
         viewStatistics.backgroundColor = UIColor(displayP3Red: 235/255, green: 84/255, blue: 40/255, alpha: 1)
         viewLeaderboard.backgroundColor = UIColor(displayP3Red: 252/255, green: 250/255, blue: 252/255, alpha: 1)
     }

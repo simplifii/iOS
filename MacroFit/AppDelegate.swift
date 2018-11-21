@@ -175,47 +175,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Print message ID.
         print("didReceiveRemoteNotification and handler")
         
-        if let type = userInfo["gcm.notification.type"] as? String {
-            print(type)
-            if type == "friends_score" || type == "friends_best_score" {
-                print("************")
-                
-                let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "PushUpChallenge") as? PushUpChallengeViewController
-                if let title = userInfo["gcm.notification.title"] as? String {
-                    vc?.challengeTitle = title
-                }
-                if let participantsCount = userInfo["gcm.notification.participants_count"] as? String {
-                    vc?.challengeParticipants_count = participantsCount
-                }
-                if let description = userInfo["gcm.notification.description"] as? String {
-                    vc?.challengeDescription = description
-                }
-                if let id = userInfo["gcm.notification.id"] as? String {
-                    vc?.challengeId = id
-                }
-                if let scoreUnit = userInfo["gcm.notification.score_unit"] as? String {
-                    vc?.challengeScore_unit = scoreUnit
-                }
-                if let isScoringInTime = userInfo["gcm.notification.is_scoring_in_time"] as? String {
-                    if isScoringInTime == "0" {
-                        vc?.challengeIs_scoring_in_time = false
-                    } else {
-                        vc?.challengeIs_scoring_in_time = true
+        if !(UIApplication.shared.applicationState == UIApplicationState.active) {
+            if let type = userInfo["gcm.notification.type"] as? String {
+                if type == "friends_score" || type == "friends_best_score" {
+                    let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "PushUpChallenge") as? PushUpChallengeViewController
+                    if let title = userInfo["gcm.notification.title"] as? String {
+                        vc?.challengeTitle = title
                     }
-                }
-                if let theMoreTheBetter = userInfo["gcm.notification.the_more_the_better"] as? String {
-                    if theMoreTheBetter == "0" {
-                        vc?.theMoreTheBetter = false
-                    } else {
-                        vc?.theMoreTheBetter = true
+                    if let participantsCount = userInfo["gcm.notification.participants_count"] as? String {
+                        vc?.challengeParticipants_count = participantsCount
                     }
+                    if let description = userInfo["gcm.notification.description"] as? String {
+                        vc?.challengeDescription = description
+                    }
+                    if let id = userInfo["gcm.notification.id"] as? String {
+                        vc?.challengeId = id
+                    }
+                    if let scoreUnit = userInfo["gcm.notification.score_unit"] as? String {
+                        vc?.challengeScore_unit = scoreUnit
+                    }
+                    if let photo = userInfo["gcm.notification.photo"] as? String {
+                        vc?.challengePhoto = photo
+                    }
+                    if let isScoringInTime = userInfo["gcm.notification.is_scoring_in_time"] as? String {
+                        if isScoringInTime == "0" {
+                            vc?.challengeIs_scoring_in_time = false
+                        } else {
+                            vc?.challengeIs_scoring_in_time = true
+                        }
+                    }
+                    if let theMoreTheBetter = userInfo["gcm.notification.the_more_the_better"] as? String {
+                        if theMoreTheBetter == "0" {
+                            vc?.theMoreTheBetter = false
+                        } else {
+                            vc?.theMoreTheBetter = true
+                        }
+                    }
+                    
+                    
+                    let storyboard = UIStoryboard(name: "MacroFit", bundle: nil)
+                    let mainVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+                    
+                    let navigationController = storyboard.instantiateViewController(withIdentifier: "MacroFitNavigationController") as! UINavigationController
+                    navigationController.pushViewController(mainVC, animated: false)
+                    navigationController.pushViewController(vc!, animated: false)
+                    
+                    self.window?.rootViewController = navigationController
+                    self.window?.makeKeyAndVisible()
+                    
                 }
-                
-                //                vc?.challengePhoto = data["photo"]
-                
-                self.navigationController?.isNavigationBarHidden = true
-                self.navigationController?.pushViewController(vc!, animated: true)
-                
             }
         }
         

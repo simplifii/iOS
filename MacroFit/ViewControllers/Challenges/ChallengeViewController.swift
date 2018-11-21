@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import TagListView
+import AlamofireImage
 
 class ChallengeViewController: UIViewController, TagListViewDelegate {
     
@@ -95,14 +96,7 @@ class ChallengeViewController: UIViewController, TagListViewDelegate {
             challenge.score_unit = item["score_unit"].stringValue
             challenge.tags = item["tags"].stringValue
             challenge.the_more_the_better = item["the_more_the_better"].boolValue
-            let img = item["photo"].stringValue
-            do{
-                let urL = URL(string:img)
-                let data = try Data(contentsOf: urL!)
-                challenge.photo = data
-            }catch let Error {
-                print("Error:\(Error.localizedDescription)")
-            }
+            challenge.photo = item["photo"].stringValue
             
             let tags = challenge.tags?.components(separatedBy: ",")
             for tag in tags ?? [] {
@@ -271,7 +265,9 @@ extension ChallengeViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ChallengeTableViewCell
         cell.title.text = challengeTableData[indexPath.row].title
-        cell.backgroundImage.image = UIImage(data: challengeTableData[indexPath.row].photo!)
+        if challengeTableData[indexPath.row].photo != nil {
+            cell.backgroundImage.af_setImage(withURL: URL(string: challengeTableData[indexPath.row].photo!)!)
+        }
 
         return cell
     }
@@ -281,7 +277,7 @@ extension ChallengeViewController:UITableViewDelegate,UITableViewDataSource
         vc?.challengeTitle = challengeTableData[indexPath.row].title
         vc?.challengeParticipants_count = challengeTableData[indexPath.row].participants_count
         vc?.challengeDescription = challengeTableData[indexPath.row].description
-        vc?.challengePhoto = challengeTableData[indexPath.row].photo!
+        vc?.challengePhoto = challengeTableData[indexPath.row].photo
         vc?.challengeId = challengeTableData[indexPath.row].id!
         vc?.challengeScore_unit = challengeTableData[indexPath.row].score_unit
         vc?.challengeIs_scoring_in_time = challengeTableData[indexPath.row].is_scoring_in_time
