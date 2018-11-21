@@ -33,7 +33,7 @@ class FitnessTableViewController: UITableViewController {
         case 0:
             action = "One"
         case 1:
-            let vc = UIStoryboard(name: "MacroFit", bundle: nil).instantiateViewController(withIdentifier: "Courses")
+            let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateInitialViewController()!
             navigationController?.isNavigationBarHidden = true
             navigationController?.pushViewController(vc, animated: true)
             return
