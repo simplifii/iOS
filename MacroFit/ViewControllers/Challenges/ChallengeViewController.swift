@@ -265,8 +265,12 @@ extension ChallengeViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ChallengeTableViewCell
         cell.title.text = challengeTableData[indexPath.row].title
-        if challengeTableData[indexPath.row].photo != nil {
-            cell.backgroundImage.af_setImage(withURL: URL(string: challengeTableData[indexPath.row].photo!)!)
+        if challengeTableData[indexPath.row].photo != nil && !challengeTableData[indexPath.row].photo!.isEmpty {
+            if challengeTableData[indexPath.row].photo != "https://goo.gl/images/fNF5vH" {
+                cell.backgroundImage.af_setImage(withURL: URL(string: challengeTableData[indexPath.row].photo!)!)
+            }
+        } else {
+            cell.backgroundImage.image = nil
         }
 
         return cell

@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class Setting: BaseViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var navbarView: UIView!
     @IBOutlet weak var tableView: UITableView!
     var SettingName = ["Profile","Address","Food preferances","Macros"]
     var SettingImage = ["user","location","turkey","apple"]
@@ -22,6 +23,8 @@ class Setting: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.tableFooterView = UIView(frame: .zero)
 
         tableView.layer.cornerRadius = 8.0
+        
+        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {

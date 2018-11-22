@@ -8,7 +8,7 @@
 
 struct NetworkingConstants{
     
-    static let baseUrl = "http://mf.platform.simplifii.xyz/api/v1/"
+    static let baseUrl = "http://mf.simplifii.xyz/api/v1/"
     static let cards = "cards"
     static let users = "cards"
     static let orders = "cards"
