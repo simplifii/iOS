@@ -54,6 +54,11 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
             cell = tableView.dequeueReusableCell(withIdentifier: indexPath.row == 0 ? "HeaderCell" : "DescriptionCell", for: indexPath)
             (cell as? CourseDescriptionCell)?.titleLabel.text = courseJSON?["title"].string
             (cell as? CourseDescriptionCell)?.descriptionLabel.text = courseJSON?["description"].string
+            
+            (cell as? CourseHeaderCell)?.backgroundImageView.image = nil
+            if let urlString = courseJSON?["image"].rawString(), let url = URL(string: urlString) {
+                (cell as? CourseHeaderCell)?.backgroundImageView.af_setImage(withURL: url)
+            }
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "DaysCell", for: indexPath)
             (cell as? CourseDayCell)?.exercises = daysJSON?[indexPath.row] ?? []
@@ -72,4 +77,8 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 { return }
     }
+}
+
+class CourseHeaderCell: UITableViewCell {
+    @IBOutlet weak var backgroundImageView: UIImageView!
 }

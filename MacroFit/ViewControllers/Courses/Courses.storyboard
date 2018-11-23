@@ -121,7 +121,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="166" id="9C7-Ak-cGg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="166" id="9C7-Ak-cGg" customClass="CourseHeaderCell" customModule="MacroFit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="166"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9C7-Ak-cGg" id="XYg-Iy-djq">
@@ -148,6 +148,9 @@
                                                 <constraint firstItem="fiJ-J9-CuX" firstAttribute="centerX" secondItem="XYg-Iy-djq" secondAttribute="centerX" id="yNZ-WW-4Kf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="backgroundImageView" destination="3I5-R4-Wa5" id="XNt-8q-8I4"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DescriptionCell" rowHeight="151" id="1hy-IJ-RDy" customClass="CourseDescriptionCell" customModule="MacroFit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="194" width="375" height="151"/>

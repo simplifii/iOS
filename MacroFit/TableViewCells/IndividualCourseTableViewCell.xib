@@ -30,14 +30,18 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="348-oU-RZj">
                         <rect key="frame" x="0.0" y="0.0" width="519" height="168.5"/>
                     </imageView>
+                    <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BQ-fc-dj7">
+                        <rect key="frame" x="0.0" y="0.0" width="519" height="168.5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Trainer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2M-Hu-dhX">
-                        <rect key="frame" x="20" y="138" width="124.5" height="20"/>
+                        <rect key="frame" x="20" y="137" width="141" height="21"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpx-of-eF9">
-                        <rect key="frame" x="20" y="102" width="148" height="28"/>
+                        <rect key="frame" x="20" y="99.5" width="169" height="29.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -48,15 +52,20 @@
                     <constraint firstItem="348-oU-RZj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6aa-88-bTl"/>
                     <constraint firstItem="D2M-Hu-dhX" firstAttribute="top" secondItem="Wpx-of-eF9" secondAttribute="bottom" constant="8" id="99D-D4-Re9"/>
                     <constraint firstItem="Wpx-of-eF9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AzR-ub-KfW"/>
+                    <constraint firstItem="2BQ-fc-dj7" firstAttribute="top" secondItem="348-oU-RZj" secondAttribute="top" id="Hdj-zz-XbE"/>
                     <constraint firstAttribute="bottom" secondItem="348-oU-RZj" secondAttribute="bottom" id="Igj-4p-MfN"/>
+                    <constraint firstItem="2BQ-fc-dj7" firstAttribute="bottom" secondItem="348-oU-RZj" secondAttribute="bottom" id="V6n-Ai-6W4"/>
                     <constraint firstItem="348-oU-RZj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="j3h-8G-72M"/>
                     <constraint firstItem="D2M-Hu-dhX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jjc-Ye-taw"/>
                     <constraint firstAttribute="trailing" secondItem="348-oU-RZj" secondAttribute="trailing" id="peF-6o-uDY"/>
                     <constraint firstItem="D2M-Hu-dhX" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="qKy-4P-3OO"/>
+                    <constraint firstItem="2BQ-fc-dj7" firstAttribute="leading" secondItem="348-oU-RZj" secondAttribute="leading" id="tg0-mI-bJA"/>
+                    <constraint firstItem="2BQ-fc-dj7" firstAttribute="trailing" secondItem="348-oU-RZj" secondAttribute="trailing" id="xlk-aM-YaA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backgroundImageView" destination="348-oU-RZj" id="ei5-kq-HqX"/>
                 <outlet property="courseNameLabel" destination="Wpx-of-eF9" id="ykD-m2-V4v"/>
                 <outlet property="subtitleLabel" destination="D2M-Hu-dhX" id="vwf-MD-dLV"/>
             </connections>
