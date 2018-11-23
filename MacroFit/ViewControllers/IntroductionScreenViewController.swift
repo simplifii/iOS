@@ -77,8 +77,6 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
                         print("Successfully loggedIn")
                         let userId = result!.token.userID
                         let token = result!.token.tokenString
-                        print(userId)
-                        print(token)
                         
                         self.setUserDetails(userId: userId!, token: token!)
                     } else {
@@ -90,8 +88,6 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
             let userId = FBSDKAccessToken.current()!.userID
             let token = FBSDKAccessToken.current()!.tokenString
             
-            print(userId)
-            print(token)
             print("already logged in user")
             self.setUserDetails(userId: userId!, token: token!)
         }

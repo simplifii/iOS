@@ -15,6 +15,7 @@ target 'MacroFit' do
     pod 'TagListView', '~> 1.0'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
+    pod 'Branch'
 # Pods for MacroFit
 
   target 'MacroFitTests' do
