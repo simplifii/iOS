@@ -67,6 +67,7 @@ struct APIService {
             
             UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
             UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
+            UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
             UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
             UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
         
