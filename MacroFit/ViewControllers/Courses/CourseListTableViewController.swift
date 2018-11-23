@@ -36,7 +36,7 @@ extension CourseListViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let courseCell = cell as? IndividualCourseTableViewCell, let course = coursesJSON?[indexPath.row] {
             courseCell.courseNameLabel.text = course["title"].rawString()
-            courseCell.subtitleLabel.text = "by Fitness Duder"
+            courseCell.subtitleLabel.text = "by Fitness Instructor"
         }
         
         return cell

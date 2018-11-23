@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5857611C21A7F85F0040A643 /* CourseDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611B21A7F85F0040A643 /* CourseDayCell.swift */; };
+		5857611E21A812DE0040A643 /* CourseDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */; };
 		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		58BC469621A3216C00592770 /* CoursesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469521A3216C00592770 /* CoursesMainViewController.swift */; };
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
@@ -161,6 +163,8 @@
 		332C02C7F7D4E37BCD43A18B /* Pods-MacroFitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitUITests/Pods-MacroFitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51C02C1F9BC351E5D8776B34 /* Pods-MacroFitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitUITests/Pods-MacroFitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5857611B21A7F85F0040A643 /* CourseDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDayCell.swift; sourceTree = "<group>"; };
+		5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDescriptionCell.swift; sourceTree = "<group>"; };
 		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		58BC469521A3216C00592770 /* CoursesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesMainViewController.swift; sourceTree = "<group>"; };
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -338,7 +342,9 @@
 				58BC4693219DF61600592770 /* Courses.storyboard */,
 				58BC469521A3216C00592770 /* CoursesMainViewController.swift */,
 				58BC469B21A5218600592770 /* CourseListTableViewController.swift */,
+				5857611B21A7F85F0040A643 /* CourseDayCell.swift */,
 				58BC46A121A53AD900592770 /* CourseViewController.swift */,
+				5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -982,6 +988,7 @@
 				58BC469F21A52A1300592770 /* IndividualCourseTableViewCell.swift in Sources */,
 				E0D99994218090D8004FDBCF /* RatingView.swift in Sources */,
 				E09AA5CC2181AFBC00338477 /* RatingViewController.swift in Sources */,
+				5857611C21A7F85F0040A643 /* CourseDayCell.swift in Sources */,
 				E0DC73FF215BA6BF0085551E /* MenuItemTableViewCell.swift in Sources */,
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				58BC469C21A5218600592770 /* CourseListTableViewController.swift in Sources */,
@@ -1001,6 +1008,7 @@
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
 				E0DD472B216F578000783F99 /* RecipeCardTableViewCell.swift in Sources */,
 				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,
+				5857611E21A812DE0040A643 /* CourseDescriptionCell.swift in Sources */,
 				E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */,
 				E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */,
 				E02E854721647FE900DDE4A7 /* PaymentViewController.swift in Sources */,
