@@ -75,7 +75,12 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 { return }
+        guard indexPath.section != 0, let dayJSON = daysJSON?[indexPath.row] else  { return }
+        
+        let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "Day")
+        
+        (vc as? CourseDayViewController)?.dayJSON = dayJSON
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

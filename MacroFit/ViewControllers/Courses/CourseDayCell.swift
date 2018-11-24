@@ -35,6 +35,7 @@ class CourseDayCell: UITableViewCell {
         layoutIfNeeded()
         parent?.tableView.beginUpdates()
         parent?.tableView.endUpdates()
+        tableView.allowsSelection = false
     }
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5857611C21A7F85F0040A643 /* CourseDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611B21A7F85F0040A643 /* CourseDayCell.swift */; };
 		5857611E21A812DE0040A643 /* CourseDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */; };
+		5857612021A8CEBD0040A643 /* CourseDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */; };
 		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		58BC469621A3216C00592770 /* CoursesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469521A3216C00592770 /* CoursesMainViewController.swift */; };
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
@@ -165,6 +166,7 @@
 		51C02C1F9BC351E5D8776B34 /* Pods-MacroFitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitUITests/Pods-MacroFitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5857611B21A7F85F0040A643 /* CourseDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDayCell.swift; sourceTree = "<group>"; };
 		5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDescriptionCell.swift; sourceTree = "<group>"; };
+		5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDayViewController.swift; sourceTree = "<group>"; };
 		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		58BC469521A3216C00592770 /* CoursesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesMainViewController.swift; sourceTree = "<group>"; };
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -339,12 +341,13 @@
 		58BC4692219DF5F100592770 /* Courses */ = {
 			isa = PBXGroup;
 			children = (
+				5857611B21A7F85F0040A643 /* CourseDayCell.swift */,
+				5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */,
+				5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */,
+				58BC469B21A5218600592770 /* CourseListTableViewController.swift */,
 				58BC4693219DF61600592770 /* Courses.storyboard */,
 				58BC469521A3216C00592770 /* CoursesMainViewController.swift */,
-				58BC469B21A5218600592770 /* CourseListTableViewController.swift */,
-				5857611B21A7F85F0040A643 /* CourseDayCell.swift */,
 				58BC46A121A53AD900592770 /* CourseViewController.swift */,
-				5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				58BC469C21A5218600592770 /* CourseListTableViewController.swift in Sources */,
 				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,
+				5857612021A8CEBD0040A643 /* CourseDayViewController.swift in Sources */,
 				E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */,
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
 				EE7E278A218C270E00CB947D /* PasswordchangeViewController.swift in Sources */,
