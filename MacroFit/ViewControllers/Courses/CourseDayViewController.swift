@@ -34,7 +34,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : 0
+        return section == 0 ? 2 : (dayJSON?.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,11 +51,60 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
 
             return cell
         } else {
-            return UITableViewCell()
+            guard let day = dayJSON?[indexPath.row] else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withIdentifier: roundNumber == indexPath.row + 1 ? "ExerciseExpanded" : "Exercise", for: indexPath) as! ExerciseCell
+            cell.exerciseNameLabel.text = day["title"].rawString()
+            if let time = day["time"].string {
+                cell.rightDetailLabel.text = time
+                if let reps = day["reps"].int {
+                    cell.leftDetailLabel.text = "\(reps) reps"
+                }
+            } else if let reps = day["reps"].int {
+                //Otherwise it's just reps, if so. - clear out the reps label and put reps in time.
+                cell.rightDetailLabel.text = "\(reps) reps"
+            }
+            cell.doneImageView.image = UIImage(named: day["done"].boolValue ? "done" : "undone")
+            
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 && indexPath.section == 0 ? 180 : UITableViewAutomaticDimension
+    }
+}
+
+class ExerciseCell : UITableViewCell {
+    
+    @IBOutlet weak var exerciseNameLabel: UILabel!
+    @IBOutlet weak var rightDetailLabel: UILabel!
+    @IBOutlet weak var leftDetailLabel: UILabel!
+    @IBOutlet weak var doneImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        leftDetailLabel.text = nil
+        rightDetailLabel.text = nil
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        leftDetailLabel.text = nil
+        rightDetailLabel.text = nil
+    }
+}
+
+class ExerciseCellExpanded: ExerciseCell {
+    
+    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBAction func playPausePressed(_ sender: UIButton) {
+        let wasPaused = sender.title(for: .normal) == "Start"
+        sender.setTitle( wasPaused ? "Pause" : "Start", for: .normal)
+    }
+    
+    @IBAction func completePressed(_ sender: Any) {
     }
 }
