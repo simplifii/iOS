@@ -33,6 +33,9 @@ class CourseViewController: UIViewController {
             []  //Day 3
         ]
         
+        tableView.register(UINib(nibName: "CourseHeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
+        tableView.register(UINib(nibName: "CourseDescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
+        
         tableView.dataSource = self
         tableView.delegate = self
     }

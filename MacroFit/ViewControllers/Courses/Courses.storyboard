@@ -121,74 +121,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="166" id="9C7-Ak-cGg" customClass="CourseHeaderCell" customModule="MacroFit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="166"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9C7-Ak-cGg" id="XYg-Iy-djq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-sports" translatesAutoresizingMaskIntoConstraints="NO" id="3I5-R4-Wa5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play button" translatesAutoresizingMaskIntoConstraints="NO" id="fiJ-J9-CuX">
-                                                    <rect key="frame" x="167.5" y="63" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="Jbj-FX-Gff"/>
-                                                        <constraint firstAttribute="height" constant="40" id="phV-7k-yVI"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="fiJ-J9-CuX" firstAttribute="centerY" secondItem="XYg-Iy-djq" secondAttribute="centerY" id="CXU-fP-Hez"/>
-                                                <constraint firstItem="3I5-R4-Wa5" firstAttribute="leading" secondItem="XYg-Iy-djq" secondAttribute="leading" id="CsB-D5-wWr"/>
-                                                <constraint firstItem="3I5-R4-Wa5" firstAttribute="top" secondItem="XYg-Iy-djq" secondAttribute="top" id="e0D-bA-ERS"/>
-                                                <constraint firstAttribute="trailing" secondItem="3I5-R4-Wa5" secondAttribute="trailing" id="kKU-ar-UoL"/>
-                                                <constraint firstAttribute="bottom" secondItem="3I5-R4-Wa5" secondAttribute="bottom" id="max-8P-hrR"/>
-                                                <constraint firstItem="fiJ-J9-CuX" firstAttribute="centerX" secondItem="XYg-Iy-djq" secondAttribute="centerX" id="yNZ-WW-4Kf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="backgroundImageView" destination="3I5-R4-Wa5" id="XNt-8q-8I4"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DescriptionCell" rowHeight="151" id="1hy-IJ-RDy" customClass="CourseDescriptionCell" customModule="MacroFit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="194" width="375" height="151"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1hy-IJ-RDy" id="qDi-u3-X7f">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="252" text="Yoga for beginners" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8O-VF-8f5">
-                                                    <rect key="frame" x="15" y="11" width="238.5" height="29.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN2-1b-OGm">
-                                                    <rect key="frame" x="15" y="44.5" width="345" height="106.5"/>
-                                                    <string key="text">Haven't practised yoga yet but would like to learn what it i is all about? Then this is the right course for you! Go through the basics together with your trainer.</string>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="TN2-1b-OGm" secondAttribute="trailing" constant="15" id="Pw6-4j-yRh"/>
-                                                <constraint firstItem="TN2-1b-OGm" firstAttribute="top" secondItem="z8O-VF-8f5" secondAttribute="bottom" constant="4" id="R4x-Sl-Yae"/>
-                                                <constraint firstAttribute="bottom" secondItem="TN2-1b-OGm" secondAttribute="bottom" id="VDR-Rg-WYO"/>
-                                                <constraint firstItem="z8O-VF-8f5" firstAttribute="top" secondItem="qDi-u3-X7f" secondAttribute="topMargin" id="aab-di-0Bf"/>
-                                                <constraint firstItem="z8O-VF-8f5" firstAttribute="leading" secondItem="qDi-u3-X7f" secondAttribute="leadingMargin" id="iYW-O9-nCL"/>
-                                                <constraint firstItem="TN2-1b-OGm" firstAttribute="leading" secondItem="qDi-u3-X7f" secondAttribute="leading" constant="15" id="ylD-we-g91"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="descriptionLabel" destination="TN2-1b-OGm" id="0XO-hp-CxU"/>
-                                            <outlet property="titleLabel" destination="z8O-VF-8f5" id="n8U-nh-dsc"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DaysCell" rowHeight="181" id="Esr-h0-HRd" customClass="CourseDayCell" customModule="MacroFit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="345" width="375" height="181"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="181"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Esr-h0-HRd" id="3Vv-jG-1ra">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
@@ -485,8 +419,6 @@
         <image name="back" width="20" height="12"/>
         <image name="chevron-down" width="36" height="36"/>
         <image name="download" width="37.5" height="37.5"/>
-        <image name="play button" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="splash-sports" width="3527" height="1984"/>
         <image name="undone" width="9.6000003814697266" height="9.6000003814697266"/>
     </resources>
 </document>

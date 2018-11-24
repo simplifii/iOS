@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="122" id="TcF-ic-Gck" customClass="CourseHeaderCell" customModule="MacroFit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="524" height="122"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TcF-ic-Gck" id="U6k-v7-uQ6">
+                <rect key="frame" x="0.0" y="0.0" width="524" height="121.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-sports" translatesAutoresizingMaskIntoConstraints="NO" id="QRR-JO-qDK">
+                        <rect key="frame" x="0.0" y="0.0" width="524" height="121.5"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play button" translatesAutoresizingMaskIntoConstraints="NO" id="1ha-Fp-nAO">
+                        <rect key="frame" x="242" y="41" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="1A6-J7-4MB"/>
+                            <constraint firstAttribute="width" constant="40" id="TRm-de-dHb"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QRR-JO-qDK" firstAttribute="top" secondItem="U6k-v7-uQ6" secondAttribute="top" id="6pf-T8-wzA"/>
+                    <constraint firstAttribute="bottom" secondItem="QRR-JO-qDK" secondAttribute="bottom" id="LHZ-fF-xHj"/>
+                    <constraint firstItem="1ha-Fp-nAO" firstAttribute="centerY" secondItem="U6k-v7-uQ6" secondAttribute="centerY" id="Pjs-m9-6HN"/>
+                    <constraint firstItem="QRR-JO-qDK" firstAttribute="leading" secondItem="U6k-v7-uQ6" secondAttribute="leading" id="Sq6-JB-kYr"/>
+                    <constraint firstAttribute="trailing" secondItem="QRR-JO-qDK" secondAttribute="trailing" id="gBU-iJ-FbN"/>
+                    <constraint firstItem="1ha-Fp-nAO" firstAttribute="centerX" secondItem="U6k-v7-uQ6" secondAttribute="centerX" id="ozA-XE-ZEa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backgroundImageView" destination="QRR-JO-qDK" id="DUO-TP-lxC"/>
+            </connections>
+            <point key="canvasLocation" x="196.80000000000001" y="137.6311844077961"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="play button" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="splash-sports" width="3527" height="1984"/>
+    </resources>
+</document>

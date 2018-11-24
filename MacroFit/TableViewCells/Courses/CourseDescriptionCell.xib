@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="116" id="H0q-q0-q2b" customClass="CourseDescriptionCell" customModule="MacroFit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="495" height="116"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H0q-q0-q2b" id="Uk7-zT-WBk">
+                <rect key="frame" x="0.0" y="0.0" width="495" height="115.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="252" text="Yoga for beginners" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wr-bn-66T">
+                        <rect key="frame" x="20" y="11" width="455" height="29.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XZ-64-CfS">
+                        <rect key="frame" x="20" y="44.5" width="455" height="60.5"/>
+                        <string key="text">Haven't practised yoga yet but would like to learn what it i is all about? Then this is the right course for you! Go through the basics together with your trainer.</string>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9XZ-64-CfS" firstAttribute="top" secondItem="3Wr-bn-66T" secondAttribute="bottom" constant="4" id="7we-IL-Nk3"/>
+                    <constraint firstItem="9XZ-64-CfS" firstAttribute="leading" secondItem="Uk7-zT-WBk" secondAttribute="leadingMargin" id="83b-sM-29B"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="9XZ-64-CfS" secondAttribute="trailing" id="9EE-4w-mbs"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3Wr-bn-66T" secondAttribute="trailing" id="IDQ-QY-oIs"/>
+                    <constraint firstItem="9XZ-64-CfS" firstAttribute="top" secondItem="3Wr-bn-66T" secondAttribute="bottom" constant="4" id="V1A-Ka-H2L"/>
+                    <constraint firstItem="9XZ-64-CfS" firstAttribute="bottom" secondItem="Uk7-zT-WBk" secondAttribute="bottomMargin" id="W0D-wN-7fA"/>
+                    <constraint firstItem="3Wr-bn-66T" firstAttribute="leading" secondItem="Uk7-zT-WBk" secondAttribute="leadingMargin" id="dWg-09-xBQ"/>
+                    <constraint firstItem="3Wr-bn-66T" firstAttribute="top" secondItem="Uk7-zT-WBk" secondAttribute="topMargin" id="obE-ou-gu6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="9XZ-64-CfS" id="ybR-aI-OfG"/>
+                <outlet property="titleLabel" destination="3Wr-bn-66T" id="XVv-7V-zgG"/>
+            </connections>
+            <point key="canvasLocation" x="645.60000000000002" y="35.082458770614693"/>
+        </tableViewCell>
+    </objects>
+</document>

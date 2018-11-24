@@ -10,6 +10,8 @@
 		5857611C21A7F85F0040A643 /* CourseDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611B21A7F85F0040A643 /* CourseDayCell.swift */; };
 		5857611E21A812DE0040A643 /* CourseDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */; };
 		5857612021A8CEBD0040A643 /* CourseDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */; };
+		5857612321A8EB710040A643 /* CourseHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5857612221A8EB710040A643 /* CourseHeaderCell.xib */; };
+		5857612721A8EC900040A643 /* CourseDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5857612621A8EC900040A643 /* CourseDescriptionCell.xib */; };
 		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		58BC469621A3216C00592770 /* CoursesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469521A3216C00592770 /* CoursesMainViewController.swift */; };
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
@@ -167,6 +169,8 @@
 		5857611B21A7F85F0040A643 /* CourseDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDayCell.swift; sourceTree = "<group>"; };
 		5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDescriptionCell.swift; sourceTree = "<group>"; };
 		5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDayViewController.swift; sourceTree = "<group>"; };
+		5857612221A8EB710040A643 /* CourseHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseHeaderCell.xib; sourceTree = "<group>"; };
+		5857612621A8EC900040A643 /* CourseDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseDescriptionCell.xib; sourceTree = "<group>"; };
 		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		58BC469521A3216C00592770 /* CoursesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesMainViewController.swift; sourceTree = "<group>"; };
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -338,6 +342,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5857612121A8EA8A0040A643 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */,
+				58BC469821A331B100592770 /* CourseCategoryTableViewCell.xib */,
+				58BC469D21A52A1300592770 /* IndividualCourseTableViewCell.swift */,
+				58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */,
+				5857612221A8EB710040A643 /* CourseHeaderCell.xib */,
+				5857612621A8EC900040A643 /* CourseDescriptionCell.xib */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
 		58BC4692219DF5F100592770 /* Courses */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,20 +682,17 @@
 		E0DC73FD215BA6910085551E /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				E02E85552164C54400DDE4A7 /* AddressTableViewCell.swift */,
+				5857612121A8EA8A0040A643 /* Courses */,
+				E02E85572164C55800DDE4A7 /* DeliveryDateTableViewCell.swift */,
+				E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */,
 				E0DC73FE215BA6BF0085551E /* MenuItemTableViewCell.swift */,
 				E075A977215E3DC300D264CA /* OrderItemTableViewCell.swift */,
-				E075A979215E3E0700D264CA /* LineSeparatorTableViewCell.swift */,
-				E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */,
-				E02E85552164C54400DDE4A7 /* AddressTableViewCell.swift */,
-				E02E85572164C55800DDE4A7 /* DeliveryDateTableViewCell.swift */,
-				E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */,
-				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
-				58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */,
-				58BC469821A331B100592770 /* CourseCategoryTableViewCell.xib */,
-				58BC469D21A52A1300592770 /* IndividualCourseTableViewCell.swift */,
-				58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */,
 				E0DD472A216F578000783F99 /* RecipeCardTableViewCell.swift */,
+				E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */,
 				EE7E278B218C299C00CB947D /* SettingProfileTableViewCell.swift */,
+				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
+				E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -811,12 +825,14 @@
 				58BC469A21A331B100592770 /* CourseCategoryTableViewCell.xib in Resources */,
 				E0D99992218090BC004FDBCF /* RatingView.xib in Resources */,
 				E0BD2B77216B247A00E2D297 /* Montserrat-Light.ttf in Resources */,
+				5857612321A8EB710040A643 /* CourseHeaderCell.xib in Resources */,
 				E0BD2B78216B247A00E2D297 /* Montserrat-LightItalic.ttf in Resources */,
 				E0BD2B79216B247A00E2D297 /* Montserrat-Medium.ttf in Resources */,
 				E0BD2B7A216B247A00E2D297 /* Montserrat-MediumItalic.ttf in Resources */,
 				E0BD2B7B216B247A00E2D297 /* Montserrat-Regular.ttf in Resources */,
 				E0BD2B7C216B247A00E2D297 /* Montserrat-SemiBold.ttf in Resources */,
 				E009ABB12186FD4B0000C16C /* MealInfoBoxView.xib in Resources */,
+				5857612721A8EC900040A643 /* CourseDescriptionCell.xib in Resources */,
 				E0BD2B7D216B247A00E2D297 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				E0BD2B7E216B247A00E2D297 /* Montserrat-Thin.ttf in Resources */,
 				E0BD2B7F216B247A00E2D297 /* Montserrat-ThinItalic.ttf in Resources */,
