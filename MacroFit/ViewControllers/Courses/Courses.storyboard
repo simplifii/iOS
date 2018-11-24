@@ -444,6 +444,29 @@
                                             <outlet property="timeLabel" destination="Tah-up-29O" id="jRn-Oe-92l"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="59" id="tVs-Fm-LCf">
+                                        <rect key="frame" x="0.0" y="245" width="375" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tVs-Fm-LCf" id="lhO-7O-Xyb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99j-2D-gkZ">
+                                                    <rect key="frame" x="35" y="15" width="305" height="29"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <state key="normal" title="Next: Rest 1 min"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="99j-2D-gkZ" firstAttribute="top" secondItem="lhO-7O-Xyb" secondAttribute="topMargin" constant="4" id="BY9-BB-py7"/>
+                                                <constraint firstItem="99j-2D-gkZ" firstAttribute="leading" secondItem="lhO-7O-Xyb" secondAttribute="leadingMargin" constant="20" id="J6X-7J-KS2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="99j-2D-gkZ" secondAttribute="trailing" constant="20" id="Lqp-ki-gyi"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="99j-2D-gkZ" secondAttribute="bottom" constant="4" id="bt5-or-v6I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KM3-Z3-qk1">
