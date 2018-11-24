@@ -82,7 +82,11 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
         
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "Day")
         
-        (vc as? CourseDayViewController)?.dayJSON = dayJSON
+        if let dayVC = vc as? CourseDayViewController {
+            dayVC.headerText =  "Day \(indexPath.row + 1)"
+            dayVC.dayJSON = dayJSON
+            dayVC.courseJSON = courseJSON
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
 }
