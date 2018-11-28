@@ -2455,10 +2455,10 @@
             </objects>
             <point key="canvasLocation" x="1185" y="-688"/>
         </scene>
-        <!--Tab Bar View Controller-->
+        <!--Courses-->
         <scene sceneID="dUd-5K-qhy">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" id="32H-Sd-457" customClass="TabBarViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" title="Courses" id="32H-Sd-457" customClass="TabBarViewController" customModule="MacroFit" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C2J-9D-tXM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -4213,5 +4213,6 @@ Credits can be exchanged for free meals afterwards.</string>
     <inferredMetricsTieBreakers>
         <segue reference="KLl-uG-SKV"/>
         <segue reference="XID-Mr-YKU"/>
+        <segue reference="Dmk-wG-w39"/>
     </inferredMetricsTieBreakers>
 </document>

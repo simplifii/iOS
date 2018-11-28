@@ -45,8 +45,8 @@ class ProfileViewController: BaseViewController {
         } else {
             
             let StoryBoard = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "PasswordchangeViewController") as! PasswordchangeViewController
-            StoryBoard.tempSuccessunsuccess = "UnSuccess"
-            StoryBoard.tempmessage = "Please enter the password"
+            StoryBoard.tempSuccessunsuccess = "Couldn't Save"
+            StoryBoard.tempmessage = "Please enter the new password"
             self.present(StoryBoard, animated: false, completion: nil)
         }
     }

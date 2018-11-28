@@ -193,6 +193,11 @@ struct APIService {
         })
     }
     
+    static func getCourses(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getCourses(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
     
     // POST & PATCH
     

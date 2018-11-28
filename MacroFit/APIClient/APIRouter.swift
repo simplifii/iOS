@@ -22,6 +22,7 @@ enum APIRouter: URLRequestConvertible {
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     case orderPlacementDetails()
     case getMealsMenu()
+    case getCourses()
     case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, deliveryDateFrom:String, deliveryDateTo:String, meals:[[String:Any]])
     case getZipcodeServiceabilityInfo(zipcode: String)
     case orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int)
@@ -91,8 +92,10 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .createFeedback, .editFeedback, .getFeedback:
                 return NetworkingConstants.cards
-        case.getChallenges, .getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .SubmitScore:
-            return NetworkingConstants.challenges
+            case.getChallenges, .getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .SubmitScore:
+                return NetworkingConstants.challenges
+            case .getCourses:
+                return NetworkingConstants.courses
         }
     }
     
@@ -217,7 +220,7 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["device_token"] = token
             break
         default:
-                print("no action")
+            print("no action")
         }
         
         return bodyDict
@@ -317,9 +320,9 @@ enum APIRouter: URLRequestConvertible {
                 }
                 paramDict["embed"] = "creator"
             }
-            
-            
-            break
+        case .getCourses:
+            paramDict["type"] = "Course"
+            paramDict["sort_by"] = "-updated_at"
         default:
             break
         }
@@ -330,7 +333,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses:
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore:
             return .post
@@ -350,7 +353,7 @@ enum APIRouter: URLRequestConvertible {
             case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch,.getChallengeScore ,.getEachUserBestScore:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses:
                 if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
                     headers[UserConstants.authentication] = "Bearer \(token)"
                 }
