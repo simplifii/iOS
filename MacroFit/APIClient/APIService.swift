@@ -199,6 +199,18 @@ struct APIService {
         })
     }
     
+    static func getLessons(for course: String, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getLessons(course: course), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getExercises(for lesson: String, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getExercises(lesson: lesson), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
     // POST & PATCH
     
     static func updateCustomerBasicDetails(age: String, weight: String, height: String, activity_level: String?, goal: String, gender: String, per_day_cal_burn: String, goal_note: String?, completion: @escaping (Bool, String) -> Void) {

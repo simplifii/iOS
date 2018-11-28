@@ -23,6 +23,8 @@ enum APIRouter: URLRequestConvertible {
     case orderPlacementDetails()
     case getMealsMenu()
     case getCourses()
+    case getLessons(course: String)
+    case getExercises(lesson: String)
     case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, deliveryDateFrom:String, deliveryDateTo:String, meals:[[String:Any]])
     case getZipcodeServiceabilityInfo(zipcode: String)
     case orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int)
@@ -96,6 +98,10 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.challenges
             case .getCourses:
                 return NetworkingConstants.courses
+            case .getLessons:
+                return NetworkingConstants.lessons
+            case .getExercises:
+                return NetworkingConstants.exercises
         }
     }
     
@@ -323,6 +329,14 @@ enum APIRouter: URLRequestConvertible {
         case .getCourses:
             paramDict["type"] = "Course"
             paramDict["sort_by"] = "-updated_at"
+        case let .getLessons(course: course):
+            paramDict["type"] = "Lesson"
+            paramDict["sort_by"] = "+int2"
+            paramDict["equalto___fk_course"] = course
+        case let .getExercises(lesson: lesson):
+            paramDict["type"] = "Exercise"
+            paramDict["sort_by"] = "+int2"
+            paramDict["equalto___fk_lesson"] = lesson
         default:
             break
         }
@@ -333,7 +347,7 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
             return .get
         case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore:
             return .post
@@ -353,7 +367,7 @@ enum APIRouter: URLRequestConvertible {
             case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
                 if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
                     headers[UserConstants.authentication] = "Bearer \(token)"
                 }
