@@ -140,7 +140,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VS5-Xt-cQ8">
-                                                                        <rect key="frame" x="28" y="24" width="41.5" height="19"/>
+                                                                        <rect key="frame" x="28" y="23.5" width="43.5" height="20"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planks x30 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l90-Mf-GMo">
-                                                                        <rect key="frame" x="38" y="10" width="181" height="22"/>
+                                                                        <rect key="frame" x="38" y="10" width="179" height="22"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="22" id="A1q-kQ-7Mp"/>
                                                                         </constraints>
@@ -200,7 +200,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="3 reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LG0-qx-jOU">
-                                                                        <rect key="frame" x="223" y="10" width="39" height="22"/>
+                                                                        <rect key="frame" x="221" y="10" width="42" height="22"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -213,7 +213,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="01:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kij-Rv-mLl">
-                                                                        <rect key="frame" x="272.5" y="10" width="35.5" height="22"/>
+                                                                        <rect key="frame" x="273.5" y="10" width="34.5" height="22"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -294,7 +294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gaw-TU-e18">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Exercise" rowHeight="80" id="rCf-PF-tmv" customClass="ExerciseCell" customModule="MacroFit" customModuleProvider="target">
@@ -482,9 +482,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KM3-Z3-qk1" firstAttribute="top" secondItem="gaw-TU-e18" secondAttribute="bottom" id="5OH-nm-3O6"/>
                             <constraint firstItem="Fmm-QY-cUs" firstAttribute="trailing" secondItem="gaw-TU-e18" secondAttribute="trailing" id="6PZ-BN-U6A"/>
                             <constraint firstItem="gaw-TU-e18" firstAttribute="top" secondItem="Fmm-QY-cUs" secondAttribute="top" id="9b4-fW-wFA"/>
-                            <constraint firstItem="Fmm-QY-cUs" firstAttribute="bottom" secondItem="gaw-TU-e18" secondAttribute="bottom" id="SPp-TM-M5a"/>
                             <constraint firstItem="gaw-TU-e18" firstAttribute="leading" secondItem="Fmm-QY-cUs" secondAttribute="leading" id="WiN-kp-Msu"/>
                             <constraint firstItem="Fmm-QY-cUs" firstAttribute="bottom" secondItem="KM3-Z3-qk1" secondAttribute="bottom" id="bQe-uA-amN"/>
                             <constraint firstItem="KM3-Z3-qk1" firstAttribute="leading" secondItem="Fmm-QY-cUs" secondAttribute="leading" id="cQg-pD-Dfd"/>

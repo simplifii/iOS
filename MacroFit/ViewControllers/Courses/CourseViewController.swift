@@ -11,33 +11,40 @@ import SwiftyJSON
 
 class CourseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var courseJSON: JSON?
-    var daysJSON: [[JSON]]?
+    var courseJSON: JSON? {
+        didSet {
+            getDaysJSON()
+        }
+    }
+    var lessonsJSON: [JSON]?
+    var exercisesJSON: [String : JSON] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        daysJSON = [
-            [  //Day 1
-                ["title" : "Squats",
-                 "time" : "01:00",
-                 "done" : true ],
-                ["title" : "Dumbbell Row",
-                 "reps" : 10,
-                 "done" : false ],
-                ["title" : "Planks x30 seconds",
-                 "reps" : 3,
-                 "time" : "01:30"]
-            ],
-            [], //Day 2
-            []  //Day 3
-        ]
         
         tableView.register(UINib(nibName: "CourseHeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
         tableView.register(UINib(nibName: "CourseDescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    func getDaysJSON() {
+        if let courseId = courseJSON?["id"].rawString() {
+            APIService.getLessons(for: courseId, completion: { [weak self] success, msg, data in
+                self?.lessonsJSON = data.array
+                
+                for lessonJSON in (data.array ?? []) {
+                    if let lessonId = lessonJSON["id"].rawString() {
+                        APIService.getExercises(for: lessonId, completion:  { [weak self] success, msg, data in
+                            self?.exercisesJSON[lessonId] = data
+                            self?.tableView.reloadData()
+                        })
+                    }
+                }
+                self?.tableView.reloadData()
+            })
+        }
     }
 }
 
@@ -48,7 +55,7 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 { return 2 }
-        return daysJSON?.count ?? 0
+        return lessonsJSON?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,12 +66,14 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
             (cell as? CourseDescriptionCell)?.descriptionLabel.text = courseJSON?["description"].string
             
             (cell as? CourseHeaderCell)?.backgroundImageView.image = nil
-            if let urlString = courseJSON?["image"].rawString(), let url = URL(string: urlString) {
+            if let urlString = courseJSON?["image"].string, let url = URL(string: urlString) {
                 (cell as? CourseHeaderCell)?.backgroundImageView.af_setImage(withURL: url)
             }
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "DaysCell", for: indexPath)
-            (cell as? CourseDayCell)?.exercises = daysJSON?[indexPath.row] ?? []
+            if let lesson = lessonsJSON?[indexPath.row], let key = lesson["id"].rawString(), let exercises = exercisesJSON[key] {
+                (cell as? CourseDayCell)?.exercises = exercises.array ?? []
+            }
             (cell as? CourseDayCell)?.textLabel?.text = "Day \(indexPath.row + 1)"
             (cell as? CourseDayCell)?.parent = self
         }
@@ -78,13 +87,16 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.section != 0, let dayJSON = daysJSON?[indexPath.row] else  { return }
+        guard indexPath.section != 0, let lessonJSON = lessonsJSON?[indexPath.row] else  { return }
         
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "Day")
         
+        
         if let dayVC = vc as? CourseDayViewController {
             dayVC.headerText =  "Day \(indexPath.row + 1)"
-            dayVC.dayJSON = dayJSON
+            if let key = lessonJSON["id"].rawString(), let exercises = exercisesJSON[key]?.array {
+                dayVC.dayJSON = exercises
+            }
             dayVC.courseJSON = courseJSON
         }
         navigationController?.pushViewController(vc, animated: true)

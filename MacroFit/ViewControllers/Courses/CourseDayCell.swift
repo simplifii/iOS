@@ -53,14 +53,17 @@ extension CourseDayCell: UITableViewDataSource, UITableViewDelegate {
             eCell.timeLabel.text = nil
             eCell.repsLabel.text = nil
             
-            if let time = exercise["time"].string {
-                eCell.timeLabel.text = time
-                if let reps = exercise["reps"].int {
-                    eCell.repsLabel.text = "\(reps) reps"
-                }
-            } else if let reps = exercise["reps"].int {
+            var repsText: String? = nil
+            if let reps = exercise["recommended_reps"].int {
+                repsText = "\(reps) rep\(reps > 1 ? "s" : "")"
+            }
+            
+            if let time = exercise["recommended_duration_in_secs"].int {
+                eCell.timeLabel.text = MFTimeFormatter.formatter.durationString(fromSeconds: time)
+                eCell.repsLabel.text = repsText
+            } else {
                 //Otherwise it's just reps, if so. - clear out the reps label and put reps in time.
-                eCell.timeLabel.text = "\(reps) reps"
+                eCell.timeLabel.text = repsText
             }
         }
         

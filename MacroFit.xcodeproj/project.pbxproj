@@ -13,6 +13,7 @@
 		5857612021A8CEBD0040A643 /* CourseDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */; };
 		5857612321A8EB710040A643 /* CourseHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5857612221A8EB710040A643 /* CourseHeaderCell.xib */; };
 		5857612721A8EC900040A643 /* CourseDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5857612621A8EC900040A643 /* CourseDescriptionCell.xib */; };
+		58576D6521AF8B06002B38D9 /* MFTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */; };
 		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		58BC469621A3216C00592770 /* CoursesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469521A3216C00592770 /* CoursesMainViewController.swift */; };
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
@@ -189,6 +190,7 @@
 		5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDayViewController.swift; sourceTree = "<group>"; };
 		5857612221A8EB710040A643 /* CourseHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseHeaderCell.xib; sourceTree = "<group>"; };
 		5857612621A8EC900040A643 /* CourseDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseDescriptionCell.xib; sourceTree = "<group>"; };
+		58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFTimeFormatter.swift; sourceTree = "<group>"; };
 		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		58BC469521A3216C00592770 /* CoursesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesMainViewController.swift; sourceTree = "<group>"; };
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				E0A6DD83214F78B300B6C301 /* UIButtonExtension.swift */,
 				E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */,
 				E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */,
+				58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1118,6 +1121,7 @@
 				E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */,
 				E03E118D2190208F006B3F0C /* GetScore.swift in Sources */,
 				58BC469C21A5218600592770 /* CourseListTableViewController.swift in Sources */,
+				58576D6521AF8B06002B38D9 /* MFTimeFormatter.swift in Sources */,
 				E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */,
 				5857612021A8CEBD0040A643 /* CourseDayViewController.swift in Sources */,
 				E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */,
