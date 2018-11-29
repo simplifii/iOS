@@ -46,6 +46,7 @@
 		E03E118E2190208F006B3F0C /* ChallengeTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E118A2190208F006B3F0C /* ChallengeTags.swift */; };
 		E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */; };
 		E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */; };
+		E05BE7A521AFFC59005377D9 /* SignUpOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BE7A421AFFC59005377D9 /* SignUpOptionsViewController.swift */; };
 		E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */; };
 		E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */; };
 		E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */; };
@@ -211,6 +212,7 @@
 		E03E118A2190208F006B3F0C /* ChallengeTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTags.swift; sourceTree = "<group>"; };
 		E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormTableViewController.swift; sourceTree = "<group>"; };
 		E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageViewController.swift; sourceTree = "<group>"; };
+		E05BE7A421AFFC59005377D9 /* SignUpOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOptionsViewController.swift; sourceTree = "<group>"; };
 		E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoriesViewController.swift; sourceTree = "<group>"; };
 		E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -441,6 +443,19 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		E05BE7A321AFFBC2005377D9 /* SignUpFlow */ = {
+			isa = PBXGroup;
+			children = (
+				E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */,
+				E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */,
+				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
+				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
+				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
+				E05BE7A421AFFC59005377D9 /* SignUpOptionsViewController.swift */,
+			);
+			path = SignUpFlow;
+			sourceTree = "<group>";
+		};
 		E05F9192217701CE001AF01D /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +578,7 @@
 		E0A6DD7E214F73A900B6C301 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E05BE7A321AFFBC2005377D9 /* SignUpFlow */,
 				E03E117021901296006B3F0C /* Challenges */,
 				E0034928217F3E7100AED979 /* Home */,
 				E0034921217EDDB200AED979 /* Fitness */,
@@ -571,13 +587,8 @@
 				E05F9192217701CE001AF01D /* Recipes */,
 				E075A975215E377100D264CA /* BaseViewController.swift */,
 				E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */,
-				E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */,
-				E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */,
-				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
 				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
 				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
-				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
-				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
 				E073FEDD2170BC1A00000423 /* TabBarViewController.swift */,
 				E0C009A0217600E400926904 /* SideMenuFormTableViewController.swift */,
 				E0C009A221760F5500926904 /* SideMenuViewController.swift */,
@@ -1011,6 +1022,7 @@
 				E009ABB5218715AC0000C16C /* MealInfoBoxView.swift in Sources */,
 				E075A976215E377200D264CA /* BaseViewController.swift in Sources */,
 				E0982ACD21789F1900F5FCE5 /* ReferFriendViewController.swift in Sources */,
+				E05BE7A521AFFC59005377D9 /* SignUpOptionsViewController.swift in Sources */,
 				E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */,
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
 				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,

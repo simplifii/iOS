@@ -1,8 +1,8 @@
 //
-//  IntroductionScreenViewController.swift
+//  SignUpOptionsViewController.swift
 //  MacroFit
 //
-//  Created by Chandresh Singh on 17/09/18.
+//  Created by Chandresh on 29/11/18.
 //  Copyright © 2018 Chandresh Singh. All rights reserved.
 //
 
@@ -10,59 +10,69 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate {
+class SignUpOptionsViewController: BaseViewController {
 
-    @IBOutlet weak var featuresListScrollView: UIScrollView!
-    @IBOutlet weak var featuresPageControl: UIPageControl!
-    @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var expiryTimeLabel: UILabel!
+    var expiryTimeInSeconds = 180
+    var gameTimer: Timer!
     
-    
-    var features = ["Custom meal plans & workouts for your specific goals", "Macros that make sense. Nutrition for your lifestyle.", "Fitness challenges and easy health eating."]
+    @IBOutlet weak var signUpWithFBButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFeatures()
+
+        setExipryTimer()
         
-        featuresListScrollView.isPagingEnabled = true
-        featuresListScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(features.count), height: 75)
-        featuresListScrollView.showsHorizontalScrollIndicator = false
-        self.featuresListScrollView.delegate = self
-        self.featuresPageControl.currentPage = 0
+        let icon = resizeImage(image: UIImage(named: "facebook")!, targetSize: CGSize(width: 21, height: 21))
+        signUpWithFBButton.setImage(icon, for: .normal)
+        signUpWithFBButton.imageView?.contentMode = .scaleAspectFit
+        signUpWithFBButton.imageEdgeInsets = UIEdgeInsets(top: 14, left: 0, bottom: 14, right: 50)
     }
     
-    
-    func loadFeatures() {
-        for(index, feature) in features.enumerated() {
-            if let featureView = Bundle.main.loadNibNamed("FeatureView", owner: self, options: nil)?.first as? FeatureView {
-                featureView.featureLabel.text = feature
-                
-                featuresListScrollView.addSubview(featureView)
-                
-                featureView.frame.size.width = self.view.bounds.size.width
-                featureView.frame.origin.x = CGFloat(index) *  self.view.bounds.size.width
-            }
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
         }
+        
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    func setExipryTimer() {
+        gameTimer =   Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateExpiryTime(_:)), userInfo: nil, repeats: true)
+        gameTimer.fire()
+
+    }
+    
+    @objc func updateExpiryTime(_ sender: Timer) {        
+        if expiryTimeInSeconds < 0 {
+            gameTimer.invalidate()
+            return
+        }
+        let minutes = expiryTimeInSeconds/60
+        let seconds = expiryTimeInSeconds - (minutes*60)
+        if seconds < 10 {
+            expiryTimeLabel.text = "\(minutes):0\(seconds)"
+        } else {
+            expiryTimeLabel.text = "\(minutes):\(seconds)"
+        }
+        expiryTimeInSeconds -= 1
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = scrollView.contentOffset.x / scrollView.frame.size.width
-        featuresPageControl.currentPage = Int(page)
-        backgroundImage.image = UIImage(named: "intro_screen_background\(Int(page) + 1)")
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LoginViewControllerSegue"{
-            let vc = segue.destination as! LoginViewController
-            vc.showNavbar = true
-        }
-    }
-    
     @IBAction func loginUsingFacebook(_ sender: UIButton) {
         let loginManager = FBSDKLoginManager()
         loginManager.loginBehavior = FBSDKLoginBehavior.browser
@@ -83,7 +93,7 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
                         self.showAlertMessage(title: "Unable to get email. Please try again", message: nil)
                     }
                 }
-                })
+            })
         } else {
             let userId = FBSDKAccessToken.current()!.userID
             let token = FBSDKAccessToken.current()!.tokenString
@@ -104,8 +114,8 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
     }
     
     func setUserDetails(userId: String, token: String) {
-//        print(userId)
-//        print(token)
+        //        print(userId)
+        //        print(token)
         APIService.facebookLogin(fbUserId: userId, fbUserToken: token, completion: {success,msg,json in
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
@@ -121,4 +131,11 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
+    @IBAction func goBack(_ sender: UIButton) {
+        self.showPreviousScreen()
+    }
+    
+
+    @IBAction func signUpAsTrainer(_ sender: UIButton) {
+    }
 }
