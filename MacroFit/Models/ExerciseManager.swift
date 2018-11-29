@@ -10,6 +10,7 @@ import UIKit
 
 extension Notification.Name {
     public static let exerciseTimeUpdated = Notification.Name(rawValue: "timeUpdated")
+    public static let exerciseCompleted = Notification.Name(rawValue: "exerciseCompleted")
 }
 
 class ExerciseManager: NSObject {
@@ -17,6 +18,8 @@ class ExerciseManager: NSObject {
     private var _stopwatch: Stopwatch
     var stopwatch: Stopwatch { return _stopwatch }
     private var notificationTimer: Timer!
+    
+    var currentExercise: String?
     
     override init() {
         _stopwatch = Stopwatch()
@@ -29,9 +32,12 @@ class ExerciseManager: NSObject {
         RunLoop.main.add(notificationTimer, forMode: .defaultRunLoopMode)
     }
     
-    func recordExercise() {
+    func recordCurrentExercise() {
         stopwatch.reset()
         //TODO make API call
+        if let e = currentExercise {
+            NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: ["exercise" : e])
+        }
     }
 }
 

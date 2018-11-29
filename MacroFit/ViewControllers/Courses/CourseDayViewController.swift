@@ -48,11 +48,13 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             if let urlString = courseJSON?["image"].rawString(), let url = URL(string: urlString) {
                 (cell as? CourseHeaderCell)?.backgroundImageView.af_setImage(withURL: url)
             }
+            
+            cell.selectionStyle = .none
 
             return cell
         } else {
             guard let day = dayJSON?[indexPath.row] else { return UITableViewCell() }
-            let cell = tableView.dequeueReusableCell(withIdentifier: roundNumber == indexPath.row + 1 ? "ExerciseExpanded" : "Exercise", for: indexPath) as! ExerciseCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: roundNumber == indexPath.row + 1 ? "ExerciseExpandedTime" : "Exercise", for: indexPath) as! ExerciseCell
             cell.exerciseNameLabel.text = day["title"].rawString()
             if let time = day["time"].string {
                 cell.rightDetailLabel.text = time
@@ -64,6 +66,8 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.rightDetailLabel.text = "\(reps) reps"
             }
             cell.doneImageView.image = UIImage(named: day["done"].boolValue ? "done" : "undone")
+            
+            cell.selectionStyle = .none
             
             return cell
         }
@@ -94,7 +98,7 @@ class ExerciseCell : UITableViewCell {
     }
 }
 
-class ExerciseCellExpanded: ExerciseCell {
+class TimeExerciseCell: ExerciseCell {
     
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
@@ -103,20 +107,26 @@ class ExerciseCellExpanded: ExerciseCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateLabels), name: .exerciseTimeUpdated, object: nil)
-        timeLabel.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: 0)
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived), name: .exerciseTimeUpdated, object: nil)
+        updateLabels(0)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         minTime = 0
+        updateLabels(0)
     }
     
-    @objc func updateLabels(_ note: Notification) {
+    @objc func notificationReceived(_ note: Notification) {
         if let time = note.userInfo?["time"] as? TimeInterval {
-            timeLabel.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: time)
-            completeButton.isEnabled = minTime < time
+            updateLabels(time)
         }
+    }
+    
+    func updateLabels(_ time: TimeInterval) {
+        timeLabel.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: time)
+        completeButton.isEnabled = minTime < time
+        playPauseButton.setTitle(ExerciseManager.manager.stopwatch.running ? "Pause" : "Start", for: .normal)
     }
     
     @IBAction func playPausePressed(_ sender: UIButton) {
@@ -126,6 +136,37 @@ class ExerciseCellExpanded: ExerciseCell {
     }
     
     @IBAction func completePressed(_ sender: Any) {
-        ExerciseManager.manager.recordExercise()
+        ExerciseManager.manager.recordCurrentExercise()
+    }
+}
+
+class RepsExerciseCell: ExerciseCell {
+    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var weightsLabel: UILabel!
+    
+    var numPounds: Double?
+    var numReps: Int?
+    
+    func updateText() {
+        let numberAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: weightsLabel.font.fontName, size: 24)!,
+                                                              .foregroundColor : UIColor.black
+        ]
+        let unitsAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: weightsLabel.font.fontName, size: 17)!,
+                                                             .foregroundColor : UIColor.darkGray
+        ]
+        
+        let attrString = NSMutableAttributedString()
+        
+        if let lbs = numPounds {
+            attrString.append(NSAttributedString(string: "\(lbs)", attributes: numberAttributes))
+            attrString.append(NSAttributedString(string: "lb   ", attributes: unitsAttributes))
+        }
+        
+        if let reps = numReps {
+            attrString.append(NSAttributedString(string: "\(reps)", attributes: numberAttributes))
+            attrString.append(NSAttributedString(string: " reps", attributes: unitsAttributes))
+        }
+        
+        weightsLabel.attributedText = attrString
     }
 }
