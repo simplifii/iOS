@@ -99,12 +99,33 @@ class ExerciseCellExpanded: ExerciseCell {
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
+    var minTime: TimeInterval = 0
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLabels), name: .exerciseTimeUpdated, object: nil)
+        timeLabel.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: 0)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        minTime = 0
+    }
+    
+    @objc func updateLabels(_ note: Notification) {
+        if let time = note.userInfo?["time"] as? TimeInterval {
+            timeLabel.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: time)
+            completeButton.isEnabled = minTime < time
+        }
+    }
     
     @IBAction func playPausePressed(_ sender: UIButton) {
         let wasPaused = sender.title(for: .normal) == "Start"
         sender.setTitle( wasPaused ? "Pause" : "Start", for: .normal)
+        wasPaused ? ExerciseManager.manager.stopwatch.start() : ExerciseManager.manager.stopwatch.pause()
     }
     
     @IBAction func completePressed(_ sender: Any) {
+        ExerciseManager.manager.recordExercise()
     }
 }

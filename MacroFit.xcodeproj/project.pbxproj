@@ -14,6 +14,7 @@
 		5857612321A8EB710040A643 /* CourseHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5857612221A8EB710040A643 /* CourseHeaderCell.xib */; };
 		5857612721A8EC900040A643 /* CourseDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5857612621A8EC900040A643 /* CourseDescriptionCell.xib */; };
 		58576D6521AF8B06002B38D9 /* MFTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */; };
+		58576D6721AF9B33002B38D9 /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58576D6621AF9B33002B38D9 /* ExerciseManager.swift */; };
 		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		58BC469621A3216C00592770 /* CoursesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469521A3216C00592770 /* CoursesMainViewController.swift */; };
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
@@ -191,6 +192,7 @@
 		5857612221A8EB710040A643 /* CourseHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseHeaderCell.xib; sourceTree = "<group>"; };
 		5857612621A8EC900040A643 /* CourseDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseDescriptionCell.xib; sourceTree = "<group>"; };
 		58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFTimeFormatter.swift; sourceTree = "<group>"; };
+		58576D6621AF9B33002B38D9 /* ExerciseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManager.swift; sourceTree = "<group>"; };
 		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		58BC469521A3216C00592770 /* CoursesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesMainViewController.swift; sourceTree = "<group>"; };
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				E03E118A2190208F006B3F0C /* ChallengeTags.swift */,
 				E03E11882190208F006B3F0C /* GetEachUserBestScore.swift */,
 				E03E11892190208F006B3F0C /* GetScore.swift */,
+				58576D6621AF9B33002B38D9 /* ExerciseManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1088,6 +1091,7 @@
 				E03E118021902012006B3F0C /* ChallengeTagsCollectionViewCell.swift in Sources */,
 				E09AA5CE2181EEA600338477 /* ThankYouPopupViewController.swift in Sources */,
 				E0978EAD218309A40049301E /* WeightAndBodyFatViewController.swift in Sources */,
+				58576D6721AF9B33002B38D9 /* ExerciseManager.swift in Sources */,
 				E0A5605A216C9B76003534D4 /* DateTimeView.swift in Sources */,
 				E0BEBAAB2152838A00B7471D /* RoundedCornerBoxView.swift in Sources */,
 				E0BD2B85216B6F0D00E2D297 /* CartBarView.swift in Sources */,
