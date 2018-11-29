@@ -40,6 +40,15 @@ enum APIRouter: URLRequestConvertible {
     case updateBodyFat(bodyFat:Int)
     case updateAddress(addressLineOne: String, addressLineTwo:String?, zipcode:String)
     
+    case getChallenges()
+    case getChallengeTags()
+    case getChallengeSearch(searchString: String?)
+    case getChallengeScore(equalto___challenge:String?,creator:String?)
+    case getEachUserBestScore(equalto___challenge:String?,userBestScore:Bool,theMoreTheBetter:Bool)
+    case SubmitScore(score:String?,challenge:String)
+    case updateDeviceToken(token: String)
+    case changePassword(newPassword: String)
+    
     var path: String {
         
         switch self {
@@ -53,7 +62,7 @@ enum APIRouter: URLRequestConvertible {
             
             case .facebookLogin:
                 return NetworkingConstants.facebookLogin
-        case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress:
+        case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -82,6 +91,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.cards
             case .createFeedback, .editFeedback, .getFeedback:
                 return NetworkingConstants.cards
+        case.getChallenges, .getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .SubmitScore:
+            return NetworkingConstants.challenges
         }
     }
     
@@ -105,6 +116,7 @@ enum APIRouter: URLRequestConvertible {
         case let .loginUser(username: username, password: password):
                 bodyDict["username"] = username
                 bodyDict["password"] = password
+                bodyDict["device_token"] = UserDefaults.standard.string(forKey: UserConstants.deviceToken)
                 break
         case let .facebookLogin(fbUserId: fbUserId, fbUserToken: fbUserToken):
                 bodyDict["fb_user_id"] = fbUserId
@@ -187,8 +199,24 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["address_line_1"] = addressLineOne
             bodyDict["address_line_2"] = addressLineTwo
             bodyDict["zipcode"] = zipcode
+        case let .changePassword(newPassword:newPassword):
+            bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            bodyDict["action"] = "ChangePassword"
+            bodyDict["password"] = newPassword
             break
-            default:
+        case let .SubmitScore(score:score,challenge:challenge):
+            bodyDict["entity"] = "Score"
+            bodyDict["score_type"] = "Challenge"
+            bodyDict["action"] = "Create"
+            bodyDict["score"] = score
+            bodyDict["challenge"] = challenge
+            break
+        case let .updateDeviceToken(token: token):
+            bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            bodyDict["action"] = "UpdateDeviceToken"
+            bodyDict["device_token"] = token
+            break
+        default:
                 print("no action")
         }
         
@@ -244,6 +272,54 @@ enum APIRouter: URLRequestConvertible {
             paramDict["type"] = "Feedback"
             paramDict["equalto___type"] = "AppRating"
             break
+        case .getChallenges:
+            paramDict["type"] = "Challenge"
+            break
+        case.getChallengeTags:
+            paramDict["type"] = "Label"
+            paramDict["equalto___type"] = "Challenge"
+            paramDict["show_columns"] = "string1"
+            break
+        case let .getChallengeSearch(searchString: search):
+            paramDict["type"] = "Challenge"
+            paramDict["search"] = search
+            break
+        case let .getChallengeScore(equalto___challenge:equalto_challenge,creator:creator):
+            paramDict["type"] = "Score"
+            paramDict["equalto___challenge"] = equalto_challenge
+            paramDict["creator"] = creator
+            break
+        case let .getEachUserBestScore(equalto___challenge:equalto_challenge,userBestScore:userBestScore, theMoreTheBetter:theMoreTheBetter):
+            if userBestScore {
+                paramDict["type"] = "Score"
+                paramDict["equalto___challenge"] = equalto_challenge
+                paramDict["creator"] = UserDefaults.standard.string(forKey: UserConstants.userId)
+                
+                let date = Date()
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: date)
+                let minutes = calendar.component(.minute, from: date)
+                let minutesTillNow = (hour*60) + minutes
+                
+                
+                paramDict["dategreaterthanequalto___created_at_format"] = "Y-m-d"
+                paramDict["dategreaterthanequalto___created_at"] = "-\(minutesTillNow) minutes"
+                paramDict["datelessthanequalto___created_at"] = "now"
+            }else
+            {
+                paramDict["type"] = "Score"
+                paramDict["equalto___challenge"] = equalto_challenge
+                paramDict["equalto___users_best"] = "1"
+                if theMoreTheBetter {
+                    paramDict["sort_by"] = "-int2"
+                } else {
+                    paramDict["sort_by"] = "+int2"
+                }
+                paramDict["embed"] = "creator"
+            }
+            
+            
+            break
         default:
             break
         }
@@ -254,11 +330,11 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword:
             return .patch
         }
     }
@@ -271,10 +347,10 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch,.getChallengeScore ,.getEachUserBestScore:
                 if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
                     headers[UserConstants.authentication] = "Bearer \(token)"
                 }

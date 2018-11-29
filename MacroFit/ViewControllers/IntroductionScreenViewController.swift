@@ -67,7 +67,7 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
         let loginManager = FBSDKLoginManager()
         loginManager.loginBehavior = FBSDKLoginBehavior.browser
         if FBSDKAccessToken.current() == nil {
-            loginManager.logIn(withReadPermissions: ["public_profile","email"], from: self, handler: { (result, error) -> Void in
+            loginManager.logIn(withReadPermissions: ["public_profile","email","user_friends"], from: self, handler: { (result, error) -> Void in
                 if error != nil {
                     self.showAlertMessage(title: error!.localizedDescription, message: nil)
                 } else if result!.isCancelled {
@@ -87,6 +87,7 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
         } else {
             let userId = FBSDKAccessToken.current()!.userID
             let token = FBSDKAccessToken.current()!.tokenString
+            
             print("already logged in user")
             self.setUserDetails(userId: userId!, token: token!)
         }

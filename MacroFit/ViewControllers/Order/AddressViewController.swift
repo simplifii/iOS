@@ -15,10 +15,14 @@ class AddressViewController: BaseViewController {
     var addressFormTableViewController: AddressFormTableViewController!
 
     var orderModelController: OrderModelController!
+    var onlySetAddress = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAndSetDeliveryDate()
+        
+        if !onlySetAddress {
+            getAndSetDeliveryDate()
+        }
         
         setupView()
 
@@ -72,10 +76,14 @@ class AddressViewController: BaseViewController {
                     self.showAlertMessage(title: msg, message: nil)
                 }
             } else {
-                if !self.orderModelController.deliveryDateFormatted.isEmpty {
-                    self.showOrderSummaryScreen()
+                if self.onlySetAddress == true {
+                    self.showPreviousScreen()
                 } else {
-                    self.showAlertMessage(title: "Unable to get delivery date", message: nil)
+                    if !self.orderModelController.deliveryDateFormatted.isEmpty {
+                        self.showOrderSummaryScreen()
+                    } else {
+                        self.showAlertMessage(title: "Unable to get delivery date", message: nil)
+                    }
                 }
             }
         })

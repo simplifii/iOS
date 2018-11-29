@@ -34,6 +34,7 @@ struct APIService {
                             }
                             
                             UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
+                            UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
                             UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
                             UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
                             UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
@@ -59,16 +60,20 @@ struct APIService {
         let request = APIRouter.facebookLogin(fbUserId: fbUserId, fbUserToken: fbUserToken)
         
         sendRequestAndGetFullResponse(request: request, completion: {success,msg,json in
-            let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
-            if user == nil {
-                completion(false, "Unable to save profile. Please try again", [:])
+            print(json)
+            if success {
+                let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
+                if user == nil {
+                    completion(false, "Unable to save profile. Please try again", [:])
+                }
+                
+                UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
+                UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
+                UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
+                UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
+                UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
             }
-            
-            UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
-            UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
-            UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
-            UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
-        
+    
             completion(success, msg, json)
         })
         
@@ -161,6 +166,36 @@ struct APIService {
         })
     }
     
+    static func getListOfChallenges(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallenges(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getChallengeTags(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallengeTags(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getChallengeSearch(searchString:String?, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallengeSearch(searchString: searchString), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getChallengeScore(equalto___challenge:String?,creator:String?, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getChallengeScore(equalto___challenge: equalto___challenge, creator: creator), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getEachUserBestScore(equalto___challenge:String?,userBestScore:Bool,theMoreTheBetter:Bool, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getEachUserBestScore(equalto___challenge: equalto___challenge, userBestScore: userBestScore, theMoreTheBetter: theMoreTheBetter), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
     
     // POST & PATCH
     
@@ -242,6 +277,13 @@ struct APIService {
         })
     }
     
+    static func SubmitScore(score:String,challenge:String, completion: @escaping (Bool, String,JSON) -> Void) {
+        let request = APIRouter.SubmitScore(score:score,challenge:challenge)
+        sendRequestAndGetData(request: request, completion: {success,msg,data in
+            completion(success, msg, data)
+        })
+    }
+    
     // Feedback
     static func createFeedback(rating:Int, completion: @escaping (Bool, String, JSON) -> Void){
         sendRequestAndGetData(request: APIRouter.createFeedback(rating: rating), completion: {success,msg,json_data in
@@ -262,6 +304,18 @@ struct APIService {
     
     static func updateAddress(addressLineOne: String, addressLineTwo:String?, zipcode:String, completion: @escaping (Bool, String) -> Void){
         sendRequest(request: APIRouter.updateAddress(addressLineOne: addressLineOne, addressLineTwo:addressLineTwo, zipcode:zipcode), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
+    static func changePassword(newPassword: String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.changePassword(newPassword: newPassword), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
+    static func updateDeviceToken(token:String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.updateDeviceToken(token: token), completion: {success,msg in
             completion(success, msg)
         })
     }

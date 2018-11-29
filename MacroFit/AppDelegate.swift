@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 import Stripe
 import FBSDKLoginKit
+import Firebase
+import UserNotifications
+import Branch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,11 +22,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationController: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let branch: Branch = Branch.getInstance()
+        branch.initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: {params, error in
+            if error == nil {
+                // params are the deep linked params associated with the link that the user clicked -> was re-directed to this app
+                // params will be empty if no data found
+                // ... insert custom logic here ...
+                print("params: %@", params as? [String: AnyObject] ?? {})
+            }
+        })
+        
+        // Stripe Payment
         STPPaymentConfiguration.shared().publishableKey = "pk_test_MImoV6wrzv2xoUmWcbPJVBhs"
 
+        // Authenticate token
         checkUserToken()
         
+        // Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        // ####### Firebase start ######
+        FirebaseApp.configure()
+        
+        Messaging.messaging().delegate = self as? MessagingDelegate
+        
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        
+        // ####### Firebase end ######
         
         return true
     }
@@ -59,6 +99,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        // pass the url to the handle deep link call
+        let branchHandled = Branch.getInstance().application(application,
+                                                             open: url,
+                                                             sourceApplication: sourceApplication,
+                                                             annotation: annotation
+        )
+        if (!branchHandled) {
+            // If not handled by Branch, do other deep link routing for the Facebook SDK, Pinterest SDK, etc
+        }
+        
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
@@ -126,6 +177,145 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // [START receive_message]
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        // Print message ID.
+        print("didReceiveRemoteNotification")
+        // Print full message.
+        print(userInfo)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        // Print message ID.
+        print("didReceiveRemoteNotification and handler")
+        
+        if !(UIApplication.shared.applicationState == UIApplicationState.active) {
+            if let type = userInfo["gcm.notification.type"] as? String {
+                if type == "friends_score" || type == "friends_best_score" {
+                    let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "PushUpChallenge") as? PushUpChallengeViewController
+                    if let title = userInfo["gcm.notification.title"] as? String {
+                        vc?.challengeTitle = title
+                    }
+                    if let participantsCount = userInfo["gcm.notification.participants_count"] as? String {
+                        vc?.challengeParticipants_count = participantsCount
+                    }
+                    if let description = userInfo["gcm.notification.description"] as? String {
+                        vc?.challengeDescription = description
+                    }
+                    if let id = userInfo["gcm.notification.id"] as? String {
+                        vc?.challengeId = id
+                    }
+                    if let scoreUnit = userInfo["gcm.notification.score_unit"] as? String {
+                        vc?.challengeScore_unit = scoreUnit
+                    }
+                    if let photo = userInfo["gcm.notification.photo"] as? String {
+                        vc?.challengePhoto = photo
+                    }
+                    if let isScoringInTime = userInfo["gcm.notification.is_scoring_in_time"] as? String {
+                        if isScoringInTime == "0" {
+                            vc?.challengeIs_scoring_in_time = false
+                        } else {
+                            vc?.challengeIs_scoring_in_time = true
+                        }
+                    }
+                    if let theMoreTheBetter = userInfo["gcm.notification.the_more_the_better"] as? String {
+                        if theMoreTheBetter == "0" {
+                            vc?.theMoreTheBetter = false
+                        } else {
+                            vc?.theMoreTheBetter = true
+                        }
+                    }
+                    
+                    
+                    let storyboard = UIStoryboard(name: "MacroFit", bundle: nil)
+                    let mainVC = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+                    
+                    let navigationController = storyboard.instantiateViewController(withIdentifier: "MacroFitNavigationController") as! UINavigationController
+                    navigationController.pushViewController(mainVC, animated: false)
+                    navigationController.pushViewController(vc!, animated: false)
+                    
+                    self.window?.rootViewController = navigationController
+                    self.window?.makeKeyAndVisible()
+                    
+                }
+            }
+        }
+        
+        // Print full message.
+        print(userInfo)
+        
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+    // [END receive_message]
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Unable to register for remote notifications: \(error.localizedDescription)")
+    }
+    
+    // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
+    // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
+    // the FCM registration token.
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("APNs token retrieved: \(deviceToken)")
+        
+        // With swizzling disabled you must set the APNs token here.
+        // Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    
+    
+    // Respond to Universal Links
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        // pass the url to the handle deep link call
+        Branch.getInstance().continue(userActivity)
+        
+        return true
+    }
 
+}
+
+
+extension AppDelegate : MessagingDelegate {
+    // [START refresh_token]
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        
+        if UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode) != nil {
+            if fcmToken != (UserDefaults.standard.string(forKey: UserConstants.deviceToken) ?? "") {
+                APIService.updateDeviceToken(token:fcmToken, completion: {success,msg in
+                    print(msg)
+                    if success {
+                        UserDefaults.standard.set(fcmToken, forKey: UserConstants.deviceToken)
+                    }
+                })
+            }
+        } else {
+            UserDefaults.standard.set(fcmToken, forKey: UserConstants.deviceToken)
+        }
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    // [END refresh_token]
+    // [START ios_10_data_message]
+    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
+    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Received data message: \(remoteMessage.appData)")
+    }
+    // [END ios_10_data_message]
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qth-1a-769">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qth-1a-769">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,7 +105,7 @@
                                     <segue destination="Tgr-8H-z50" kind="show" identifier="LoginViewControllerSegue" id="Kg5-Bm-ImY"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeO-As-lyx">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zeO-As-lyx">
                                 <rect key="frame" x="0.0" y="256" width="375" height="177"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="177" id="Q5X-be-5GM"/>
@@ -1342,6 +1342,7 @@
                         <outlet property="mealsSelectionView" destination="SIc-Ed-vYh" id="6fJ-HR-r7J"/>
                         <outlet property="navbarView" destination="2Nd-5w-4na" id="Wgo-PE-s0R"/>
                         <outlet property="progressBarView" destination="aN4-Zk-Xbh" id="JHY-E8-N70"/>
+                        <outlet property="seeDailyMacrosButton" destination="MwB-ZY-RDU" id="a32-OI-a3v"/>
                         <outlet property="tenPercentMacrosForSnacksButton" destination="72d-p3-dkh" id="OFl-us-uDb"/>
                         <outlet property="threeMealsPerDayButton" destination="0bN-sm-bqZ" id="Q1c-Pz-miT"/>
                         <outlet property="twentyPercentMacrosForSnacksButton" destination="Etj-ph-Wgj" id="AC0-FQ-xSt"/>
@@ -1519,28 +1520,14 @@
                                                     <constraint firstAttribute="trailing" secondItem="bfP-PW-Ths" secondAttribute="trailing" constant="32" id="yEv-ZH-DyI"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-i1-P7o">
-                                                <rect key="frame" x="26" y="420" width="323" height="30"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                                <state key="normal" title="Save to Photos">
-                                                    <color key="titleColor" red="1" green="0.31830344820000001" blue="0.2743527805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="saveToPhotos:" destination="AbZ-2K-5oG" eventType="touchUpInside" id="ZDQ-GV-iSM"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Hv8-FY-Bnb" secondAttribute="trailing" constant="26" id="AdW-jl-QMH"/>
                                             <constraint firstItem="zml-v1-aJ3" firstAttribute="top" secondItem="mx2-m1-GVE" secondAttribute="top" constant="4" id="BQo-Jh-4Zj"/>
                                             <constraint firstItem="Hv8-FY-Bnb" firstAttribute="top" secondItem="zml-v1-aJ3" secondAttribute="bottom" constant="8" id="NOW-wr-ley"/>
                                             <constraint firstItem="zml-v1-aJ3" firstAttribute="leading" secondItem="mx2-m1-GVE" secondAttribute="leadingMargin" constant="18" id="Q5i-Qr-v0i"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Af0-i1-P7o" secondAttribute="trailing" constant="18" id="Qi4-qS-rI1"/>
-                                            <constraint firstItem="Af0-i1-P7o" firstAttribute="top" secondItem="Hv8-FY-Bnb" secondAttribute="bottom" constant="36" id="bAe-Rm-ULi"/>
-                                            <constraint firstItem="Af0-i1-P7o" firstAttribute="leading" secondItem="mx2-m1-GVE" secondAttribute="leadingMargin" constant="18" id="bG7-Kz-qn2"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="zml-v1-aJ3" secondAttribute="trailing" constant="18" id="nhv-bq-IsP"/>
                                             <constraint firstItem="Hv8-FY-Bnb" firstAttribute="leading" secondItem="mx2-m1-GVE" secondAttribute="leading" constant="26" id="tce-fz-j9U"/>
-                                            <constraint firstAttribute="bottom" secondItem="Af0-i1-P7o" secondAttribute="bottom" constant="1" id="uSE-Ye-cA1"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1736,6 +1723,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="additionalDietaryPreferencesTextView" destination="c4s-Qp-8e5" id="NCm-44-sHS"/>
+                        <outlet property="continueToMealsButton" destination="DE4-US-pBx" id="fyJ-AC-SiX"/>
                         <outlet property="dietaryOptionsView" destination="eiu-up-H3Q" id="6ZQ-GS-0ZZ"/>
                         <outlet property="navbarView" destination="IqN-r4-AqM" id="Xso-tC-Lhr"/>
                         <outlet property="progressBarView" destination="Wuz-nP-GT6" id="lJq-81-bnR"/>
@@ -2087,16 +2075,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arroba" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="arroba" width="512" height="512"/>
         <image name="cancel_gray" width="512" height="512"/>
         <image name="intro_screen_background1" width="375" height="667"/>
         <image name="location" width="424" height="512"/>
         <image name="macro_meal_portions" width="375" height="667"/>
         <image name="macrofit_logo" width="270" height="37"/>
-        <image name="padlock" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="phone_call" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="promocode" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="padlock" width="512" height="512"/>
+        <image name="phone_call" width="512" height="512"/>
+        <image name="promocode" width="512" height="512"/>
         <image name="underline" width="326" height="1"/>
-        <image name="user" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="user" width="512" height="512"/>
     </resources>
 </document>
