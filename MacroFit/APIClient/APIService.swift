@@ -60,17 +60,20 @@ struct APIService {
         let request = APIRouter.facebookLogin(fbUserId: fbUserId, fbUserToken: fbUserToken)
         
         sendRequestAndGetFullResponse(request: request, completion: {success,msg,json in
-            let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
-            if user == nil {
-                completion(false, "Unable to save profile. Please try again", [:])
+            print(json)
+            if success {
+                let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
+                if user == nil {
+                    completion(false, "Unable to save profile. Please try again", [:])
+                }
+                
+                UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
+                UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
+                UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
+                UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
+                UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
             }
-            
-            UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
-            UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
-            UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
-            UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
-            UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
-        
+    
             completion(success, msg, json)
         })
         
