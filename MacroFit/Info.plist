@@ -2,13 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>branch_key</key>
-    <dict>
-        <key>live</key>
-        <string>key_live_hhOjc7WxwqG9v9EruW4bNikisweiCj5u</string>
-        <key>test</key>
-        <string>key_test_oiKnk14BzwK1xXuAD13JDdbatxplto3K</string>
-    </dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>For selecting profile pic from photo library</string>
+	<key>NSCameraUsageDescription</key>
+	<string>For taking user profile pic</string>
+	<key>branch_key</key>
+	<dict>
+		<key>live</key>
+		<string>key_live_hhOjc7WxwqG9v9EruW4bNikisweiCj5u</string>
+		<key>test</key>
+		<string>key_test_oiKnk14BzwK1xXuAD13JDdbatxplto3K</string>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -28,7 +32,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-                <string>macrofitbranch</string>
+				<string>macrofitbranch</string>
 				<string>fb191186845151888</string>
 			</array>
 		</dict>

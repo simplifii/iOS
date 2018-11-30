@@ -11,11 +11,9 @@ import UIKit
 
 class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var whiteOverlayView: UIView!
     @IBOutlet weak var featuresListScrollView: UIScrollView!
     @IBOutlet weak var featuresPageControl: UIPageControl!
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var facebookButton: UIButton!
     
     
     var features = ["Free workout plans from top fitness trainers", "Fitness challenges to keep you motivated", "Follow friends, share your progress, & see how others are keeping fit", "Premium firness courses from amazing instructors"]
@@ -29,18 +27,6 @@ class IntroductionScreenViewController: BaseViewController, UIScrollViewDelegate
         featuresListScrollView.showsHorizontalScrollIndicator = false
         self.featuresListScrollView.delegate = self
         self.featuresPageControl.currentPage = 0
-        
-        
-        
-        let colour:UIColor = .white
-        let colours:[CGColor] = [colour.withAlphaComponent(0.6).cgColor,colour.cgColor]
-        let locations:[NSNumber] = [0,0.6]
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = colours
-        gradientLayer.locations = locations
-        gradientLayer.frame = self.view.frame
-        whiteOverlayView.layer.addSublayer(gradientLayer)
         
     }
     

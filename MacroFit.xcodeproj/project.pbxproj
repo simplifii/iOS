@@ -99,6 +99,9 @@
 		E0A792172153834500CBBFDB /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A792162153834500CBBFDB /* UserConstants.swift */; };
 		E0A79219215384B900CBBFDB /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A79218215384B900CBBFDB /* APIError.swift */; };
 		E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7921D2153BDD100CBBFDB /* Constants.swift */; };
+		E0B73F0821B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B73F0721B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift */; };
+		E0B73F0A21B15A7000FB95E5 /* SignUpBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B73F0921B15A7000FB95E5 /* SignUpBaseViewController.swift */; };
+		E0B73F0C21B1619000FB95E5 /* SelectProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B73F0B21B1619000FB95E5 /* SelectProfilePhotoViewController.swift */; };
 		E0BD2B6E216B247A00E2D297 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B68216B243B00E2D297 /* Montserrat-Black.ttf */; };
 		E0BD2B6F216B247A00E2D297 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B6A216B243B00E2D297 /* Montserrat-BlackItalic.ttf */; };
 		E0BD2B70216B247A00E2D297 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B64216B243A00E2D297 /* Montserrat-Bold.ttf */; };
@@ -271,6 +274,9 @@
 		E0A792162153834500CBBFDB /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
 		E0A79218215384B900CBBFDB /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E0A7921D2153BDD100CBBFDB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E0B73F0721B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFieldTableViewCell.swift; sourceTree = "<group>"; };
+		E0B73F0921B15A7000FB95E5 /* SignUpBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBaseViewController.swift; sourceTree = "<group>"; };
+		E0B73F0B21B1619000FB95E5 /* SelectProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfilePhotoViewController.swift; sourceTree = "<group>"; };
 		E0BD2B5C216B243900E2D297 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		E0BD2B5D216B243900E2D297 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E0BD2B5E216B243900E2D297 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
@@ -452,6 +458,8 @@
 				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
 				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
 				E05BE7A421AFFC59005377D9 /* SignUpOptionsViewController.swift */,
+				E0B73F0921B15A7000FB95E5 /* SignUpBaseViewController.swift */,
+				E0B73F0B21B1619000FB95E5 /* SelectProfilePhotoViewController.swift */,
 			);
 			path = SignUpFlow;
 			sourceTree = "<group>";
@@ -724,6 +732,7 @@
 				E03E118221902036006B3F0C /* LeaderBoardTableViewCell.swift */,
 				E03E118321902036006B3F0C /* StatisticsTableViewCell.swift */,
 				090E4134219AE34E0014BCFD /* LeaderBoardTableViewCell2.swift */,
+				E0B73F0721B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -933,6 +942,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -950,6 +960,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -1042,6 +1053,7 @@
 				E03E118521902037006B3F0C /* LeaderBoardTableViewCell.swift in Sources */,
 				E03E1179219012B1006B3F0C /* SubmitResultViewController.swift in Sources */,
 				E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */,
+				E0B73F0A21B15A7000FB95E5 /* SignUpBaseViewController.swift in Sources */,
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
 				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
@@ -1052,6 +1064,7 @@
 				E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */,
 				E027C0E22188644A00F27E8B /* CoreDataManager.swift in Sources */,
 				E03E118421902037006B3F0C /* ChallengeTableViewCell.swift in Sources */,
+				E0B73F0C21B1619000FB95E5 /* SelectProfilePhotoViewController.swift in Sources */,
 				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
 				E03E118C2190208F006B3F0C /* GetEachUserBestScore.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
@@ -1087,6 +1100,7 @@
 				E0DD472D216F60A000783F99 /* RecipeCardsViewController.swift in Sources */,
 				E0034925217EE23F00AED979 /* FitnessTableViewController.swift in Sources */,
 				E03E1177219012B1006B3F0C /* ChallengeViewController.swift in Sources */,
+				E0B73F0821B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				090E4135219AE34E0014BCFD /* LeaderBoardTableViewCell2.swift in Sources */,
 				E03E117E21902007006B3F0C /* selectValuePopup.swift in Sources */,

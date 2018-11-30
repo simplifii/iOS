@@ -11,6 +11,7 @@ PODS:
   - Branch (0.25.8):
     - Branch/Core (= 0.25.8)
   - Branch/Core (0.25.8)
+  - CropViewController (2.3.8)
   - DropDown (2.3.2)
   - FBSDKCoreKit (4.38.0):
     - Bolts (~> 1.9)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.4)
   - Branch
+  - CropViewController
   - DropDown
   - FBSDKLoginKit
   - Firebase/Core
@@ -101,6 +103,7 @@ SPEC REPOS:
     - AlamofireImage
     - Bolts
     - Branch
+    - CropViewController
     - DropDown
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -124,6 +127,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Branch: bef2918a62f57ce284f4fa1917f5de1fb31295fe
+  CropViewController: 7be882b7d3fb3faef48a41924e80f689e9df2514
   DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   FBSDKCoreKit: 2ab7fdbf600dc6b628ba7a49aa29d357a7b4c74e
   FBSDKLoginKit: 634fa27e72e33620eb6389253337342c03d4a407
@@ -142,6 +146,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TagListView: 0c7e9c26b9aff858224ee6b155f5fcacd9e27c83
 
-PODFILE CHECKSUM: 7076bf48d3052fd109948b571c03b526b2136cab
+PODFILE CHECKSUM: b8571098a11df0081c1ca0546b59d1ae11ba5bba
 
 COCOAPODS: 1.5.3
