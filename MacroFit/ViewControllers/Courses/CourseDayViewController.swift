@@ -14,7 +14,7 @@ class CourseDayViewController: BaseViewController {
     var dayJSON: [JSON]?
     var courseJSON: JSON?
     var headerText: String?
-    fileprivate var roundNumber = 1
+    fileprivate var activeExerciseIndex = 0
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: indexPath.row == 0 ? "HeaderCell" : "DescriptionCell", for: indexPath)
             //Set up title, description, and header
             (cell as? CourseDescriptionCell)?.titleLabel.text = headerText
-            (cell as? CourseDescriptionCell)?.descriptionLabel.text = "Round \(roundNumber): \(roundNumber)/\(dayJSON?.count ?? 0)"
+            (cell as? CourseDescriptionCell)?.descriptionLabel.text = "Round \(activeExerciseIndex): \(activeExerciseIndex)/\(dayJSON?.count ?? 0)"
 
             (cell as? CourseHeaderCell)?.backgroundImageView.image = nil
             if let urlString = courseJSON?["image"].rawString(), let url = URL(string: urlString) {
@@ -54,17 +54,48 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             guard let day = dayJSON?[indexPath.row] else { return UITableViewCell() }
-            let cell = tableView.dequeueReusableCell(withIdentifier: roundNumber == indexPath.row + 1 ? "ExerciseExpandedTime" : "Exercise", for: indexPath) as! ExerciseCell
+            
+            var reuseIdentifier = "Exercise"
+            
+            let repsInt = day["recommended_reps"].int
+            let weightDouble = day["recommended_weight"].double
+            let time = day["time"].string
+            
+            if indexPath.row == activeExerciseIndex {
+                //3 cases:
+                
+                //1: reps and weight are nil: Time only
+                
+                //2: time is nil: Weight, reps
+                
+                //3: weight is nil: Time, reps
+                
+                if repsInt == nil && weightDouble == nil {
+                    reuseIdentifier = "ExerciseExpandedTime"
+                } else if time == nil {
+                    reuseIdentifier = "ExerciseExpandedReps"
+                } else if weightDouble == nil {
+                    reuseIdentifier = "ExerciseExpandedTimeReps"
+                }
+            }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ExerciseCell
             cell.exerciseNameLabel.text = day["title"].rawString()
+            
             if let time = day["time"].string {
                 cell.rightDetailLabel.text = time
-                if let reps = day["reps"].int {
+                if let reps = repsInt {
                     cell.leftDetailLabel.text = "\(reps) reps"
                 }
-            } else if let reps = day["reps"].int {
+            } else if let reps = repsInt {
                 //Otherwise it's just reps, if so. - clear out the reps label and put reps in time.
                 cell.rightDetailLabel.text = "\(reps) reps"
             }
+            
+            (cell as? RepsExerciseCell)?.numReps = repsInt
+            (cell as? RepsExerciseCell)?.numPounds = weightDouble
+            (cell as? TimeRepsExerciseCell)?.repsCount = repsInt
+            
             cell.doneImageView.image = UIImage(named: day["done"].boolValue ? "done" : "undone")
             
             cell.selectionStyle = .none
@@ -147,6 +178,11 @@ class RepsExerciseCell: ExerciseCell {
     var numPounds: Double?
     var numReps: Int?
     
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        updateText()
+    }
+    
     func updateText() {
         let numberAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: weightsLabel.font.fontName, size: 24)!,
                                                               .foregroundColor : UIColor.black
@@ -168,5 +204,41 @@ class RepsExerciseCell: ExerciseCell {
         }
         
         weightsLabel.attributedText = attrString
+    }
+}
+
+class TimeRepsExerciseCell: TimeExerciseCell {
+    @IBOutlet weak var repsLabel: UILabel!
+    
+    var repsCount: Int?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        repsLabel.text = nil
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        repsLabel.text = nil
+    }
+    
+    override func updateLabels(_ time: TimeInterval) {
+        super.updateLabels(time)
+        
+        let numberAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: repsLabel.font.fontName, size: 24)!,
+                                                              .foregroundColor : UIColor.black
+        ]
+        let unitsAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: repsLabel.font.fontName, size: 17)!,
+                                                             .foregroundColor : UIColor.darkGray
+        ]
+        
+        let attrString = NSMutableAttributedString()
+        
+        if let reps = repsCount {
+            attrString.append(NSAttributedString(string: "\(reps)", attributes: numberAttributes))
+            attrString.append(NSAttributedString(string: " reps", attributes: unitsAttributes))
+        }
+        
+        repsLabel.attributedText = attrString
     }
 }

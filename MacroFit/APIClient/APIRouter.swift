@@ -332,11 +332,11 @@ enum APIRouter: URLRequestConvertible {
         case let .getLessons(course: course):
             paramDict["type"] = "Lesson"
             paramDict["sort_by"] = "+int2"
-            paramDict["equalto___fk_course"] = course
+//            paramDict["equalto___fk_course"] = course //TODO revert
         case let .getExercises(lesson: lesson):
             paramDict["type"] = "Exercise"
             paramDict["sort_by"] = "+int2"
-            paramDict["equalto___fk_lesson"] = lesson
+//            paramDict["equalto___fk_lesson"] = lesson //TODO revert
         default:
             break
         }

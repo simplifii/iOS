@@ -58,12 +58,14 @@ class CoursesMainViewController: BaseViewController {
                                   "weights" : "splash-weights",
                                   "yoga" : "splash-yoga",
                                   "beginner" : "splash-sports",
+                                  "popular" : "splash-yoga",
                                   "strengthening" : "splash-strength"]
     fileprivate let iconNames = ["crossfit" : "crossfit",
                                  "sports" : "sports",
                                  "strength" : "strength",
                                  "yoga" : "yoga",
                                  "beginner" : "sports",
+                                 "popular" : "yoga",
                                  "strengthening" : "strength"]
     
     override func viewDidLoad() {
