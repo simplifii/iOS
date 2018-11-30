@@ -20,6 +20,7 @@ class ExerciseManager: NSObject {
     private var notificationTimer: Timer!
     
     var currentExercise: String?
+    var currentRound: Int = 0
     
     override init() {
         _stopwatch = Stopwatch()
@@ -65,5 +66,18 @@ class Stopwatch {
     func pause() {
         accumulatedTime -= (lastStarted?.timeIntervalSinceNow ?? 0)
         lastStarted = nil
+    }
+}
+
+class CountdownStopwatch: Stopwatch {
+    private var timeToCount: TimeInterval = 0
+    
+    var timeRemaining: TimeInterval {
+        return timeToCount - elapsedTime
+    }
+    
+    func startCountDown(from time: TimeInterval) {
+        timeToCount = time
+        start()
     }
 }

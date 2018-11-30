@@ -15,7 +15,9 @@
 		5857612721A8EC900040A643 /* CourseDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5857612621A8EC900040A643 /* CourseDescriptionCell.xib */; };
 		58576D6521AF8B06002B38D9 /* MFTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */; };
 		58576D6721AF9B33002B38D9 /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58576D6621AF9B33002B38D9 /* ExerciseManager.swift */; };
-		5862EF7B21B0CE8E00FA4F19 /* CourseCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF7A21B0CE8E00FA4F19 /* CourseCompleteViewController.swift */; };
+		5862EF7B21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF7A21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift */; };
+		5862EF7D21B0FBF600FA4F19 /* CourseRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF7C21B0FBF600FA4F19 /* CourseRestViewController.swift */; };
+		5862EF7F21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF7E21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift */; };
 		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		58BC469621A3216C00592770 /* CoursesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469521A3216C00592770 /* CoursesMainViewController.swift */; };
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
@@ -194,7 +196,9 @@
 		5857612621A8EC900040A643 /* CourseDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseDescriptionCell.xib; sourceTree = "<group>"; };
 		58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFTimeFormatter.swift; sourceTree = "<group>"; };
 		58576D6621AF9B33002B38D9 /* ExerciseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManager.swift; sourceTree = "<group>"; };
-		5862EF7A21B0CE8E00FA4F19 /* CourseCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCompleteViewController.swift; sourceTree = "<group>"; };
+		5862EF7A21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompleteViewController.swift; sourceTree = "<group>"; };
+		5862EF7C21B0FBF600FA4F19 /* CourseRestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRestViewController.swift; sourceTree = "<group>"; };
+		5862EF7E21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		58BC469521A3216C00592770 /* CoursesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesMainViewController.swift; sourceTree = "<group>"; };
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -398,10 +402,12 @@
 		58BC4692219DF5F100592770 /* Courses */ = {
 			isa = PBXGroup;
 			children = (
-				5862EF7A21B0CE8E00FA4F19 /* CourseCompleteViewController.swift */,
+				5862EF7A21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift */,
+				5862EF7C21B0FBF600FA4F19 /* CourseRestViewController.swift */,
 				5857611B21A7F85F0040A643 /* CourseDayCell.swift */,
 				5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */,
 				5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */,
+				5862EF7E21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift */,
 				58BC469B21A5218600592770 /* CourseListTableViewController.swift */,
 				58BC4693219DF61600592770 /* Courses.storyboard */,
 				58BC469521A3216C00592770 /* CoursesMainViewController.swift */,
@@ -1144,10 +1150,12 @@
 				E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */,
 				EE7E2786218C26A700CB947D /* Setting.swift in Sources */,
 				E0A792172153834500CBBFDB /* UserConstants.swift in Sources */,
+				5862EF7D21B0FBF600FA4F19 /* CourseRestViewController.swift in Sources */,
 				E0DD472B216F578000783F99 /* RecipeCardTableViewCell.swift in Sources */,
-				5862EF7B21B0CE8E00FA4F19 /* CourseCompleteViewController.swift in Sources */,
+				5862EF7B21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift in Sources */,
 				E0A6DD96214FD50300B6C301 /* BackNavbarView.swift in Sources */,
 				5857611E21A812DE0040A643 /* CourseDescriptionCell.swift in Sources */,
+				5862EF7F21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift in Sources */,
 				E075A97A215E3E0700D264CA /* LineSeparatorTableViewCell.swift in Sources */,
 				E0361214215A3A9F00C560F5 /* WelcomeViewController.swift in Sources */,
 				E02E854721647FE900DDE4A7 /* PaymentViewController.swift in Sources */,

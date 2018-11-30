@@ -26,15 +26,25 @@ class CourseDayViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    @IBAction func endWorkoutPressed(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "WorkoutComplete") as! WorkoutCompleteViewController
+        vc.exercisesJSON = dayJSON
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : (dayJSON?.count ?? 0)
+        switch section {
+        case 0: return 2
+        case 1: return (dayJSON?.count ?? 0)
+        default: return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +52,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: indexPath.row == 0 ? "HeaderCell" : "DescriptionCell", for: indexPath)
             //Set up title, description, and header
             (cell as? CourseDescriptionCell)?.titleLabel.text = headerText
-            (cell as? CourseDescriptionCell)?.descriptionLabel.text = "Round \(activeExerciseIndex): \(activeExerciseIndex)/\(dayJSON?.count ?? 0)"
+            (cell as? CourseDescriptionCell)?.descriptionLabel.text = "Round \(activeExerciseIndex + 1): \(activeExerciseIndex + 1)/\(dayJSON?.count ?? 0)"
 
             (cell as? CourseHeaderCell)?.backgroundImageView.image = nil
             if let urlString = courseJSON?["image"].rawString(), let url = URL(string: urlString) {
@@ -52,7 +62,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
 
             return cell
-        } else {
+        } else if indexPath.section == 1 {
             guard let day = dayJSON?[indexPath.row] else { return UITableViewCell() }
             
             var reuseIdentifier = "Exercise"
@@ -101,6 +111,8 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             
             return cell
+        } else {
+            return tableView.dequeueReusableCell(withIdentifier: "NextButton", for: indexPath)
         }
     }
     
