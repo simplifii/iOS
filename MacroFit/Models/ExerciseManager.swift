@@ -11,6 +11,8 @@ import UIKit
 extension Notification.Name {
     public static let exerciseTimeUpdated = Notification.Name(rawValue: "timeUpdated")
     public static let exerciseCompleted = Notification.Name(rawValue: "exerciseCompleted")
+    public static let courseNextPressed = Notification.Name(rawValue: "courseNextPressed")
+    public static let restOverPressed = Notification.Name(rawValue: "restOverPressed")
 }
 
 class ExerciseManager: NSObject {
@@ -39,6 +41,10 @@ class ExerciseManager: NSObject {
         if let e = currentExercise {
             NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: ["exercise" : e])
         }
+    }
+    
+    func sendFeedback(for course: String, stars: Int, feedback: String) {
+        
     }
 }
 

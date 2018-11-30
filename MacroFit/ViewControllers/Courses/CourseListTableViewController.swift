@@ -42,6 +42,8 @@ extension CourseListViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
+        cell.selectionStyle = .none
+        
         return cell
     }
     

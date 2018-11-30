@@ -22,6 +22,7 @@ class CourseDayViewController: BaseViewController {
         
         tableView.register(UINib(nibName: "CourseHeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
         tableView.register(UINib(nibName: "CourseDescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
+        NotificationCenter.default.addObserver(self, selector: #selector(nextPressed), name: .courseNextPressed, object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,6 +31,13 @@ class CourseDayViewController: BaseViewController {
     @IBAction func endWorkoutPressed(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "WorkoutComplete") as! WorkoutCompleteViewController
         vc.exercisesJSON = dayJSON
+        vc.courseJSON = courseJSON
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func nextPressed() {
+        let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RestViewController") as! CourseRestViewController
+        vc.timeToCount = 12
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -95,11 +103,11 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             if let time = day["time"].string {
                 cell.rightDetailLabel.text = time
                 if let reps = repsInt {
-                    cell.leftDetailLabel.text = "\(reps) reps"
+                    cell.leftDetailLabel.text = "\(reps) rep\(reps > 1 ? "s" : "")"
                 }
             } else if let reps = repsInt {
                 //Otherwise it's just reps, if so. - clear out the reps label and put reps in time.
-                cell.rightDetailLabel.text = "\(reps) reps"
+                cell.rightDetailLabel.text = "\(reps) rep\(reps > 1 ? "s" : "")"
             }
             
             (cell as? RepsExerciseCell)?.numReps = repsInt
@@ -252,5 +260,13 @@ class TimeRepsExerciseCell: TimeExerciseCell {
         }
         
         repsLabel.attributedText = attrString
+    }
+}
+
+class CourseNextButtonCell: UITableViewCell {
+    @IBOutlet weak var nextButton: UIButton!
+    
+    @IBAction func nextPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: .courseNextPressed, object: nil)
     }
 }

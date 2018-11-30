@@ -13,6 +13,7 @@ class WorkoutCompleteViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var exercisesJSON: [JSON]?
+    var courseJSON: JSON?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,8 @@ class WorkoutCompleteViewController: UIViewController {
     }
     
     @IBAction func closePressed(_ sender: UIButton) {
+        navigationController?.popToRootViewController(animated: true)
     }
-    
 }
 
 extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSource {
@@ -34,7 +35,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 2 //TODO days.count
+        case 1: return exercisesJSON?.count ?? 0
         case 2: return 3
         default: return 0
         }
@@ -58,6 +59,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
                 cell = tableView.dequeueReusableCell(withIdentifier: "ShareWithFriends", for: indexPath)
             default:
                 cell = tableView.dequeueReusableCell(withIdentifier: "RateCourse", for: indexPath)
+                (cell as? RateCourseTableViewCell)?.courseID = courseJSON?["unique_code"].string ?? ""
             }
         }
         
@@ -79,6 +81,8 @@ class RateCourseTableViewCell: UITableViewCell {
     @IBOutlet weak var feedbackView: UITextView!
     
     @IBOutlet weak var sendMessageButton: UIButton!
+    var courseID: String = ""
+    var courseRating: Int = 5
     
     private var ratingView: RatingView?
     
@@ -107,21 +111,27 @@ class RateCourseTableViewCell: UITableViewCell {
     
     @objc func showRatingInRatingView(_ sender: UIButton) {
         let rating = Int(sender.accessibilityHint!)!
+        courseRating = rating
         ratingView!.setRating(rating: rating)
         
     }
     
     @IBAction func sendMessagePressed(_ sender: UIButton) {
-        
+        ExerciseManager.manager.sendFeedback(for: courseID, stars: courseRating, feedback: feedbackView.text == placeholder ? "" : feedbackView.text)
+        sender.isEnabled = false
+        sender.setTitle("Feedback sent", for: .normal)
     }
-    
 }
 
 extension RateCourseTableViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == placeholder {
-            textView.text = nil
+            textView.text = ""
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return textView.text.count + text.count - range.length <= 1000 //Server enforced max limit
     }
 }
 
