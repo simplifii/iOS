@@ -16,14 +16,22 @@ class CourseRestViewController: UIViewController {
     var timeToCount: TimeInterval = 60 {
         didSet {
             stopwatch?.startCountDown(from: timeToCount)
+            if let time = stopwatch?.timeRemaining {
+                timeLabel?.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: time)
+            }
         }
     }
+    
     var stopwatch: CountdownStopwatch?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stopwatch = CountdownStopwatch()
         stopwatch?.startCountDown(from: timeToCount)
+        
+        if let time = stopwatch?.timeRemaining {
+            timeLabel?.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: time)
+        }
         timer = Timer(timeInterval: 1.0, repeats: true, block: { [weak self ] _ in
             if self?.stopwatch?.running ?? false {
                 DispatchQueue.main.async {

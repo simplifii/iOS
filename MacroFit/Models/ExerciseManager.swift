@@ -13,6 +13,7 @@ extension Notification.Name {
     public static let exerciseCompleted = Notification.Name(rawValue: "exerciseCompleted")
     public static let courseNextPressed = Notification.Name(rawValue: "courseNextPressed")
     public static let restOverPressed = Notification.Name(rawValue: "restOverPressed")
+    public static let courseFeedbackSent = Notification.Name(rawValue: "courseFeedbackSent")
 }
 
 class ExerciseManager: NSObject {
@@ -23,6 +24,8 @@ class ExerciseManager: NSObject {
     
     var currentExercise: String?
     var currentRound: Int = 0
+    
+    var completedExercises: [Int : Bool] = [:]
     
     override init() {
         _stopwatch = Stopwatch()
@@ -35,16 +38,19 @@ class ExerciseManager: NSObject {
         RunLoop.main.add(notificationTimer, forMode: .defaultRunLoopMode)
     }
     
-    func recordCurrentExercise() {
+    func recordExercise(exerciseID: Int) {
         stopwatch.reset()
-        //TODO make API call
-        if let e = currentExercise {
-            NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: ["exercise" : e])
-        }
+        NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: nil)
     }
     
-    func sendFeedback(for course: String, stars: Int, feedback: String) {
-        
+    func sendFeedback(for course: Int, stars: Int, feedback: String) {
+        APIService.sendCourseFeedback(forCourse: course, starRating: stars, feedbackText: feedback, completion: {success,msg in
+            NotificationCenter.default.post(name: .courseFeedbackSent, object: nil, userInfo: nil)
+        })
+    }
+    
+    func exerciseComplete(exerciseID: Int) -> Bool {
+        return completedExercises[exerciseID] ?? false
     }
 }
 

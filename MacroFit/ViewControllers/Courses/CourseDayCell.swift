@@ -48,7 +48,7 @@ extension CourseDayCell: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 1, let eCell = cell as? CourseExerciseCell {
             let exercise = exercises[indexPath.row]
-            eCell.doneImageView.image = UIImage(named: exercise["done"].boolValue ? "done" : "undone")
+            eCell.doneImageView.image = UIImage(named: ExerciseManager.manager.exerciseComplete(exerciseID: exercise["id"].intValue) ? "done" : "undone")
             eCell.exerciseTitleLabel.text = exercise["title"].rawString()
             eCell.timeLabel.text = nil
             eCell.repsLabel.text = nil

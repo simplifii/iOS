@@ -51,6 +51,7 @@ enum APIRouter: URLRequestConvertible {
     case SubmitScore(score:String?,challenge:String)
     case updateDeviceToken(token: String)
     case changePassword(newPassword: String)
+    case sendCourseFeedback(forCourse: Int, starRating: Int, feedbackText: String)
     
     var path: String {
         
@@ -102,6 +103,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.lessons
             case .getExercises:
                 return NetworkingConstants.exercises
+            case .sendCourseFeedback:
+                return NetworkingConstants.courseFeedback
         }
     }
     
@@ -225,6 +228,13 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["action"] = "UpdateDeviceToken"
             bodyDict["device_token"] = token
             break
+            
+        case let .sendCourseFeedback(forCourse: course, starRating: rating, feedbackText: text):
+            if text.count > 0 {
+                bodyDict["feedback"] = text
+            }
+            bodyDict["rating"] = rating
+            bodyDict["course_id"] = course
         default:
             print("no action")
         }
@@ -332,11 +342,11 @@ enum APIRouter: URLRequestConvertible {
         case let .getLessons(course: course):
             paramDict["type"] = "Lesson"
             paramDict["sort_by"] = "+int2"
-//            paramDict["equalto___fk_course"] = course //TODO revert
+            paramDict["equalto___fk_course"] = course //TODO revert
         case let .getExercises(lesson: lesson):
             paramDict["type"] = "Exercise"
             paramDict["sort_by"] = "+int2"
-//            paramDict["equalto___fk_lesson"] = lesson //TODO revert
+            paramDict["equalto___fk_lesson"] = lesson //TODO revert
         default:
             break
         }
@@ -349,7 +359,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword:
             return .patch

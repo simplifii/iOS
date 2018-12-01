@@ -20,6 +20,14 @@ class WorkoutCompleteViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(feedbackSent), name: .courseFeedbackSent, object: nil)
+    }
+    
+    @objc func feedbackSent() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {[weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+        })
     }
     
     @IBAction func closePressed(_ sender: UIButton) {
@@ -59,7 +67,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
                 cell = tableView.dequeueReusableCell(withIdentifier: "ShareWithFriends", for: indexPath)
             default:
                 cell = tableView.dequeueReusableCell(withIdentifier: "RateCourse", for: indexPath)
-                (cell as? RateCourseTableViewCell)?.courseID = courseJSON?["unique_code"].string ?? ""
+                (cell as? RateCourseTableViewCell)?.courseID = courseJSON?["id"].int ?? 0
             }
         }
         
@@ -81,7 +89,7 @@ class RateCourseTableViewCell: UITableViewCell {
     @IBOutlet weak var feedbackView: UITextView!
     
     @IBOutlet weak var sendMessageButton: UIButton!
-    var courseID: String = ""
+    var courseID: Int = 0
     var courseRating: Int = 5
     
     private var ratingView: RatingView?
@@ -133,11 +141,4 @@ extension RateCourseTableViewCell: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return textView.text.count + text.count - range.length <= 1000 //Server enforced max limit
     }
-}
-
-class ExerciseSummaryCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var exerciseNameLabel: UILabel!
-    
-    @IBOutlet weak var topLineLabel: UILabel!
-    @IBOutlet weak var bottomLineLabel: UILabel!
 }

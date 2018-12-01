@@ -24,6 +24,7 @@ class CourseDayViewController: BaseViewController {
         tableView.register(UINib(nibName: "CourseDescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         NotificationCenter.default.addObserver(self, selector: #selector(nextPressed), name: .courseNextPressed, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nextExercise), name: .exerciseCompleted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(restOver), name: .restOverPressed, object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,14 +39,20 @@ class CourseDayViewController: BaseViewController {
     
     @objc func nextPressed() {
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RestViewController") as! CourseRestViewController
-        vc.timeToCount = 12
+        vc.timeToCount = 60.9
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func nextExercise() {
         dayJSON?[activeExerciseIndex]["done"] = true
         activeExerciseIndex += 1
-        tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    @objc func restOver() {
+        navigationController?.popToViewController(self, animated: true)
     }
 }
 
@@ -78,13 +85,13 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
 
             return cell
         } else if indexPath.section == 1 {
-            guard let day = dayJSON?[indexPath.row] else { return UITableViewCell() }
+            guard let exercise = dayJSON?[indexPath.row] else { return UITableViewCell() }
             
             var reuseIdentifier = "Exercise"
             
-            let repsInt = day["recommended_reps"].int
-            let weightDouble = day["recommended_weight"].double
-            let time = day["time"].string
+            let repsInt = exercise["recommended_reps"].int
+            let weightDouble = exercise["recommended_weight"].double
+            let time = exercise["recommended_duration_in_secs"].double
             
             if indexPath.row == activeExerciseIndex {
                 //3 cases:
@@ -105,10 +112,11 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ExerciseCell
-            cell.exerciseNameLabel.text = day["title"].rawString()
+            cell.exerciseNameLabel.text = exercise["title"].rawString()
+            cell.exerciseID = exercise["id"].intValue
             
-            if let time = day["time"].string {
-                cell.rightDetailLabel.text = time
+            if let t = time {
+                cell.rightDetailLabel.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: t)
                 if let reps = repsInt {
                     cell.leftDetailLabel.text = "\(reps) rep\(reps > 1 ? "s" : "")"
                 }
@@ -120,8 +128,9 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             (cell as? RepsExerciseCell)?.numReps = repsInt
             (cell as? RepsExerciseCell)?.numPounds = weightDouble
             (cell as? TimeRepsExerciseCell)?.repsCount = repsInt
+            (cell as? TimeRepsExerciseCell)?.minTime = time ?? 0
             
-            cell.doneImageView.image = UIImage(named: day["done"].boolValue ? "done" : "undone")
+            cell.doneImageView.image = UIImage(named: ExerciseManager.manager.exerciseComplete(exerciseID: exercise["id"].intValue) ? "done" : "undone")
             
             cell.selectionStyle = .none
             
@@ -137,7 +146,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 class ExerciseCell : UITableViewCell {
-    
+    var exerciseID: Int = 0
     @IBOutlet weak var exerciseNameLabel: UILabel!
     @IBOutlet weak var rightDetailLabel: UILabel!
     @IBOutlet weak var leftDetailLabel: UILabel!
@@ -156,7 +165,7 @@ class ExerciseCell : UITableViewCell {
     }
     
     @IBAction func completePressed(_ sender: Any) {
-        ExerciseManager.manager.recordCurrentExercise()
+        ExerciseManager.manager.recordExercise(exerciseID: exerciseID)
     }
 }
 
