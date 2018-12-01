@@ -23,6 +23,7 @@ class CourseDayViewController: BaseViewController {
         tableView.register(UINib(nibName: "CourseHeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
         tableView.register(UINib(nibName: "CourseDescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         NotificationCenter.default.addObserver(self, selector: #selector(nextPressed), name: .courseNextPressed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(nextExercise), name: .exerciseCompleted, object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -39,6 +40,12 @@ class CourseDayViewController: BaseViewController {
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RestViewController") as! CourseRestViewController
         vc.timeToCount = 12
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func nextExercise() {
+        dayJSON?[activeExerciseIndex]["done"] = true
+        activeExerciseIndex += 1
+        tableView.reloadData()
     }
 }
 
@@ -147,6 +154,10 @@ class ExerciseCell : UITableViewCell {
         leftDetailLabel.text = nil
         rightDetailLabel.text = nil
     }
+    
+    @IBAction func completePressed(_ sender: Any) {
+        ExerciseManager.manager.recordCurrentExercise()
+    }
 }
 
 class TimeExerciseCell: ExerciseCell {
@@ -184,10 +195,6 @@ class TimeExerciseCell: ExerciseCell {
         let wasPaused = sender.title(for: .normal) == "Start"
         sender.setTitle( wasPaused ? "Pause" : "Start", for: .normal)
         wasPaused ? ExerciseManager.manager.stopwatch.start() : ExerciseManager.manager.stopwatch.pause()
-    }
-    
-    @IBAction func completePressed(_ sender: Any) {
-        ExerciseManager.manager.recordCurrentExercise()
     }
 }
 

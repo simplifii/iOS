@@ -1261,7 +1261,7 @@
                                     <constraint firstAttribute="height" constant="49" id="hKj-qa-sdK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
-                                <state key="normal" title="Check out our recipies">
+                                <state key="normal" title="Check out our recipes">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -3561,7 +3561,7 @@
                                     <constraint firstAttribute="height" constant="49" id="Jlu-gi-fNP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
-                                <state key="normal" title="Check out our recipies">
+                                <state key="normal" title="Check out our recipes">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -4212,7 +4212,6 @@ Credits can be exchanged for free meals afterwards.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KLl-uG-SKV"/>
-        <segue reference="XID-Mr-YKU"/>
         <segue reference="Dmk-wG-w39"/>
     </inferredMetricsTieBreakers>
 </document>
