@@ -19,6 +19,10 @@ class SelectProfilePhotoViewController: BaseViewController, CropViewControllerDe
         super.viewDidLoad()
         
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
+        
+        skipButton.layer.cornerRadius = 8.0
+        skipButton.layer.borderWidth = 1
+        skipButton.layer.borderColor = Constants.buttonBorderColor.cgColor
     }
     
     @IBAction func selectImageSource(_ sender: UIButton) {
@@ -54,9 +58,9 @@ class SelectProfilePhotoViewController: BaseViewController, CropViewControllerDe
     func openCropImageViewController(image: UIImage) {
         let cropViewController = CropViewController(image: image)
         cropViewController.delegate = self
-        cropViewController.aspectRatioPreset = .preset16x9
+        cropViewController.aspectRatioPreset = .presetSquare
         cropViewController.aspectRatioLockEnabled = true
-        cropViewController.setAspectRatioPreset(.preset16x9, animated: true)
+        cropViewController.setAspectRatioPreset(.presetSquare, animated: true)
         cropViewController.aspectRatioPickerButtonHidden = true
         cropViewController.resetAspectRatioEnabled = false
         
@@ -66,22 +70,21 @@ class SelectProfilePhotoViewController: BaseViewController, CropViewControllerDe
     func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         dismiss(animated: true, completion: {
             print("done")
-            self.showBasicProfileScreen()
-//            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UploadedImageViewController") as? UploadedImageViewController
-//            vc?.editedImage = image
-//            self.navigationController?.isNavigationBarHidden = true
-//            self.navigationController?.pushViewController(vc!, animated: true)
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UploadProfilePhotoViewController") as? UploadProfilePhotoViewController
+            vc?.image = image
+            self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.pushViewController(vc!, animated: true)
         })
     }
     
     
     @IBAction func skipProfileUpload(_ sender: UIButton) {
-        showBasicProfileScreen()
+        showWorkoutWithFriendsScreen()
     }
     
     
-    func showBasicProfileScreen() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
+    func showWorkoutWithFriendsScreen() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WorkoutWithFriendsViewController") as? WorkoutWithFriendsViewController
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }

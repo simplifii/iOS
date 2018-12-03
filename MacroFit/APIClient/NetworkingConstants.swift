@@ -23,5 +23,7 @@ struct NetworkingConstants{
     static let userRecipes = "custom/user_recipes"
     static let facebookLogin = "custom/facebook_login"
     static let challenges = "cards"
+    static let uploadFileToS3 = "s3/upload_file"
+    static let userNetwork = "user_network_contacts"
     
 }

@@ -48,6 +48,8 @@ enum APIRouter: URLRequestConvertible {
     case SubmitScore(score:String?,challenge:String)
     case updateDeviceToken(token: String)
     case changePassword(newPassword: String)
+    case updateProfilePic(url: String)
+    case addContactsToUserNetwork(contacts: [[String:String]])
     
     var path: String {
         
@@ -62,7 +64,7 @@ enum APIRouter: URLRequestConvertible {
             
             case .facebookLogin:
                 return NetworkingConstants.facebookLogin
-        case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword:
+        case .createUser, .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .getUserProfile, .updateDietaryPreferences, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword, .updateProfilePic:
                 return NetworkingConstants.users
             
             case .fitnessGoals:
@@ -92,7 +94,9 @@ enum APIRouter: URLRequestConvertible {
             case .createFeedback, .editFeedback, .getFeedback:
                 return NetworkingConstants.cards
         case.getChallenges, .getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .SubmitScore:
-            return NetworkingConstants.challenges
+                return NetworkingConstants.challenges
+            case .addContactsToUserNetwork:
+                return NetworkingConstants.userNetwork
         }
     }
     
@@ -216,6 +220,14 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["action"] = "UpdateDeviceToken"
             bodyDict["device_token"] = token
             break
+        case let .updateProfilePic(url: url):
+            bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
+            bodyDict["action"] = "UpdateProfilePic"
+            bodyDict["profile_pic"] = url
+            break
+        case let .addContactsToUserNetwork(contacts: contacts):
+            bodyDict["contacts"] = contacts
+            break
         default:
                 print("no action")
         }
@@ -332,9 +344,9 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .addContactsToUserNetwork:
             return .post
-        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword:
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword, .updateProfilePic:
             return .patch
         }
     }
@@ -347,7 +359,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword, .updateProfilePic, .addContactsToUserNetwork:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch,.getChallengeScore ,.getEachUserBestScore:
