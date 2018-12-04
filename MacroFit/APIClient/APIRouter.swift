@@ -48,7 +48,7 @@ enum APIRouter: URLRequestConvertible {
     case SubmitScore(score:String?,challenge:String)
     case updateDeviceToken(token: String)
     case changePassword(newPassword: String)
-    case updateProfilePic(url: String)
+    case updateProfilePic(url: String, thumbnailUrl:String?)
     case addContactsToUserNetwork(contacts: [[String:String]])
     
     var path: String {
@@ -220,10 +220,11 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["action"] = "UpdateDeviceToken"
             bodyDict["device_token"] = token
             break
-        case let .updateProfilePic(url: url):
+        case let .updateProfilePic(url: url, thumbnailUrl: thumbnailUrl):
             bodyDict["card_unique_code"] = UserDefaults.standard.string(forKey: UserConstants.userCardUniqueCode)
             bodyDict["action"] = "UpdateProfilePic"
             bodyDict["profile_pic"] = url
+            bodyDict["profile_pic_thumbnail"] = thumbnailUrl
             break
         case let .addContactsToUserNetwork(contacts: contacts):
             bodyDict["contacts"] = contacts

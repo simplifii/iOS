@@ -19,6 +19,7 @@ class UploadProfilePhotoViewController: BaseViewController {
     
     var image:UIImage!
     var uploadedImageUrl:String = ""
+    var uploadedImageThumbnailUrl:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,7 @@ class UploadProfilePhotoViewController: BaseViewController {
             self.hideLoader()
             if success == true {
                 self.uploadedImageUrl = data["url"].stringValue
+                self.uploadedImageThumbnailUrl = data["thumbnail"].stringValue
             } else {
                 self.showAlertMessage(title: msg, message: nil)
             }
@@ -82,7 +84,7 @@ class UploadProfilePhotoViewController: BaseViewController {
     }
     
     func updateProfilePic() {
-        APIService.updateProfilePic(imageUrl: uploadedImageUrl, completion: {success,msg in
+        APIService.updateProfilePic(imageUrl: uploadedImageUrl, thumbnailUrl: uploadedImageThumbnailUrl, completion: {success,msg in
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
             } else {

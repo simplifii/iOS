@@ -42,17 +42,26 @@ class WorkoutWithFriendsViewController: BaseViewController {
                 do {
                     try self.contactStore.enumerateContacts(with: request) {
                         (contact, stop) in
-                        let phone = contact.phoneNumbers[0].value.stringValue
-                        let email = "\(contact.emailAddresses[0].value)"
+
+                        var phone = ""
+                        var email = ""
+                        if contact.phoneNumbers.count > 0 {
+                            phone = contact.phoneNumbers[0].value.stringValue
+                        }
+                        if contact.emailAddresses.count > 0 {
+                            email = "\(contact.emailAddresses[0].value)"
+                        }
                         
                         if !phone.isEmpty || !email.isEmpty {
                             let userContact = [
                                 "phone": phone,
                                 "email": email
                             ]
+
                             contacts.append(userContact)
                         }
                     }
+                    
                     self.addContactsToUserNetwork(contacts: contacts)
                 }
                 catch {

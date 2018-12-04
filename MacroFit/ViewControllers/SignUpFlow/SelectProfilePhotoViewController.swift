@@ -71,10 +71,26 @@ class SelectProfilePhotoViewController: BaseViewController, CropViewControllerDe
         dismiss(animated: true, completion: {
             print("done")
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UploadProfilePhotoViewController") as? UploadProfilePhotoViewController
-            vc?.image = image
+            vc?.image = self.resizeImage(image: image, newWidth: 500)
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(vc!, animated: true)
         })
+    }
+    
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if newImage != nil {
+            return newImage!
+        }
+        return image
     }
     
     

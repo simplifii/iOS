@@ -298,8 +298,7 @@ struct APIService {
         
         let headers = [
             "Content-Type":"multipart/form-data",
-            "Accept":"application/json",
-            "\(UserConstants.authentication)": "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
+            "Accept":"application/json"
         ]
         
         let url = try! URLRequest(url: "\(NetworkingConstants.baseUrl)\(NetworkingConstants.uploadFileToS3)", method: .post, headers: headers)
@@ -375,8 +374,8 @@ struct APIService {
         })
     }
     
-    static func updateProfilePic(imageUrl:String, completion: @escaping (Bool, String) -> Void){
-        sendRequest(request: APIRouter.updateProfilePic(url: imageUrl), completion: {success,msg in
+    static func updateProfilePic(imageUrl:String, thumbnailUrl:String?, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.updateProfilePic(url: imageUrl, thumbnailUrl: thumbnailUrl), completion: {success,msg in
             completion(success, msg)
         })
     }

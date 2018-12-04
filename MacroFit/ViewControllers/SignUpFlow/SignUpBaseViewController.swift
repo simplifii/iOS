@@ -66,15 +66,21 @@ class SignUpBaseViewController: OnboardUserViewController {
     }
     
     func setUserDetails(userId: String, token: String) {
-        //        print(userId)
-        //        print(token)
+//                print(userId)
+//                print(token)
         APIService.facebookLogin(fbUserId: userId, fbUserToken: token, completion: {success,msg,json in
             if success == false {
                 self.showAlertMessage(title: msg, message: nil)
             } else {
-                self.signUpCompleted()
+                self.ahowWorkoutWithFriendsScreen()
             }
         })
+    }
+    
+    func ahowWorkoutWithFriendsScreen() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WorkoutWithFriendsViewController") as? WorkoutWithFriendsViewController
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     func signUpCompleted() {

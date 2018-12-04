@@ -70,6 +70,8 @@ class RecipeCardsViewController: BaseViewController, UITableViewDataSource, UITa
         if !recipes[indexPath.row]["photo"].stringValue.isEmpty {
             let url = URL(string: recipes[indexPath.row]["photo"].stringValue)!
             cell.recipeImageView.af_setImage(withURL: url)
+        } else {
+            cell.recipeImageView.image = UIImage(named: "recipe_placeholder.png")
         }
         
         cell.isFavourite = isFavourite(index: indexPath.row)

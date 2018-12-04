@@ -2306,13 +2306,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contacts_background" translatesAutoresizingMaskIntoConstraints="NO" id="hup-W5-Kc1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends-signup" translatesAutoresizingMaskIntoConstraints="NO" id="hup-W5-Kc1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf3-xD-XCr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout with friends?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaP-C4-ZvD">
                                 <rect key="frame" x="25" y="223" width="325" height="70"/>
                                 <constraints>
@@ -2372,23 +2368,19 @@
                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Krm-hf-DvL" firstAttribute="trailing" secondItem="LaP-C4-ZvD" secondAttribute="trailing" constant="25" id="3Ap-ow-G6q"/>
-                            <constraint firstItem="gf3-xD-XCr" firstAttribute="leading" secondItem="Krm-hf-DvL" secondAttribute="leading" id="3PC-KE-CFy"/>
                             <constraint firstItem="uWx-Zy-wmb" firstAttribute="centerY" secondItem="2BH-qr-rVg" secondAttribute="centerY" constant="-16" id="3al-gG-yF6"/>
                             <constraint firstItem="hup-W5-Kc1" firstAttribute="trailing" secondItem="Krm-hf-DvL" secondAttribute="trailing" id="6NP-FO-jVj"/>
                             <constraint firstItem="LaP-C4-ZvD" firstAttribute="leading" secondItem="Krm-hf-DvL" secondAttribute="leading" constant="25" id="Fzd-z6-rhu"/>
                             <constraint firstItem="hup-W5-Kc1" firstAttribute="leading" secondItem="Krm-hf-DvL" secondAttribute="leading" id="HOa-sq-vpb"/>
-                            <constraint firstItem="gf3-xD-XCr" firstAttribute="top" secondItem="2BH-qr-rVg" secondAttribute="top" id="Mx0-ZA-n1a"/>
                             <constraint firstItem="Krm-hf-DvL" firstAttribute="trailing" secondItem="9c4-4u-n8s" secondAttribute="trailing" constant="68" id="QRc-Ri-cvn"/>
                             <constraint firstAttribute="bottom" secondItem="hup-W5-Kc1" secondAttribute="bottom" id="Uwf-TF-ABR"/>
                             <constraint firstItem="uWx-Zy-wmb" firstAttribute="top" secondItem="LaP-C4-ZvD" secondAttribute="bottom" id="ZMU-iF-fEe"/>
-                            <constraint firstItem="gf3-xD-XCr" firstAttribute="trailing" secondItem="Krm-hf-DvL" secondAttribute="trailing" id="eqk-ys-2RK"/>
                             <constraint firstItem="9c4-4u-n8s" firstAttribute="leading" secondItem="Krm-hf-DvL" secondAttribute="leading" constant="68" id="fa0-7J-gda"/>
                             <constraint firstItem="9c4-4u-n8s" firstAttribute="top" secondItem="uWx-Zy-wmb" secondAttribute="bottom" constant="16" id="g7Y-7K-FDI"/>
                             <constraint firstItem="Krm-hf-DvL" firstAttribute="trailing" secondItem="eVv-KI-emp" secondAttribute="trailing" constant="68" id="hlC-uX-rCu"/>
                             <constraint firstItem="Krm-hf-DvL" firstAttribute="trailing" secondItem="uWx-Zy-wmb" secondAttribute="trailing" constant="38" id="hrZ-e5-V51"/>
                             <constraint firstItem="eVv-KI-emp" firstAttribute="top" secondItem="9c4-4u-n8s" secondAttribute="bottom" constant="1" id="iZr-s9-uZ2"/>
                             <constraint firstItem="eVv-KI-emp" firstAttribute="leading" secondItem="Krm-hf-DvL" secondAttribute="leading" constant="68" id="k5L-yZ-seN"/>
-                            <constraint firstItem="gf3-xD-XCr" firstAttribute="bottom" secondItem="2BH-qr-rVg" secondAttribute="bottom" id="skB-ZF-tq3"/>
                             <constraint firstItem="uWx-Zy-wmb" firstAttribute="leading" secondItem="Krm-hf-DvL" secondAttribute="leading" constant="38" id="tzd-TA-mxD"/>
                             <constraint firstItem="hup-W5-Kc1" firstAttribute="top" secondItem="2BH-qr-rVg" secondAttribute="top" id="ygi-lB-Dr0"/>
                         </constraints>
@@ -2405,7 +2397,7 @@
         <image name="back_white" width="512" height="512"/>
         <image name="camera" width="49" height="39.360000610351562"/>
         <image name="cancel_gray" width="512" height="512"/>
-        <image name="contacts_background" width="4000" height="2670"/>
+        <image name="friends-signup" width="750" height="1334"/>
         <image name="home_background_image" width="750" height="558"/>
         <image name="intro_screen_background1" width="750" height="1334"/>
         <image name="macro_meal_portions" width="375" height="667"/>

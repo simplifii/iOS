@@ -1737,22 +1737,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_screen_background1" translatesAutoresizingMaskIntoConstraints="NO" id="Nbb-wU-Ply">
-                                                    <rect key="frame" x="0.0" y="5" width="325" height="139.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="submit_recipe" translatesAutoresizingMaskIntoConstraints="NO" id="Nbb-wU-Ply">
+                                                    <rect key="frame" x="0.0" y="5" width="325" height="140"/>
                                                 </imageView>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3B-MF-qdK">
-                                                    <rect key="frame" x="0.0" y="5" width="325" height="139.5"/>
+                                                    <rect key="frame" x="0.0" y="5" width="325" height="140"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_white" translatesAutoresizingMaskIntoConstraints="NO" id="9Dt-0o-Ed1">
-                                                    <rect key="frame" x="18" y="28" width="24" height="24"/>
+                                                    <rect key="frame" x="18" y="31" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="f18-ma-iXu"/>
                                                         <constraint firstAttribute="height" constant="24" id="nkS-lG-ut5"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit your own recipe!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D0-G0-XOp">
-                                                    <rect key="frame" x="60" y="28" width="247" height="22"/>
+                                                    <rect key="frame" x="60" y="31" width="247" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="TLf-Zm-gUp"/>
                                                     </constraints>
@@ -1761,7 +1761,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get up to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6z-88-fbF">
-                                                    <rect key="frame" x="53" y="56" width="57" height="17"/>
+                                                    <rect key="frame" x="60" y="59" width="57" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="57" id="dgE-yT-f3P"/>
                                                         <constraint firstAttribute="height" constant="17" id="hBd-wd-aRY"/>
@@ -1771,7 +1771,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKO-KC-YsK">
-                                                    <rect key="frame" x="113" y="56" width="201" height="17"/>
+                                                    <rect key="frame" x="120" y="59" width="187" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="x2d-Lf-b9G"/>
                                                     </constraints>
@@ -1780,7 +1780,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="if your recipe gets featured in the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCT-Hl-obD">
-                                                    <rect key="frame" x="53" y="73" width="261" height="17"/>
+                                                    <rect key="frame" x="60" y="76" width="247" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="bxn-zu-mAl"/>
                                                     </constraints>
@@ -1908,7 +1908,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-wt-npI">
                                                     <rect key="frame" x="25" y="6" width="325" height="116"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="azc-FC-X15">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipe_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="azc-FC-X15">
                                                             <rect key="frame" x="185" y="0.0" width="140" height="116"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="140" id="A4P-Vt-Bc2"/>
@@ -4197,15 +4197,16 @@ Credits can be exchanged for free meals afterwards.</string>
         <image name="heart_white" width="409.60000610351562" height="409.60000610351562"/>
         <image name="home_background_image" width="750" height="558"/>
         <image name="house" width="24" height="24"/>
-        <image name="intro_screen_background1" width="750" height="1334"/>
         <image name="logout" width="409.60000610351562" height="409.60000610351562"/>
         <image name="meals" width="24" height="24"/>
         <image name="nav" width="409.60000610351562" height="409.60000610351562"/>
         <image name="nav_white" width="512" height="512"/>
         <image name="padlock" width="409.60000610351562" height="409.60000610351562"/>
         <image name="partner" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="recipe_placeholder" width="256" height="256"/>
         <image name="refer" width="409.60000610351562" height="409.60000610351562"/>
         <image name="settings_orange" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="submit_recipe" width="375" height="667"/>
         <image name="support" width="409.60000610351562" height="409.60000610351562"/>
         <image name="underline" width="326" height="1"/>
         <image name="user" width="409.60000610351562" height="409.60000610351562"/>
