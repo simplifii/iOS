@@ -79,20 +79,28 @@ class CoursesMainViewController: BaseViewController {
         
         APIService.getCourses(completion: { [weak self] success, msg, data in
             if success {
-                self?.coursesJSON = data
+                self?.coursesJSON = data["courses"]
                 var tempCourseCategories:[String:[JSON]] = [:]
                 var tempCategoryImages:[String:String] = [:]
-                for course in data {
-                    if let courseTags = course.1["tags"].rawString() {
+                for course in data["courses"] {
+                    if let courseTags = course.1["tags"].rawString(), courseTags != "null" {
                         for t in courseTags.split(separator: ",") {
                             let key = String(t)
                             if tempCourseCategories[key] == nil {
                                 tempCourseCategories[key] = [JSON]()
-                                tempCategoryImages[key] = course.1["image"].rawString()
+                                tempCategoryImages[key] = course.1["photo"].rawString()
                             }
                             
                             tempCourseCategories[key]?.append(course.1)
                         }
+                    } else {
+                        let key = "Other"
+                        if tempCourseCategories[key] == nil {
+                            tempCourseCategories[key] = [JSON]()
+                            tempCategoryImages[key] = course.1["photo"].rawString()
+                        }
+                        
+                        tempCourseCategories[key]?.append(course.1)
                     }
                 }
                 

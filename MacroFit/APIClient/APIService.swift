@@ -387,7 +387,9 @@ struct APIService {
                     let json = JSON(value)
                     if let status_code = response.response?.statusCode {
                         if status_code == 200 {
-                            completion(true, json["msg"].stringValue, json["response"]["data"])
+                            let jdata = json["response"]["data"] // Deal with some endpoints that don't nest response in //response/data
+                            let data = jdata.count > 0 ? jdata : json
+                            completion(true, json["msg"].stringValue, data)
                         } else {
                             if let msg = json["msg"].string {
                                 completion(false, msg, [])
