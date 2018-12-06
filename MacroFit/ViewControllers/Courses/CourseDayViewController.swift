@@ -90,7 +90,10 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             var reuseIdentifier = "Exercise"
             
             let repsInt = exercise["recommended_reps"].int
-            let weightDouble = exercise["recommended_weight"].double
+            var weightDouble = exercise["recommended_weight_in_gms"].double
+            if let wt = weightDouble {
+                weightDouble = wt / 453.2 //to lbs
+            }
             let time = exercise["recommended_duration_in_secs"].double
             
             if indexPath.row == activeExerciseIndex {
