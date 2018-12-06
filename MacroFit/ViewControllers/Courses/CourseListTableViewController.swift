@@ -36,10 +36,12 @@ extension CourseListViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let courseCell = cell as? IndividualCourseTableViewCell, let course = coursesJSON?[indexPath.row] {
             courseCell.courseNameLabel.text = course["title"].rawString()
-            courseCell.subtitleLabel.text = "by Fitness Instructor"
-            if let imageString = course["image"].rawString(), let imageUrl = URL(string: imageString) {
+            courseCell.subtitleLabel.text = nil //"by Fitness Instructor"
+            if let imageString = course["photo"].rawString(), let imageUrl = URL(string: imageString) {
                 courseCell.backgroundImageView.af_cancelImageRequest()
-                courseCell.backgroundImageView.af_setImage(withURL: imageUrl, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.global(qos: .userInitiated), imageTransition: UIImageView.ImageTransition.crossDissolve(0.2), runImageTransitionIfCached: false, completion: nil)
+                courseCell.backgroundImageView.af_setImage(withURL: imageUrl, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.global(qos: .userInitiated), imageTransition: UIImageView.ImageTransition.crossDissolve(0.2), runImageTransitionIfCached: false, completion: { [weak courseCell] x in
+                    courseCell?.backgroundImageView.contentMode = UIViewContentMode.scaleAspectFill
+                })
             }
         }
         

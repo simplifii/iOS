@@ -27,11 +27,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="519" height="168.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="348-oU-RZj">
-                        <rect key="frame" x="0.0" y="0.0" width="519" height="168.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="348-oU-RZj">
+                        <rect key="frame" x="4" y="4" width="511" height="160.5"/>
                     </imageView>
-                    <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BQ-fc-dj7">
-                        <rect key="frame" x="0.0" y="0.0" width="519" height="168.5"/>
+                    <view clipsSubviews="YES" alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BQ-fc-dj7">
+                        <rect key="frame" x="4" y="4" width="511" height="160.5"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Trainer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2M-Hu-dhX">
@@ -47,17 +47,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="348-oU-RZj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6aa-88-bTl"/>
+                    <constraint firstItem="348-oU-RZj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="6aa-88-bTl"/>
                     <constraint firstItem="D2M-Hu-dhX" firstAttribute="top" secondItem="Wpx-of-eF9" secondAttribute="bottom" constant="8" id="99D-D4-Re9"/>
                     <constraint firstItem="Wpx-of-eF9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AzR-ub-KfW"/>
                     <constraint firstItem="2BQ-fc-dj7" firstAttribute="top" secondItem="348-oU-RZj" secondAttribute="top" id="Hdj-zz-XbE"/>
-                    <constraint firstAttribute="bottom" secondItem="348-oU-RZj" secondAttribute="bottom" id="Igj-4p-MfN"/>
+                    <constraint firstAttribute="bottom" secondItem="348-oU-RZj" secondAttribute="bottom" constant="4" id="Igj-4p-MfN"/>
                     <constraint firstItem="2BQ-fc-dj7" firstAttribute="bottom" secondItem="348-oU-RZj" secondAttribute="bottom" id="V6n-Ai-6W4"/>
-                    <constraint firstItem="348-oU-RZj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="j3h-8G-72M"/>
+                    <constraint firstItem="348-oU-RZj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="j3h-8G-72M"/>
                     <constraint firstItem="D2M-Hu-dhX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jjc-Ye-taw"/>
-                    <constraint firstAttribute="trailing" secondItem="348-oU-RZj" secondAttribute="trailing" id="peF-6o-uDY"/>
+                    <constraint firstAttribute="trailing" secondItem="348-oU-RZj" secondAttribute="trailing" constant="4" id="peF-6o-uDY"/>
                     <constraint firstItem="D2M-Hu-dhX" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="qKy-4P-3OO"/>
                     <constraint firstItem="2BQ-fc-dj7" firstAttribute="leading" secondItem="348-oU-RZj" secondAttribute="leading" id="tg0-mI-bJA"/>
                     <constraint firstItem="2BQ-fc-dj7" firstAttribute="trailing" secondItem="348-oU-RZj" secondAttribute="trailing" id="xlk-aM-YaA"/>

@@ -77,7 +77,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             (cell as? CourseDescriptionCell)?.descriptionLabel.text = "Round \(activeExerciseIndex + 1): \(activeExerciseIndex + 1)/\(dayJSON?.count ?? 0)"
 
             (cell as? CourseHeaderCell)?.backgroundImageView.image = nil
-            if let urlString = courseJSON?["image"].rawString(), let url = URL(string: urlString) {
+            if let urlString = courseJSON?["photo"].rawString(), let url = URL(string: urlString) {
                 (cell as? CourseHeaderCell)?.backgroundImageView.af_setImage(withURL: url)
             }
             

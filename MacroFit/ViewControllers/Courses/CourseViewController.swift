@@ -32,12 +32,14 @@ class CourseViewController: UIViewController {
     func getDaysJSON() {
         if let courseId = courseJSON?["id"].rawString() {
             APIService.getLessons(for: courseId, completion: { [weak self] success, msg, data in
-                self?.lessonsJSON = data.array
+                let lessons = data["course"]["lessons"].array
+                self?.lessonsJSON = lessons
                 
-                for lessonJSON in (data.array ?? []) {
+                for lessonJSON in (lessons ?? []) {
                     if let lessonId = lessonJSON["id"].rawString() {
-                        APIService.getExercises(for: lessonId, completion:  { [weak self] success, msg, data in
-                            self?.exercisesJSON[lessonId] = data
+                        APIService.getExercises(for: lessonId, completion:  { [weak self] success, msg, data2 in
+                            let exercises = data2["lesson"]["exercises"]
+                            self?.exercisesJSON[lessonId] = exercises
                             self?.tableView.reloadData()
                         })
                     }
@@ -66,7 +68,7 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
             (cell as? CourseDescriptionCell)?.descriptionLabel.text = courseJSON?["description"].string
             
             (cell as? CourseHeaderCell)?.backgroundImageView.image = nil
-            if let urlString = courseJSON?["image"].string, let url = URL(string: urlString) {
+            if let urlString = courseJSON?["photo"].string, let url = URL(string: urlString) {
                 (cell as? CourseHeaderCell)?.backgroundImageView.af_setImage(withURL: url)
             }
         } else {
