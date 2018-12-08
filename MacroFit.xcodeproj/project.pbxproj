@@ -26,6 +26,7 @@
 		58BC469F21A52A1300592770 /* IndividualCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469D21A52A1300592770 /* IndividualCourseTableViewCell.swift */; };
 		58BC46A021A52A1300592770 /* IndividualCourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */; };
 		58BC46A221A53AD900592770 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC46A121A53AD900592770 /* CourseViewController.swift */; };
+		58F2B40C21BC8E0B00AFEB15 /* MFNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2B40B21BC8E0B00AFEB15 /* MFNumberFormatter.swift */; };
 		92F0A7B2ACA699441C9A41D0 /* Pods_MacroFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */; };
 		9F03F06BDFFBE65C874D00E6 /* Pods_MacroFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */; };
 		BC13F774BA31F265EF0928A6 /* Pods_MacroFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90694144E01E7704DD92288F /* Pods_MacroFit.framework */; };
@@ -207,6 +208,7 @@
 		58BC469D21A52A1300592770 /* IndividualCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualCourseTableViewCell.swift; sourceTree = "<group>"; };
 		58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndividualCourseTableViewCell.xib; sourceTree = "<group>"; };
 		58BC46A121A53AD900592770 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
+		58F2B40B21BC8E0B00AFEB15 /* MFNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFNumberFormatter.swift; sourceTree = "<group>"; };
 		6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90694144E01E7704DD92288F /* Pods_MacroFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF02753B59CD0F9BF07668C6 /* Pods-MacroFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -660,6 +662,7 @@
 				E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */,
 				E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */,
 				58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */,
+				58F2B40B21BC8E0B00AFEB15 /* MFNumberFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1139,6 +1142,7 @@
 				5857612021A8CEBD0040A643 /* CourseDayViewController.swift in Sources */,
 				E0982AD32178B0D500F5FCE5 /* MenuNavbarView.swift in Sources */,
 				E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */,
+				58F2B40C21BC8E0B00AFEB15 /* MFNumberFormatter.swift in Sources */,
 				EE7E278A218C270E00CB947D /* PasswordchangeViewController.swift in Sources */,
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
 				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,

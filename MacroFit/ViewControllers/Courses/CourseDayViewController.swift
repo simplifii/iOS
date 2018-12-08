@@ -90,10 +90,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             var reuseIdentifier = "Exercise"
             
             let repsInt = exercise["recommended_reps"].int
-            var weightDouble = exercise["recommended_weight_in_gms"].double
-            if let wt = weightDouble {
-                weightDouble = wt / 453.2 //to lbs
-            }
+            var weightGrams = exercise["recommended_weight_in_gms"].double
             let time = exercise["recommended_duration_in_secs"].double
             
             if indexPath.row == activeExerciseIndex {
@@ -105,11 +102,11 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
                 
                 //3: weight is nil: Time, reps
                 
-                if repsInt == nil && weightDouble == nil {
+                if repsInt == nil && weightGrams == nil {
                     reuseIdentifier = "ExerciseExpandedTime"
                 } else if time == nil {
                     reuseIdentifier = "ExerciseExpandedReps"
-                } else if weightDouble == nil {
+                } else if weightGrams == nil {
                     reuseIdentifier = "ExerciseExpandedTimeReps"
                 }
             }
@@ -129,7 +126,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             (cell as? RepsExerciseCell)?.numReps = repsInt
-            (cell as? RepsExerciseCell)?.numPounds = weightDouble
+            (cell as? RepsExerciseCell)?.grams = weightGrams
             (cell as? TimeRepsExerciseCell)?.repsCount = repsInt
             (cell as? TimeRepsExerciseCell)?.minTime = time ?? 0
             
@@ -214,7 +211,7 @@ class RepsExerciseCell: ExerciseCell {
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var weightsLabel: UILabel!
     
-    var numPounds: Double?
+    var grams: Double?
     var numReps: Int?
     
     override func layoutIfNeeded() {
@@ -232,9 +229,9 @@ class RepsExerciseCell: ExerciseCell {
         
         let attrString = NSMutableAttributedString()
         
-        if let lbs = numPounds {
-            attrString.append(NSAttributedString(string: "\(lbs)", attributes: numberAttributes))
-            attrString.append(NSAttributedString(string: "lb   ", attributes: unitsAttributes))
+        if let g = MFNumberFormatter.formatter.stringFromWeight(grams: grams) {
+            attrString.append(NSAttributedString(string: "\(g)", attributes: numberAttributes))
+            attrString.append(NSAttributedString(string: "\(MFNumberFormatter.formatter.weightUnitString)   ", attributes: unitsAttributes))
         }
         
         if let reps = numReps {
