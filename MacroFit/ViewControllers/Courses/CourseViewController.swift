@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 import SwiftyJSON
 
 class CourseViewController: UIViewController {
@@ -89,7 +90,19 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.section != 0, let lessonJSON = lessonsJSON?[indexPath.row] else  { return }
+        if indexPath.section == 0 {
+            guard indexPath.row == 0 else { return }
+            if let videoString = courseJSON?["video"].string, let url = URL(string: videoString) {
+                let player = AVPlayer(url: url)
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                present(playerViewController, animated: true) {
+                    player.play()
+                }
+            }
+        }
+            
+        guard let lessonJSON = lessonsJSON?[indexPath.row] else  { return }
         
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "Day")
         
