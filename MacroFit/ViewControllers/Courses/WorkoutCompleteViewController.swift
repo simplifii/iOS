@@ -61,9 +61,9 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
             cell = roundCell
         default:
             switch indexPath.row {
+//            case 0:
+//                cell = tableView.dequeueReusableCell(withIdentifier: "ShowInFeed", for: indexPath)
             case 0:
-                cell = tableView.dequeueReusableCell(withIdentifier: "ShowInFeed", for: indexPath)
-            case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: "ShareWithFriends", for: indexPath)
             default:
                 cell = tableView.dequeueReusableCell(withIdentifier: "RateCourse", for: indexPath)
@@ -76,7 +76,20 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 2, indexPath.row == 0 else { return }
+        
+        let url = "https://macrofit.com/" //TODO change this to a course reference when that becomes available.
+        
+        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = view
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
 
 class ShowCourseTableViewCell: UITableViewCell {
