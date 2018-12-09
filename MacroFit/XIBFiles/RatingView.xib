@@ -20,7 +20,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="1Uz-ds-lGY" secondAttribute="height" multiplier="1:1" id="UAj-PF-K3r"/>
-                        <constraint firstAttribute="width" constant="24" id="pIM-bY-HCo"/>
                     </constraints>
                     <state key="normal" image="star_gray"/>
                 </button>
