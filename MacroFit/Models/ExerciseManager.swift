@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 extension Notification.Name {
     public static let exerciseTimeUpdated = Notification.Name(rawValue: "timeUpdated")
@@ -23,9 +24,15 @@ class ExerciseManager: NSObject {
     private var notificationTimer: Timer!
     
     var currentExercise: String?
-    var currentRound: Int = 0
+    var numberOfRounds: Int = 0
+    var currentRoundNumber: Int = 1 //Indexes to 1
+    var restBetweenRounds: Int = 60 //Defaults to 60
     
-    var completedExercises: [Int : Bool] = [:]
+    var activeExercises = [Int:[JSON]]()
+    
+    var completedExercises: [String : Bool] = [:]
+    
+    private let defaultsKey = "macrofit.completedExercises"
     
     override init() {
         _stopwatch = Stopwatch()
@@ -35,11 +42,30 @@ class ExerciseManager: NSObject {
                 NotificationCenter.default.post(name: .exerciseTimeUpdated, object: nil, userInfo: ["time" : self!.stopwatch.elapsedTime])
             }
         })
+        
+//        if let archived = UserDefaults.standard.dictionary(forKey: defaultsKey) as? [String: Bool] {
+//            completedExercises = archived
+//        }
+        
         RunLoop.main.add(notificationTimer, forMode: .defaultRunLoopMode)
+    }
+    
+    func setActiveLesson(_ json: JSON) {
+        numberOfRounds = json["number_of_rounds"].int ?? 3
+        restBetweenRounds = json["rest_between_rounds"].int ?? 60
+    }
+    
+    func setActiveExercises(_ json: [JSON]) {
+        activeExercises = [:]
+        for i in 0...numberOfRounds - 1 {
+            activeExercises[i] = json
+        }
     }
     
     func recordExercise(exerciseID: Int) {
         stopwatch.reset()
+        completedExercises["\(exerciseID)-\(currentRoundNumber)"] = true
+//        UserDefaults.standard.set(completedExercises, forKey: defaultsKey)
         NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: nil)
     }
     
@@ -50,7 +76,7 @@ class ExerciseManager: NSObject {
     }
     
     func exerciseComplete(exerciseID: Int) -> Bool {
-        return completedExercises[exerciseID] ?? false
+        return completedExercises["\(exerciseID)-\(currentRoundNumber)"] ?? false
     }
 }
 

@@ -104,13 +104,16 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
             
         guard let lessonJSON = lessonsJSON?[indexPath.row] else  { return }
         
-        let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "Day")
+        ExerciseManager.manager.setActiveLesson(lessonJSON)
+        ExerciseManager.manager.currentRoundNumber = 1
         
+        let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "Day")
         
         if let dayVC = vc as? CourseDayViewController {
             dayVC.headerText =  "Day \(indexPath.row + 1)"
             if let key = lessonJSON["id"].rawString(), let exercises = exercisesJSON[key]?.array {
                 dayVC.dayJSON = exercises
+                ExerciseManager.manager.setActiveExercises(exercises)
             }
             dayVC.courseJSON = courseJSON
         }

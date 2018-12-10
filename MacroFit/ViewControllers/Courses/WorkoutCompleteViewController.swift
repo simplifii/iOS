@@ -43,7 +43,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return exercisesJSON?.count ?? 0
+        case 1: return ExerciseManager.manager.numberOfRounds > 0 ? 1 : 0
         case 2: return 2
         default: return 0
         }
@@ -56,7 +56,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
             cell = tableView.dequeueReusableCell(withIdentifier: "CongratsCell", for: indexPath)
         case 1:
             let roundCell = tableView.dequeueReusableCell(withIdentifier: "CourseSummary", for: indexPath) as! CourseSummaryTableViewCell
-            roundCell.roundLabel.text = "Round \(indexPath.row + 1)"
+            roundCell.roundLabel.text = nil //Round \(indexPath.row + 1)"
             roundCell.exercisesJSON = exercisesJSON
             cell = roundCell
         default:

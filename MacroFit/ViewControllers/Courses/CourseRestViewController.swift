@@ -13,7 +13,7 @@ class CourseRestViewController: UIViewController {
     @IBOutlet weak var nextRoundButton: UIButton!
     private var timer: Timer!
     
-    var timeToCount: TimeInterval = 60 {
+    var timeToCount: TimeInterval = TimeInterval(ExerciseManager.manager.restBetweenRounds) {
         didSet {
             stopwatch?.startCountDown(from: timeToCount)
             if let time = stopwatch?.timeRemaining {
@@ -43,7 +43,7 @@ class CourseRestViewController: UIViewController {
     }
     
     @IBAction func nextRoundPressed(_ sender: UIButton) {
-        ExerciseManager.manager.currentRound += 1
+        ExerciseManager.manager.currentRoundNumber += 1
         
         NotificationCenter.default.post(name: .restOverPressed, object: nil)
     }

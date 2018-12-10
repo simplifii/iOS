@@ -48,12 +48,11 @@ class CourseDayViewController: BaseViewController {
     
     @objc func nextPressed() {
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RestViewController") as! CourseRestViewController
-        vc.timeToCount = 60.9
+        vc.timeToCount = TimeInterval(ExerciseManager.manager.restBetweenRounds)
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func nextExercise() {
-        dayJSON?[activeExerciseIndex]["done"] = true
         activeExerciseIndex += 1
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
@@ -133,7 +132,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: indexPath.row == 0 ? "HeaderCell" : "DescriptionCell", for: indexPath)
             //Set up title, description, and header
             (cell as? CourseDescriptionCell)?.titleLabel.text = headerText
-            (cell as? CourseDescriptionCell)?.descriptionLabel.text = "Round \(activeExerciseIndex + 1): \(activeExerciseIndex + 1)/\(dayJSON?.count ?? 0)"
+            (cell as? CourseDescriptionCell)?.descriptionLabel.text = "Round \(ExerciseManager.manager.currentRoundNumber)/\(ExerciseManager.manager.numberOfRounds)"
 
             (cell as? CourseHeaderCell)?.backgroundImageView.image = nil
             if let urlString = courseJSON?["photo"].rawString(), let url = URL(string: urlString) {
