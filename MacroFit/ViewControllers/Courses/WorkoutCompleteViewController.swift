@@ -152,6 +152,11 @@ extension RateCourseTableViewCell: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
         return textView.text.count + text.count - range.length <= 1000 //Server enforced max limit
     }
 }
