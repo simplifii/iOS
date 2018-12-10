@@ -27,6 +27,7 @@
 		58BC46A021A52A1300592770 /* IndividualCourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */; };
 		58BC46A221A53AD900592770 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC46A121A53AD900592770 /* CourseViewController.swift */; };
 		58F2B40C21BC8E0B00AFEB15 /* MFNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2B40B21BC8E0B00AFEB15 /* MFNumberFormatter.swift */; };
+		58F2B40F21BE024700AFEB15 /* NumberModifierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2B40D21BE024700AFEB15 /* NumberModifierViewController.swift */; };
 		92F0A7B2ACA699441C9A41D0 /* Pods_MacroFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456D532E692B124E83F5A15B /* Pods_MacroFitTests.framework */; };
 		9F03F06BDFFBE65C874D00E6 /* Pods_MacroFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */; };
 		BC13F774BA31F265EF0928A6 /* Pods_MacroFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90694144E01E7704DD92288F /* Pods_MacroFit.framework */; };
@@ -209,6 +210,7 @@
 		58BC469E21A52A1300592770 /* IndividualCourseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndividualCourseTableViewCell.xib; sourceTree = "<group>"; };
 		58BC46A121A53AD900592770 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		58F2B40B21BC8E0B00AFEB15 /* MFNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFNumberFormatter.swift; sourceTree = "<group>"; };
+		58F2B40D21BE024700AFEB15 /* NumberModifierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberModifierViewController.swift; sourceTree = "<group>"; };
 		6AB284058D847BD8BF3639A5 /* Pods_MacroFitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90694144E01E7704DD92288F /* Pods_MacroFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacroFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF02753B59CD0F9BF07668C6 /* Pods-MacroFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroFitTests/Pods-MacroFitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				5862EF7A21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift */,
 				5862EF7C21B0FBF600FA4F19 /* CourseRestViewController.swift */,
 				5857611B21A7F85F0040A643 /* CourseDayCell.swift */,
+				58F2B40D21BE024700AFEB15 /* NumberModifierViewController.swift */,
 				5857611F21A8CEBD0040A643 /* CourseDayViewController.swift */,
 				5857611D21A812DE0040A643 /* CourseDescriptionCell.swift */,
 				5862EF7E21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift */,
@@ -1001,6 +1004,7 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/EzPopup/EzPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -1018,6 +1022,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EzPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -1092,6 +1097,7 @@
 				E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */,
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
 				58BC46A221A53AD900592770 /* CourseViewController.swift in Sources */,
+				58F2B40F21BE024700AFEB15 /* NumberModifierViewController.swift in Sources */,
 				E075A978215E3DC300D264CA /* OrderItemTableViewCell.swift in Sources */,
 				E0361212215A0E4900C560F5 /* ReceivedCreditViewController.swift in Sources */,
 				E05F919821774595001AF01D /* WhiteRoundedCornerBoxView.swift in Sources */,

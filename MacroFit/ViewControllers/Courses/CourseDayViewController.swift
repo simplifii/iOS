@@ -8,6 +8,12 @@
 
 import UIKit
 import SwiftyJSON
+import EzPopup
+
+extension Notification.Name {
+    public static let CourseDay_WeightPressed = Notification.Name(rawValue: "CourseDayViewController.WeightPressed")
+    public static let CourseDay_RepsPressed = Notification.Name(rawValue: "CourseDayViewController.RepsPressed")
+}
 
 class CourseDayViewController: BaseViewController {
     
@@ -25,6 +31,9 @@ class CourseDayViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(nextPressed), name: .courseNextPressed, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nextExercise), name: .exerciseCompleted, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(restOver), name: .restOverPressed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(modifierPressed), name: .CourseDay_WeightPressed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(modifierPressed), name: .CourseDay_RepsPressed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(attributeModified), name: .modifierApplyPressed, object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,10 +60,60 @@ class CourseDayViewController: BaseViewController {
         }
     }
     
+    @objc func modifierPressed(_ note: Notification) {
+        switch note.name {
+        case .CourseDay_WeightPressed:
+            let content = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "NumberModifier") as! NumberModifierViewController
+            let popup = PopupViewController(contentController: content, position: .center(nil), popupWidth: 300, popupHeight: 200)
+            var options: [String] = []
+            for i in 1...50 {
+                options.append("\(i)")
+            }
+            for i in 11...40 {
+                options.append("\(i * 5)")
+            }
+            content.options = options
+            content.displayTitle = "Weight (lb)"
+            content.modifierKey = "weight"
+            present(popup, animated: true, completion: nil)
+        case .CourseDay_RepsPressed:
+            let content = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "NumberModifier") as! NumberModifierViewController
+            let popup = PopupViewController(contentController: content, position: .center(nil), popupWidth: 300, popupHeight: 200)
+            var options: [String] = []
+            for i in 1...100 {
+                options.append("\(i)")
+            }
+            content.options = options
+            content.displayTitle = "Reps"
+            content.modifierKey = "reps"
+            present(popup, animated: true, completion: nil)
+        default:
+            break
+        }
+    }
+    
+    @objc func attributeModified(_ note: Notification) {
+        let info = note.userInfo
+        
+        //Figure out the active exercise:
+        let ex = dayJSON?[activeExerciseIndex]
+        
+        //Then figure out if info is on weight or reps:
+        let isWeight = (info?["modifierKey"] as? String) == "weight" //untested
+        
+        //Then modify ex accordingly
+        
+        //The problem with this is that this doesn't propagate through the whole model
+        
+        //SOOOO the course of action would be to keep the state in ExerciseManager.  And then sync that in bits and pieces as needed.
+    }
+    
     @objc func restOver() {
         navigationController?.popToViewController(self, animated: true)
     }
 }
+
+
 
 extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,7 +149,7 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             var reuseIdentifier = "Exercise"
             
             let repsInt = exercise["recommended_reps"].int
-            var weightGrams = exercise["recommended_weight_in_gms"].double
+            let weightGrams = exercise["recommended_weight_in_gms"].double
             let time = exercise["recommended_duration_in_secs"].double
             
             if indexPath.row == activeExerciseIndex {
@@ -209,7 +268,8 @@ class TimeExerciseCell: ExerciseCell {
 
 class RepsExerciseCell: ExerciseCell {
     @IBOutlet weak var completeButton: UIButton!
-    @IBOutlet weak var weightsLabel: UILabel!
+    @IBOutlet weak var weightButton: UIButton!
+    @IBOutlet weak var repsButton: UIButton!
     
     var grams: Double?
     var numReps: Int?
@@ -220,26 +280,39 @@ class RepsExerciseCell: ExerciseCell {
     }
     
     func updateText() {
-        let numberAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: weightsLabel.font.fontName, size: 24)!,
+        let numberAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: weightButton.titleLabel!.font.fontName, size: 24)!,
                                                               .foregroundColor : UIColor.black
         ]
-        let unitsAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: weightsLabel.font.fontName, size: 17)!,
+        let unitsAttributes: [NSAttributedStringKey: Any] = [.font : UIFont(name: weightButton.titleLabel!.font.fontName, size: 17)!,
                                                              .foregroundColor : UIColor.darkGray
         ]
         
-        let attrString = NSMutableAttributedString()
+        let weightString = NSMutableAttributedString()
         
         if let g = MFNumberFormatter.formatter.stringFromWeight(grams: grams) {
-            attrString.append(NSAttributedString(string: "\(g)", attributes: numberAttributes))
-            attrString.append(NSAttributedString(string: "\(MFNumberFormatter.formatter.weightUnitString)   ", attributes: unitsAttributes))
+            weightString.append(NSAttributedString(string: "\(g)", attributes: numberAttributes))
+            weightString.append(NSAttributedString(string: "\(MFNumberFormatter.formatter.weightUnitString)   ", attributes: unitsAttributes))
         }
+        
+        weightButton.setAttributedTitle(weightString, for: .normal)
+        weightButton.isHidden = weightString.string.count == 0
+        
+        let repString = NSMutableAttributedString()
         
         if let reps = numReps {
-            attrString.append(NSAttributedString(string: "\(reps)", attributes: numberAttributes))
-            attrString.append(NSAttributedString(string: " reps", attributes: unitsAttributes))
+            repString.append(NSAttributedString(string: "\(reps)", attributes: numberAttributes))
+            repString.append(NSAttributedString(string: " reps", attributes: unitsAttributes))
         }
-        
-        weightsLabel.attributedText = attrString
+        repsButton.setAttributedTitle(repString, for: .normal)
+        repsButton.isHidden = repString.string.count == 0
+    }
+    
+    @IBAction func weightPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: .CourseDay_WeightPressed, object: nil)
+    }
+    
+    @IBAction func repsPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: .CourseDay_RepsPressed, object: nil)
     }
 }
 

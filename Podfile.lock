@@ -12,6 +12,7 @@ PODS:
     - Branch/Core (= 0.25.8)
   - Branch/Core (0.25.8)
   - DropDown (2.3.2)
+  - EzPopup (1.0)
   - FBSDKCoreKit (4.38.0):
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.38.0):
@@ -87,6 +88,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.4)
   - Branch
   - DropDown
+  - EzPopup
   - FBSDKLoginKit
   - Firebase/Core
   - Firebase/Messaging
@@ -102,6 +104,7 @@ SPEC REPOS:
     - Bolts
     - Branch
     - DropDown
+    - EzPopup
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -125,6 +128,7 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Branch: bef2918a62f57ce284f4fa1917f5de1fb31295fe
   DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
+  EzPopup: 8ab951717736197e57b8f9973816fa2601cd59c5
   FBSDKCoreKit: 2ab7fdbf600dc6b628ba7a49aa29d357a7b4c74e
   FBSDKLoginKit: 634fa27e72e33620eb6389253337342c03d4a407
   Firebase: b48f9e653da971ecce5b8c749684bc8bb2d26bd3
@@ -142,6 +146,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TagListView: 0c7e9c26b9aff858224ee6b155f5fcacd9e27c83
 
-PODFILE CHECKSUM: 7076bf48d3052fd109948b571c03b526b2136cab
+PODFILE CHECKSUM: fd87f059f9eb9bcc8d35ea38cf6424fa8c2dac5e
 
 COCOAPODS: 1.5.3

@@ -16,6 +16,7 @@ target 'MacroFit' do
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'Branch'
+    pod 'EzPopup'
 # Pods for MacroFit
 
   target 'MacroFitTests' do
