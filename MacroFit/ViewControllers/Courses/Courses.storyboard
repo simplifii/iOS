@@ -793,7 +793,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ZS-rJ-5gt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ZS-rJ-5gt" customClass="TPKeyboardAvoidingTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                                 <color key="backgroundColor" red="0.95676201581954956" green="0.95692247152328491" blue="0.95673960447311401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -872,8 +872,8 @@
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="x3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUc-fL-6eS">
-                                                                                <rect key="frame" x="4" y="30" width="35" height="16"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUc-fL-6eS">
+                                                                                <rect key="frame" x="4" y="29.5" width="14.5" height="16"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -996,6 +996,7 @@
                                             <constraints>
                                                 <constraint firstItem="NOm-NQ-poE" firstAttribute="centerX" secondItem="axv-Gq-zQf" secondAttribute="centerX" id="F6R-UT-Yho"/>
                                                 <constraint firstItem="cjK-av-odS" firstAttribute="top" secondItem="axv-Gq-zQf" secondAttribute="top" id="SJS-Ic-o58"/>
+                                                <constraint firstItem="cjK-av-odS" firstAttribute="top" secondItem="axv-Gq-zQf" secondAttribute="top" id="WaE-XS-3WA"/>
                                                 <constraint firstItem="cjK-av-odS" firstAttribute="leading" secondItem="axv-Gq-zQf" secondAttribute="leading" constant="15" id="aZQ-xB-Jtm"/>
                                                 <constraint firstItem="cjK-av-odS" firstAttribute="top" secondItem="axv-Gq-zQf" secondAttribute="top" id="e8G-T5-Tsc"/>
                                                 <constraint firstItem="NOm-NQ-poE" firstAttribute="top" secondItem="axv-Gq-zQf" secondAttribute="topMargin" id="iaa-De-a2k"/>

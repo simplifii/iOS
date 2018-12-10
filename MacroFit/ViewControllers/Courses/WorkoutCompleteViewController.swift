@@ -159,4 +159,12 @@ extension RateCourseTableViewCell: UITextViewDelegate {
         
         return textView.text.count + text.count - range.length <= 1000 //Server enforced max limit
     }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            textView.text = placeholder
+        }
+        
+        textView.text = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
