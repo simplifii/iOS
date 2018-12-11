@@ -2183,7 +2183,6 @@
                         <viewLayoutGuide key="safeArea" id="4ck-BZ-crz"/>
                     </view>
                     <connections>
-                        <outlet property="navbarView" destination="AG5-ZP-hBw" id="7ry-vT-lkY"/>
                         <outlet property="skipButton" destination="bx1-xj-Kq7" id="Iup-cN-hsn"/>
                     </connections>
                 </viewController>

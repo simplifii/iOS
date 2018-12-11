@@ -11,15 +11,12 @@ import CropViewController
 
 class SelectProfilePhotoViewController: BaseViewController, CropViewControllerDelegate {
     
-    @IBOutlet weak var navbarView: UIView!
     @IBOutlet weak var skipButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
-        
+                
         skipButton.layer.cornerRadius = 8.0
         skipButton.layer.borderWidth = 1
         skipButton.layer.borderColor = Constants.buttonBorderColor.cgColor

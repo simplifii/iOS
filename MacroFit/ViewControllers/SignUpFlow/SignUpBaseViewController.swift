@@ -12,6 +12,8 @@ import FBSDKLoginKit
 
 class SignUpBaseViewController: OnboardUserViewController {
 
+    let loginManager = FBSDKLoginManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -25,7 +27,6 @@ class SignUpBaseViewController: OnboardUserViewController {
     }
 
     func loginWithFacebook() {
-        let loginManager = FBSDKLoginManager()
         loginManager.loginBehavior = FBSDKLoginBehavior.browser
         if FBSDKAccessToken.current() == nil {
             loginManager.logIn(withReadPermissions: ["public_profile","email","user_friends"], from: self, handler: { (result, error) -> Void in
@@ -41,14 +42,14 @@ class SignUpBaseViewController: OnboardUserViewController {
                         
                         self.setUserDetails(userId: userId!, token: token!)
                     } else {
-                        self.showAlertMessage(title: "Unable to get email. Please try again", message: nil)
+                        self.loginManager.logOut()
+                        self.showAlertMessage(title: "Oops! We would need access to your Facebook email to login.", message: nil)
                     }
                 }
             })
         } else {
             let userId = FBSDKAccessToken.current()!.userID
             let token = FBSDKAccessToken.current()!.tokenString
-            
             print("already logged in user")
             self.setUserDetails(userId: userId!, token: token!)
         }
@@ -70,6 +71,7 @@ class SignUpBaseViewController: OnboardUserViewController {
 //                print(token)
         APIService.facebookLogin(fbUserId: userId, fbUserToken: token, completion: {success,msg,json in
             if success == false {
+                self.loginManager.logOut()
                 self.showAlertMessage(title: msg, message: nil)
             } else {
                 self.ahowWorkoutWithFriendsScreen()
