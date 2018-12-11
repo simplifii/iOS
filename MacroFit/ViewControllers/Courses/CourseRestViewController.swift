@@ -26,6 +26,7 @@ class CourseRestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextRoundButton.setTitle("Next: Round \(ExerciseManager.manager.currentRoundNumber + 1)/\(ExerciseManager.manager.numberOfRounds)", for: .normal)
         stopwatch = CountdownStopwatch()
         stopwatch?.startCountDown(from: timeToCount)
         

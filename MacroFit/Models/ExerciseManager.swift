@@ -28,11 +28,10 @@ class ExerciseManager: NSObject {
     var currentRoundNumber: Int = 1 //Indexes to 1
     var restBetweenRounds: Int = 60 //Defaults to 60
     
-    var activeExercises = [Int:[JSON]]()
+    var activeExercises = [Int:[Int : JSON]]() //Map of round number to exercises
     
-    var completedExercises: [String : Bool] = [:]
-    
-    private let defaultsKey = "macrofit.completedExercises"
+    private let completeKey = "complete"
+//    private let defaultsKey = "macrofit.completedExercises"
     
     override init() {
         _stopwatch = Stopwatch()
@@ -58,13 +57,18 @@ class ExerciseManager: NSObject {
     func setActiveExercises(_ json: [JSON]) {
         activeExercises = [:]
         for i in 0...numberOfRounds - 1 {
-            activeExercises[i] = json
+            var tmp = [Int:JSON]()
+            for ex in json {
+                tmp[ex["id"].int ?? 0] = ex
+            }
+            activeExercises[i] = tmp
         }
     }
     
     func recordExercise(exerciseID: Int) {
         stopwatch.reset()
-        completedExercises["\(exerciseID)-\(currentRoundNumber)"] = true
+        guard activeExercises[currentRoundNumber] != nil, activeExercises[currentRoundNumber]![exerciseID] != nil else { return }
+        activeExercises[currentRoundNumber]![exerciseID]![completeKey] = true
 //        UserDefaults.standard.set(completedExercises, forKey: defaultsKey)
         NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: nil)
     }
@@ -76,7 +80,8 @@ class ExerciseManager: NSObject {
     }
     
     func exerciseComplete(exerciseID: Int) -> Bool {
-        return completedExercises["\(exerciseID)-\(currentRoundNumber)"] ?? false
+        guard activeExercises[currentRoundNumber] != nil, activeExercises[currentRoundNumber]![exerciseID] != nil else { return false }
+        return activeExercises[currentRoundNumber]![exerciseID]![completeKey].boolValue
     }
 }
 
