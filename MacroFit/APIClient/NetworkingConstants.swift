@@ -27,4 +27,6 @@ struct NetworkingConstants{
     static let facebookLogin = "custom/facebook_login"
     static let challenges = "cards"
     static let courseFeedback = "custom/feedbackOnCourse"
+    static let lessonFeedback = "custom/feedbackOnLesson"
+    //TODO markLessonCompleted
 }

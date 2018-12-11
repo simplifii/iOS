@@ -101,7 +101,7 @@ class ExerciseManager: NSObject {
     }
     
     func sendFeedback(for course: Int, stars: Int, feedback: String) {
-        APIService.sendCourseFeedback(forCourse: course, starRating: stars, feedbackText: feedback, completion: {success,msg in
+        APIService.sendLessonFeedback(forLesson: course, starRating: stars, feedbackText: feedback, completion: {success,msg in
             NotificationCenter.default.post(name: .courseFeedbackSent, object: nil, userInfo: nil)
         })
     }

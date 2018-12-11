@@ -316,6 +316,12 @@ struct APIService {
         })
     }
     
+    static func sendLessonFeedback(forLesson lesson: Int, starRating: Int, feedbackText: String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.sendLessonFeedback(forLesson: lesson, starRating: starRating, feedbackText: feedbackText), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     static func updateBodyFat(bodyFat:Int, completion: @escaping (Bool, String) -> Void){
         sendRequest(request: APIRouter.updateBodyFat(bodyFat: bodyFat), completion: {success,msg in
             completion(success, msg)

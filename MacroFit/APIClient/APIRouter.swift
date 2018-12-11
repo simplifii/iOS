@@ -52,6 +52,7 @@ enum APIRouter: URLRequestConvertible {
     case updateDeviceToken(token: String)
     case changePassword(newPassword: String)
     case sendCourseFeedback(forCourse: Int, starRating: Int, feedbackText: String)
+    case sendLessonFeedback(forLesson: Int, starRating: Int, feedbackText: String)
     
     var path: String {
         
@@ -105,6 +106,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.exercises
             case .sendCourseFeedback:
                 return NetworkingConstants.courseFeedback
+            case .sendLessonFeedback:
+                return NetworkingConstants.lessonFeedback
         }
     }
     
@@ -228,13 +231,18 @@ enum APIRouter: URLRequestConvertible {
             bodyDict["action"] = "UpdateDeviceToken"
             bodyDict["device_token"] = token
             break
-            
         case let .sendCourseFeedback(forCourse: course, starRating: rating, feedbackText: text):
             if text.count > 0 {
                 bodyDict["feedback"] = text
             }
             bodyDict["rating"] = rating
             bodyDict["course_id"] = course
+        case let .sendLessonFeedback(forLesson: lesson, starRating: rating, feedbackText: text):
+            if text.count > 0 {
+                bodyDict["feedback"] = text
+            }
+            bodyDict["rating"] = rating
+            bodyDict["lesson_id"] = lesson
         default:
             print("no action")
         }
@@ -352,7 +360,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback, .sendLessonFeedback:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword:
             return .patch
@@ -367,7 +375,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword, .sendCourseFeedback:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword, .sendCourseFeedback, .sendLessonFeedback:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
