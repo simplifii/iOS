@@ -12,8 +12,6 @@ import SwiftyJSON
 class WorkoutCompleteViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var exercisesJSON: [JSON]?
-    var courseJSON: JSON?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +41,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return ExerciseManager.manager.numberOfRounds > 0 ? 1 : 0
+        case 1: return ExerciseManager.manager.numberOfRounds
         case 2: return 2
         default: return 0
         }
@@ -57,6 +55,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
         case 1:
             let roundCell = tableView.dequeueReusableCell(withIdentifier: "CourseSummary", for: indexPath) as! CourseSummaryTableViewCell
             roundCell.roundLabel.text = nil //Round \(indexPath.row + 1)"
+            let exercisesJSON = ExerciseManager.manager.orderedExercises(in: indexPath.row)
             roundCell.exercisesJSON = exercisesJSON
             cell = roundCell
         default:
@@ -67,7 +66,7 @@ extension WorkoutCompleteViewController: UITableViewDelegate, UITableViewDataSou
                 cell = tableView.dequeueReusableCell(withIdentifier: "ShareWithFriends", for: indexPath)
             default:
                 cell = tableView.dequeueReusableCell(withIdentifier: "RateCourse", for: indexPath)
-                (cell as? RateCourseTableViewCell)?.courseID = courseJSON?["id"].int ?? 0
+                (cell as? RateCourseTableViewCell)?.lessonID = ExerciseManager.manager.lessonID
             }
         }
         
@@ -102,8 +101,8 @@ class RateCourseTableViewCell: UITableViewCell {
     @IBOutlet weak var feedbackView: UITextView!
     
     @IBOutlet weak var sendMessageButton: UIButton!
-    var courseID: Int = 0
-    var courseRating: Int = 5
+    var lessonID: Int = 0
+    var rating: Int = 5
     
     private var ratingView: RatingView?
     
@@ -131,14 +130,14 @@ class RateCourseTableViewCell: UITableViewCell {
     }
     
     @objc func showRatingInRatingView(_ sender: UIButton) {
-        let rating = Int(sender.accessibilityHint!)!
-        courseRating = rating
-        ratingView!.setRating(rating: rating)
+        let r = Int(sender.accessibilityHint!)!
+        rating = r
+        ratingView!.setRating(rating: r)
         
     }
     
     @IBAction func sendMessagePressed(_ sender: UIButton) {
-        ExerciseManager.manager.sendFeedback(for: courseID, stars: courseRating, feedback: feedbackView.text == placeholder ? "" : feedbackView.text)
+        ExerciseManager.manager.sendFeedback(for: lessonID, stars: rating, feedback: feedbackView.text == placeholder ? "" : feedbackView.text)
         sender.isEnabled = false
         sender.setTitle("Feedback sent", for: .normal)
     }

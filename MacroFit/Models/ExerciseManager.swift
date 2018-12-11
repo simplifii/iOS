@@ -28,6 +28,7 @@ class ExerciseManager: NSObject {
     ///Indexes to 1
     var currentRoundNumber: Int = 1
     var restBetweenRounds: Int = 60 //Defaults to 60
+    var lessonID: Int = 0
     
     private var exerciseOrder = [Int]() //Keep exercises in order
     var activeExercises = [Int:[Int : JSON]]() //Map of round number to exercises
@@ -36,7 +37,6 @@ class ExerciseManager: NSObject {
     static let ActualTimeKey = "actualTimeInSeconds"
     static let ActualRepsKey = "actualReps"
     static let ActualWeightKey = "actualWeightGrams"
-//    private let defaultsKey = "macrofit.completedExercises"
     
     override init() {
         _stopwatch = Stopwatch()
@@ -47,16 +47,13 @@ class ExerciseManager: NSObject {
             }
         })
         
-//        if let archived = UserDefaults.standard.dictionary(forKey: defaultsKey) as? [String: Bool] {
-//            completedExercises = archived
-//        }
-        
         RunLoop.main.add(notificationTimer, forMode: .defaultRunLoopMode)
     }
     
     func setActiveLesson(_ json: JSON) {
         numberOfRounds = json["number_of_rounds"].int ?? 3
         restBetweenRounds = json["rest_between_rounds"].int ?? 60
+        lessonID = json["id"].int ?? 0
     }
     
     func setActiveExercises(_ json: [JSON]) {
@@ -79,6 +76,18 @@ class ExerciseManager: NSObject {
         return activeExercises[currentRoundNumber - 1]![exerciseOrder[index]]
     }
     
+    func orderedExercises(in round: Int) -> [JSON] {
+        var tmp = [JSON]()
+        if let dict = activeExercises[round] {
+            for key in exerciseOrder {
+                if let ex = dict[key] {
+                    tmp.append(ex)
+                }
+            }
+        }
+        return tmp
+    }
+ 
     func recordExercise(exerciseID: Int) {
         let time = stopwatch.elapsedTime
         stopwatch.reset()
@@ -88,7 +97,6 @@ class ExerciseManager: NSObject {
         if time > 0 {
             activeExercises[currentRoundNumber - 1]![exerciseID]![ExerciseManager.ActualTimeKey] = JSON(integerLiteral: Int(time))
         }
-//        UserDefaults.standard.set(completedExercises, forKey: defaultsKey)
         NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: nil)
     }
     

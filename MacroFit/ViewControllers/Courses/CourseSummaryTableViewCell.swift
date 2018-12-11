@@ -34,13 +34,25 @@ extension CourseSummaryTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExerciseCell", for: indexPath) as! ExerciseSummaryCollectionViewCell
         
+        
         if let exercise = exercisesJSON?[indexPath.row] {
+            var values = [String]()
             cell.exerciseNameLabel.text = exercise["title"].string
-            if let reps = exercise["recommended_reps"].int {
-                cell.topLineLabel.text = "x\(reps)"
+            if let reps = exercise[ExerciseManager.ActualRepsKey].int ?? exercise["recommended_reps"].int {
+                values.append("x\(reps)")
             }
-            if let time = exercise["recommended_duration_in_secs"].double {
-                cell.bottomLineLabel.text = MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: time)
+            if let time = exercise[ExerciseManager.ActualTimeKey].double ?? exercise["recommended_duration_in_secs"].double {
+                values.append(MFTimeFormatter.formatter.clockStyleDurationString(fromSeconds: time))
+            }
+            if let weight = exercise[ExerciseManager.ActualWeightKey].double ?? exercise["recommended_weight_in_gms"].double,
+                let wtString = MFNumberFormatter.formatter.stringFromWeight(grams: weight) {
+                values.append(wtString + MFNumberFormatter.formatter.weightUnitString)
+            }
+            
+            var i = 0
+            for label in [cell.topLineLabel, cell.bottomLineLabel] {
+                if values.count > i { label?.text = values[i] }
+                i += 1
             }
         }
         return cell

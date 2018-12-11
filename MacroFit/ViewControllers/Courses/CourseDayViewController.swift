@@ -41,8 +41,6 @@ class CourseDayViewController: BaseViewController {
     
     @IBAction func endWorkoutPressed(_ sender: UIButton? = nil) {
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "WorkoutComplete") as! WorkoutCompleteViewController
-        vc.exercisesJSON = dayJSON
-        vc.courseJSON = courseJSON
         navigationController?.pushViewController(vc, animated: true)
     }
     
