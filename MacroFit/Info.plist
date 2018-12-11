@@ -50,6 +50,8 @@
 	<string>For taking user profile pic</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Invite user contacts</string>
+        <key>NSPhotoLibraryUsageDescription</key>
+	<string>For selecting profile pic from photo library</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>For selecting profile pic from photo library</string>
 	<key>UIAppFonts</key>
