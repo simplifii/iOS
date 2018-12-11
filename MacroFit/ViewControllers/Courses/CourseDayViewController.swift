@@ -354,6 +354,16 @@ class TimeRepsExerciseCell: TimeExerciseCell {
 class CourseNextButtonCell: UITableViewCell {
     @IBOutlet weak var nextButton: UIButton!
     
+    override func prepareForReuse() {
+        var nextAction = "Done"
+        if ExerciseManager.manager.currentRoundNumber < ExerciseManager.manager.numberOfRounds - 1 {
+            let seconds = ExerciseManager.manager.restBetweenRounds
+            let time = seconds % 60 == 0 ? "\(seconds / 60) min" : "\(seconds) sec"
+            nextAction = "Rest \(time)"
+        }
+        nextButton.setTitle("Next: \(nextAction)", for: .normal)
+    }
+    
     @IBAction func nextPressed(_ sender: Any) {
         NotificationCenter.default.post(name: .courseNextPressed, object: nil)
     }
