@@ -375,7 +375,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback, .sendLessonFeedback, .markLessonCompleted, .addContactsToUserNetwork:
+    case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback, .sendLessonFeedback, .markLessonCompleted, .addContactsToUserNetwork:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword, .updateProfilePic:
             return .patch
