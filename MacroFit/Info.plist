@@ -46,8 +46,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>For taking user profile pic</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Invite user contacts</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>For selecting profile pic from photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>

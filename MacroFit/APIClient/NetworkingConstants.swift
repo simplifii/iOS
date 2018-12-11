@@ -29,4 +29,7 @@ struct NetworkingConstants{
     static let courseFeedback = "custom/feedbackOnCourse"
     static let lessonFeedback = "custom/feedbackOnLesson"
     static let lessonCompleted = "custom/markLessonCompleted"
+    static let uploadFileToS3 = "s3/upload_file"
+    static let userNetwork = "user_network_contacts"
+
 }

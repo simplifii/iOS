@@ -18,6 +18,7 @@ target 'MacroFit' do
     pod 'Branch'
     pod 'EzPopup'
     pod 'TPKeyboardAvoiding'
+    pod 'CropViewController'
 # Pods for MacroFit
 
   target 'MacroFitTests' do

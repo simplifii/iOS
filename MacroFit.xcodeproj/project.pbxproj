@@ -66,6 +66,7 @@
 		E03E118E2190208F006B3F0C /* ChallengeTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03E118A2190208F006B3F0C /* ChallengeTags.swift */; };
 		E04F54E72165E58D004BDEC9 /* PaymentFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */; };
 		E04F54E92165EB4E004BDEC9 /* ErrorMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */; };
+		E05BE7A521AFFC59005377D9 /* SignUpOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BE7A421AFFC59005377D9 /* SignUpOptionsViewController.swift */; };
 		E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */; };
 		E05E62A0216E07FA00112605 /* RecipeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */; };
 		E05E62A2216E1D1D00112605 /* SubmitRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */; };
@@ -118,6 +119,9 @@
 		E0A792172153834500CBBFDB /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A792162153834500CBBFDB /* UserConstants.swift */; };
 		E0A79219215384B900CBBFDB /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A79218215384B900CBBFDB /* APIError.swift */; };
 		E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7921D2153BDD100CBBFDB /* Constants.swift */; };
+		E0B73F0821B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B73F0721B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift */; };
+		E0B73F0A21B15A7000FB95E5 /* SignUpBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B73F0921B15A7000FB95E5 /* SignUpBaseViewController.swift */; };
+		E0B73F0C21B1619000FB95E5 /* SelectProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B73F0B21B1619000FB95E5 /* SelectProfilePhotoViewController.swift */; };
 		E0BD2B6E216B247A00E2D297 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B68216B243B00E2D297 /* Montserrat-Black.ttf */; };
 		E0BD2B6F216B247A00E2D297 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B6A216B243B00E2D297 /* Montserrat-BlackItalic.ttf */; };
 		E0BD2B70216B247A00E2D297 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0BD2B64216B243A00E2D297 /* Montserrat-Bold.ttf */; };
@@ -146,6 +150,8 @@
 		E0CE6D952150F3060073D104 /* BasicInfoFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */; };
 		E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */; };
 		E0CE6D992151203E0073D104 /* OnboardUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */; };
+		E0D60DFB21B4EB1600EAA83F /* UploadProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D60DFA21B4EB1600EAA83F /* UploadProfilePhotoViewController.swift */; };
+		E0D60DFD21B53AFB00EAA83F /* WorkoutWithFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D60DFC21B53AFB00EAA83F /* WorkoutWithFriendsViewController.swift */; };
 		E0D64AD121746A6100FB700C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */; };
 		E0D64AD32174ADC800FB700C /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D64AD22174ADC800FB700C /* Connectivity.swift */; };
 		E0D99992218090BC004FDBCF /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D99991218090BC004FDBCF /* RatingView.xib */; };
@@ -251,6 +257,7 @@
 		E03E118A2190208F006B3F0C /* ChallengeTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTags.swift; sourceTree = "<group>"; };
 		E04F54E62165E58D004BDEC9 /* PaymentFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormTableViewController.swift; sourceTree = "<group>"; };
 		E04F54E82165EB4E004BDEC9 /* ErrorMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageViewController.swift; sourceTree = "<group>"; };
+		E05BE7A421AFFC59005377D9 /* SignUpOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOptionsViewController.swift; sourceTree = "<group>"; };
 		E05E629D216E07A900112605 /* RecipeCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		E05E629F216E07FA00112605 /* RecipeCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoriesViewController.swift; sourceTree = "<group>"; };
 		E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -309,6 +316,9 @@
 		E0A792162153834500CBBFDB /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
 		E0A79218215384B900CBBFDB /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E0A7921D2153BDD100CBBFDB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E0B73F0721B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFieldTableViewCell.swift; sourceTree = "<group>"; };
+		E0B73F0921B15A7000FB95E5 /* SignUpBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBaseViewController.swift; sourceTree = "<group>"; };
+		E0B73F0B21B1619000FB95E5 /* SelectProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfilePhotoViewController.swift; sourceTree = "<group>"; };
 		E0BD2B5C216B243900E2D297 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		E0BD2B5D216B243900E2D297 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E0BD2B5E216B243900E2D297 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
@@ -337,6 +347,8 @@
 		E0CE6D942150F3060073D104 /* BasicInfoFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoFormTableViewController.swift; sourceTree = "<group>"; };
 		E0CE6D962150F3210073D104 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUserViewController.swift; sourceTree = "<group>"; };
+		E0D60DFA21B4EB1600EAA83F /* UploadProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProfilePhotoViewController.swift; sourceTree = "<group>"; };
+		E0D60DFC21B53AFB00EAA83F /* WorkoutWithFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWithFriendsViewController.swift; sourceTree = "<group>"; };
 		E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		E0D64AD22174ADC800FB700C /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		E0D99991218090BC004FDBCF /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
@@ -512,6 +524,23 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		E05BE7A321AFFBC2005377D9 /* SignUpFlow */ = {
+			isa = PBXGroup;
+			children = (
+				E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */,
+				E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */,
+				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
+				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
+				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
+				E05BE7A421AFFC59005377D9 /* SignUpOptionsViewController.swift */,
+				E0B73F0921B15A7000FB95E5 /* SignUpBaseViewController.swift */,
+				E0B73F0B21B1619000FB95E5 /* SelectProfilePhotoViewController.swift */,
+				E0D60DFA21B4EB1600EAA83F /* UploadProfilePhotoViewController.swift */,
+				E0D60DFC21B53AFB00EAA83F /* WorkoutWithFriendsViewController.swift */,
+			);
+			path = SignUpFlow;
+			sourceTree = "<group>";
+		};
 		E05F9192217701CE001AF01D /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +663,7 @@
 		E0A6DD7E214F73A900B6C301 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E05BE7A321AFFBC2005377D9 /* SignUpFlow */,
 				E03E117021901296006B3F0C /* Challenges */,
 				58BC4692219DF5F100592770 /* Courses */,
 				E0034928217F3E7100AED979 /* Home */,
@@ -643,13 +673,8 @@
 				E05F9192217701CE001AF01D /* Recipes */,
 				E075A975215E377100D264CA /* BaseViewController.swift */,
 				E0CE6D982151203E0073D104 /* OnboardUserViewController.swift */,
-				E0A6DD7F214F740400B6C301 /* IntroductionScreenViewController.swift */,
-				E0A6DD91214FADFE00B6C301 /* SignUpViewController.swift */,
-				E0A6DD9B214FE93900B6C301 /* SignUpFormTableViewController.swift */,
 				E0361211215A0E4900C560F5 /* ReceivedCreditViewController.swift */,
 				E0361213215A3A9F00C560F5 /* WelcomeViewController.swift */,
-				E0DEDB9D2167317D0040BC52 /* LoginViewController.swift */,
-				E0DEDB9F216733BC0040BC52 /* LoginFormTableViewController.swift */,
 				E073FEDD2170BC1A00000423 /* TabBarViewController.swift */,
 				E0C009A0217600E400926904 /* SideMenuFormTableViewController.swift */,
 				E0C009A221760F5500926904 /* SideMenuViewController.swift */,
@@ -789,6 +814,7 @@
 				090E4134219AE34E0014BCFD /* LeaderBoardTableViewCell2.swift */,
 				E05E62A1216E1D1D00112605 /* SubmitRecipeTableViewCell.swift */,
 				E09A6AE9216202260096708A /* SubtotalTableViewCell.swift */,
+				E0B73F0721B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1003,6 +1029,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/EzPopup/EzPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -1022,6 +1049,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EzPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -1090,12 +1118,14 @@
 				E003492A217F3F9300AED979 /* HomeViewController.swift in Sources */,
 				E09AA5D02181F11C00338477 /* FeedbackPopupBaseViewController.swift in Sources */,
 				E03E118621902037006B3F0C /* StatisticsTableViewCell.swift in Sources */,
+				E0D60DFD21B53AFB00EAA83F /* WorkoutWithFriendsViewController.swift in Sources */,
 				E02E85502164A36300DDE4A7 /* OrderModelController.swift in Sources */,
 				EE7E278C218C299C00CB947D /* SettingProfileTableViewCell.swift in Sources */,
 				E0C009A321760F5500926904 /* SideMenuViewController.swift in Sources */,
 				E009ABB5218715AC0000C16C /* MealInfoBoxView.swift in Sources */,
 				E075A976215E377200D264CA /* BaseViewController.swift in Sources */,
 				E0982ACD21789F1900F5FCE5 /* ReferFriendViewController.swift in Sources */,
+				E05BE7A521AFFC59005377D9 /* SignUpOptionsViewController.swift in Sources */,
 				E02E854521647F9C00DDE4A7 /* OrderSummaryViewController.swift in Sources */,
 				E0A5605E216CCB6E003534D4 /* DeliveryOverEmbeddedViewController.swift in Sources */,
 				58BC46A221A53AD900592770 /* CourseViewController.swift in Sources */,
@@ -1118,6 +1148,7 @@
 				E03E118521902037006B3F0C /* LeaderBoardTableViewCell.swift in Sources */,
 				E03E1179219012B1006B3F0C /* SubmitResultViewController.swift in Sources */,
 				E067628A2159020600D19202 /* DietaryPreferencesViewController.swift in Sources */,
+				E0B73F0A21B15A7000FB95E5 /* SignUpBaseViewController.swift in Sources */,
 				E0A7921E2153BDD100CBBFDB /* Constants.swift in Sources */,
 				E0DEDB9E2167317D0040BC52 /* LoginViewController.swift in Sources */,
 				E0CE6D972150F3210073D104 /* BasicInfoViewController.swift in Sources */,
@@ -1129,6 +1160,7 @@
 				E05E629E216E07A900112605 /* RecipeCategoryTableViewCell.swift in Sources */,
 				E027C0E22188644A00F27E8B /* CoreDataManager.swift in Sources */,
 				E03E118421902037006B3F0C /* ChallengeTableViewCell.swift in Sources */,
+				E0B73F0C21B1619000FB95E5 /* SelectProfilePhotoViewController.swift in Sources */,
 				E09A6AEC216238840096708A /* AddressFormTableViewController.swift in Sources */,
 				E03E118C2190208F006B3F0C /* GetEachUserBestScore.swift in Sources */,
 				E0A6DD98214FDF1F00B6C301 /* ProgressBarView.swift in Sources */,
@@ -1174,6 +1206,7 @@
 				E0DD472D216F60A000783F99 /* RecipeCardsViewController.swift in Sources */,
 				E0034925217EE23F00AED979 /* FitnessTableViewController.swift in Sources */,
 				E03E1177219012B1006B3F0C /* ChallengeViewController.swift in Sources */,
+				E0B73F0821B11DCB00FB95E5 /* SignUpFieldTableViewCell.swift in Sources */,
 				E0A6DD9C214FE93900B6C301 /* SignUpFormTableViewController.swift in Sources */,
 				090E4135219AE34E0014BCFD /* LeaderBoardTableViewCell2.swift in Sources */,
 				E03E117E21902007006B3F0C /* selectValuePopup.swift in Sources */,
@@ -1198,6 +1231,7 @@
 				E0DEDBA2216761F60040BC52 /* OrderConfirmationSuccessViewController.swift in Sources */,
 				E02E85582164C55800DDE4A7 /* DeliveryDateTableViewCell.swift in Sources */,
 				E03E1178219012B1006B3F0C /* SubmitWhenScoreIsInValueViewController.swift in Sources */,
+				E0D60DFB21B4EB1600EAA83F /* UploadProfilePhotoViewController.swift in Sources */,
 				E0DC7403215BAD230085551E /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,17 +10,15 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class SignUpViewController: OnboardUserViewController {
+class SignUpViewController: SignUpBaseViewController {
 
     @IBOutlet weak var navbarView: UIView!
-    @IBOutlet weak var progressBarView: UIView!
+    @IBOutlet weak var signUpWithFBButton: UIButton!
     
     var name = String()
     var email = String()
     var mobile = String()
     var password = String()
-    var zipcode = String()
-    var promocode = String()
     
     var credits:Int = 0
     
@@ -29,8 +27,8 @@ class SignUpViewController: OnboardUserViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
-        self.addProgressBarInView(progressBarView: progressBarView, percent: 20, description: nil)
-
+        
+        addFacebookIconInButton(button: signUpWithFBButton)
     }
     
 
@@ -56,10 +54,6 @@ class SignUpViewController: OnboardUserViewController {
             showAlertMessage(title: "Password is required", message: nil)
             return false
         }
-        if (zipcode.isEmpty) {
-            showAlertMessage(title: "Zip code is required", message: nil)
-            return false
-        }
         
         return true
     }
@@ -69,22 +63,20 @@ class SignUpViewController: OnboardUserViewController {
         if validateFields() == false {
             return
         }
-        
+
         createUser(sender: sender)
     }
     
     func setFieldsData() {
-        name = signUpFormTableViewControoler.nameTextField.text!
-        email = signUpFormTableViewControoler.emailTextField.text!
-        mobile = signUpFormTableViewControoler.phoneTextField.text!
-        password = signUpFormTableViewControoler.passwordTextField.text!
-        zipcode = signUpFormTableViewControoler.zipCodeTextField.text!
-        promocode = signUpFormTableViewControoler.promocodeTextField.text!
+        name = signUpFormTableViewControoler.name
+        email = signUpFormTableViewControoler.email
+        mobile = signUpFormTableViewControoler.mobile
+        password = signUpFormTableViewControoler.password
     }
     
     func createUser(sender: UIButton) {
         sender.isEnabled = false
-        Alamofire.request(APIRouter.createUser(name: name, email: email, password: password, phone: mobile, zip_code: zipcode, promocode: promocode))
+        Alamofire.request(APIRouter.createUser(name: name, email: email, password: password, phone: mobile, zip_code: "", promocode: ""))
             .validate(statusCode: 200..<501)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
@@ -102,7 +94,7 @@ class SignUpViewController: OnboardUserViewController {
                                     if success == false {
                                         self.showAlertMessage(title: msg, message: nil)
                                     } else {
-                                        self.signUpCompleted()
+                                        self.signUpProcessCompleted()
                                     }
                                 })
                             } else {
@@ -123,24 +115,31 @@ class SignUpViewController: OnboardUserViewController {
         }
     }
     
-    func signUpCompleted() {
+    func signUpProcessCompleted() {
         if credits > 0 {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReceivedCreditViewController") as? ReceivedCreditViewController
             vc?.credits = credits
             self.navigationController?.isNavigationBarHidden = true
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BasicInfoViewController") as? BasicInfoViewController
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.pushViewController(vc!, animated: true)
+            self.signUpCompleted()
         }
     }
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SignUpFormTableViewController"{
+        if segue.destination is SignUpFormTableViewController{
             let vc = segue.destination as! SignUpFormTableViewController
             signUpFormTableViewControoler = vc
+        } else if segue.destination is LoginViewController {
+            let vc = segue.destination as! LoginViewController
+            vc.showNavbar = true
         }
     }
+    
+    
+    @IBAction func loginUsingFacebook(_ sender: UIButton) {
+        loginWithFacebook()
+    }
+    
 }

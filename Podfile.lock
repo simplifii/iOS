@@ -11,6 +11,7 @@ PODS:
   - Branch (0.25.8):
     - Branch/Core (= 0.25.8)
   - Branch/Core (0.25.8)
+  - CropViewController (2.3.8)
   - DropDown (2.3.2)
   - EzPopup (1.0)
   - FBSDKCoreKit (4.38.0):
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.4)
   - Branch
+  - CropViewController
   - DropDown
   - EzPopup
   - FBSDKLoginKit
@@ -105,6 +107,7 @@ SPEC REPOS:
     - AlamofireImage
     - Bolts
     - Branch
+    - CropViewController
     - DropDown
     - EzPopup
     - FBSDKCoreKit
@@ -130,6 +133,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Branch: bef2918a62f57ce284f4fa1917f5de1fb31295fe
+  CropViewController: 7be882b7d3fb3faef48a41924e80f689e9df2514
   DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   EzPopup: 8ab951717736197e57b8f9973816fa2601cd59c5
   FBSDKCoreKit: 2ab7fdbf600dc6b628ba7a49aa29d357a7b4c74e
@@ -150,6 +154,6 @@ SPEC CHECKSUMS:
   TagListView: 0c7e9c26b9aff858224ee6b155f5fcacd9e27c83
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 4b8b48be6192943999851e1c3db6469dd9e1fdc5
+PODFILE CHECKSUM: 91804cc9d46f768e094d6a2c12ff4d735be8d66a
 
 COCOAPODS: 1.5.3

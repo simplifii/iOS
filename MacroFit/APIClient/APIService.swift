@@ -60,17 +60,20 @@ struct APIService {
         let request = APIRouter.facebookLogin(fbUserId: fbUserId, fbUserToken: fbUserToken)
         
         sendRequestAndGetFullResponse(request: request, completion: {success,msg,json in
-            let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
-            if user == nil {
-                completion(false, "Unable to save profile. Please try again", [:])
+            print(json)
+            if success {
+                let user = CoreDataManager.sharedManager.insertUserProfile(json: json["response"])
+                if user == nil {
+                    completion(false, "Unable to save profile. Please try again", [:])
+                }
+                
+                UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
+                UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
+                UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
+                UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
+                UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
             }
-            
-            UserDefaults.standard.set(json["token"].stringValue, forKey: UserConstants.userToken)
-            UserDefaults.standard.set(json["response"]["unique_code"].stringValue, forKey: UserConstants.userCardUniqueCode)
-            UserDefaults.standard.set(json["response"]["id"].stringValue, forKey: UserConstants.userId)
-            UserDefaults.standard.set(json["response"]["name"].stringValue, forKey: UserConstants.userName)
-            UserDefaults.standard.set(json["response"]["email"].stringValue, forKey: UserConstants.userEmail)
-        
+    
             completion(success, msg, json)
         })
         
@@ -291,11 +294,65 @@ struct APIService {
         })
     }
     
+    static func addContactsToUserNetwork(contacts:[[String:String]], completion: @escaping (Bool, String) -> Void) {
+        let request = APIRouter.addContactsToUserNetwork(contacts: contacts)
+        
+        sendRequest(request: request, completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     static func SubmitScore(score:String,challenge:String, completion: @escaping (Bool, String,JSON) -> Void) {
         let request = APIRouter.SubmitScore(score:score,challenge:challenge)
         sendRequestAndGetData(request: request, completion: {success,msg,data in
             completion(success, msg, data)
         })
+    }
+    
+    static func uploadImage(image:UIImage, completion: @escaping (Bool, String,JSON) -> Void) {
+        let imageData = UIImagePNGRepresentation(image)!
+        
+        
+        let headers = [
+            "Content-Type":"multipart/form-data",
+            "Accept":"application/json"
+        ]
+        
+        let url = try! URLRequest(url: "\(NetworkingConstants.baseUrl)\(NetworkingConstants.uploadFileToS3)", method: .post, headers: headers)
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imageData, withName: "file", fileName: "profile_pic.png", mimeType: "image/png")
+        }, with: url) {  result in
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        let json = JSON(value)
+                        print(json)
+                        if let status_code = response.response?.statusCode {
+                            if status_code == 200 {
+                                completion(true, json["msg"].stringValue, json["response"]["data"])
+                            } else {
+                                if let msg = json["msg"].string {
+                                    completion(false, msg, [])
+                                } else {
+                                    completion(false, "Internal Server Error", [])
+                                }
+                            }
+                        }
+                    case .failure(let error):
+                        print(error)
+                        completion(false, "Internal Server Error", [])
+                    }
+                }
+                
+            case .failure(let encodingError):
+                print(encodingError)
+                completion(false, "Internal Server Error", [])
+            }
+        }
+        
     }
     
     // Feedback
@@ -348,6 +405,12 @@ struct APIService {
     
     static func updateDeviceToken(token:String, completion: @escaping (Bool, String) -> Void){
         sendRequest(request: APIRouter.updateDeviceToken(token: token), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
+    static func updateProfilePic(imageUrl:String, thumbnailUrl:String?, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.updateProfilePic(url: imageUrl, thumbnailUrl: thumbnailUrl), completion: {success,msg in
             completion(success, msg)
         })
     }
