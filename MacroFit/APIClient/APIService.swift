@@ -322,6 +322,12 @@ struct APIService {
         })
     }
     
+    static func markLessonCompleted(_ lesson: Int, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.markLessonCompleted(lesson), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     static func updateBodyFat(bodyFat:Int, completion: @escaping (Bool, String) -> Void){
         sendRequest(request: APIRouter.updateBodyFat(bodyFat: bodyFat), completion: {success,msg in
             completion(success, msg)

@@ -53,6 +53,7 @@ enum APIRouter: URLRequestConvertible {
     case changePassword(newPassword: String)
     case sendCourseFeedback(forCourse: Int, starRating: Int, feedbackText: String)
     case sendLessonFeedback(forLesson: Int, starRating: Int, feedbackText: String)
+    case markLessonCompleted(_ lesson: Int)
     
     var path: String {
         
@@ -108,6 +109,8 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.courseFeedback
             case .sendLessonFeedback:
                 return NetworkingConstants.lessonFeedback
+            case .markLessonCompleted:
+                return NetworkingConstants.lessonCompleted
         }
     }
     
@@ -243,6 +246,8 @@ enum APIRouter: URLRequestConvertible {
             }
             bodyDict["rating"] = rating
             bodyDict["lesson_id"] = lesson
+        case let .markLessonCompleted(_ : lesson):
+            bodyDict["lesson_id"] = lesson
         default:
             print("no action")
         }
@@ -360,7 +365,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback, .sendLessonFeedback:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback, .sendLessonFeedback, .markLessonCompleted:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword:
             return .patch
@@ -375,7 +380,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword, .sendCourseFeedback, .sendLessonFeedback:
+            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword, .sendCourseFeedback, .sendLessonFeedback, .markLessonCompleted:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
             case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:

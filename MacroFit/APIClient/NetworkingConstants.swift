@@ -28,5 +28,5 @@ struct NetworkingConstants{
     static let challenges = "cards"
     static let courseFeedback = "custom/feedbackOnCourse"
     static let lessonFeedback = "custom/feedbackOnLesson"
-    //TODO markLessonCompleted
+    static let lessonCompleted = "custom/markLessonCompleted"
 }
