@@ -39,7 +39,7 @@ class CourseDayViewController: BaseViewController {
         tableView.dataSource = self
     }
     
-    @IBAction func endWorkoutPressed(_ sender: UIButton) {
+    @IBAction func endWorkoutPressed(_ sender: UIButton? = nil) {
         let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "WorkoutComplete") as! WorkoutCompleteViewController
         vc.exercisesJSON = dayJSON
         vc.courseJSON = courseJSON
@@ -47,9 +47,13 @@ class CourseDayViewController: BaseViewController {
     }
     
     @objc func nextPressed() {
-        let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RestViewController") as! CourseRestViewController
-        vc.timeToCount = TimeInterval(ExerciseManager.manager.restBetweenRounds)
-        navigationController?.pushViewController(vc, animated: true)
+        if ExerciseManager.manager.currentRoundNumber < ExerciseManager.manager.numberOfRounds {
+            let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "RestViewController") as! CourseRestViewController
+            vc.timeToCount = TimeInterval(ExerciseManager.manager.restBetweenRounds)
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            endWorkoutPressed()
+        }
     }
     
     @objc func nextExercise() {
@@ -74,6 +78,9 @@ class CourseDayViewController: BaseViewController {
             content.options = options
             content.displayTitle = "Weight (lb)"
             content.modifierKey = "weight"
+            if let currentValue = note.userInfo?["currentValue"] as? String, let i = options.firstIndex(of: currentValue) {
+                content.selectedIndex = i
+            }
             present(popup, animated: true, completion: nil)
         case .CourseDay_RepsPressed:
             let content = UIStoryboard(name: "Courses", bundle: nil).instantiateViewController(withIdentifier: "NumberModifier") as! NumberModifierViewController
@@ -85,6 +92,9 @@ class CourseDayViewController: BaseViewController {
             content.options = options
             content.displayTitle = "Reps"
             content.modifierKey = "reps"
+            if let currentValue = note.userInfo?["currentValue"] as? String, let i = options.firstIndex(of: currentValue) {
+                content.selectedIndex = i
+            }
             present(popup, animated: true, completion: nil)
         default:
             break
@@ -92,23 +102,28 @@ class CourseDayViewController: BaseViewController {
     }
     
     @objc func attributeModified(_ note: Notification) {
-        let info = note.userInfo
-        
-        //Figure out the active exercise:
-        let ex = dayJSON?[activeExerciseIndex]
+        guard let info = note.userInfo, let ex = dayJSON?[activeExerciseIndex], let exerciseID = ex["id"].int else { return }
         
         //Then figure out if info is on weight or reps:
-        let isWeight = (info?["modifierKey"] as? String) == "weight" //untested
+        let isWeight = (info["modifierKey"] as? String) == "weight" //untested
         
-        //Then modify ex accordingly
+        if isWeight {
+            if let str = info["value"] as? String, let wt = MFNumberFormatter.formatter.weightFromString(str) {
+                ExerciseManager.manager.setWeight(grams: wt, for: exerciseID)
+            }
+        } else { //Only other attribute right now is reps
+            if let str = info["value"] as? String, let reps = Int(str) {
+                ExerciseManager.manager.setReps(reps, for: exerciseID)
+            }
+        }
         
-        //The problem with this is that this doesn't propagate through the whole model
-        
-        //SOOOO the course of action would be to keep the state in ExerciseManager.  And then sync that in bits and pieces as needed.
+        tableView.reloadData()
     }
     
     @objc func restOver() {
         navigationController?.popToViewController(self, animated: true)
+        activeExerciseIndex = 0
+        tableView.reloadData()
     }
 }
 
@@ -143,12 +158,12 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
 
             return cell
         } else if indexPath.section == 1 {
-            guard let exercise = dayJSON?[indexPath.row] else { return UITableViewCell() }
+            guard let exercise = ExerciseManager.manager.activeExercise(at: indexPath.row) else { return UITableViewCell() }
             
             var reuseIdentifier = "Exercise"
             
-            let repsInt = exercise["recommended_reps"].int
-            let weightGrams = exercise["recommended_weight_in_gms"].double
+            let repsInt = exercise[ExerciseManager.ActualRepsKey].int ?? exercise["recommended_reps"].int
+            let weightGrams = exercise[ExerciseManager.ActualWeightKey].double ?? exercise["recommended_weight_in_gms"].double
             let time = exercise["recommended_duration_in_secs"].double
             
             if indexPath.row == activeExerciseIndex {
@@ -307,11 +322,11 @@ class RepsExerciseCell: ExerciseCell {
     }
     
     @IBAction func weightPressed(_ sender: Any) {
-        NotificationCenter.default.post(name: .CourseDay_WeightPressed, object: nil)
+        NotificationCenter.default.post(name: .CourseDay_WeightPressed, object: nil, userInfo: ["currentValue" : MFNumberFormatter.formatter.stringFromWeight(grams: grams) ?? ""])
     }
     
     @IBAction func repsPressed(_ sender: Any) {
-        NotificationCenter.default.post(name: .CourseDay_RepsPressed, object: nil)
+        NotificationCenter.default.post(name: .CourseDay_RepsPressed, object: nil, userInfo: ["currentValue" : numReps != nil ? "\(numReps)" : ""])
     }
 }
 
@@ -356,7 +371,7 @@ class CourseNextButtonCell: UITableViewCell {
     
     override func prepareForReuse() {
         var nextAction = "Done"
-        if ExerciseManager.manager.currentRoundNumber < ExerciseManager.manager.numberOfRounds - 1 {
+        if ExerciseManager.manager.currentRoundNumber < ExerciseManager.manager.numberOfRounds {
             let seconds = ExerciseManager.manager.restBetweenRounds
             let time = seconds % 60 == 0 ? "\(seconds / 60) min" : "\(seconds) sec"
             nextAction = "Rest \(time)"

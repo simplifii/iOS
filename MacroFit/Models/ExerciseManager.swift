@@ -25,12 +25,17 @@ class ExerciseManager: NSObject {
     
     var currentExercise: String?
     var numberOfRounds: Int = 0
-    var currentRoundNumber: Int = 1 //Indexes to 1
+    ///Indexes to 1
+    var currentRoundNumber: Int = 1
     var restBetweenRounds: Int = 60 //Defaults to 60
     
+    private var exerciseOrder = [Int]() //Keep exercises in order
     var activeExercises = [Int:[Int : JSON]]() //Map of round number to exercises
     
     private let completeKey = "complete"
+    static let ActualTimeKey = "actualTimeInSeconds"
+    static let ActualRepsKey = "actualReps"
+    static let ActualWeightKey = "actualWeightGrams"
 //    private let defaultsKey = "macrofit.completedExercises"
     
     override init() {
@@ -56,19 +61,33 @@ class ExerciseManager: NSObject {
     
     func setActiveExercises(_ json: [JSON]) {
         activeExercises = [:]
+        exerciseOrder = []
         for i in 0...numberOfRounds - 1 {
             var tmp = [Int:JSON]()
             for ex in json {
-                tmp[ex["id"].int ?? 0] = ex
+                let key = ex["id"].int ?? 0
+                if !exerciseOrder.contains(key) { exerciseOrder.append(key) }
+                tmp[key] = ex
             }
             activeExercises[i] = tmp
         }
     }
     
+    func activeExercise(at index: Int) -> JSON? {
+        guard currentRoundNumber - 1 < activeExercises.keys.count else { return nil }
+        // -1 because currentRoundNumber is human readable
+        return activeExercises[currentRoundNumber - 1]![exerciseOrder[index]]
+    }
+    
     func recordExercise(exerciseID: Int) {
+        let time = stopwatch.elapsedTime
         stopwatch.reset()
-        guard activeExercises[currentRoundNumber] != nil, activeExercises[currentRoundNumber]![exerciseID] != nil else { return }
-        activeExercises[currentRoundNumber]![exerciseID]![completeKey] = true
+        
+        guard activeExercises[currentRoundNumber - 1] != nil, activeExercises[currentRoundNumber - 1]![exerciseID] != nil else { return }
+        activeExercises[currentRoundNumber - 1]![exerciseID]![completeKey] = true
+        if time > 0 {
+            activeExercises[currentRoundNumber - 1]![exerciseID]![ExerciseManager.ActualTimeKey] = JSON(integerLiteral: Int(time))
+        }
 //        UserDefaults.standard.set(completedExercises, forKey: defaultsKey)
         NotificationCenter.default.post(name: .exerciseCompleted, object: nil, userInfo: nil)
     }
@@ -79,9 +98,19 @@ class ExerciseManager: NSObject {
         })
     }
     
+    func setWeight(grams: Int, for exerciseID: Int) {
+        guard activeExercises[currentRoundNumber - 1] != nil, activeExercises[currentRoundNumber - 1]![exerciseID] != nil else { return }
+        activeExercises[currentRoundNumber - 1]![exerciseID]![ExerciseManager.ActualWeightKey] = JSON(integerLiteral: grams)
+    }
+    
+    func setReps(_ reps: Int, for exerciseID: Int) {
+        guard activeExercises[currentRoundNumber - 1] != nil, activeExercises[currentRoundNumber - 1]![exerciseID] != nil else { return }
+        activeExercises[currentRoundNumber - 1]![exerciseID]![ExerciseManager.ActualRepsKey] = JSON(integerLiteral: reps)
+    }
+    
     func exerciseComplete(exerciseID: Int) -> Bool {
-        guard activeExercises[currentRoundNumber] != nil, activeExercises[currentRoundNumber]![exerciseID] != nil else { return false }
-        return activeExercises[currentRoundNumber]![exerciseID]![completeKey].boolValue
+        guard activeExercises[currentRoundNumber - 1] != nil, activeExercises[currentRoundNumber - 1]![exerciseID] != nil else { return false }
+        return activeExercises[currentRoundNumber - 1]![exerciseID]![completeKey].boolValue
     }
 }
 

@@ -23,6 +23,11 @@ class MFNumberFormatter: NSObject {
         return g != nil ? stringFromWeight(pounds: g! / 453.2) : nil
     }
     
+    func weightFromString(_ str: String) -> Int? {
+        guard let lbs = Double(str) else { return nil }
+        return Int(lbs * 453.2)
+    }
+    
     func stringFromWeight(pounds p: Double?) -> String? {
         return p != nil ? weightFormatter.string(from: NSNumber(value: p!)) : nil
     }

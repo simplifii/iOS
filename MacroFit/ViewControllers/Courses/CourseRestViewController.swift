@@ -45,7 +45,6 @@ class CourseRestViewController: UIViewController {
     
     @IBAction func nextRoundPressed(_ sender: UIButton) {
         ExerciseManager.manager.currentRoundNumber += 1
-        
         NotificationCenter.default.post(name: .restOverPressed, object: nil)
     }
     

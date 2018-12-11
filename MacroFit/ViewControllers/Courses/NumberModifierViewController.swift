@@ -23,6 +23,7 @@ class NumberModifierViewController: UIViewController {
     var displayTitle: String = "Weight (lb)"  { didSet { refreshIfAble() } }
     var options: [String]? { didSet { refreshIfAble() } }
     var modifierKey = ""
+    var selectedIndex = 5 { didSet { refreshIfAble() } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class NumberModifierViewController: UIViewController {
     func refreshIfAble() {
         if !didInit { return }
         pickerView.reloadAllComponents()
+        pickerView.selectRow(selectedIndex, inComponent: 0, animated: false)
         titleLabel.text = displayTitle
     }
 
