@@ -13,7 +13,7 @@ class CoursesContainer: BaseViewController {
     @IBOutlet weak var containerView: UIView!
     private weak var subNavController: UINavigationController?
     
-    @IBOutlet weak var coverView: UIView!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet var containerExpanded: NSLayoutConstraint!
@@ -49,6 +49,8 @@ extension CoursesContainer: UINavigationControllerDelegate {
                 containerExpanded.isActive = false
                 containerCollapsed.isActive = true
             }
+            
+            backButton.setImage(UIImage(named: hide ? "back_white" : "back"), for: .normal)
         }
     }
 }
