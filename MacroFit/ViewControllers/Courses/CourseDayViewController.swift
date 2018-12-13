@@ -125,8 +125,6 @@ class CourseDayViewController: BaseViewController {
     }
 }
 
-
-
 extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -153,6 +151,8 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             cell.selectionStyle = .none
+            
+            cell.contentView.backgroundColor = .almostWhite
 
             return cell
         } else if indexPath.section == 1 {
@@ -205,14 +205,21 @@ extension CourseDayViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.selectionStyle = .none
             
+            cell.contentView.backgroundColor = .almostWhite
             return cell
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: "NextButton", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NextButton", for: indexPath)
+            cell.contentView.backgroundColor = .almostWhite
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 && indexPath.section == 0 ? 180 : UITableViewAutomaticDimension
+        return (indexPath.section == 0 && indexPath.row == 0) ? tableView.frame.size.width / 1.18 : UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (indexPath.section == 0 && indexPath.row == 0) ? tableView.frame.size.width / 1.18 : 60
     }
 }
 
@@ -367,17 +374,57 @@ class TimeRepsExerciseCell: TimeExerciseCell {
 class CourseNextButtonCell: UITableViewCell {
     @IBOutlet weak var nextButton: UIButton!
     
+    override func awakeFromNib() {
+        commonRefresh()
+        nextButton.layer.cornerRadius = 4
+        nextButton.borderColor = .macrofitLightGray
+        nextButton.borderWidth = 2
+        nextButton.tintColor = .macrofitDarkGray
+    }
+    
     override func prepareForReuse() {
+        commonRefresh()
+    }
+    
+    func commonRefresh() {
         var nextAction = "Done"
         if ExerciseManager.manager.currentRoundNumber < ExerciseManager.manager.numberOfRounds {
             let seconds = ExerciseManager.manager.restBetweenRounds
             let time = seconds % 60 == 0 ? "\(seconds / 60) min" : "\(seconds) sec"
             nextAction = "Rest \(time)"
         }
-        nextButton.setTitle("Next: \(nextAction)", for: .normal)
+        
+        if let font = nextButton.titleLabel?.font,
+            let baseName = font.fontName.components(separatedBy: "-").first,
+            let boldFont = UIFont(name: baseName + "-Bold", size: font.pointSize),
+            let regFont = UIFont(name: baseName + "-Regular", size: font.pointSize) {
+            let boldAttrs: [NSAttributedStringKey: Any] = [.font : boldFont]
+            let regularAttrs: [NSAttributedStringKey: Any] = [.font : regFont]
+            let attrString = NSMutableAttributedString()
+            attrString.append(NSAttributedString(string: "Next: ", attributes: boldAttrs))
+            attrString.append(NSAttributedString(string: nextAction, attributes: regularAttrs))
+            nextButton.setAttributedTitle(attrString, for: .normal)
+        } else {
+            nextButton.setTitle("Next: \(nextAction)", for: .normal)
+        }
     }
     
     @IBAction func nextPressed(_ sender: Any) {
         NotificationCenter.default.post(name: .courseNextPressed, object: nil)
+    }
+}
+
+class ShadowedView: UIView {
+    var didInit = false
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        if didInit { return }
+        didInit = true
+        layer.cornerRadius = 4
+        layer.shadowColor = UIColor.macrofitLightGray.cgColor
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 4
     }
 }

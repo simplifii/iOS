@@ -81,12 +81,17 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
             (cell as? CourseDayCell)?.parent = self
         }
         
+        cell.contentView.backgroundColor = .almostWhite
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 && indexPath.section == 0 ? 180 : UITableViewAutomaticDimension
+        return (indexPath.section == 0 && indexPath.row == 0) ? (tableView.frame.size.width / 1.18) : UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (indexPath.section == 0 && indexPath.row == 0) ? (tableView.frame.size.width / 1.18) : 60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -102,7 +107,7 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
             
-        guard let lessonJSON = lessonsJSON?[indexPath.row] else  { return }
+        guard indexPath.row < (lessonsJSON?.count ?? 0), let lessonJSON = lessonsJSON?[indexPath.row] else  { return }
         
         ExerciseManager.manager.setActiveLesson(lessonJSON)
         ExerciseManager.manager.currentRoundNumber = 1

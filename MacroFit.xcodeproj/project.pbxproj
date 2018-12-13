@@ -18,6 +18,9 @@
 		5862EF7B21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF7A21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift */; };
 		5862EF7D21B0FBF600FA4F19 /* CourseRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF7C21B0FBF600FA4F19 /* CourseRestViewController.swift */; };
 		5862EF7F21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF7E21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift */; };
+		58AB37DB21C22E480018FDC2 /* UIColor+Macrofit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB37DA21C22E480018FDC2 /* UIColor+Macrofit.swift */; };
+		58AB37DC21C22E480018FDC2 /* UIColor+Macrofit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB37DA21C22E480018FDC2 /* UIColor+Macrofit.swift */; };
+		58AB37DD21C22E480018FDC2 /* UIColor+Macrofit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AB37DA21C22E480018FDC2 /* UIColor+Macrofit.swift */; };
 		58BC4694219DF61600592770 /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BC4693219DF61600592770 /* Courses.storyboard */; };
 		58BC469621A3216C00592770 /* CoursesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469521A3216C00592770 /* CoursesMainViewController.swift */; };
 		58BC469921A331B100592770 /* CourseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */; };
@@ -207,6 +210,7 @@
 		5862EF7A21B0CE8E00FA4F19 /* WorkoutCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompleteViewController.swift; sourceTree = "<group>"; };
 		5862EF7C21B0FBF600FA4F19 /* CourseRestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRestViewController.swift; sourceTree = "<group>"; };
 		5862EF7E21B12C8A00FA4F19 /* CourseSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		58AB37DA21C22E480018FDC2 /* UIColor+Macrofit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Macrofit.swift"; sourceTree = "<group>"; };
 		58BC4693219DF61600592770 /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
 		58BC469521A3216C00592770 /* CoursesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesMainViewController.swift; sourceTree = "<group>"; };
 		58BC469721A331B100592770 /* CourseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -690,6 +694,7 @@
 				E003492D217F4E4800AED979 /* UINavigationControllerExtension.swift */,
 				E0D64AD021746A6100FB700C /* UIViewControllerExtension.swift */,
 				58576D6421AF8B06002B38D9 /* MFTimeFormatter.swift */,
+				58AB37DA21C22E480018FDC2 /* UIColor+Macrofit.swift */,
 				58F2B40B21BC8E0B00AFEB15 /* MFNumberFormatter.swift */,
 			);
 			path = Extensions;
@@ -1187,6 +1192,7 @@
 				E0A792112153805500CBBFDB /* APIRouter.swift in Sources */,
 				E0A6DD84214F78B300B6C301 /* UIButtonExtension.swift in Sources */,
 				E0DEDBA0216733BC0040BC52 /* LoginFormTableViewController.swift in Sources */,
+				58AB37DB21C22E480018FDC2 /* UIColor+Macrofit.swift in Sources */,
 				E0A6DD4D214F718D00B6C301 /* AppDelegate.swift in Sources */,
 				E0A6DD90214F9B6E00B6C301 /* FeatureView.swift in Sources */,
 				E05F919121770108001AF01D /* RecipeViewController.swift in Sources */,
@@ -1240,6 +1246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58AB37DC21C22E480018FDC2 /* UIColor+Macrofit.swift in Sources */,
 				E0A6DD65214F719000B6C301 /* MacroFitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1248,6 +1255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58AB37DD21C22E480018FDC2 /* UIColor+Macrofit.swift in Sources */,
 				E0A6DD70214F719000B6C301 /* MacroFitUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

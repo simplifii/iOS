@@ -13,8 +13,11 @@ class CoursesContainer: BaseViewController {
     @IBOutlet weak var containerView: UIView!
     private weak var subNavController: UINavigationController?
     
+    @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet var containerExpanded: NSLayoutConstraint!
+    @IBOutlet var containerCollapsed: NSLayoutConstraint!
     
     @IBAction func backPressed(_ sender: Any) {
         if let sub = subNavController, sub.childViewControllers.count > 1 {
@@ -38,6 +41,14 @@ extension CoursesContainer: UINavigationControllerDelegate {
         if navigationController == subNavController {
             titleLabel.text = viewController.title
             subtitleLabel.text = (viewController as? DescriptionContainer)?.descriptiveText
+            let hide = (titleLabel.text == nil || titleLabel.text!.count == 0) && (subtitleLabel.text == nil || subtitleLabel.text!.count == 0)
+            if hide {
+                containerCollapsed.isActive = false
+                containerExpanded.isActive = true
+            } else {
+                containerExpanded.isActive = false
+                containerCollapsed.isActive = true
+            }
         }
     }
 }
