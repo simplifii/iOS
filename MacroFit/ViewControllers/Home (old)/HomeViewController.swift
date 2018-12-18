@@ -69,7 +69,6 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
         ratingView!.starThreeButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
         ratingView!.starFourButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
         ratingView!.starFiveButton.addTarget(self, action: #selector(self.showRatingInRatingView(_:)), for: UIControlEvents.touchUpInside)
-        
     }
     
     func addMealsInMealsScrollView() {
@@ -140,7 +139,7 @@ class HomeViewController: BaseViewController, ThankYouPopupDelegate {
         UISegmentedControl.appearance().setTitleTextAttributes([
             NSAttributedStringKey.font: UIFont(name: "Montserrat", size: 10)!,
             ], for: .normal)
-        segmentedControl.layer.borderColor = Constants.schemeColor.cgColor
+        segmentedControl.layer.borderColor = ColorConstants.schemeColor.cgColor
         segmentedControl.layer.borderWidth = 1.0
         segmentedControl.layer.cornerRadius = 3.0
         segmentedControl.backgroundColor = UIColor.white

@@ -34,20 +34,20 @@ class MealsViewController: UIViewController, DeliveryOverEmbeddedVCDelegate {
     }
     
     func setupView() {
-        self.view.backgroundColor = Constants.backgroundColor
+        self.view.backgroundColor = ColorConstants.backgroundColor
         
         // update segment control appearance
        UISegmentedControl.appearance().setTitleTextAttributes([
         NSAttributedStringKey.foregroundColor: UIColor.lightGray,
         ], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([
-            NSAttributedStringKey.foregroundColor: Constants.schemeColor,
+            NSAttributedStringKey.foregroundColor: ColorConstants.schemeColor,
             ], for: .selected)
         UISegmentedControl.appearance().tintColor = UIColor.white
         segmentedControl.layer.borderColor = UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1.0).cgColor
         segmentedControl.layer.borderWidth = 1.0
         segmentedControl.layer.cornerRadius = 3.0
-        segmentedControl.backgroundColor = Constants.backgroundColor
+        segmentedControl.backgroundColor = ColorConstants.backgroundColor
         
         
         // Shadow

@@ -33,7 +33,7 @@ class DeliveryOverEmbeddedViewController: UIViewController {
     }
     
     func setupView() {
-        self.view.backgroundColor = Constants.backgroundColor
+        self.view.backgroundColor = ColorConstants.backgroundColor
         
         dateTimeView = Bundle.main.loadNibNamed("DateTimeView", owner: self, options: nil)?.first as? DateTimeView
         dateTimeView.frame.size = dateTimeContainerView.bounds.size

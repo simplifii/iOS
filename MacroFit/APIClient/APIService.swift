@@ -196,6 +196,23 @@ struct APIService {
         })
     }
     
+    static func getCourses(completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getCourses(), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getLessons(for course: String, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getLessons(course: course), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
+    
+    static func getExercises(for lesson: String, completion: @escaping (Bool, String, JSON) -> Void){
+        sendRequestAndGetData(request: APIRouter.getExercises(lesson: lesson), completion: {success,msg,json_data in
+            completion(success, msg, json_data)
+        })
+    }
     
     // POST & PATCH
     
@@ -350,6 +367,24 @@ struct APIService {
         })
     }
     
+    static func sendCourseFeedback(forCourse course: Int, starRating: Int, feedbackText: String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.sendCourseFeedback(forCourse: course, starRating: starRating, feedbackText: feedbackText), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
+    static func sendLessonFeedback(forLesson lesson: Int, starRating: Int, feedbackText: String, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.sendLessonFeedback(forLesson: lesson, starRating: starRating, feedbackText: feedbackText), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
+    static func markLessonCompleted(_ lesson: Int, completion: @escaping (Bool, String) -> Void){
+        sendRequest(request: APIRouter.markLessonCompleted(lesson), completion: {success,msg in
+            completion(success, msg)
+        })
+    }
+    
     static func updateBodyFat(bodyFat:Int, completion: @escaping (Bool, String) -> Void){
         sendRequest(request: APIRouter.updateBodyFat(bodyFat: bodyFat), completion: {success,msg in
             completion(success, msg)
@@ -427,7 +462,9 @@ struct APIService {
                     let json = JSON(value)
                     if let status_code = response.response?.statusCode {
                         if status_code == 200 {
-                            completion(true, json["msg"].stringValue, json["response"]["data"])
+                            let jdata = json["response"]["data"] // Deal with some endpoints that don't nest response in //response/data
+                            let data = jdata.count > 0 ? jdata : json
+                            completion(true, json["msg"].stringValue, data)
                         } else {
                             if let msg = json["msg"].string {
                                 completion(false, msg, [])

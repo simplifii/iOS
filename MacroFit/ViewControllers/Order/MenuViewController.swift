@@ -37,7 +37,7 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
             cartBarView.cartCheckoutButton.addTarget(self, action: #selector(self.proceedToCheckout(_:)), for: UIControlEvents.touchUpInside)
         
         
-        self.view.backgroundColor = Constants.backgroundColor
+        self.view.backgroundColor = ColorConstants.backgroundColor
         
         tableView.dataSource = self
         tableView.delegate = self

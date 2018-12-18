@@ -28,7 +28,7 @@ class DeliveryOverViewController: UIViewController {
     }
     
     func setupView() {
-        self.view.backgroundColor = Constants.backgroundColor
+        self.view.backgroundColor = ColorConstants.backgroundColor
         openingDateLabel.text = openingDate
         
         dateTimeView = Bundle.main.loadNibNamed("DateTimeView", owner: self, options: nil)?.first as? DateTimeView

@@ -139,7 +139,7 @@ class PaymentFormTableViewController: UITableViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+        action.setValue(ColorConstants.schemeColor, forKey: "titleTextColor")
         
         alert.addAction(action)
         

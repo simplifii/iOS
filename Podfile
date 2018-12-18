@@ -17,6 +17,11 @@ target 'MacroFit' do
     pod 'Firebase/Messaging'
     pod 'Branch'
     pod 'CropViewController'
+    pod 'EzPopup'
+    pod 'TPKeyboardAvoiding'
+    pod 'AlamofireObjectMapper'
+    pod 'SDWebImage'
+
 # Pods for MacroFit
 
   target 'MacroFitTests' do

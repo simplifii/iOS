@@ -41,7 +41,7 @@ class UploadProfilePhotoViewController: BaseViewController {
         
         skipButton.layer.cornerRadius = 8.0
         skipButton.layer.borderWidth = 1
-        skipButton.layer.borderColor = Constants.buttonBorderColor.cgColor
+        skipButton.layer.borderColor = ColorConstants.buttonBorderColor.cgColor
     }
 
     @IBAction func contiueToUploadPhoto(_ sender: UIButton) {

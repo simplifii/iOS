@@ -85,8 +85,8 @@ class PushUpChallengeViewController: UIViewController {
                         
                         self.userTodayBestScore.text = item["score_formatted"].stringValue
                     }
-                    self.btnSubmitNewResult.isHidden = true
-                    self.todayResultView.isHidden = false
+                    self.btnSubmitNewResult.isHidden = false
+                    self.todayResultView.isHidden = true
                 }
             }
         })
@@ -152,7 +152,7 @@ class PushUpChallengeViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+        action.setValue(ColorConstants.schemeColor, forKey: "titleTextColor")
         
         alert.addAction(action)
         

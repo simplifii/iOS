@@ -36,7 +36,10 @@ class FitnessTableViewController: UITableViewController {
         case 0:
             action = "One"
         case 1:
-            action = "Two"
+            let vc = UIStoryboard(name: "Courses", bundle: nil).instantiateInitialViewController()!
+            navigationController?.isNavigationBarHidden = true
+            navigationController?.pushViewController(vc, animated: true)
+            return
         case 2:
             action = "Three"
         case 3:

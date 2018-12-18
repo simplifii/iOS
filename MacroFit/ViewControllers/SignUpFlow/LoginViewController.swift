@@ -77,7 +77,8 @@ class LoginViewController: OnboardUserViewController {
     }
     
     func showNextScreen() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController
+        let vc = VCUtil.getViewController(storyBoardName: "MacroFit", identifier: "TabBarViewController") as? TabBarViewController
+        
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }

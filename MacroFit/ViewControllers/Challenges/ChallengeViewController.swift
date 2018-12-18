@@ -97,7 +97,7 @@ class ChallengeViewController: UIViewController, TagListViewDelegate {
             challenge.tags = item["tags"].stringValue
             challenge.the_more_the_better = item["the_more_the_better"].boolValue
             challenge.photo = item["photo"].stringValue
-            
+
             let tags = challenge.tags?.components(separatedBy: ",")
             for tag in tags ?? [] {
                 if tagChallengesMapping[tag] == nil {
@@ -160,7 +160,7 @@ class ChallengeViewController: UIViewController, TagListViewDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+        action.setValue(ColorConstants.schemeColor, forKey: "titleTextColor")
         
         alert.addAction(action)
         
@@ -279,13 +279,13 @@ extension ChallengeViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Challenges", bundle: nil).instantiateViewController(withIdentifier: "PushUpChallenge") as? PushUpChallengeViewController
         vc?.challengeTitle = challengeTableData[indexPath.row].title
-        vc?.challengeParticipants_count = challengeTableData[indexPath.row].participants_count
-        vc?.challengeDescription = challengeTableData[indexPath.row].description
+//        vc?.challengeParticipants_count = challengeTableData[indexPath.row].participants_count
+//        vc?.challengeDescription = challengeTableData[indexPath.row].description
         vc?.challengePhoto = challengeTableData[indexPath.row].photo
-        vc?.challengeId = challengeTableData[indexPath.row].id!
-        vc?.challengeScore_unit = challengeTableData[indexPath.row].score_unit
-        vc?.challengeIs_scoring_in_time = challengeTableData[indexPath.row].is_scoring_in_time
-        vc?.theMoreTheBetter = challengeTableData[indexPath.row].the_more_the_better!
+//        vc?.challengeId = challengeTableData[indexPath.row].id!
+//        vc?.challengeScore_unit = challengeTableData[indexPath.row].score_unit
+//        vc?.challengeIs_scoring_in_time = challengeTableData[indexPath.row].is_scoring_in_time
+//        vc?.theMoreTheBetter = challengeTableData[indexPath.row].the_more_the_better!
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }

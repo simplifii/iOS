@@ -22,6 +22,9 @@ enum APIRouter: URLRequestConvertible {
     case updateDietaryPreferences(dietary_preference: String, diet_note: String?)
     case orderPlacementDetails()
     case getMealsMenu()
+    case getCourses()
+    case getLessons(course: String)
+    case getExercises(lesson: String)
     case placeNewOrder(addressLineOne: String, addressLineTwo: String?, note: String?, deliverySlot: String, zipcode:String, deliveryDateFrom:String, deliveryDateTo:String, meals:[[String:Any]])
     case getZipcodeServiceabilityInfo(zipcode: String)
     case orderPayment(stripeToken: String, amount: Int, orderId: String, orderCardUniqueCode: String, credits: Int)
@@ -50,6 +53,9 @@ enum APIRouter: URLRequestConvertible {
     case changePassword(newPassword: String)
     case updateProfilePic(url: String, thumbnailUrl:String?)
     case addContactsToUserNetwork(contacts: [[String:String]])
+    case sendCourseFeedback(forCourse: Int, starRating: Int, feedbackText: String)
+    case sendLessonFeedback(forLesson: Int, starRating: Int, feedbackText: String)
+    case markLessonCompleted(_ lesson: Int)
     
     var path: String {
         
@@ -97,6 +103,19 @@ enum APIRouter: URLRequestConvertible {
                 return NetworkingConstants.challenges
             case .addContactsToUserNetwork:
                 return NetworkingConstants.userNetwork
+
+            case .getCourses:
+                return NetworkingConstants.courses
+            case .getLessons:
+                return NetworkingConstants.lessons
+            case .getExercises:
+                return NetworkingConstants.exercises
+            case .sendCourseFeedback:
+                return NetworkingConstants.courseFeedback
+            case .sendLessonFeedback:
+                return NetworkingConstants.lessonFeedback
+            case .markLessonCompleted:
+                return NetworkingConstants.lessonCompleted
         }
     }
     
@@ -229,8 +248,22 @@ enum APIRouter: URLRequestConvertible {
         case let .addContactsToUserNetwork(contacts: contacts):
             bodyDict["contacts"] = contacts
             break
+        case let .sendCourseFeedback(forCourse: course, starRating: rating, feedbackText: text):
+            if text.count > 0 {
+                bodyDict["feedback"] = text
+            }
+            bodyDict["rating"] = rating
+            bodyDict["course_id"] = course
+        case let .sendLessonFeedback(forLesson: lesson, starRating: rating, feedbackText: text):
+            if text.count > 0 {
+                bodyDict["feedback"] = text
+            }
+            bodyDict["rating"] = rating
+            bodyDict["lesson_id"] = lesson
+        case let .markLessonCompleted(_ : lesson):
+            bodyDict["lesson_id"] = lesson
         default:
-                print("no action")
+            print("no action")
         }
         
         return bodyDict
@@ -330,9 +363,10 @@ enum APIRouter: URLRequestConvertible {
                 }
                 paramDict["embed"] = "creator"
             }
-            
-            
-            break
+        case let .getLessons(course: course):
+            paramDict["course_id"] = course
+        case let .getExercises(lesson: lesson):
+            paramDict["lesson_id"] = lesson
         default:
             break
         }
@@ -343,12 +377,16 @@ enum APIRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore:
+        case .activityLevels, .fitnessGoals, .getUserProfile, .orderPlacementDetails, .getMealsMenu, .getZipcodeServiceabilityInfo, .getDeliveryDate, .getRecipeTags, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags, .getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
             return .get
-        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .addContactsToUserNetwork:
+        case .createUser, .loginUser, .placeNewOrder, .orderPayment, .createFeedback, .facebookLogin, .SubmitScore, .sendCourseFeedback, .sendLessonFeedback, .markLessonCompleted:
             return .post
         case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .editFeedback, .updateBodyFat, .updateAddress, .updateDeviceToken, .changePassword, .updateProfilePic:
             return .patch
+            
+            // TODO
+            default:
+            return .get
         }
     }
     
@@ -360,10 +398,11 @@ enum APIRouter: URLRequestConvertible {
         switch self {
             case .createUser, .loginUser, .facebookLogin:
                   headers[UserConstants.content_type] = "application/json"
-            case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword, .updateProfilePic, .addContactsToUserNetwork:
+
+        case .updateCustomerBasicDetails, .updateCustomerRecommendedMacros, .updateDietaryPreferences, .placeNewOrder, .getZipcodeServiceabilityInfo, .orderPayment, .getRecipeTags, .markRecipeAsFavourite, .logoutUser, .userInterestInFitness, .unfavouriteRecipe, .createFeedback, .editFeedback, .updateBodyFat, .updateAddress, .SubmitScore, .updateDeviceToken, .changePassword, .sendCourseFeedback, .sendLessonFeedback, .markLessonCompleted:
                   headers[UserConstants.content_type] = "application/json"
                   headers[UserConstants.authentication] = "Bearer \(UserDefaults.standard.string(forKey: UserConstants.userToken)!)"
-            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch,.getChallengeScore ,.getEachUserBestScore:
+            case .fitnessGoals, .getUserProfile, .getMealsMenu, .getUserFavouriteRecipes, .getRecipesList, .getUserRecipes, .getFeedback, .getChallenges,.getChallengeTags,.getChallengeSearch, .getChallengeScore, .getEachUserBestScore, .getCourses, .getLessons, .getExercises:
                 if let token = UserDefaults.standard.string(forKey: UserConstants.userToken) {
                     headers[UserConstants.authentication] = "Bearer \(token)"
                 }

@@ -39,12 +39,12 @@ class AddItemView: UIView {
         if borderView != nil {
             borderView.layer.cornerRadius = 8.0
             borderView.layer.borderWidth = 1.0
-            borderView.layer.borderColor = Constants.buttonBorderColor.cgColor
+            borderView.layer.borderColor = ColorConstants.buttonBorderColor.cgColor
         }
         
         if itemCountLabel != nil {
             itemCountLabel.layer.borderWidth = 1.0
-            itemCountLabel.layer.borderColor = Constants.buttonBorderColor.cgColor
+            itemCountLabel.layer.borderColor = ColorConstants.buttonBorderColor.cgColor
         }
     }
     

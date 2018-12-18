@@ -42,7 +42,7 @@ class SubtotalTableViewCell: UITableViewCell {
         let lineLayer = CAShapeLayer()
         lineLayer.path = linePath.cgPath
         lineLayer.lineWidth = 2
-        lineLayer.strokeColor = Constants.schemeColor.cgColor
+        lineLayer.strokeColor = ColorConstants.schemeColor.cgColor
         originalAmountLabel.layer.addSublayer(lineLayer)
     }
 

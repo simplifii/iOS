@@ -33,7 +33,7 @@ class OrderConfirmationViewController: BaseViewController, UITableViewDataSource
         
         setCartInfo()
         
-        self.view.backgroundColor = Constants.backgroundColor
+        self.view.backgroundColor = ColorConstants.backgroundColor
         
         self.addBackNavbarInView(navbarView: navbarView, settings_visible: false)
         

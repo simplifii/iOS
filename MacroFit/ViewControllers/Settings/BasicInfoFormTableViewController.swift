@@ -237,7 +237,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+        action.setValue(ColorConstants.schemeColor, forKey: "titleTextColor")
         
         alert.addAction(action)
         
@@ -309,7 +309,7 @@ class BasicInfoFormTableViewController: UITableViewController, UITextViewDelegat
                 if goal == goalValue {
                     if let button = fitnessGoalsView.viewWithTag(index + 1) as? UIButton {
                         button.backgroundColor = UIColor(red: 255/255, green: 200/255, blue: 187/255, alpha: 1.0)
-                        button.setTitleColor(Constants.schemeColor, for: .normal)
+                        button.setTitleColor(ColorConstants.schemeColor, for: .normal)
                         selectedGoal = button.currentTitle!
                     }
                 }

@@ -10,15 +10,7 @@ import UIKit
 import SideMenu
 
 class BaseViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
-    }
     
-
     public func addBackNavbarInView(navbarView: UIView, settings_visible: Bool) {
         if let backNavbarView = Bundle.main.loadNibNamed("BackNavbarView", owner: self, options: nil)?.first as? BackNavbarView {
             backNavbarView.frame = navbarView.bounds
@@ -79,12 +71,12 @@ class BaseViewController: UIViewController {
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: {(alert: UIAlertAction!) in
                 self.gotoLoginScreen()
             })
-            action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+            action.setValue(ColorConstants.schemeColor, forKey: "titleTextColor")
 
             alert.addAction(action)
         } else {
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            action.setValue(Constants.schemeColor, forKey: "titleTextColor")
+            action.setValue(ColorConstants.schemeColor, forKey: "titleTextColor")
 
             alert.addAction(action)
         }

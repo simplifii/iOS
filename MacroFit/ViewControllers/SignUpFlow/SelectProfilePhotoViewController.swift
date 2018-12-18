@@ -19,7 +19,7 @@ class SelectProfilePhotoViewController: BaseViewController, CropViewControllerDe
                 
         skipButton.layer.cornerRadius = 8.0
         skipButton.layer.borderWidth = 1
-        skipButton.layer.borderColor = Constants.buttonBorderColor.cgColor
+        skipButton.layer.borderColor = ColorConstants.buttonBorderColor.cgColor
     }
     
     @IBAction func selectImageSource(_ sender: UIButton) {
